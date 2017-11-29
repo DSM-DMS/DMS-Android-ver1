@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--login view dimen-->
+    <dimen name="login_edittext_margin_top">8dp</dimen>
+    <dimen name="login_label_text_margin_top">16dp</dimen>
+    <dimen name="login_label_text_margin_left">4dp</dimen>
+    <dimen name="login_edittext_padding_top_bottom">8dp</dimen>
+    <dimen name="login_edittext_padding_right_left">16dp</dimen>
+    <dimen name="login_login_button_marginLeft">16dp</dimen>
+    <dimen name="login_relative_margin_top">32dp</dimen>
+    <dimen name="login_signup_text_margin_bottom">32dp</dimen>
+
+    <!--login text size-->
+    <dimen name="login_id_password_text_size">14sp</dimen>
+</resources>

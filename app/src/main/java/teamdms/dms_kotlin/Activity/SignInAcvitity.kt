@@ -3,6 +3,7 @@ package team_dms.dms.Activity
 import android.os.Bundle
 import team_dms.dms.Base.BaseActivity
 import team_dms.dms.R
+import teamdms.dms_kotlin.R
 
 class SignInAcvitity : BaseActivity() {
 

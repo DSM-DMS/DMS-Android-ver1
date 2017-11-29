@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_login"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginBottom="26dp"
+        android:layout_above="@id/login_signup_tv"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/login_id_label"
+            android:layout_marginLeft="@dimen/login_label_text_margin_left"
+            android:textColor="@color/white"
+            />
+
+        <EditText
+            android:id="@+id/login_id_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_edittext_margin_top"
+            android:paddingRight="@dimen/login_edittext_padding_right_left"
+            android:paddingLeft="@dimen/login_edittext_padding_right_left"
+            android:paddingTop="@dimen/login_edittext_margin_top"
+            android:paddingBottom="@dimen/login_edittext_margin_top"
+            android:background="@drawable/login_edittext_background"
+            android:maxLines="1"
+            android:textSize="@dimen/login_id_password_text_size"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/login_label_text_margin_top"
+            android:text="@string/login_password_label"
+            android:layout_marginLeft="@dimen/login_label_text_margin_left"
+            android:textColor="@color/white"
+            />
+
+        <EditText
+            android:id="@+id/login_password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_edittext_margin_top"
+            android:background="@drawable/login_edittext_background"
+            android:paddingBottom="@dimen/login_edittext_margin_top"
+            android:paddingLeft="@dimen/login_edittext_padding_right_left"
+            android:paddingRight="@dimen/login_edittext_padding_right_left"
+            android:paddingTop="@dimen/login_edittext_margin_top"
+            android:maxLines="1"
+            android:inputType="textPassword"
+            android:textSize="@dimen/login_id_password_text_size"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_relative_margin_top"
+            >
+
+            <CheckBox
+                android:id="@+id/login_keep_login_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/login_checkbox_keep_login"
+                android:layout_centerVertical="true"
+                android:buttonTint="@color/login_checkbox_color"
+                android:textColor="@color/white"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/login_keep_login_cb"
+                android:layout_marginLeft="@dimen/login_login_button_marginLeft"
+                android:text="@string/login_login_button_text"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_signup_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/login_signup_text"
+        android:layout_marginBottom="@dimen/login_signup_text_margin_bottom"
+        android:textColor="@color/white"
+        />
+</RelativeLayout>
