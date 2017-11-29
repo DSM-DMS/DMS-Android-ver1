@@ -1,12 +1,13 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
         <item name="colorPrimary">@color/colorNo2</item>
         <item name="colorPrimaryDark">@color/colorNo3</item>
-        <item name="colorAccent">@color/colorNo5</item>
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
 
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:background">@drawable/view_splash</item>
     </style>
 
 </resources>

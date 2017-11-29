@@ -14,6 +14,8 @@
 
     <color name="colorMint">#B8E8D7</color>
     <color name="colorPressMint">#85B3A2</color>
+    
+    <color name="colorSplash">#7DB1DB</color>
 
     <!--login color-->
     <color name="login_checkbox_color">#549788</color>

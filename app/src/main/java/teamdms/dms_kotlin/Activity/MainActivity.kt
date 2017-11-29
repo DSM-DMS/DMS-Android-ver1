@@ -1,11 +1,11 @@
 package teamdms.dms_kotlin.Activity
 
-import android.os.Bundle
-import android.support.design.widget.TabLayout
+import android.os.*
+import android.support.design.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
-import team_dms.dms.Base.BaseActivity
-import teamdms.dms_kotlin.R
-import teamdms.dms_kotlin.ViewPagerAdapter.MainViewPagerAdapter
+import team_dms.dms.Base.*
+import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.ViewPagerAdapter.*
 
 /**
  * Created by root1 on 2017. 11. 25..
@@ -20,6 +20,7 @@ class MainActivity: BaseActivity() {
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab))
 
         viewPager.adapter = MainViewPagerAdapter(supportFragmentManager)
+        viewPager.offscreenPageLimit = 1
 
     }
 

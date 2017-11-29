@@ -1,10 +1,8 @@
 package team_dms.dms.Connect
 
-import android.content.Context
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import team_dms.dms.Base.Util
+import android.content.*
+import retrofit2.*
+import team_dms.dms.Base.*
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -31,5 +29,7 @@ abstract class Res<T>(context: Context): Callback<T> {
             500 -> Util.showToast(context, "서버 오류")
             else -> callBack(code, body)
         }
+
     }
+
 }
