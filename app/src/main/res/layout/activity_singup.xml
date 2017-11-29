@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_auth_sub"
+    >
+
+    <ImageView
+        android:id="@+id/iv_sailboat"
+        android:layout_width="@dimen/singup_image_width_height"
+        android:layout_height="@dimen/singup_image_width_height"
+        android:src="@drawable/icon_signup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iv_sailboat"
+        >
+
+    </LinearLayout>
+</RelativeLayout>
