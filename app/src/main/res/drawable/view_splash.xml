@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/colorSplash"/>
+    <item android:width="128dp" android:height="128dp"
+        android:top="148dp"
+        android:gravity="center_horizontal"
+        android:drawable="@drawable/icon_logo"/>
+</layer-list>

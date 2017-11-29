@@ -7,39 +7,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:layout_marginBottom="32dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-
-        <ImageButton
-            android:id="@+id/beforeButton"
-            android:padding="30dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/icon_meal_left"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="94dp"
-            android:layout_height="38dp"
-            android:background="@drawable/back_button"/>
-
-        <ImageButton
-            android:id="@+id/nextButton"
-            android:padding="30dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/icon_meal_right"
-            android:layout_marginTop="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="94dp"
-            android:layout_height="38dp"
-            android:background="@drawable/back_button"/>
-
-    </LinearLayout>
-
 </RelativeLayout>

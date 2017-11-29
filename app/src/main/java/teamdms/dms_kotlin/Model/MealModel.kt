@@ -1,6 +1,6 @@
 package team_dms.dms.Model
 
-import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.*
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -10,10 +10,10 @@ class MealModel {
     @SerializedName("breakfast")
     lateinit var breakfast: Array<String>
 
-    @SerializedName("breakfast")
+    @SerializedName("lunch")
     lateinit var lunch: Array<String>
 
-    @SerializedName("breakfast")
+    @SerializedName("dinner")
     lateinit var dinner: Array<String>
 
     fun getData(): Array<String>{
