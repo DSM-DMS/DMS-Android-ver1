@@ -23,8 +23,8 @@ class MealFragment: Fragment() {
     private fun init(view: View){
         with(view){
             viewPager.clipToPadding = false
-            viewPager.pageMargin = 32
-            viewPager.setPadding(32,32,32,32)
+            viewPager.pageMargin = 64
+            viewPager.setPadding(64,64,64,64)
             viewPager.offscreenPageLimit = 1
             viewPager.adapter = MealViewPagerAdapter(childFragmentManager)
         }
