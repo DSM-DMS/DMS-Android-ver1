@@ -15,5 +15,4 @@ class SplashActivity: BaseActivity() {
         startActivity(intent)
         finish()
     }
-
 }
