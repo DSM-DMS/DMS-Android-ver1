@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="32dp"/>
-            <solid android:color="@color/colorPressMint"/>
-        </shape>
-    </item>
+<ripple android:color="?android:colorControlHighlight"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="32dp"/>
             <solid android:color="@color/colorMint"/>
         </shape>
     </item>
-</selector>
+
+</ripple>
