@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginRight="@dimen/login_linear_margin_left_right"
+        android:layout_marginLeft="@dimen/login_linear_margin_left_right"
+        android:layout_marginBottom="@dimen/login_linear_margin_bottom"
         android:layout_above="@id/tv_login_signup"
         >
 
