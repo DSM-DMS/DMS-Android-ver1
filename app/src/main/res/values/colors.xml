@@ -17,13 +17,6 @@
     
     <color name="colorSplash">#7DB1DB</color>
 
-    <!--login color-->
-    <color name="login_checkbox_color">#549788</color>
-
-    <!--normal color-->
-    <color name="white">#FAFAFA</color>
-
-    <!--effect color-->
-    <color name="disabled">#61000000</color>
+    <color name="colorGray">#B1B1B1</color>
 
 </resources>

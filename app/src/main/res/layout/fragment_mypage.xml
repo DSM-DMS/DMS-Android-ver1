@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/back_mypage_main"
+    android:background="@drawable/mypage_back"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,10 +24,10 @@
             <ImageView
                 android:layout_width="82dp"
                 android:layout_height="82dp"
-                android:src="@drawable/icon_mypage_study" />
+                android:src="@drawable/mypage_study_icon" />
 
             <TextView
-                android:id="@+id/studyStateText"
+                android:id="@+id/text_mypage_study_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -46,14 +46,14 @@
             <ImageView
                 android:layout_width="82dp"
                 android:layout_height="82dp"
-                android:src="@drawable/icon_mypage_stay" />
+                android:src="@drawable/mypage_stay_icon" />
 
             <TextView
-                android:id="@+id/stayStateText"
+                android:id="@+id/text_mypage_stay_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="연장상태"
+                android:text="잔류상태"
                 android:textSize="16dp" />
 
         </LinearLayout>
@@ -64,7 +64,7 @@
         android:background="@color/colorNo6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1.2"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -75,7 +75,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/positiveCountText"
+                android:id="@+id/text_mypage_merit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
@@ -106,7 +106,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/negativeCountText"
+                android:id="@+id/text_mypage_demerit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
@@ -125,7 +125,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recycler_mypage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"/>

@@ -1,7 +1,6 @@
 package teamdms.dms_kotlin.ViewPagerAdapter
 
 import android.support.v4.app.*
-import android.util.*
 import teamdms.dms_kotlin.Fragment.*
 import java.util.*
 
@@ -16,13 +15,11 @@ class MealViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         calendar.time = today
         calendar.add(Calendar.DATE, position)
-        Log.e("xxx", "hello")
-        val fragment = MealContentFragment()
-        fragment.setUseDate(calendar.time)
-        return fragment
+        return MealContentFragment(calendar.time)
     }
 
     override fun getCount(): Int {
-        return 50
+        return 30
     }
+
 }

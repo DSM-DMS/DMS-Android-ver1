@@ -1,10 +1,9 @@
 package team_dms.dms.Connect
 
-import com.google.gson.JsonObject
-import retrofit2.Call
+import com.google.gson.*
+import retrofit2.*
 import retrofit2.http.*
-import team_dms.dms.Model.MealModel
-import team_dms.dms.Model.MypagelModel
+import team_dms.dms.Model.*
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -50,5 +49,10 @@ interface Api {
     //회원가입
     @POST("signup")
     @FormUrlEncoded
-    fun signUp()
+    fun signUp(@Field("uuid")code: String, @Field("id")id: String, @Field("pw")pw: String): Call<Void>
+
+    //버그 전송
+    @POST("bug-report")
+    @FormUrlEncoded
+    fun sendBugReport(@Header("Authorization")token: String, @Field("title")title: String, @Field("content")content: String): Call<Void>
 }

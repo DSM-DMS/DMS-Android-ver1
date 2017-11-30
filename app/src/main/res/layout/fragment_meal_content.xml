@@ -13,7 +13,7 @@
         <TextView
             android:layout_marginLeft="28dp"
             android:layout_marginTop="28dp"
-            android:id="@+id/dayStrText"
+            android:id="@+id/text_meal_content_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="월요일"
@@ -22,16 +22,16 @@
 
         <TextView
             android:layout_marginLeft="8dp"
-            android:id="@+id/dateText"
+            android:id="@+id/text_meal_content_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="11월 7일"
-            android:layout_toRightOf="@id/dayStrText"
-            android:layout_alignBaseline="@id/dayStrText"
+            android:layout_toRightOf="@id/text_meal_content_week"
+            android:layout_alignBaseline="@id/text_meal_content_week"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/yearText"
+            android:id="@+id/text_meal_content_year"
             android:layout_alignParentRight="true"
             android:layout_margin="16dp"
             android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
 
         <LinearLayout
             android:layout_marginTop="8dp"
-            android:layout_below="@id/dayStrText"
+            android:layout_below="@id/text_meal_content_week"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -78,7 +78,7 @@
                     android:layout_marginLeft="22dp"
                     android:layout_marginRight="22dp"
                     android:textSize="20dp"
-                    android:id="@+id/breakfastText"
+                    android:id="@+id/text_meal_content_breakfast"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -118,7 +118,7 @@
                     android:layout_marginLeft="22dp"
                     android:layout_marginRight="22dp"
                     android:textSize="20dp"
-                    android:id="@+id/lunchText"
+                    android:id="@+id/text_meal_content_lunch"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -158,7 +158,7 @@
                     android:layout_marginLeft="22dp"
                     android:layout_marginRight="22dp"
                     android:textSize="20dp"
-                    android:id="@+id/dinnerText"
+                    android:id="@+id/text_meal_content_dinner"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"

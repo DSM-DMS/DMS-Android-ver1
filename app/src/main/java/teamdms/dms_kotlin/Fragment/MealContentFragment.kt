@@ -1,5 +1,6 @@
 package teamdms.dms_kotlin.Fragment
 
+import android.annotation.*
 import android.os.*
 import android.support.v4.app.*
 import android.view.*
@@ -15,19 +16,21 @@ import java.util.*
  * Created by root1 on 2017. 11. 26..
  */
 
-class MealContentFragment: Fragment() {
+@SuppressLint("ValidFragment")
+class MealContentFragment(date: Date): Fragment() {
 
     var rootView: View? = null
-    var dateFommater = SimpleDateFormat("YYYY-MM-dd")
+    val dateFormater = SimpleDateFormat("YYYY-MM-dd")
     var date: Date = Date()
 
-    public fun setUseDate(date: Date){
+    init {
+        dateFormater.timeZone = TimeZone.getTimeZone("ko-KR")
         this.date = date
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_meal_content, container, false)
-        loadData(dateFommater.format(date))
+        loadData(dateFormater.format(date))
         return rootView
     }
 
@@ -43,20 +46,21 @@ class MealContentFragment: Fragment() {
         })
 
         with(rootView!!){
-            dateFommater.applyPattern("YYYY")
-            yearText.text = dateFommater.format(this@MealContentFragment.date)
-            dateFommater.applyPattern("MM월 dd일")
-            dateText.text = dateFommater.format(this@MealContentFragment.date)
-            dateFommater.applyPattern("EEEE")
-            dayStrText.text = dateFommater.format(this@MealContentFragment.date)
+            dateFormater.applyPattern("YYYY")
+            text_meal_content_year.text = dateFormater.format(this@MealContentFragment.date)
+            dateFormater.applyPattern("MM월 dd일")
+            text_meal_content_date.text = dateFormater.format(this@MealContentFragment.date)
+            dateFormater.applyPattern("EEEE")
+            text_meal_content_week.text = dateFormater.format(this@MealContentFragment.date)
         }
+
     }
 
     private fun bindMealData(data: Array<String>){
         with(rootView!!){
-            breakfastText.text = data[0]
-            lunchText.text = data[1]
-            dinnerText.text = data[2]
+            text_meal_content_breakfast.text = data[0]
+            text_meal_content_lunch.text = data[1]
+            text_meal_content_dinner.text = data[2]
         }
     }
 

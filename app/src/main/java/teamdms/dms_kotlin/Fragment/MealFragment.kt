@@ -22,11 +22,11 @@ class MealFragment: Fragment() {
 
     private fun init(view: View){
         with(view){
-            viewPager.clipToPadding = false
-            viewPager.pageMargin = 64
-            viewPager.setPadding(64,64,64,64)
-            viewPager.offscreenPageLimit = 1
-            viewPager.adapter = MealViewPagerAdapter(childFragmentManager)
+            view_pager_meal.clipToPadding = false
+            view_pager_meal.pageMargin = 64
+            view_pager_meal.setPadding(64,64,64,64)
+            view_pager_meal.offscreenPageLimit = 1
+            view_pager_meal.adapter = MealViewPagerAdapter(childFragmentManager)
         }
     }
 

@@ -1,8 +1,7 @@
 package team_dms.dms.Base
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
+import android.content.*
+import android.support.v7.app.*
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -20,18 +19,14 @@ open class BaseActivity: AppCompatActivity(){
     }
 
     fun saveToken(token: String){
-        val editor = getPref().edit()
-        editor.putString("token", token)
-        editor.commit()
+        Util.saveToken(this, token)
     }
 
     fun removeToken(){
-        val editor = getPref().edit()
-        editor.remove("token")
-        editor.commit()
+        Util.removeToken(this)
     }
 
     fun getToken(): String{
-        return "JWT " + getPref().getString("token", "")
+        return Util.getToken(this)
     }
 }
