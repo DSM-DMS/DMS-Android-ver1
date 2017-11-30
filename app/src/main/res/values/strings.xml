@@ -1,11 +1,4 @@
 <resources>
     <string name="app_name">DMS</string>
 
-    <!--login page-->
-    <string name="login_id_label">아이디</string>
-    <string name="login_password_label">비밀번호</string>
-    <string name="login_checkbox_keep_login">로그인 유지</string>
-    <string name="login_signup_text">회원가입</string>
-    <string name="login_login_button_text">로그인</string>
-
 </resources>

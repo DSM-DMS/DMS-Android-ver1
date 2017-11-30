@@ -3,104 +3,103 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_login">
+    android:background="@drawable/signin_back">
+
+    <Button
+        android:id="@+id/button_signin_go_to_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:text="회원가입"
+        android:textSize="16dp"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="@dimen/margin_all_medium"
+        android:textColor="@color/colorWhite" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="@dimen/login_linear_margin_left_right"
-        android:layout_marginLeft="@dimen/login_linear_margin_left_right"
-        android:layout_marginBottom="@dimen/login_linear_margin_bottom"
-        android:layout_above="@id/tv_login_signup">
+        android:layout_margin="@dimen/margin_all_medium"
+        android:layout_above="@id/button_signin_go_to_signup">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="@string/login_id_label"
-            android:layout_marginLeft="@dimen/login_label_text_margin_left"
-            android:textColor="@color/white"
-            />
+            android:text="아이디"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/colorWhite" />
 
         <EditText
-            android:id="@+id/et_login_id"
+            android:layout_marginTop="@dimen/margin_all_small"
+            android:id="@+id/edit_signin_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/login_edittext_margin_top"
-            android:paddingRight="@dimen/login_edittext_padding_right_left"
-            android:paddingLeft="@dimen/login_edittext_padding_right_left"
-            android:paddingTop="@dimen/login_edittext_margin_top"
-            android:paddingBottom="@dimen/login_edittext_margin_top"
-            android:background="@drawable/login_edittext_background"
+            android:paddingLeft="@dimen/margin_all_medium"
+            android:paddingRight="@dimen/margin_all_medium"
+            android:paddingTop="@dimen/margin_all_small"
+            android:paddingBottom="@dimen/margin_all_small"
+            android:background="@drawable/signin_edit_back"
             android:maxLines="1"
-            android:textSize="@dimen/login_id_password_text_size"
-            />
+            android:textSize="18dp" />
 
         <TextView
+            android:layout_marginTop="@dimen/margin_all_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginTop="@dimen/login_label_text_margin_top"
-            android:text="@string/login_password_label"
-            android:layout_marginLeft="@dimen/login_label_text_margin_left"
-            android:textColor="@color/white"
-            />
+            android:text="비밀번호"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/colorWhite" />
 
         <EditText
-            android:id="@+id/et_login_password"
+            android:id="@+id/edit_signin_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/login_edittext_margin_top"
-            android:background="@drawable/login_edittext_background"
-            android:paddingBottom="@dimen/login_edittext_margin_top"
-            android:paddingLeft="@dimen/login_edittext_padding_right_left"
-            android:paddingRight="@dimen/login_edittext_padding_right_left"
-            android:paddingTop="@dimen/login_edittext_margin_top"
+            android:layout_marginTop="@dimen/margin_all_small"
+            android:paddingLeft="@dimen/margin_all_medium"
+            android:paddingRight="@dimen/margin_all_medium"
+            android:paddingTop="@dimen/margin_all_small"
+            android:paddingBottom="@dimen/margin_all_small"
+            android:background="@drawable/signin_edit_back"
             android:maxLines="1"
             android:inputType="textPassword"
-            android:textSize="@dimen/login_id_password_text_size"
-            />
+            android:textSize="18dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/login_relative_margin_top">
+            android:layout_marginTop="@dimen/margin_all_medium">
 
             <CheckBox
-                android:id="@+id/cb_login_keep_login"
+                android:id="@+id/checkbox_signin_keep_auth"
+                android:checked="true"
+                android:enabled="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:text="@string/login_checkbox_keep_login"
+                android:text="자동로그인"
                 android:layout_centerVertical="true"
-                android:buttonTint="@color/login_checkbox_color"
-                android:textColor="@color/white"
-                />
+                android:buttonTint="@color/colorMint"
+                android:textColor="@color/colorWhite" />
 
             <Button
-                android:id="@+id/bt_login_login"
-                android:layout_width="match_parent"
+                android:layout_margin="4dp"
+                android:id="@+id/button_signin_signin"
+                android:layout_width="186dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
+                android:background="@drawable/all_button_shape"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/cb_login_keep_login"
-                android:layout_marginLeft="@dimen/login_login_button_marginLeft"
-                android:text="@string/login_login_button_text"
-                android:textColor="@color/white"
-                />
+                android:layout_marginLeft="@dimen/margin_all_large"
+                android:text="로그인"
+                android:textSize="18dp"
+                android:textColor="@color/colorWhite" />
+
         </RelativeLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_login_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:text="@string/login_signup_text"
-        android:layout_marginBottom="@dimen/login_signup_text_margin_bottom"
-        android:textColor="@color/white"
-        />
 </RelativeLayout>

@@ -11,6 +11,7 @@ import retrofit2.converter.gson.*
 object Connector {
 
     lateinit var api: Api
+
     val url = "http://dsm2015.cafe24.com:3000/"
 
     init {

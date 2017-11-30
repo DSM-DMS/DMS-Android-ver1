@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector android:color="?android:colorControlHighlight"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorWhite"/>
+            <corners android:radius="32dp"/>
+            <stroke android:color="@color/colorMint" android:width="4dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorWhite"/>
+            <corners android:radius="32dp"/>
+        </shape>
+    </item>
+
+</selector>
