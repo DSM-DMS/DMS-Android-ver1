@@ -3,4 +3,19 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Switch
+        android:textColor="#000000"
+        android:textOn="@string/app_name"
+        android:textOff="@string/app_name"
+        style="@style/Widget.AppCompat.CompoundButton.Switch"
+        android:track="@drawable/apply_study_switch_track_shape"
+        android:thumb="@drawable/apply_study_switch_thumb_shape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>

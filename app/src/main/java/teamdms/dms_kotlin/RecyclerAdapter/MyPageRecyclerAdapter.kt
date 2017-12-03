@@ -39,7 +39,7 @@ class MyPageRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 }
             }
             1 -> contentHolder.bind("비밀번호 변경", { _ ->
-                context.startActivity(Intent(this))
+//                context.startActivity(Intent(this))
             })
             3 -> contentHolder.bind("버그 신고", { _ ->
                     val editText = EditText(context)

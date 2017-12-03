@@ -5,8 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <Switch
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <ScrollView
+            android:background="@drawable/apply_study_map_back"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
+            <HorizontalScrollView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/linear_apply_study_map"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </HorizontalScrollView>
+
+        </ScrollView>
+
+        <Button
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:text="가온실"
+            android:layout_height="32dp" />
+
+        <Button
+            android:text="신청"
+            android:textColor="@color/colorWhite"
+            android:textSize="18dp"
+            android:background="@drawable/all_button_shape"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginRight="64dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

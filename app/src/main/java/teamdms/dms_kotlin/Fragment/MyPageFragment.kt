@@ -32,7 +32,7 @@ class MyPageFragment: Fragment() {
         Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypagelModel>(activity){
             override fun callBack(code: Int, body: MypagelModel?) {
                 if(code == 200){
-
+//                    bind(body!!.)
                 }
             }
         })

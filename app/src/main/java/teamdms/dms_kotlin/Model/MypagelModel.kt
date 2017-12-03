@@ -1,6 +1,6 @@
 package team_dms.dms.Model
 
-import com.google.gson.annotations.SerializedName
+import com.google.gson.annotations.*
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -34,5 +34,14 @@ class MypagelModel {
 
     @SerializedName("stay_value")
     var stayState: Int = 4
+
+//    fun getStudyState(): String{
+//        val studyRoomStrArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린 교실")
+//    }
+
+    fun getStayState(): String{
+        val stayStateStrArr = arrayOf("금요귀가", "토요귀가", "토요귀사", "잔류")
+        return "신청 : ${stayStateStrArr[stayState - 1]}"
+    }
 
 }

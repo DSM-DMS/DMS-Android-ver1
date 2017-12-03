@@ -6,8 +6,12 @@
         <item name="colorAccent">#FFFFFF</item>
     </style>
 
+    <style name="SubTheme" parent="AppTheme">
+        <item name="colorAccent">@color/colorMint</item>
+    </style>
+
     <style name="SplashTheme" parent="AppTheme">
-        <item name="android:background">@drawable/view_splash</item>
+        <item name="android:background">@drawable/splash_back</item>
     </style>
 
 </resources>

@@ -16,11 +16,11 @@ class MainActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tab.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(viewPager))
-        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab))
+        tab.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(view_pager_main))
+        view_pager_main.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab))
 
-        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager)
-        viewPager.offscreenPageLimit = 1
+        view_pager_main.adapter = MainViewPagerAdapter(supportFragmentManager)
+        view_pager_main.offscreenPageLimit = 1
 
     }
 
