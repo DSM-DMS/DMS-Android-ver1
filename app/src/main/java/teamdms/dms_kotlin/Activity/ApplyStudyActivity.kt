@@ -1,9 +1,15 @@
 package teamdms.dms_kotlin.Activity
 
+import android.graphics.*
 import android.os.*
+import android.support.design.widget.*
+import android.util.*
+import android.view.*
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_apply_study.*
+import kotlinx.android.synthetic.main.view_apply_study_bottom_sheet.view.*
 import team_dms.dms.Base.*
+import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
 
 /**
@@ -11,34 +17,112 @@ import teamdms.dms_kotlin.*
  */
 class ApplyStudyActivity: BaseActivity() {
 
-    val tempData = Array<IntArray>(4, { IntArray(4) })
+    var classState = 1
+    var timeState = 11
+    var seatState = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_study)
 
-        drawMap()
+        getData()
+        setBottomSheet()
 
+        button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
 
     }
 
-    private fun drawMap(){
-        for (data in tempData){
-            linear_apply_study_map.addView(drawMapHorizon(data))
+    lateinit var bottomSheet: BottomSheetDialog
+
+    private fun setBottomSheet(){
+        bottomSheet = BottomSheetDialog(this)
+        val bottomSheetView = LayoutInflater.from(this).inflate(R.layout.view_apply_study_bottom_sheet, null)
+        setBottomSheetView(bottomSheetView)
+        bottomSheet.setContentView(bottomSheetView)
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView.parent as View)
+        Log.e("xxx", "" + resources.getDimensionPixelSize(R.dimen.size_apply_study_bottom_sheet))
+        bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.size_apply_study_bottom_sheet)
+        Log.e("xxx", "" + bottomSheetBehavior.peekHeight)
+    }
+
+    private fun setBottomSheetView(view: View){
+        with(view){
+            val tempLinearArr = arrayOf(linear_apply_study_bottom_sheet_seat_1, linear_apply_study_bottom_sheet_seat_2, linear_apply_study_bottom_sheet_seat_3,
+                    linear_apply_study_bottom_sheet_seat_4, linear_apply_study_bottom_sheet_seat_5, linear_apply_study_bottom_sheet_seat_6, linear_apply_study_bottom_sheet_seat_7)
+            button_apply_study_bottom_sheet.setOnClickListener { bottomSheet.dismiss() }
+            for(tempLinearNum in tempLinearArr.indices){
+                tempLinearArr[tempLinearNum].setOnClickListener {
+                    classState = tempLinearNum + 1
+                    getData()
+                    setRoomText(Util.classNameArr[tempLinearNum])
+                    bottomSheet.dismiss()
+                }
+            }
         }
     }
 
-    private fun drawMapHorizon(datas: IntArray): LinearLayout{
-        //val width = datas.size * 55 + (datas.size - 1) * 10
-        val dataLayout = LinearLayout(this)
-        for(data in datas){
-            val seatButton = ImageButton(this)
-            seatButton.setImageResource(R.drawable.apply_study_icon)
-            val layoutParam = LinearLayout.LayoutParams(55, 55)
-            layoutParam.setMargins(8,8,8,8)
-            dataLayout.addView(seatButton, layoutParam)
+    private fun setRoomText(name: String){
+        button_apply_study_change_room.text = name
+    }
+
+    private fun getData(){
+        Connector.api.loadStudyMap(timeState, classState)
+                .enqueue(object : Res<Array<Array<Any>>>(this){
+                    override fun callBack(code: Int, body: Array<Array<Any>>?) {
+                        if(code == 200){ drawMap(body!!) }
+                        else{ showToast("로드 실패 : $code") }
+                    }
+                })
+    }
+
+    var beforeButton: Button? = null
+
+    private fun drawMap(mapData: Array<Array<Any>>){
+
+        linear_apply_study_map.removeAllViews()
+
+        val seatMargin = resources.getDimension(R.dimen.margin_apply_study_seat).toInt()
+        val seatSize = resources.getDimension(R.dimen.size_apply_study_seat).toInt()
+        val seatTextSize = resources.getDimension(R.dimen.size_apply_study_seat_text)
+
+        for (horizonMapData in mapData){
+            val horizonLayout = LinearLayout(this)
+            horizonLayout.orientation = LinearLayout.HORIZONTAL
+            val layoutParam = LinearLayout.LayoutParams(seatSize, seatSize)
+            layoutParam.setMargins(seatMargin, seatMargin, seatMargin, seatMargin)
+            for (seat in horizonMapData){
+                horizonLayout.addView( when (seat) {
+                    is Double -> {
+                        if (seat > 0){
+                            val seatButton = Button(this)
+                            seatButton.setTextColor(Color.WHITE)
+                            seatButton.setBackgroundResource(R.drawable.apply_study_seat_no_icon)
+                            seatButton.text = "${seat.toInt()}"
+                            seatButton.textSize = seatTextSize
+                            seatButton.setOnClickListener { button ->
+                                seatState = seat.toInt()
+                                beforeButton?.setBackgroundResource(R.drawable.apply_study_seat_no_icon)
+                                button.setBackgroundResource(R.drawable.apply_study_seat_select_icon)
+                                beforeButton = button as Button
+                            }
+                            seatButton
+                        }else{ Space(this) }
+                    }
+                    is String -> {
+                        val noSeatTextView = TextView(this)
+                        noSeatTextView.setBackgroundResource(R.drawable.apply_study_seat_yes_icon)
+                        noSeatTextView.gravity = Gravity.CENTER
+                        noSeatTextView.text = seat
+                        noSeatTextView.textSize = seatTextSize
+                        noSeatTextView.setTextColor(Color.WHITE)
+                        noSeatTextView
+                    }
+                    else -> View(this)
+                }, layoutParam)
+            }
+
+            linear_apply_study_map.addView(horizonLayout)
         }
-        return dataLayout
     }
 
 }

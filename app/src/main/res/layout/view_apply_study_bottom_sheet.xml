@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:layout_height="@dimen/size_apply_study_bottom_sheet">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_1"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="가"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="가온실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_2"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="나"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="나온실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_3"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="다"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="다온실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_4"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="라"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="라온실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_5"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="3층"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="독서실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_6"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="4층"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="독서실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_7"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="5층"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="열린교실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/colorBlue"
+        android:textStyle="bold"
+        android:text="@string/apply_study_bottom_sheet_explain"/>
+
+    <ImageView
+        android:id="@+id/button_apply_study_bottom_sheet"
+        android:src="@drawable/apply_study_bottom_sheet_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp" />
+
+</LinearLayout>

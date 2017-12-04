@@ -9,6 +9,8 @@ import android.widget.*
  */
 object Util {
 
+    val classNameArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린교실")
+
     fun showToast(context: Context, message: String){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }

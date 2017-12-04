@@ -12,40 +12,48 @@
 
         <Switch
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <ScrollView
-            android:background="@drawable/apply_study_map_back"
-            android:layout_margin="16dp"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/apply_study_map_back"
             android:layout_weight="1">
 
-            <HorizontalScrollView
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
+            <ScrollView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_margin="16dp"
-                    android:orientation="vertical"
-                    android:id="@+id/linear_apply_study_map"
-                    android:layout_gravity="center"
+                <HorizontalScrollView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content">
 
-            </HorizontalScrollView>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:id="@+id/linear_apply_study_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-        </ScrollView>
+                </HorizontalScrollView>
+
+            </ScrollView>
+
+        </RelativeLayout>
 
         <Button
-            android:textStyle="bold"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:text="가온실"
+            android:id="@+id/button_apply_study_change_room"
+            android:textColor="@color/colorBlue"
             android:layout_height="32dp" />
 
         <Button
@@ -53,12 +61,12 @@
             android:textColor="@color/colorWhite"
             android:textSize="18dp"
             android:background="@drawable/all_button_shape"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="45dp" />
 
     </LinearLayout>
 

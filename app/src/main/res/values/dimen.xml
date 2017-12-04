@@ -6,4 +6,11 @@
     <dimen name="margin_all_medium">16dp</dimen>
     <dimen name="margin_all_large">32dp</dimen>
 
+    <dimen name="size_apply_study_seat">62dp</dimen>
+    <dimen name="margin_apply_study_seat">4dp</dimen>
+    <dimen name="size_apply_study_seat_text">6sp</dimen>
+    
+    <dimen name="size_apply_study_bottom_sheet_button">76dp</dimen>
+    <dimen name="size_apply_study_bottom_sheet">530dp</dimen>
+
 </resources>

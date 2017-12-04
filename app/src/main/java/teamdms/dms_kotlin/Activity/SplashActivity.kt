@@ -18,6 +18,6 @@ class SplashActivity: BaseActivity() {
 //        finish()
 
         val bottomSheet = BottomSheetDialog(this)
-        bottomSheet.setContentView(R.layout.view_bottom_sheet)
+        bottomSheet.setContentView(R.layout.view_apply_study_bottom_sheet)
     }
 }

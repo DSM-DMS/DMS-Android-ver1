@@ -20,7 +20,7 @@ interface Api {
 
     //연장 map
     @GET("extension/map/{time}")
-    fun loadStudyMap(@Path("time")time: Int, @Query("class")classNum: Int): Call<Array<Any>>
+    fun loadStudyMap(@Path("time")time: Int, @Query("class")classNum: Int): Call<Array<Array<Any>>>
 
     //연장 신청
     @POST("extension/{time}")
