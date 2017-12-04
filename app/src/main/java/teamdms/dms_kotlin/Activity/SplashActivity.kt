@@ -2,7 +2,6 @@ package teamdms.dms_kotlin.Activity
 
 import android.os.*
 import android.support.design.widget.*
-import kotlinx.android.synthetic.main.activity_apply_study.*
 import team_dms.dms.Base.*
 import teamdms.dms_kotlin.*
 
@@ -20,8 +19,5 @@ class SplashActivity: BaseActivity() {
 
         val bottomSheet = BottomSheetDialog(this)
         bottomSheet.setContentView(R.layout.view_bottom_sheet)
-        button.setOnClickListener {
-            bottomSheet.show()
-        }
     }
 }

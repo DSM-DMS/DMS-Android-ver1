@@ -24,6 +24,4 @@ class ApplyStudySwitchDrawable(context: Context, leftText: String, rightText: St
     override fun draw(canvas: Canvas?) {
 
     }
-
-    private fun
 }
