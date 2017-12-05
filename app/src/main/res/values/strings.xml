@@ -2,5 +2,7 @@
     <string name="app_name">DMS</string>
     
     <string name="apply_study_bottom_sheet_explain">방을 선택하세요</string>
+    <string name="all_apply_success">신청성공</string>
+    <string name="all_apply_time_fail">신청 시간이 아닙니다</string>
 
 </resources>

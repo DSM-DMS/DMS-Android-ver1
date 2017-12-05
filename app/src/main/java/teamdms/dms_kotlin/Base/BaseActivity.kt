@@ -27,6 +27,7 @@ open class BaseActivity: AppCompatActivity(){
     }
 
     fun getToken(): String{
-        return Util.getToken(this)
+        return "JWT " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTI2MTU1MDUsImlkZW50aXR5IjoibmlsIiwiZnJlc2giOmZhbHNlLCJqdGkiOiJmYzY2YzQ5OC1jNDJmLTQxMDQtOGQxOS1kN2U2ZjkwNTI1YjciLCJuYmYiOjE1MTIzNTYzMDUsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE1MTIzNTYzMDV9.T1h04LiVT8UKDYQDYgGBVukHxFJorbgXuhXlcLADlU8"
+        //return Util.getToken(this)
     }
 }

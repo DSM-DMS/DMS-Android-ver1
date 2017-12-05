@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:background="@drawable/mypage_list_back"
     android:paddingLeft="@dimen/margin_all_large"
     android:paddingRight="@dimen/margin_all_medium"
     android:orientation="horizontal"
@@ -9,7 +10,8 @@
     <TextView
         android:id="@+id/text_mypage_list_title"
         android:text="로그인"
-        android:textSize="16dp"
+        android:textColor="#000000"
+        android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content" />

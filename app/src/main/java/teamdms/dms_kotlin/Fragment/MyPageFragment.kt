@@ -23,17 +23,22 @@ class MyPageFragment: Fragment() {
         return  rootView
     }
 
+    override fun onStart() {
+        super.onStart()
+        init()
+    }
+
     private fun init(){
         with(rootView!!){
             recycler_mypage.layoutManager = LinearLayoutManager(activity)
-            recycler_mypage.adapter = MyPageRecyclerAdapter()
+            recycler_mypage.adapter = MyPageRecyclerAdapter().setTextViews(text_mypage_study_state, text_mypage_stay_state)
         }
 
         Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypagelModel>(activity){
             override fun callBack(code: Int, body: MypagelModel?) {
                 if(code == 200){
-//                    bind(body!!.)
-                }
+                    bind(body!!.getStudyState(), body!!.getStayState())
+                }else{ Util.showToast(context, "불러오기 실패") }
             }
         })
 
@@ -45,7 +50,6 @@ class MyPageFragment: Fragment() {
             text_mypage_stay_state.text = stayState
         }
     }
-
 
 
 }

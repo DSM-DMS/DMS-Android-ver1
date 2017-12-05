@@ -10,7 +10,10 @@ class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
 
     override fun getItem(position: Int): Fragment {
         return when(position){
-            else -> MealFragment()
+            0 -> MealFragment()
+//            1 ->
+            2 -> NoticeMainFragment()
+            else -> MyPageFragment()
         }
     }
 

@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:textColor="@color/colorGray"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="28dp"
             android:id="@+id/text_meal_content_week"
@@ -21,6 +22,7 @@
             android:textSize="32dp"/>
 
         <TextView
+            android:textColor="@color/colorGray"
             android:layout_marginLeft="8dp"
             android:id="@+id/text_meal_content_date"
             android:layout_width="wrap_content"
@@ -31,6 +33,7 @@
             android:textSize="20dp"/>
 
         <TextView
+            android:textColor="@color/colorGray"
             android:id="@+id/text_meal_content_year"
             android:layout_alignParentRight="true"
             android:layout_margin="16dp"
@@ -61,12 +64,14 @@
                     android:orientation="horizontal">
 
                     <View
-                        android:layout_width="8dp"
+                        android:layout_width="6dp"
                         android:background="@color/colorMint"
                         android:layout_height="match_parent"/>
 
                     <TextView
-                        android:layout_marginLeft="8dp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24dp"
@@ -75,9 +80,9 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="22dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:textSize="18dp"
                     android:id="@+id/text_meal_content_breakfast"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
@@ -101,12 +106,14 @@
                     android:orientation="horizontal">
 
                     <View
-                        android:layout_width="8dp"
+                        android:layout_width="6dp"
                         android:background="@color/colorMint"
                         android:layout_height="match_parent"/>
 
                     <TextView
-                        android:layout_marginLeft="8dp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24dp"
@@ -115,9 +122,9 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="22dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:textSize="18dp"
                     android:id="@+id/text_meal_content_lunch"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
@@ -141,12 +148,14 @@
                     android:orientation="horizontal">
 
                     <View
-                        android:layout_width="8dp"
+                        android:layout_width="6dp"
                         android:background="@color/colorMint"
                         android:layout_height="match_parent"/>
 
                     <TextView
-                        android:layout_marginLeft="8dp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24dp"
@@ -155,9 +164,9 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="22dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:textSize="18dp"
                     android:id="@+id/text_meal_content_dinner"
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"

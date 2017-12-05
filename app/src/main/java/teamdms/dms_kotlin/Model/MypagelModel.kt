@@ -35,13 +35,20 @@ class MypagelModel {
     @SerializedName("stay_value")
     var stayState: Int = 4
 
-//    fun getStudyState(): String{
-//        val studyRoomStrArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린 교실")
-//    }
+    fun getStudyState(): String{
+        val studyRoomStrArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린 교실")
+        return "11 : " + when(class11Num){
+            is Int -> "${studyRoomStrArr[class11Num!! - 1]}"
+            else -> "신청없음"
+        } + "\n12 : " + when(class12Num){
+            is Int -> "${studyRoomStrArr[class12Num!! - 1]}"
+            else -> "신청없음"
+        }
+    }
 
     fun getStayState(): String{
         val stayStateStrArr = arrayOf("금요귀가", "토요귀가", "토요귀사", "잔류")
-        return "신청 : ${stayStateStrArr[stayState - 1]}"
+        return stayStateStrArr[stayState - 1]
     }
 
 }

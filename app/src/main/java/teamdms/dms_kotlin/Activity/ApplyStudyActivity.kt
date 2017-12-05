@@ -3,7 +3,6 @@ package teamdms.dms_kotlin.Activity
 import android.graphics.*
 import android.os.*
 import android.support.design.widget.*
-import android.util.*
 import android.view.*
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_apply_study.*
@@ -29,6 +28,22 @@ class ApplyStudyActivity: BaseActivity() {
         setBottomSheet()
 
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
+        button_apply_study.setOnClickListener {
+            if (seatState > 0){
+                Connector.api.applyStudy(getToken(), timeState, classState, seatState)
+                        .enqueue(object : Res<Void>(this){
+                            override fun callBack(code: Int, body: Void?) {
+                                showToast(when(code){
+                                    201 -> {
+                                        getData()
+                                        getString(R.string.all_apply_success)
+                                    }204 -> getString(R.string.all_apply_time_fail)
+                                    else -> "오류 : $code"
+                                })
+                            }
+                        })
+            }else{ showToast("자리를 선택하세요") }
+        }
 
     }
 
@@ -40,9 +55,7 @@ class ApplyStudyActivity: BaseActivity() {
         setBottomSheetView(bottomSheetView)
         bottomSheet.setContentView(bottomSheetView)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView.parent as View)
-        Log.e("xxx", "" + resources.getDimensionPixelSize(R.dimen.size_apply_study_bottom_sheet))
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.size_apply_study_bottom_sheet)
-        Log.e("xxx", "" + bottomSheetBehavior.peekHeight)
     }
 
     private fun setBottomSheetView(view: View){
@@ -83,46 +96,49 @@ class ApplyStudyActivity: BaseActivity() {
 
         val seatMargin = resources.getDimension(R.dimen.margin_apply_study_seat).toInt()
         val seatSize = resources.getDimension(R.dimen.size_apply_study_seat).toInt()
-        val seatTextSize = resources.getDimension(R.dimen.size_apply_study_seat_text)
 
         for (horizonMapData in mapData){
+
             val horizonLayout = LinearLayout(this)
             horizonLayout.orientation = LinearLayout.HORIZONTAL
             val layoutParam = LinearLayout.LayoutParams(seatSize, seatSize)
             layoutParam.setMargins(seatMargin, seatMargin, seatMargin, seatMargin)
+
             for (seat in horizonMapData){
                 horizonLayout.addView( when (seat) {
                     is Double -> {
                         if (seat > 0){
                             val seatButton = Button(this)
-                            seatButton.setTextColor(Color.WHITE)
-                            seatButton.setBackgroundResource(R.drawable.apply_study_seat_no_icon)
-                            seatButton.text = "${seat.toInt()}"
-                            seatButton.textSize = seatTextSize
+                            setText(seatButton, "${seat.toInt()}", R.drawable.apply_study_seat_no_icon)
                             seatButton.setOnClickListener { button ->
                                 seatState = seat.toInt()
                                 beforeButton?.setBackgroundResource(R.drawable.apply_study_seat_no_icon)
                                 button.setBackgroundResource(R.drawable.apply_study_seat_select_icon)
                                 beforeButton = button as Button
                             }
+
                             seatButton
                         }else{ Space(this) }
-                    }
-                    is String -> {
+                    } is String -> {
                         val noSeatTextView = TextView(this)
-                        noSeatTextView.setBackgroundResource(R.drawable.apply_study_seat_yes_icon)
-                        noSeatTextView.gravity = Gravity.CENTER
-                        noSeatTextView.text = seat
-                        noSeatTextView.textSize = seatTextSize
-                        noSeatTextView.setTextColor(Color.WHITE)
+                        setText(noSeatTextView, seat, R.drawable.apply_study_seat_yes_icon)
                         noSeatTextView
-                    }
-                    else -> View(this)
+                    } else -> View(this)
                 }, layoutParam)
             }
 
             linear_apply_study_map.addView(horizonLayout)
+
         }
+
+    }
+
+    private fun setText(textView: TextView, title: String, imageId: Int){
+        textView.gravity = Gravity.CENTER
+        textView.textSize = resources.getDimensionPixelSize(R.dimen.size_apply_study_seat_text).toFloat()
+        textView.text = title
+        textView.setTextColor(Color.WHITE)
+        textView.setBackgroundResource(imageId)
     }
 
 }

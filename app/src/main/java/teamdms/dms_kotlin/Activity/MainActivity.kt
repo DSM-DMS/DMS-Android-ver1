@@ -20,8 +20,12 @@ class MainActivity: BaseActivity() {
         view_pager_main.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab))
 
         view_pager_main.adapter = MainViewPagerAdapter(supportFragmentManager)
-        view_pager_main.offscreenPageLimit = 1
+        view_pager_main.offscreenPageLimit = 4
+    }
 
+    override fun onRestart() {
+        super.onRestart()
+        view_pager_main.adapter.notifyDataSetChanged()
     }
 
 }

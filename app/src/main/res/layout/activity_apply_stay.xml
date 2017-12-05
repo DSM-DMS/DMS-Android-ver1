@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/apply_stay_back"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    
+    <RadioGroup
+        android:id="@+id/radio_apply_stay"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_button_apply_stay_1"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="16dp"
+            android:text="\t금요귀가"
+            android:textSize="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/radio_button_apply_stay_2"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="16dp"
+            android:text="\t토요귀가"
+            android:textSize="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/radio_button_apply_stay_3"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="16dp"
+            android:text="\t토요귀사"
+            android:textSize="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/radio_button_apply_stay_4"
+            android:checked="true"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="16dp"
+            android:text="\t\t\t\t잔류"
+            android:textSize="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_apply_stay"
+        android:layout_marginTop="48dp"
+        android:layout_below="@id/radio_apply_stay"
+        android:text="신청"
+        android:textSize="22sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/all_button_shape"
+        android:layout_marginLeft="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
