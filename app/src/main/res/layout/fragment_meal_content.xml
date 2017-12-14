@@ -7,6 +7,7 @@
     app:cardCornerRadius="8dp">
 
     <RelativeLayout
+        android:paddingBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="월요일"
             android:textStyle="bold"
-            android:textSize="32dp"/>
+            android:textSize="28dp"/>
 
         <TextView
             android:textColor="@color/colorGray"
@@ -30,7 +31,7 @@
             android:text="11월 7일"
             android:layout_toRightOf="@id/text_meal_content_week"
             android:layout_alignBaseline="@id/text_meal_content_week"
-            android:textSize="20dp"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:textColor="@color/colorGray"
@@ -43,7 +44,6 @@
             android:textSize="18dp"/>
 
         <LinearLayout
-            android:layout_marginTop="8dp"
             android:layout_below="@id/text_meal_content_week"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="32dp"
                     android:orientation="horizontal">
 
                     <View
@@ -74,7 +74,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24dp"
+                        android:textSize="22dp"
                         android:text="아침"/>
 
                 </LinearLayout>
@@ -82,9 +82,9 @@
                 <TextView
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:id="@+id/text_meal_content_breakfast"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
@@ -102,7 +102,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="32dp"
                     android:orientation="horizontal">
 
                     <View
@@ -116,7 +116,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24dp"
+                        android:textSize="22dp"
                         android:text="점심"/>
 
                 </LinearLayout>
@@ -124,9 +124,9 @@
                 <TextView
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:id="@+id/text_meal_content_lunch"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
@@ -144,7 +144,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="32dp"
                     android:orientation="horizontal">
 
                     <View
@@ -158,7 +158,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24dp"
+                        android:textSize="22dp"
                         android:text="저녁"/>
 
                 </LinearLayout>
@@ -166,9 +166,9 @@
                 <TextView
                     android:layout_marginLeft="32dp"
                     android:layout_marginRight="32dp"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:id="@+id/text_meal_content_dinner"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>

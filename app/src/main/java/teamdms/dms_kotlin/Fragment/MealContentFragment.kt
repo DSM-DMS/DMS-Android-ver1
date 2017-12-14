@@ -21,12 +21,9 @@ class MealContentFragment(date: Date): Fragment() {
 
     var rootView: View? = null
     val dateFormater = SimpleDateFormat("YYYY-MM-dd")
-    var date: Date = Date()
+    lateinit var date: Date
 
-    init {
-        dateFormater.timeZone = TimeZone.getTimeZone("ko-KR")
-        this.date = date
-    }
+    init { this.date = date }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_meal_content, container, false)

@@ -2,6 +2,7 @@ package teamdms.dms_kotlin.Activity
 
 import android.os.*
 import android.support.design.widget.*
+import android.support.v4.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import team_dms.dms.Base.*
 import teamdms.dms_kotlin.*
@@ -21,6 +22,14 @@ class MainActivity: BaseActivity() {
 
         view_pager_main.adapter = MainViewPagerAdapter(supportFragmentManager)
         view_pager_main.offscreenPageLimit = 4
+        view_pager_main.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) { }
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) { }
+
+            override fun onPageSelected(position: Int) {
+
+            }
+        })
     }
 
     override fun onRestart() {

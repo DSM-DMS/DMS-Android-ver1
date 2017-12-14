@@ -8,12 +8,23 @@ import teamdms.dms_kotlin.Fragment.*
  */
 class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
 
+    lateinit var myPageFragment: MyPageFragment
+
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> MealFragment()
-//            1 ->
+            1 -> NoticeMainFragment()
             2 -> NoticeMainFragment()
-            else -> MyPageFragment()
+            else -> {
+                myPageFragment = MyPageFragment()
+                myPageFragment
+            }
+        }
+    }
+
+    fun reload(position: Int){
+        when(position){
+            3 -> myPageFragment.load()
         }
     }
 

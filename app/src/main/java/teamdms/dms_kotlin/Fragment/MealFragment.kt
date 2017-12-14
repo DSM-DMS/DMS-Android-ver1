@@ -25,7 +25,6 @@ class MealFragment: Fragment() {
             view_pager_meal.clipToPadding = false
             view_pager_meal.pageMargin = 64
             view_pager_meal.setPadding(64,64,64,64)
-            view_pager_meal.offscreenPageLimit = 1
             view_pager_meal.adapter = MealViewPagerAdapter(childFragmentManager)
         }
     }

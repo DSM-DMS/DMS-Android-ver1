@@ -3,33 +3,39 @@ package teamdms.dms_kotlin.RecyclerAdapter
 import android.content.*
 import android.support.v7.widget.*
 import android.view.*
-import android.widget.*
 import kotlinx.android.synthetic.main.view_mypage_bug_report.view.*
 import kotlinx.android.synthetic.main.view_mypage_list_content.view.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Fragment.*
 
 /**
  * Created by root1 on 2017. 11. 30..
  */
-class MyPageRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var context: Context
     lateinit var inflater: LayoutInflater
+    lateinit var fragment: MyPageFragment
 
-    lateinit var textView1: TextView
-    lateinit var textView2: TextView
+    init { this.fragment = fragment }
 
-    override fun getItemCount(): Int {
-        return 7
-    }
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+        inflater = LayoutInflater.from(parent?.context)
+        context = parent!!.context
 
-    fun setTextViews(textView1: TextView, textView2: TextView): MyPageRecyclerAdapter{
-        this.textView1 = textView1
-        this.textView2 = textView2
-        return this
+        return when(viewType){
+            0,3,6 -> {
+                val view = inflater.inflate(R.layout.view_mypage_list_no_content, parent, false)
+                MyPageListNoContentViewHolder(view)
+            }
+            else -> {
+                val view = inflater.inflate(R.layout.view_mypage_list_content, parent, false)
+                MyPageListContentViewHolder(view)
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
@@ -44,8 +50,7 @@ class MyPageRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     contentHolder.bind("로그아웃", { _ ->
                         Util.removeToken(context)
                         Util.showToast(context, "로그아웃 성공")
-                        textView1.text = "오류"
-                        textView2.text = "오류"
+                        fragment.setStateData(null)
                         notifyDataSetChanged()
                     })
                 }else{
@@ -77,25 +82,9 @@ class MyPageRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        inflater = LayoutInflater.from(parent?.context)
-        context = parent!!.context
+    override fun getItemCount(): Int = 7
 
-        return when(viewType){
-            0,3,6 -> {
-                val view = inflater.inflate(R.layout.view_mypage_list_no_content, parent, false)
-                return MyPageListNoContentViewHolder(view)
-            }
-            else -> {
-                val view = inflater.inflate(R.layout.view_mypage_list_content, parent, false)
-                return MyPageListContentViewHolder(view)
-            }
-        }
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
+    override fun getItemViewType(position: Int): Int = position
 
     private fun sendBugReport(message: String): Boolean{
         if(message.isEmpty()) return false
@@ -117,9 +106,7 @@ class MyPageListContentViewHolder(view: View): RecyclerView.ViewHolder(view){
 
     lateinit var rootView: View
 
-    init {
-        rootView = view
-    }
+    init { rootView = view }
 
     fun bind(title: String, onClick: (Any) -> Unit){
         with(rootView){ text_mypage_list_title.text = title }
