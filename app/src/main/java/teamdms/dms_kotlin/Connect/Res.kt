@@ -28,6 +28,10 @@ abstract class Res<T>(context: Context): Callback<T> {
         when(code){
             500 -> Util.showToast(context, "서버 오류")
             422 -> Util.showToast(context, "로그인이 필요합니다")
+            401 -> {
+                Util.showToast(context, "다시 로그인 하세요")
+                Util.removeToken(context)
+            }
             else -> callBack(code, body)
         }
 

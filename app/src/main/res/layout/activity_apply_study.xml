@@ -10,11 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Switch
+        <RadioGroup
+            android:id="@+id/toggle_group_apply_study_change_time"
+            android:background="@drawable/apply_study_toggle_group_back"
+            android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/toggle_apply_study_time_11"
+                android:text="11시"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/apply_study_toggle_back"
+                android:textColor="@drawable/apply_study_toggle_text_color"
+                android:textSize="16sp"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/toggle_apply_study_time_12"
+                android:text="12시"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/apply_study_toggle_back"
+                android:textColor="@drawable/apply_study_toggle_text_color"
+                android:textSize="16sp"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
 
         <RelativeLayout
             android:layout_width="match_parent"

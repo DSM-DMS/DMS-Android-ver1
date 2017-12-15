@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -18,6 +18,11 @@
         </activity>
 
         <activity android:name=".Activity.SignInActivity"/>
+        <activity android:name=".Activity.MainActivity"/>
+
+        <activity android:name=".Activity.ApplyStudyActivity"
+            android:theme="@style/SubTheme"/>
+        <activity android:name=".Activity.ApplyStayActivity"/>
 
     </application>
 

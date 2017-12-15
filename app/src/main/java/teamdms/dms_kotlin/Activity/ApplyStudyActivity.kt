@@ -24,7 +24,7 @@ class ApplyStudyActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_study)
 
-        getData()
+        load()
         setBottomSheet()
 
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
@@ -35,7 +35,7 @@ class ApplyStudyActivity: BaseActivity() {
                             override fun callBack(code: Int, body: Void?) {
                                 showToast(when(code){
                                     201 -> {
-                                        getData()
+                                        load()
                                         getString(R.string.all_apply_success)
                                     }204 -> getString(R.string.all_apply_time_fail)
                                     else -> "오류 : $code"
@@ -43,6 +43,15 @@ class ApplyStudyActivity: BaseActivity() {
                             }
                         })
             }else{ showToast("자리를 선택하세요") }
+        }
+
+        toggle_group_apply_study_change_time.check(R.id.toggle_apply_study_time_11)
+        toggle_group_apply_study_change_time.setOnCheckedChangeListener { _, id ->
+            timeState = when (id){
+                R.id.toggle_apply_study_time_11 -> 11
+                else -> 12
+            }
+            load()
         }
 
     }
@@ -66,7 +75,7 @@ class ApplyStudyActivity: BaseActivity() {
             for(tempLinearNum in tempLinearArr.indices){
                 tempLinearArr[tempLinearNum].setOnClickListener {
                     classState = tempLinearNum + 1
-                    getData()
+                    load()
                     setRoomText(Util.classNameArr[tempLinearNum])
                     bottomSheet.dismiss()
                 }
@@ -78,7 +87,7 @@ class ApplyStudyActivity: BaseActivity() {
         button_apply_study_change_room.text = name
     }
 
-    private fun getData(){
+    private fun load(){
         Connector.api.loadStudyMap(timeState, classState)
                 .enqueue(object : Res<Array<Array<Any>>>(this){
                     override fun callBack(code: Int, body: Array<Array<Any>>?) {
@@ -116,7 +125,6 @@ class ApplyStudyActivity: BaseActivity() {
                                 button.setBackgroundResource(R.drawable.apply_study_seat_select_icon)
                                 beforeButton = button as Button
                             }
-
                             seatButton
                         }else{ Space(this) }
                     } is String -> {
