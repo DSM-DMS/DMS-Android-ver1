@@ -1,6 +1,7 @@
 package teamdms.dms_kotlin.View
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
@@ -19,6 +20,10 @@ class ExpandableLayout @JvmOverloads constructor(context: Context, attrs: androi
     private var selectParentView : View? = null
     private var selectChildView : View? =null
     private var viewRemain : Boolean = false
+
+    fun hello(){
+        Log.d("xxx", "Xxx")
+    }
 
     fun addViewExpand(parentView: View, childView: View) {
         addView(parentView, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))

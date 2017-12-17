@@ -34,7 +34,7 @@ class ApplyMainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_apply_main, container, false)
-        applyListLoad()
+        //applyListLoad()
         return rootView
     }
 
