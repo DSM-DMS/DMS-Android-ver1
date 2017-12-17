@@ -32,7 +32,7 @@ class MealContentFragment(date: Date): Fragment() {
     }
 
     private fun loadData(date: String){
-        Connector.api.loadMeal(date).enqueue(object : Res<MealModel>(this.activity){
+        Connector.api.loadMeal(date).enqueue(object : Res<MealModel>(activity){
             override fun callBack(code: Int, body: MealModel?) {
                 when(code){
                     200 -> bindMealData(body!!.getData())
