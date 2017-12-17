@@ -13,7 +13,7 @@ class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> MealFragment()
-            1 -> NoticeMainFragment()
+            1 -> ApplyMainFragment()
             2 -> NoticeMainFragment()
             else -> {
                 myPageFragment = MyPageFragment()
