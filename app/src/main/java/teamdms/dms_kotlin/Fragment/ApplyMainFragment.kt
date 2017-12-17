@@ -34,6 +34,7 @@ class ApplyMainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_apply_main, container, false)
+        applyListLoad()
         return rootView
     }
 
@@ -83,15 +84,15 @@ class ApplyMainFragment : Fragment() {
                 }
                 else -> {
                     view = LayoutInflater.from(context).inflate(R.layout.view_apply_list_child, null)
-
+/*
                     with(view!!) {
-                        btn_apply_list_child_goingout_apply.setOnClickListener {
+                        view.btn_apply_list_child_goingout_apply.setOnClickListener {
                             val sat = view.switch_apply_list_child_goingout_saturday.isChecked
                             val sun = view.switch_apply_list_child_goingout_sunday.isChecked
 
                             applyGoingout(Util.getToken(activity), sat, sun)
                         }
-                    }
+                    }*/
                 }
             }
         return view!!
