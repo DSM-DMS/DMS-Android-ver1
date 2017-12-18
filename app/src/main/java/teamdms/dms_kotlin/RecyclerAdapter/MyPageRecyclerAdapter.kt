@@ -60,7 +60,7 @@ class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<Recy
                 }
             }
             2 -> contentHolder.bind("비밀번호 변경", { _ ->
-//                context.startActivity(Intent(this))
+                context.startActivity(Intent(context, ChangePWActivity::class.java))
             })
             4 -> contentHolder.bind("버그 신고", { _ ->
                     val editBugView = inflater.inflate(R.layout.view_mypage_bug_report, null)

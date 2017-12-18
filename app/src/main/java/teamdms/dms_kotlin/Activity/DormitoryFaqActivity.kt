@@ -20,7 +20,7 @@ class DormitoryFaqActivity : AppCompatActivity() {
 
 
     private fun loadData(){
-        Connector.api.load
+        Connector.api.loadFaq()
     }
 
     private fun setAdpater(){

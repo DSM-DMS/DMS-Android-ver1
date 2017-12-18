@@ -21,4 +21,6 @@
 
     <color name="colorBlue">#4BA0FD</color>
 
+    <color name="done">#64DD17</color>
+    <color name="warning">#D50000</color>
 </resources>
