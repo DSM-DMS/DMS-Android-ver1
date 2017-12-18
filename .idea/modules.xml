@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/DMS_Kotlin.iml" filepath="$PROJECT_DIR$/DMS_Kotlin.iml" />
+=======
+      <module fileurl="file://D:\Github\Project-DMS-Android-Refactor\DMS_Kotlin.iml" filepath="D:\Github\Project-DMS-Android-Refactor\DMS_Kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" filepath="$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" />
+      <module fileurl="file://C:\Users\dsm2017\Desktop\Project\Project-DMS-Android-Refactor\Project-DMS-Android-Refactor.iml" filepath="C:\Users\dsm2017\Desktop\Project\Project-DMS-Android-Refactor\Project-DMS-Android-Refactor.iml" />
+>>>>>>> 0b852b8f9183d9d47c7166526a1918d961cbbf7c
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\dsm2017\Desktop\Project\Project-DMS-Android-Refactor\app\app.iml" filepath="C:\Users\dsm2017\Desktop\Project\Project-DMS-Android-Refactor\app\app.iml" />
     </modules>
   </component>
 </project>

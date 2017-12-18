@@ -16,9 +16,11 @@
     <color name="colorWhite">#FFFFFF</color>
     
     <color name="colorSplash">#7DB1DB</color>
-
+    <color name="colorBlack">#000000</color>
     <color name="colorGray">#CDCDCD</color>
 
     <color name="colorBlue">#4BA0FD</color>
 
+    <color name="done">#64DD17</color>
+    <color name="warning">#D50000</color>
 </resources>

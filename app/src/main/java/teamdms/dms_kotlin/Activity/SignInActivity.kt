@@ -38,7 +38,7 @@ class SignInActivity: BaseActivity() {
             }
         }
 
-        button_signin_go_to_signup.setOnClickListener { startActivity(Intent(this, SignUpAcvitity::class.java)) }
+        button_signin_go_to_signup.setOnClickListener { startActivity(Intent(this, SignUpActivity::class.java)) }
 
     }
 

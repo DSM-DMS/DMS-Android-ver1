@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="teamdms.dms_kotlin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/all_app_logo"
@@ -9,22 +11,26 @@
         android:roundIcon="@drawable/all_app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:theme="@style/SplashTheme" android:name=".Activity.SplashActivity">
+        <activity
+            android:name=".Activity.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Activity.SignInActivity"/>
-        <activity android:name=".Activity.MainActivity"/>
-
-        <activity android:name=".Activity.ApplyStudyActivity"
-            android:theme="@style/SubTheme"/>
-        <activity android:name=".Activity.ApplyStayActivity"/>
-
+        <activity android:name=".Activity.SignInActivity" />
+        <activity android:name=".Activity.MainActivity" />
+        <activity
+            android:name=".Activity.ApplyStudyActivity"
+            android:theme="@style/SubTheme" />
+        <activity android:name=".Activity.ApplyStayActivity" />
+        <activity android:name=".Activity.DormitoryNoticeActivity"/>
+        <activity android:name=".Activity.DormitoryFaqActivity"/>
+        <activity android:name=".Activity.DormitoryRuleActivity"/>
+        <activity android:name="team_dms.dms.Activity.SignUpActivity"/>
+        <activity android:name=".Activity.ChangePWActivity"/>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
