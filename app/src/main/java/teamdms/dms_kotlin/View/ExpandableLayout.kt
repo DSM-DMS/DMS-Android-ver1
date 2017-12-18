@@ -9,6 +9,7 @@ import android.widget.*
 /**
  * Created by root1 on 2017. 12. 17..
  */
+
 class ExpandableLayout: LinearLayout {
 
     constructor(context: Context): super(context)
@@ -30,11 +31,10 @@ class ExpandableLayout: LinearLayout {
         }
         addView(topView, param)
         addView(bottomView, param)
+        bottomView.visibility = View.GONE
     }
 
-    fun setInitView(view: View){
-        show(view)
-    }
+    fun setInitView(view: View) = show(view)
 
     private fun hide(view: View){
         view.measure(MATCH_PARENT, WRAP_CONTENT)
