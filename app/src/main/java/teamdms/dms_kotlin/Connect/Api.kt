@@ -56,6 +56,10 @@ interface Api {
     @FormUrlEncoded
     fun sendBugReport(@Header("Authorization")token: String, @Field("title")title: String, @Field("content")content: String): Call<Void>
 
+    @POST("change/pw")
+    @FormUrlEncoded
+    fun changePW(@Header("Authorization")token: String, @Field("current_pw")exist_pw : String, @Field("new_pw")new_pw : String) : Call<Void>
+
     @GET("faq")
     fun loadFaq() : Call<JsonArray>
 
@@ -64,4 +68,5 @@ interface Api {
 
     @GET("rule")
     fun loadRule() : Call<JsonArray>
+
 }

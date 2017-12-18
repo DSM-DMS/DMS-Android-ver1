@@ -28,8 +28,7 @@ class DormitoryFaqActivity : AppCompatActivity() {
         Connector.api.loadFaq().enqueue(object : Res<JsonArray>(this){
             override fun callBack(code: Int, body: JsonArray?) {
                 when(code){
-                    200 ->
-                    else -> Util.showToast(this, "오류" : $code")
+
                 }
 
 
@@ -37,7 +36,7 @@ class DormitoryFaqActivity : AppCompatActivity() {
 
 
         })
-    }
+=    }
 
     private fun setAdpater() : DormitoryNoticeAdapter{
 
