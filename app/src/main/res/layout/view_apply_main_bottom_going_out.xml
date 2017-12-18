@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@color/colorNo5"
+    android:animateLayoutChanges="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/apply_out_icon"
+            android:layout_width="94dp"
+            android:layout_height="94dp" />
+
+        <Button
+            android:id="@+id/button_apply_main_apply_going_out"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="신청"
+            android:background="@drawable/all_button_shape"
+            android:layout_width="92dp"
+            android:layout_height="36dp" />
+
+        <LinearLayout
+            android:background="@drawable/apply_main_content_box_back"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@id/button_apply_main_apply_going_out"
+            android:layout_height="match_parent">
+
+            <Switch
+                android:layout_marginBottom="8dp"
+                android:textSize="18dp"
+                android:text="토요일\t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Switch
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:text="일요일\t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

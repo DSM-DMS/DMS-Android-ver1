@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorNo5"
+    android:animateLayoutChanges="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/apply_out_icon"
+            android:layout_width="94dp"
+            android:layout_height="94dp" />
+
+        <ImageButton
+            android:id="@+id/button_apply_main_apply"
+            android:textSize="18sp"
+            android:src="@drawable/apply_main_button_icon"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/all_button_shape"
+            android:layout_width="92dp"
+            android:layout_height="36dp" />
+
+        <TextView
+            android:background="@drawable/apply_main_content_box_back"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="32dp"
+            android:text="content"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@id/button_apply_main_apply"
+            android:layout_height="match_parent">
+        </TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -23,7 +23,6 @@ class ApplyStudyActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_study)
-
         load()
         setBottomSheet()
 
