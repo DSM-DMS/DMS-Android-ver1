@@ -18,34 +18,47 @@ class ExpandableLayout: LinearLayout {
     private val WRAP_CONTENT = LayoutParams.WRAP_CONTENT
 
     val param = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-
-//    lateinit var selectedTopView: View
     lateinit var selectedBottomView: View
 
     fun addContentView(topView: View, bottomView: View){
         topView.setOnClickListener {
             if(selectedBottomView != bottomView){
-
+                hide(selectedBottomView)
+                show(bottomView)
+                selectedBottomView = bottomView
             }
         }
-
         addView(topView, param)
         addView(bottomView, param)
+    }
+
+    fun setInitView(view: View){
+        show(view)
     }
 
     private fun hide(view: View){
         view.measure(MATCH_PARENT, WRAP_CONTENT)
         val initHeight = view.measuredHeight
-        view.layoutParams.height = 1
-        view.visibility = View.VISIBLE
+        view.startAnimation(getAnimation { time ->
+            if(time == 1f) view.visibility = View.GONE
+            else{
+                view.layoutParams.height = initHeight - (initHeight * time).toInt()
+                view.requestLayout()
+            }
+        })
 
     }
 
     private fun show(view: View){
+        selectedBottomView = view
         view.measure(MATCH_PARENT, WRAP_CONTENT)
         val upperHeight = view.measuredHeight
-        view.visibility = View.GONE
-
+        view.layoutParams.height = 1
+        view.visibility = View.VISIBLE
+        view.startAnimation(getAnimation { time ->
+            view.layoutParams.height = (upperHeight * time).toInt()
+            view.requestLayout()
+        })
     }
 
     private fun getAnimation(func: (Float) -> Unit): Animation{

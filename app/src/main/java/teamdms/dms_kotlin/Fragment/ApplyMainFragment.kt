@@ -3,7 +3,6 @@ package teamdms.dms_kotlin.Fragment
 import android.os.*
 import android.support.v4.app.*
 import android.view.*
-import kotlinx.android.synthetic.main.fragment_apply_main.view.*
 import kotlinx.android.synthetic.main.view_apply_list_child.view.*
 import kotlinx.android.synthetic.main.view_apply_list_parent.view.*
 import team_dms.dms.Base.*
@@ -29,7 +28,7 @@ class ApplyMainFragment : Fragment() {
 
     private fun applyListLoad(){
         with(rootView!!){
-            expandable_apply_list_layout.hello()
+
         }
 
     }
