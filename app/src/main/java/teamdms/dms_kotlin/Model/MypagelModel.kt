@@ -29,8 +29,8 @@ class MypagelModel {
     var name = ""
 
     @SerializedName("number")
-    var number = 20208
-    //지은이 학번
+    var number = 10
+    //지은이 학번 ? ㅗ 공과 사는 구분하자 병찬아
 
     @SerializedName("stay_value")
     var stayState: Int = 4

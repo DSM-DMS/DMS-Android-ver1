@@ -55,4 +55,13 @@ interface Api {
     @POST("bug-report")
     @FormUrlEncoded
     fun sendBugReport(@Header("Authorization")token: String, @Field("title")title: String, @Field("content")content: String): Call<Void>
+
+    @GET("faq")
+    fun loadFaq() : Call<Void>
+
+    @GET("notice")
+    fun loadNotice() : Call<Void>
+
+    @GET("rule")
+    fun loadRule() : Call<Void>
 }
