@@ -57,11 +57,11 @@ interface Api {
     fun sendBugReport(@Header("Authorization")token: String, @Field("title")title: String, @Field("content")content: String): Call<Void>
 
     @GET("faq")
-    fun loadFaq() : Call<Void>
+    fun loadFaq() : Call<JsonArray>
 
     @GET("notice")
-    fun loadNotice() : Call<Void>
+    fun loadNotice() : Call<JsonArray>
 
     @GET("rule")
-    fun loadRule() : Call<Void>
+    fun loadRule() : Call<JsonArray>
 }
