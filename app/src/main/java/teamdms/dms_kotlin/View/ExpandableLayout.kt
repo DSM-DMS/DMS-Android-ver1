@@ -22,14 +22,18 @@ class ExpandableLayout: LinearLayout {
 
     fun addContentView(topView: View, bottomView: View){
         topView.setOnClickListener {
-            if(selectedBottomView != bottomView){
+           if(selectedBottomView != bottomView){
                 hide(selectedBottomView)
                 show(bottomView)
                 selectedBottomView = bottomView
             }
+
+
         }
+
         addView(topView, param)
         addView(bottomView, param)
+        bottomView.visibility=View.GONE
     }
 
     fun setInitView(view: View){
@@ -53,7 +57,7 @@ class ExpandableLayout: LinearLayout {
         selectedBottomView = view
         view.measure(MATCH_PARENT, WRAP_CONTENT)
         val upperHeight = view.measuredHeight
-        view.layoutParams.height = 1
+        //view.layoutParams.height = 1
         view.visibility = View.VISIBLE
         view.startAnimation(getAnimation { time ->
             view.layoutParams.height = (upperHeight * time).toInt()

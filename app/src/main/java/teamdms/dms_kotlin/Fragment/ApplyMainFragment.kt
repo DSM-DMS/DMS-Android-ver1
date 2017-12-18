@@ -2,12 +2,17 @@ package teamdms.dms_kotlin.Fragment
 
 import android.os.*
 import android.support.v4.app.*
+import android.support.v4.content.ContextCompat
 import android.view.*
+import kotlinx.android.synthetic.main.fragment_apply_main.*
+import kotlinx.android.synthetic.main.fragment_apply_main.view.*
 import kotlinx.android.synthetic.main.view_apply_list_child.view.*
+import kotlinx.android.synthetic.main.view_apply_list_child_goingout.view.*
 import kotlinx.android.synthetic.main.view_apply_list_parent.view.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.View.ExpandableLayout
 
 
 /**
@@ -29,7 +34,18 @@ class ApplyMainFragment : Fragment() {
     private fun applyListLoad(){
         with(rootView!!){
 
+
+            expandable_apply_list_layout.setInitView(createChildView(ContextCompat.getColor(activity,R.color.colorNo5)
+                    ,R.drawable.apply_stay_icon,View.OnClickListener {  },false))
+
+            expandable_apply_list_layout.addContentView(createParentView("연장신청", ContextCompat.getColor(activity, R.color.colorNo5)),createChildView(ContextCompat.getColor(activity,R.color.colorNo5)
+            ,R.drawable.apply_stay_icon,View.OnClickListener {  },false))
+            expandable_apply_list_layout.addContentView(createParentView("잔류신청", ContextCompat.getColor(activity, R.color.colorNo5)),createChildView(ContextCompat.getColor(activity,R.color.colorNo5)
+                    ,R.drawable.apply_stay_icon,View.OnClickListener {  },false))
+
+
         }
+
 
     }
 
@@ -63,22 +79,25 @@ class ApplyMainFragment : Fragment() {
                     view = LayoutInflater.from(context).inflate(R.layout.view_apply_list_child_goingout, null)
 
                     with(view!!) {
-                        view.layout_apply_list_child.setBackgroundColor(backgroundColor)
-                        view.iv_apply_list_child.setImageResource(image)
-                        view.ib_apply_list_child_enter.setOnClickListener(listener)
+                        with(view!!) {
+                            view.btn_apply_list_child_goingout_apply.setOnClickListener {
+                                val sat = view.switch_apply_list_child_goingout_saturday.isChecked
+                                val sun = view.switch_apply_list_child_goingout_sunday.isChecked
+
+                                applyGoingout(Util.getToken(activity), sat, sun)
+                            }
+                        }
                     }
                 }
                 else -> {
                     view = LayoutInflater.from(context).inflate(R.layout.view_apply_list_child, null)
-/*
-                    with(view!!) {
-                        view.btn_apply_list_child_goingout_apply.setOnClickListener {
-                            val sat = view.switch_apply_list_child_goingout_saturday.isChecked
-                            val sun = view.switch_apply_list_child_goingout_sunday.isChecked
 
-                            applyGoingout(Util.getToken(activity), sat, sun)
-                        }
-                    }*/
+
+                    with(view!!) {
+                        view.layout_apply_list_child.setBackgroundColor(backgroundColor)
+                        view.iv_apply_list_child.setImageResource(image)
+                        view.ib_apply_list_child_enter.setOnClickListener(listener)
+                    }
                 }
             }
         return view!!
