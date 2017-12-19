@@ -60,6 +60,10 @@ interface Api {
     @FormUrlEncoded
     fun changePW(@Header("Authorization")token: String, @Field("current_pw")exist_pw : String, @Field("new_pw")new_pw : String) : Call<Void>
 
+    @POST("verify/id")
+    @FormUrlEncoded
+    fun checkOverlap(@Field("id")id:String) : Call<Void>
+
     @GET("faq")
     fun loadFaq() : Call<JsonArray>
 

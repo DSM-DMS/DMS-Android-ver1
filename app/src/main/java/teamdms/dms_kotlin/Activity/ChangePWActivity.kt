@@ -76,15 +76,18 @@ class ChangePWActivity : BaseActivity() {
 
         val done = ContextCompat.getColor(this, R.color.done)
         val warning = ContextCompat.getColor(this, R.color.warning)
+        val existPw = edit_changePW_existing_pw.text.toString()
+        val changePw = edit_changePW_new_pw.text.toString()
+        val changeConfirmPw = edit_changePW_new_pw_confirm.text.toString()
 
-        if(edit_changePW_existing_pw.text.isEmpty() || edit_changePW_new_pw.text.isEmpty() || edit_changePW_new_pw_confirm.text.isEmpty()) {
+        if(existPw.isEmpty() || changePw.isEmpty() || changeConfirmPw.isEmpty()) {
 
             button_changePW_apply.isClickable = false
             button_changePW_apply.isEnabled = false
             text_changePW_check_validate.text = "모두 다 입력해주세요"
             text_changePW_check_validate.setTextColor(warning)
             image_changePW_check_validate.setImageResource(R.drawable.signup_check_validate_warning)
-        } else if (edit_changePW_new_pw.text.toString() != edit_changePW_new_pw_confirm.toString()) {
+        } else if (changePw != changeConfirmPw) {
 
             button_changePW_apply.isClickable = false
             button_changePW_apply.isEnabled = false
@@ -98,6 +101,15 @@ class ChangePWActivity : BaseActivity() {
             text_changePW_check_validate.text = "비밀번호를 교체할 수 있습니다."
             text_changePW_check_validate.setTextColor(done)
             image_changePW_check_validate.setImageResource(R.drawable.signup_check_validate_done)
+
+            if(existPw == changePw || existPw == changeConfirmPw) {
+
+                button_changePW_apply.isClickable = false
+                button_changePW_apply.isEnabled = false
+                text_changePW_check_validate.text = "기존 비밀번호와 새 비밀번호가 일치합니다."
+                text_changePW_check_validate.setTextColor(warning)
+                image_changePW_check_validate.setImageResource(R.drawable.signup_check_validate_warning)
+            }
         }
     }
 }
