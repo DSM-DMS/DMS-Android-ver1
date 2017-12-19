@@ -5,8 +5,11 @@ package teamdms.dms_kotlin.Model
  */
 
 class Notice{
+
+    var id : String?=null
     var title: String?=null
+    var author : String?=null
     var content : String? =null
-    var date : String? =null
+    var write_date : String? =null
 
 }
