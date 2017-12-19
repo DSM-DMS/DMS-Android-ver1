@@ -31,6 +31,7 @@
         <activity android:name=".Activity.DormitoryRuleActivity"/>
         <activity android:name=".Activity.SignUpActivity"/>
         <activity android:name=".Activity.ChangePWActivity"/>
+        <activity android:name=".Activity.SurveyActivity"/>
 
     </application>
 

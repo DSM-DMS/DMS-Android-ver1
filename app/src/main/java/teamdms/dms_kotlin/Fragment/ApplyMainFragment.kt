@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.view_apply_main_bottom_going_out.view.*
 import kotlinx.android.synthetic.main.view_apply_main_top.view.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
+import team_dms.dms.Model.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
 
@@ -44,7 +45,20 @@ class ApplyMainFragment : Fragment() {
     }
 
     fun load(){
-
+        Connector.api.loadMyInfo(Util.getToken(context))
+                .enqueue(object : Res<MypagelModel>(context){
+                    override fun callBack(code: Int, body: MypagelModel?) {
+                        body.let {
+                            with(contentViewArr[0]){ text_apply_main_content.text = body!!.getStudyState() }
+                            with(contentViewArr[1]){ text_apply_main_content.text = "신청 : ${body!!.getStayState()}" }
+                            with(contentViewArr[2]){
+                                switch_apply_main_sat.isChecked = body!!.outSatState
+                                switch_apply_main_sun.isChecked = body!!.outSunState
+                            }
+                            with(contentViewArr[3]){ text_apply_main_content.text = "의견을 제출하세요" }
+                        }
+                    }
+                })
     }
 
     private fun createTopView(position: Int): View {
@@ -100,13 +114,15 @@ class ApplyMainFragment : Fragment() {
                         }))
                     }
                 }
-                view.setBackgroundColor(ContextCompat.getColor(context, when(position){
-                    1 -> R.color.colorNo5
-                    2 -> R.color.colorNo4
-                    3 -> R.color.colorNo3
-                    else -> R.color.colorNo2 }))
             }
         }
+
+        view.setBackgroundColor(ContextCompat.getColor(context, when(position){
+            1 -> R.color.colorNo5
+            2 -> R.color.colorNo4
+            3 -> R.color.colorNo3
+            else -> R.color.colorNo2 }))
+
         contentViewArr.add(view)
         return view
 

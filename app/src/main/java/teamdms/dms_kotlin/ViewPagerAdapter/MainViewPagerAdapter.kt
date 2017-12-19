@@ -9,11 +9,15 @@ import teamdms.dms_kotlin.Fragment.*
 class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
 
     lateinit var myPageFragment: MyPageFragment
+    lateinit var applyMainFragment: ApplyMainFragment
 
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> MealFragment()
-            1 -> ApplyMainFragment()
+            1 -> {
+                applyMainFragment = ApplyMainFragment()
+                applyMainFragment
+            }
             2 -> NoticeMainFragment()
             else -> {
                 myPageFragment = MyPageFragment()
@@ -22,8 +26,13 @@ class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
         }
     }
 
-    fun reload(position: Int){
+    fun reload(position: Int = -1){
         when(position){
+            -1 -> {
+                applyMainFragment.load()
+                myPageFragment.load()
+            }
+            1 -> applyMainFragment.load()
             3 -> myPageFragment.load()
         }
     }

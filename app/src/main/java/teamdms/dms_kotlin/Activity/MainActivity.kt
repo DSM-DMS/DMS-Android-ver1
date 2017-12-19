@@ -21,21 +21,19 @@ class MainActivity: BaseActivity() {
         view_pager_main.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab))
 
         view_pager_main.adapter = MainViewPagerAdapter(supportFragmentManager)
-//        view_pager_main.adapter.notifyDataSetChanged()
         view_pager_main.offscreenPageLimit = 4
         view_pager_main.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) { }
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) { }
-
             override fun onPageSelected(position: Int) {
-
+                (view_pager_main.adapter as MainViewPagerAdapter).reload(position)
             }
         })
     }
 
     override fun onRestart() {
         super.onRestart()
-        view_pager_main.adapter.notifyDataSetChanged()
+        (view_pager_main.adapter as MainViewPagerAdapter).reload()
     }
 
 }

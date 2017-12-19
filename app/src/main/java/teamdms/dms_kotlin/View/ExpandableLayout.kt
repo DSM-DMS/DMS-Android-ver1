@@ -61,7 +61,7 @@ class ExpandableLayout: LinearLayout {
 
             override fun willChangeBounds(): Boolean = true
         }
-        animation.duration = 100L
+        animation.duration = 200L
         return animation
     }
 
