@@ -23,6 +23,9 @@ class ChangePWActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_pw)
 
+        button_changePW_apply.isEnabled = false
+        button_changePW_apply.isClickable = false
+
         edit_changePW_existing_pw.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -83,7 +86,7 @@ class ChangePWActivity : BaseActivity(){
             text_changePW_check_validate.text = "모두 다 입력해주세요"
             text_changePW_check_validate.setTextColor(warning)
             image_changePW_check_validate.setImageResource(R.drawable.signup_check_validate_warning)
-        } else if (!edit_changePW_new_pw.text.equals(edit_changePW_new_pw_confirm)) {
+        } else if (edit_changePW_new_pw.text.toString() != edit_changePW_new_pw_confirm.toString()) {
 
             button_changePW_apply.isClickable = false
             button_changePW_apply.isEnabled = false
