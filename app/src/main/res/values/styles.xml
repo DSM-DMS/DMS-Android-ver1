@@ -14,4 +14,8 @@
         <item name="android:background">@drawable/splash_back</item>
     </style>
 
+    <style name="StandardEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">@color/colorNo3</item>
+        <item name="android:colorControlActivated">@color/colorNo2</item>
+    </style>
 </resources>

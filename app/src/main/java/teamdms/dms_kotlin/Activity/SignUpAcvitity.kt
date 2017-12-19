@@ -29,8 +29,10 @@ class SignUpActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_singup)
 
-        // 글자가 입력될 때마다 유효성 검사를 한다
+        button_signup_singup.isClickable = false
+        button_signup_singup.isEnabled = false
 
+        // 글자가 입력될 때마다 유효성 검사를 한다
         edit_signup_code.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -98,7 +100,7 @@ class SignUpActivity : BaseActivity() {
             button_signup_singup.isClickable = false
             text_signup_check_pw.setTextColor(warning)
             image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_warning)
-        } else if(!edit_signup_pw.text.equals(edit_signup_confirm_pw)) {
+        } else if(edit_signup_pw.text.toString() != edit_signup_confirm_pw.text.toString()) {
 
             text_signup_check_pw.text = "비밀번호가 일치하지 않습니다."
             button_signup_singup.isClickable = false
