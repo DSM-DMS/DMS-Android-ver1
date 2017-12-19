@@ -24,6 +24,7 @@ class SignUpActivity : BaseActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 checkValidate()
+                checkOverlap()
             }
         })
 
@@ -33,6 +34,7 @@ class SignUpActivity : BaseActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 checkValidate()
+                checkOverlap()
             }
         })
 
@@ -42,6 +44,7 @@ class SignUpActivity : BaseActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 checkValidate()
+                checkOverlap()
             }
         })
 
@@ -51,6 +54,7 @@ class SignUpActivity : BaseActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 checkValidate()
+                checkOverlap()
             }
         })
 
@@ -77,14 +81,18 @@ class SignUpActivity : BaseActivity() {
 
         val done = ContextCompat.getColor(this, R.color.done)
         val warning = ContextCompat.getColor(this, R.color.warning)
+        val signupId = edit_signup_id.text.toString()
+        val signupPw  = edit_signup_pw.text.toString()
+        val signupCode = edit_signup_code.text.toString()
+        val signupConfirmPw = edit_signup_confirm_pw.text.toString()
 
-        if(edit_signup_code.text.isEmpty() || edit_signup_confirm_pw.text.isEmpty() || edit_signup_id.text.isEmpty() || edit_signup_pw.text.isEmpty()) {
+        if(signupCode.isEmpty() || signupId.isEmpty() || signupPw.isEmpty() || signupConfirmPw.isEmpty()) {
             text_signup_check_pw.text = "모두 입력하세요"
             button_signup_singup.isEnabled = false
             button_signup_singup.isClickable = false
             text_signup_check_pw.setTextColor(warning)
             image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_warning)
-        } else if(edit_signup_pw.text.toString() != edit_signup_confirm_pw.text.toString()) {
+        } else if(signupConfirmPw != signupPw) {
             text_signup_check_pw.text = "비밀번호가 일치하지 않습니다."
             button_signup_singup.isClickable = false
             button_signup_singup.isEnabled = false
@@ -96,6 +104,39 @@ class SignUpActivity : BaseActivity() {
             button_signup_singup.isClickable = true
             text_signup_check_pw.setTextColor(done)
             image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_done)
+        }
+    }
+
+    fun checkOverlap () {
+
+        val done = ContextCompat.getColor(this, R.color.done)
+        val warning = ContextCompat.getColor(this, R.color.warning)
+        val signupId = edit_signup_id.text.toString()
+
+        if(!signupId.isEmpty()) {
+
+            Connector.api.checkOverlap(signupId).enqueue(object : Res<Void> (this) {
+
+                override fun callBack(code: Int, body: Void?) {
+
+                    when(code) {
+
+                        201 -> {
+                            text_signup_check_id.text = "사용 가능한 아이디입니다."
+                            text_signup_check_id.setTextColor(done)
+                            image_signup_check_id.setImageResource(R.drawable.signup_check_validate_done)
+                        }
+
+                        204 -> {
+                            text_signup_check_id.text = "아이디가 중복되었습니다."
+                            button_signup_singup.isClickable = false
+                            button_signup_singup.isEnabled = false
+                            text_signup_check_id.setTextColor(warning)
+                            image_signup_check_id.setImageResource(R.drawable.signup_check_validate_warning)
+                        }
+                    }
+                }
+            })
         }
     }
 }
