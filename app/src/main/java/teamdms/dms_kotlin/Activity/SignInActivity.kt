@@ -2,10 +2,8 @@ package teamdms.dms_kotlin.Activity
 
 import android.content.*
 import android.os.*
-import android.util.*
 import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_signin.*
-import team_dms.dms.Activity.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
@@ -28,7 +26,6 @@ class SignInActivity: BaseActivity() {
                             override fun callBack(code: Int, body: JsonObject?) {
                                 showToast(when(code){
                                     201 -> {
-                                        Log.d("xxx", body!!.get("access_token").asString)
                                         saveToken(body!!.get("access_token").asString)
                                         finish()
                                         "로그인 성공"

@@ -2,11 +2,11 @@
 <ripple android:color="?android:colorControlHighlight"
 xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="32dp"/>
-            <solid android:color="@color/colorMint"/>
-        </shape>
-    </item>
+<item>
+    <shape android:shape="rectangle">
+        <corners android:radius="32dp"/>
+        <solid android:color="@color/colorMint"/>
+    </shape>
+</item>
 
 </ripple>

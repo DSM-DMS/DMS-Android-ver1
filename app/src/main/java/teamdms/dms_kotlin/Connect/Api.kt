@@ -61,12 +61,12 @@ interface Api {
     fun changePW(@Header("Authorization")token: String, @Field("current_pw")exist_pw : String, @Field("new_pw")new_pw : String) : Call<Void>
 
     @GET("faq")
-    fun loadFaq() : Call<Void>
+    fun loadFaq() : Call<JsonArray>
 
     @GET("notice")
-    fun loadNotice() : Call<Void>
+    fun loadNotice() : Call<JsonArray>
 
     @GET("rule")
-    fun loadRule() : Call<Void>
+    fun loadRule() : Call<JsonArray>
 
 }
