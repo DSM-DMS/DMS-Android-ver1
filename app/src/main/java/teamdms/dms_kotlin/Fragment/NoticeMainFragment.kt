@@ -33,15 +33,15 @@ class NoticeMainFragment: Fragment(){
         with(rootView!!){
             button_notice_main_rule!!.setOnClickListener {
                 intent.putExtra("confirm",rule)
-                startActivity(Intent(activity,NoticeListActivity()::class.java))
+                startActivity(intent)
             }
             button_notice_main_question!!.setOnClickListener {
                 intent.putExtra("confirm",faq)
-                startActivity(Intent(activity,NoticeListActivity()::class.java))
+                startActivity(intent)
             }
             button_notice_main_notification!!.setOnClickListener {
                 intent.putExtra("confirm",notice)
-                startActivity(Intent(activity,NoticeListActivity()::class.java))
+                startActivity(intent)
             }
             button_notice_main_facility!!.setOnClickListener { }
         }

@@ -1,16 +1,21 @@
 package teamdms.dms_kotlin.Activity
 
+import android.content.Intent
 import android.os.*
-import android.support.v7.widget.*
-import android.util.*
-import com.google.gson.*
-import com.google.gson.reflect.*
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonArray
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_notice_list.*
+import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import team_dms.dms.Base.*
-import team_dms.dms.Connect.*
-import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.Model.*
-import teamdms.dms_kotlin.RecyclerAdapter.*
+import team_dms.dms.Connect.Connector
+import team_dms.dms.Connect.Res
+import teamdms.dms_kotlin.Model.Notice
+import teamdms.dms_kotlin.R
+import teamdms.dms_kotlin.R.id.iv_noticeList_icon
+import teamdms.dms_kotlin.RecyclerAdapter.NoticesAdapter
 
 /**
  * Created by root1 on 2017. 12. 5..
@@ -26,6 +31,8 @@ class NoticeListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
         init()
+        back()
+
     }
 
     private fun init(){
@@ -33,24 +40,21 @@ class NoticeListActivity : BaseActivity() {
 
         when(mConfirm){
             0->{
-                Log.d("mConfirm 0",""+mConfirm)
-                iv_noticeList_icon.setImageResource(icons[0])
-                text_noticeList_title.text="기숙사 규정"
+                iv_notice_list_icon.setImageResource(icons[0])
+                text_notice_list_title.text="기숙사 규정"
             }
             1->{
-                Log.d("mConfirm 1",""+mConfirm)
-                iv_noticeList_icon.setImageResource(icons[1])
-                text_noticeList_title.text="공지사항" }
+                iv_notice_list_icon.setImageResource(icons[1])
+                text_notice_list_title.text="공지사항" }
             2->{
-                Log.d("mConfirm 2",""+mConfirm)
-                iv_noticeList_icon.setImageResource(icons[2])
-                text_noticeList_title.text="자주하는 질문" }
-            else -> Log.d("mConfirm x",""+mConfirm)
-
-
+                iv_notice_list_icon.setImageResource(icons[2])
+                text_notice_list_title.text="자주하는 질문" }
         }
         loadData()
+    }
 
+    private fun back(){
+        ib_notice_list_back.setOnClickListener { finish() }
     }
 
     private fun loadData(){
@@ -76,14 +80,12 @@ class NoticeListActivity : BaseActivity() {
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
             }
-            else -> Log.d("mConfirm x",""+mConfirm)
-
         }
     }
 
     private fun setAdapter(notice: Array<Notice>)  {
-        recycleView_noticeList.layoutManager = LinearLayoutManager(this)
-        recycleView_noticeList.adapter=NoticesAdapter(this,notice)
+        recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
+        recycle_view_notice_list.adapter=NoticesAdapter(this,notice)
     }
 
     private fun getData(jsonArray: JsonArray) : Array<Notice>{

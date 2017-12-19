@@ -6,8 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <ImageButton
+        android:id="@+id/ib_notice_list_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/notice_list_left_arrow" />
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleView_noticeList"
+        android:id="@+id/recycle_view_notice_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
@@ -21,20 +34,20 @@
         <ImageView
             android:layout_marginLeft="8dp"
             android:layout_alignParentBottom="true"
-            android:id="@+id/iv_noticeList_icon"
+            android:id="@+id/iv_notice_list_icon"
             android:layout_width="72dp"
             android:layout_height="56dp"
             android:src="@drawable/notice_list_icon1" />
 
         <TextView
-            android:id="@+id/text_noticeList_title"
+            android:id="@+id/text_notice_list_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
-            android:layout_toRightOf="@+id/iv_noticeList_icon"
+            android:layout_toRightOf="@+id/iv_notice_list_icon"
             android:background="@drawable/apply_dormitory_round_text"
             android:text="공지사항"
             android:textColor="@color/colorBlack"
