@@ -1,11 +1,14 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
+import teamdms.dms_kotlin.Model.Notice
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.RecyclerAdapter.NoticesAdapter
 
@@ -15,6 +18,7 @@ import teamdms.dms_kotlin.RecyclerAdapter.NoticesAdapter
 class NoticeListActivity(confirm : Int): BaseActivity() {
 
     var mConfirm : Int? = null
+    var notices : Array<Notice>? =null
 
 
 
@@ -34,10 +38,7 @@ class NoticeListActivity(confirm : Int): BaseActivity() {
         Connector.api.loadFaq().enqueue(object : Res<JsonArray>(this){
             override fun callBack(code: Int, body: JsonArray?) {
                 when(code){
-
                 }
-
-
             }
 
 
@@ -48,6 +49,12 @@ class NoticeListActivity(confirm : Int): BaseActivity() {
 
         return null
 
+    }
+
+    private fun getData(jsonArray: JsonArray) : Array<Notice>{
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        notices =gson.fromJson(jsonArray, object : TypeToken<Array<Notice>>() {}.type)
+        return notices!!
     }
 
 }
