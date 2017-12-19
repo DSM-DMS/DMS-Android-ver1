@@ -1,74 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <ImageButton
-        android:id="@+id/ib_noticeList_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_chevron_left_black_24dp" />
-
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView_noticeList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="32dp"
-            android:id="@+id/recycleView_noticeList"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorNo5">
+
+        <ImageView
+            android:layout_marginLeft="8dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/iv_noticeList_icon"
+            android:layout_width="72dp"
+            android:layout_height="56dp"
+            android:src="@drawable/notice_list_icon1" />
+
+        <TextView
+            android:id="@+id/text_noticeList_title"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="0.9">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_toRightOf="@+id/iv_noticeList_icon"
+            android:background="@drawable/apply_dormitory_round_text"
+            android:text="공지사항"
+            android:textColor="@color/colorBlack"
+            android:gravity="center"
+            android:textSize="22sp"
+            />
 
-        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:background="@color/colorNo5"
-            >
-
-
-            <ImageView
-                android:id="@+id/iv_noticeList_icon"
-                android:layout_marginTop="4dp"
-                android:layout_width="56dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/notice_list_icon1"
-                android:layout_marginLeft="6dp"
-                />
-
-            <TextView
-                android:id="@+id/text_noticeList_title"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@+id/iv_noticeList_icon"
-                android:layout_marginLeft="32dp"
-                android:background="@drawable/apply_dormitory_round_text"
-                android:layout_marginRight="32dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:text="공지사항"
-                android:textColor="#000"
-                android:gravity="center_horizontal|center_vertical"
-                android:textSize="20sp"
-                />
-        </RelativeLayout>
-
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>

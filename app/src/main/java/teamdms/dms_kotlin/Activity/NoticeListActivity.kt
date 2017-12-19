@@ -1,20 +1,16 @@
 package teamdms.dms_kotlin.Activity
 
-import android.content.Intent
 import android.os.*
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
-import com.google.gson.reflect.TypeToken
+import android.support.v7.widget.*
+import android.util.*
+import com.google.gson.*
+import com.google.gson.reflect.*
 import kotlinx.android.synthetic.main.activity_notice_list.*
-import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import team_dms.dms.Base.*
-import team_dms.dms.Connect.Connector
-import team_dms.dms.Connect.Res
-import teamdms.dms_kotlin.Model.Notice
-import teamdms.dms_kotlin.R
-import teamdms.dms_kotlin.RecyclerAdapter.NoticesAdapter
+import team_dms.dms.Connect.*
+import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.Model.*
+import teamdms.dms_kotlin.RecyclerAdapter.*
 
 /**
  * Created by root1 on 2017. 12. 5..
@@ -30,8 +26,6 @@ class NoticeListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
         init()
-        back()
-
     }
 
     private fun init(){
@@ -57,10 +51,6 @@ class NoticeListActivity : BaseActivity() {
         }
         loadData()
 
-    }
-
-    private fun back(){
-        ib_noticeList_back.setOnClickListener { finish() }
     }
 
     private fun loadData(){
