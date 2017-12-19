@@ -11,6 +11,7 @@
     </style>
 
     <style name="SplashTheme" parent="AppTheme">
+        <item name="colorPrimaryDark">@color/colorSplash</item>
         <item name="android:background">@drawable/splash_back</item>
     </style>
 

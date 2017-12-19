@@ -18,16 +18,10 @@ open class BaseActivity: AppCompatActivity(){
         return pref
     }
 
-    fun saveToken(token: String){
-        Util.saveToken(this, token)
-    }
+    fun saveToken(token: String) = Util.saveToken(this, token)
 
-    fun removeToken(){
-        Util.removeToken(this)
-    }
+    fun removeToken() = Util.removeToken(this)
 
-    fun getToken(): String{
-        return "JWT " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MTI2MTU1MDUsImlkZW50aXR5IjoibmlsIiwiZnJlc2giOmZhbHNlLCJqdGkiOiJmYzY2YzQ5OC1jNDJmLTQxMDQtOGQxOS1kN2U2ZjkwNTI1YjciLCJuYmYiOjE1MTIzNTYzMDUsInR5cGUiOiJhY2Nlc3MiLCJpYXQiOjE1MTIzNTYzMDV9.T1h04LiVT8UKDYQDYgGBVukHxFJorbgXuhXlcLADlU8"
-        //return Util.getToken(this)
-    }
+    fun getToken(): String = Util.getToken(this)
+
 }

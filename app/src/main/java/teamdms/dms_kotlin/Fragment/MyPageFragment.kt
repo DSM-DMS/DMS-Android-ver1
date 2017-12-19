@@ -16,12 +16,12 @@ import teamdms.dms_kotlin.RecyclerAdapter.*
  */
 class MyPageFragment: Fragment() {
 
-    var rootView: View? = null
+    lateinit var rootView: View
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(R.layout.fragment_mypage, null)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        rootView = inflater.inflate(R.layout.fragment_mypage, null)
         init()
-        return  rootView
+        return rootView
     }
 
     override fun onStart() {
@@ -30,7 +30,7 @@ class MyPageFragment: Fragment() {
     }
 
     private fun init(){
-        with(rootView!!){
+        with(rootView){
             recycler_mypage.layoutManager = LinearLayoutManager(activity)
             recycler_mypage.adapter = MyPageRecyclerAdapter(this@MyPageFragment)
         }
@@ -40,12 +40,13 @@ class MyPageFragment: Fragment() {
         Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypagelModel>(activity){
             override fun callBack(code: Int, body: MypagelModel?) {
                 setStateData(body)
+                with(rootView){ recycler_mypage.adapter.notifyDataSetChanged() }
             }
         })
     }
 
     fun setStateData(data: MypagelModel?){
-        with(rootView!!){
+        with(rootView){
             if(data != null){
                 text_mypage_study_state.text = data!!.getStudyState()
                 text_mypage_stay_state.text = data!!.getStayState()

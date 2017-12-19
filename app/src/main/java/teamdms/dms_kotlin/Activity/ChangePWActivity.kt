@@ -1,14 +1,12 @@
 package teamdms.dms_kotlin.Activity
 
-import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.text.Editable
-import android.text.TextWatcher
+import android.os.*
+import android.support.v4.content.*
+import android.text.*
 import kotlinx.android.synthetic.main.activity_change_pw.*
-import team_dms.dms.Base.BaseActivity
-import team_dms.dms.Connect.Connector
-import team_dms.dms.Connect.Res
-import teamdms.dms_kotlin.R
+import team_dms.dms.Base.*
+import team_dms.dms.Connect.*
+import teamdms.dms_kotlin.*
 
 /**
  * Created by dsm2017 on 2017-12-18.
@@ -17,7 +15,7 @@ import teamdms.dms_kotlin.R
  * Created by dsm2017 on 2017-12-17.
  */
 
-class ChangePWActivity : BaseActivity(){
+class ChangePWActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

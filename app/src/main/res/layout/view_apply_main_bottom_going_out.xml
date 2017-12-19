@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
+    android:theme="@style/SubTheme"
     android:background="@color/colorNo5"
     android:animateLayoutChanges="true">
 
@@ -42,16 +43,18 @@
             android:layout_height="match_parent">
 
             <Switch
+                android:id="@+id/switch_apply_main_sat"
                 android:layout_marginBottom="8dp"
-                android:textSize="18dp"
-                android:text="토요일\t"
+                android:textSize="20dp"
+                android:text="토요일\t\t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Switch
+                android:id="@+id/switch_apply_main_sun"
                 android:layout_marginTop="8dp"
-                android:textSize="18dp"
-                android:text="일요일\t"
+                android:textSize="20dp"
+                android:text="일요일\t\t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

@@ -1,27 +1,12 @@
-package team_dms.dms.Activity
-import android.annotation.SuppressLint
-import android.content.Context
-import android.graphics.Color
+package teamdms.dms_kotlin.Activity
+
 import android.os.*
-import android.preference.EditTextPreference
-import android.support.v4.content.ContextCompat
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.TextView
-import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_change_pw.*
+import android.support.v4.content.*
+import android.text.*
 import kotlinx.android.synthetic.main.activity_singup.*
-import kotlinx.android.synthetic.main.activity_singup.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import team_dms.dms.Base.*
-import team_dms.dms.Connect.Connector
-import team_dms.dms.Connect.Res
-import teamdms.dms_kotlin.R
+import team_dms.dms.Connect.*
+import teamdms.dms_kotlin.*
 
 class SignUpActivity : BaseActivity() {
 
@@ -92,14 +77,12 @@ class SignUpActivity : BaseActivity() {
         val warning = ContextCompat.getColor(this, R.color.warning)
 
         if(edit_signup_code.text.isEmpty() || edit_signup_confirm_pw.text.isEmpty() || edit_signup_id.text.isEmpty() || edit_signup_pw.text.isEmpty()) {
-
             text_signup_check_pw.text = "모두 입력하세요"
             button_signup_singup.isEnabled = false
             button_signup_singup.isClickable = false
             text_signup_check_pw.setTextColor(warning)
             image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_warning)
         } else if(!edit_signup_pw.text.equals(edit_signup_confirm_pw)) {
-
             text_signup_check_pw.text = "비밀번호가 일치하지 않습니다."
             button_signup_singup.isClickable = false
             button_signup_singup.isEnabled = false

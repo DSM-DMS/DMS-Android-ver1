@@ -1,12 +1,12 @@
 package teamdms.dms_kotlin.Activity
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import android.os.*
 import kotlinx.android.synthetic.main.activity_dormitory_faq.*
-import team_dms.dms.Connect.Connector
-import teamdms.dms_kotlin.R
+import team_dms.dms.Base.*
+import team_dms.dms.Connect.*
+import teamdms.dms_kotlin.*
 
-class DormitoryFaqActivity : AppCompatActivity() {
+class DormitoryFaqActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

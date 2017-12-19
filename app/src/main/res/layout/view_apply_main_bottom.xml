@@ -10,6 +10,7 @@
         android:layout_height="180dp">
 
         <ImageView
+            android:id="@+id/image_apply_main_content_image"
             android:layout_alignParentRight="true"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
@@ -30,6 +31,7 @@
             android:layout_height="36dp" />
 
         <TextView
+            android:id="@+id/text_apply_main_content"
             android:background="@drawable/apply_main_content_box_back"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="8dp"
