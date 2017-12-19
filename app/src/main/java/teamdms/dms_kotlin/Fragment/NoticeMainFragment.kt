@@ -14,8 +14,8 @@ import teamdms.dms_kotlin.Activity.NoticeListActivity
 
 class NoticeMainFragment: Fragment(){
 
-    var notice : Int = 0
-    var rule : Int = 1
+    var rule : Int = 0
+    var notice : Int = 1
     var faq : Int = 2
 
 

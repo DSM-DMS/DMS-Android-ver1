@@ -43,10 +43,10 @@ class NoticeListActivity : BaseActivity() {
         when(mConfirm){
             0->{
                 iv_noticeList_icon.setImageResource(icons[0])
-                text_noticeList_title.text="공지사항" }
+                text_noticeList_title.text="기숙사 규정" }
             1->{
                 iv_noticeList_icon.setImageResource(icons[1])
-                text_noticeList_title.text="기숙사 규정" }
+                text_noticeList_title.text="공지사항" }
             2->{
                 iv_noticeList_icon.setImageResource(icons[2])
                 text_noticeList_title.text="자주하는 질문" }
