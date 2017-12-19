@@ -64,10 +64,10 @@ class ApplyMainFragment : Fragment() {
     private fun createTopView(position: Int): View {
         val view = inflater.inflate(R.layout.view_apply_main_top, null)
         view.setBackgroundColor(ContextCompat.getColor(context, when(position){
-            1 -> R.color.colorNo5
-            2 -> R.color.colorNo4
-            3 -> R.color.colorNo3
-            else -> R.color.colorNo2 }))
+            1 -> R.color.colorNo4
+            2 -> R.color.colorNo3
+            3 -> R.color.colorNo2
+            else -> R.color.colorNo1 }))
         with(view){ text_apply_main_top_title.text = when(position){
             1 -> "연장신청"
             2 -> "잔류신청"
@@ -118,10 +118,10 @@ class ApplyMainFragment : Fragment() {
         }
 
         view.setBackgroundColor(ContextCompat.getColor(context, when(position){
-            1 -> R.color.colorNo5
-            2 -> R.color.colorNo4
-            3 -> R.color.colorNo3
-            else -> R.color.colorNo2 }))
+            1 -> R.color.colorNo4
+            2 -> R.color.colorNo3
+            3 -> R.color.colorNo2
+            else -> R.color.colorNo1 }))
 
         contentViewArr.add(view)
         return view

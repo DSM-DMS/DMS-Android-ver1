@@ -35,14 +35,14 @@
             android:id="@+id/text_apply_main_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="48dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="48dp"
             android:layout_toLeftOf="@id/button_apply_main_apply"
             android:background="@drawable/apply_main_content_box_back"
             android:gravity="center"
-            android:text="content"
+            android:text="안녕"
             android:textColor="#000000"
             android:textSize="22sp"></TextView>
 
