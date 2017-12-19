@@ -7,11 +7,10 @@
         android:id="@+id/text_apply_main_top_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:padding="8dp"
+        android:padding="16dp"
         android:text="연장신청"
         android:textStyle="bold"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
