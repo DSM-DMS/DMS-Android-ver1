@@ -2,17 +2,11 @@ package teamdms.dms_kotlin.Fragment
 
 import android.os.*
 import android.support.v4.app.*
-import android.support.v4.content.ContextCompat
+import android.support.v4.content.*
 import android.view.*
-import kotlinx.android.synthetic.main.fragment_apply_main.*
 import kotlinx.android.synthetic.main.fragment_apply_main.view.*
-import kotlinx.android.synthetic.main.view_apply_list_child.view.*
-import kotlinx.android.synthetic.main.view_apply_list_child_goingout.view.*
-import kotlinx.android.synthetic.main.view_apply_list_parent.view.*
-import team_dms.dms.Base.*
-import team_dms.dms.Connect.*
+import kotlinx.android.synthetic.main.view_apply_main_top.view.*
 import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.View.ExpandableLayout
 
 
 /**
@@ -23,85 +17,62 @@ class ApplyMainFragment : Fragment() {
 
     var rootView: View? = null
     lateinit var inflater: LayoutInflater
+    lateinit var initView: View
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(R.layout.fragment_apply_main, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        this.inflater = inflater
+        rootView = inflater.inflate(R.layout.fragment_apply_main, container, false)
         applyListLoad()
         return rootView
     }
 
     private fun applyListLoad(){
         with(rootView!!){
+//            initView = createBottomView(1)
+            expandable_apply_list_layout.addView(createTopView(1), createBottomView(1), true)
+            expandable_apply_list_layout.addView(createTopView(2), createBottomView(2))
+            expandable_apply_list_layout.addView(createTopView(3), createBottomView(3))
+            expandable_apply_list_layout.addView(createTopView(4), createBottomView(4))
+//            expandable_apply_list_layout.setInitView(initView)
+        }
+    }
 
 
-            expandable_apply_list_layout.setInitView(createChildView(ContextCompat.getColor(activity,R.color.colorNo5)
-                    ,R.drawable.apply_stay_icon,View.OnClickListener {  },false))
+    private fun createTopView(position: Int): View {
+        val view = inflater.inflate(R.layout.view_apply_main_top, null)
+        view.setBackgroundColor(ContextCompat.getColor(context, when(position){
+            1 -> R.color.colorNo5
+            2 -> R.color.colorNo4
+            3 -> R.color.colorNo3
+            else -> R.color.colorNo2 }))
+        with(view){ text_apply_main_top_title.text = when(position){
+            1 -> "연장신청"
+            2 -> "잔류신청"
+            3 -> "외출신청"
+            else -> "설문조사"
+        }}
+        return view
+    }
 
-            expandable_apply_list_layout.addContentView(createParentView("연장신청", ContextCompat.getColor(activity, R.color.colorNo5)),createChildView(ContextCompat.getColor(activity,R.color.colorNo5)
-            ,R.drawable.apply_stay_icon,View.OnClickListener {  },false))
-            expandable_apply_list_layout.addContentView(createParentView("잔류신청", ContextCompat.getColor(activity, R.color.colorNo5)),createChildView(ContextCompat.getColor(activity,R.color.colorNo5)
-                    ,R.drawable.apply_stay_icon,View.OnClickListener {  },false))
+    private fun createBottomView(position: Int): View{
+        val view = inflater.inflate(when(position){
+            3 -> R.layout.view_apply_main_bottom_going_out
+            else -> R.layout.view_apply_main_bottom
+        }, null)
 
+        when(position){
+            3 -> with(view){
 
+            }
+            else -> with(view){
+
+            }
         }
 
-
+        return view
     }
 
-    private fun applyGoingout(token: String,sat : Boolean, sun: Boolean){
-        Connector.api.applyOut(token,sat,sun).enqueue(object : Res<Void>(activity){
-            override fun callBack(code: Int, body: Void?) {
-                when(code){
-                    200 -> Util.showToast(activity,"신청이 완료되었습니다.")
-                    else -> Util.showToast(activity, "오류 : $code")
-                }
-            }
-        })
-    }
-
-
-    private fun createParentView(text: String, backgroundColor: Int): View {
-        var view= LayoutInflater.from(context).inflate(R.layout.view_apply_list_parent, null)
-
-        view.tv_apply_list_parent_title.text = text
-        view.tv_apply_list_parent_title.setBackgroundColor(backgroundColor)
-
-        return view!!
-    }
-
-
-    private fun createChildView(backgroundColor: Int, image: Int, listener: View.OnClickListener,goingCheck : Boolean): View{
-        var view : View
-
-            when(goingCheck){
-                true->{
-                    view = LayoutInflater.from(context).inflate(R.layout.view_apply_list_child_goingout, null)
-
-                    with(view!!) {
-                        with(view!!) {
-                            view.btn_apply_list_child_goingout_apply.setOnClickListener {
-                                val sat = view.switch_apply_list_child_goingout_saturday.isChecked
-                                val sun = view.switch_apply_list_child_goingout_sunday.isChecked
-
-                                applyGoingout(Util.getToken(activity), sat, sun)
-                            }
-                        }
-                    }
-                }
-                else -> {
-                    view = LayoutInflater.from(context).inflate(R.layout.view_apply_list_child, null)
-
-
-                    with(view!!) {
-                        view.layout_apply_list_child.setBackgroundColor(backgroundColor)
-                        view.iv_apply_list_child.setImageResource(image)
-                        view.ib_apply_list_child_enter.setOnClickListener(listener)
-                    }
-                }
-            }
-        return view!!
-    }
 }
 
 
