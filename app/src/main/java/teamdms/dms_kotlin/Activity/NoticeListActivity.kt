@@ -14,7 +14,6 @@ import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
 import teamdms.dms_kotlin.Model.Notice
 import teamdms.dms_kotlin.R
-import teamdms.dms_kotlin.R.id.iv_noticeList_icon
 import teamdms.dms_kotlin.RecyclerAdapter.NoticesAdapter
 
 /**
