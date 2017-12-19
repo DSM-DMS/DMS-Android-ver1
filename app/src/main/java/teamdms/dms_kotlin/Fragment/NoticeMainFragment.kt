@@ -4,13 +4,8 @@ import android.content.Intent
 import android.os.*
 import android.support.v4.app.*
 import android.view.*
-import kotlinx.android.synthetic.main.fragment_notice_main.*
 import kotlinx.android.synthetic.main.fragment_notice_main.view.*
 import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.Activity.DormitoryFaqActivity
-import teamdms.dms_kotlin.Activity.DormitoryNoticeActivity
-import teamdms.dms_kotlin.Activity.DormitoryRuleActivity
-import teamdms.dms_kotlin.R.id.button_notice_main_rule
 
 /**
  * Created by root1 on 2017. 12. 5..

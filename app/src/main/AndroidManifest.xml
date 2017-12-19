@@ -26,9 +26,6 @@
             android:name=".Activity.ApplyStudyActivity"
             android:theme="@style/SubTheme" />
         <activity android:name=".Activity.ApplyStayActivity" />
-        <activity android:name=".Activity.DormitoryNoticeActivity"/>
-        <activity android:name=".Activity.DormitoryFaqActivity"/>
-        <activity android:name=".Activity.DormitoryRuleActivity"/>
         <activity android:name="team_dms.dms.Activity.SignUpActivity"/>
         <activity android:name=".Activity.ChangePWActivity"/>
     </application>

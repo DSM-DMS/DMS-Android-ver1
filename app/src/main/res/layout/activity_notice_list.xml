@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_notice_list"
+
+    <ImageButton
+        android:id="@+id/ib_noticeList_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_chevron_left_black_24dp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="32dp"
+            android:id="@+id/recycleView_noticeList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.9">
 
-    </RelativeLayout>
+        </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:background="@color/colorNo5"
+            >
+
+
+            <ImageView
+                android:id="@+id/iv_noticeList_icon"
+                android:layout_marginTop="4dp"
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/notice_list_icon1"
+                android:layout_marginLeft="6dp"
+                />
+
+            <TextView
+                android:id="@+id/text_noticeList_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/iv_noticeList_icon"
+                android:layout_marginLeft="32dp"
+                android:background="@drawable/apply_dormitory_round_text"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="공지사항"
+                android:textColor="#000"
+                android:gravity="center_horizontal|center_vertical"
+                android:textSize="20sp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>
