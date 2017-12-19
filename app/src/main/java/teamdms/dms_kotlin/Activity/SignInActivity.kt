@@ -6,7 +6,7 @@ import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_signin.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
-import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.R
 
 /**
  * Created by root1 on 2017. 12. 5..

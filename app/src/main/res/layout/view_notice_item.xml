@@ -69,7 +69,7 @@
         android:id="@+id/ib_notice_next"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:background="@drawable/notice_item_right_arrow_black_24dp"
+        android:background="@drawable/notice_list_right_arrow"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="12dp"

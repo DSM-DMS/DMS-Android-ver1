@@ -26,12 +26,10 @@
             android:name=".Activity.ApplyStudyActivity"
             android:theme="@style/SubTheme" />
         <activity android:name=".Activity.ApplyStayActivity" />
-        <activity android:name=".Activity.DormitoryNoticeActivity"/>
-        <activity android:name=".Activity.DormitoryFaqActivity"/>
-        <activity android:name=".Activity.DormitoryRuleActivity"/>
         <activity android:name=".Activity.SignUpActivity"/>
         <activity android:name=".Activity.ChangePWActivity"/>
         <activity android:name=".Activity.SurveyActivity"/>
+        <activity android:name=".Activity.NoticeListActivity"/>
 
     </application>
 
