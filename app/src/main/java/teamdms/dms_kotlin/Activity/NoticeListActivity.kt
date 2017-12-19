@@ -35,21 +35,24 @@ class NoticeListActivity : BaseActivity() {
     }
 
     private fun init(){
-        val intent = intent
-
         mConfirm=intent.getIntExtra("confirm",0)
-        Log.d("mConfirm",""+mConfirm)
 
         when(mConfirm){
             0->{
+                Log.d("mConfirm 0",""+mConfirm)
                 iv_noticeList_icon.setImageResource(icons[0])
-                text_noticeList_title.text="기숙사 규정" }
+                text_noticeList_title.text="기숙사 규정"
+            }
             1->{
+                Log.d("mConfirm 1",""+mConfirm)
                 iv_noticeList_icon.setImageResource(icons[1])
                 text_noticeList_title.text="공지사항" }
             2->{
+                Log.d("mConfirm 2",""+mConfirm)
                 iv_noticeList_icon.setImageResource(icons[2])
                 text_noticeList_title.text="자주하는 질문" }
+            else -> Log.d("mConfirm x",""+mConfirm)
+
 
         }
         loadData()
@@ -83,13 +86,14 @@ class NoticeListActivity : BaseActivity() {
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
             }
+            else -> Log.d("mConfirm x",""+mConfirm)
+
         }
     }
 
     private fun setAdapter(notice: Array<Notice>)  {
         recycleView_noticeList.layoutManager = LinearLayoutManager(this)
         recycleView_noticeList.adapter=NoticesAdapter(this,notice)
-
     }
 
     private fun getData(jsonArray: JsonArray) : Array<Notice>{

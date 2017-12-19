@@ -52,6 +52,11 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
                 text_notice_item_title.text=title
                 text_notice_author.text=author
             }
+
+
+            rootView.setOnClickListener {
+
+            }
         }
 
     }
