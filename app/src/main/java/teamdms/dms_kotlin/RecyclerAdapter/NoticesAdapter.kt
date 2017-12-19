@@ -4,7 +4,9 @@ import android.content.*
 import android.support.v7.widget.*
 import android.view.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
-import teamdms.dms_kotlin.Model.*
+import teamdms.dms_kotlin.Fragment.MyPageFragment
+import teamdms.dms_kotlin.Model.Notice
+import teamdms.dms_kotlin.R
 
 /**
  * Created by dsm2016 on 2017-12-18.
@@ -27,10 +29,8 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
         inflater = LayoutInflater.from(parent?.context)
         mContext = parent!!.context
 
-
         var view : View?=null
-        // view 세팅
-
+        view= View.inflate(mContext, R.layout.view_notice_item,parent)
         return ViewHolder(view!!)
     }
 
@@ -52,7 +52,6 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
                 text_notice_item_title.text=title
                 text_notice_author.text=author
             }
-
         }
 
     }

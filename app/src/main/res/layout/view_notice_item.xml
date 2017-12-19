@@ -29,7 +29,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="제목"
-            android:textColor="@color/applyList3"
+            android:textColor="@color/colorNo3"
             android:textSize="18dp"
             android:textStyle="bold" />
 
