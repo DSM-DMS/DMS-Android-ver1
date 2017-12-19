@@ -79,7 +79,7 @@
                 android:id="@+id/text_mypage_merit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
+                android:text="0"
                 android:textSize="26dp"
                 android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                 android:id="@+id/text_mypage_demerit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
+                android:text="0"
                 android:textSize="26dp"
                 android:textStyle="bold" />
 
