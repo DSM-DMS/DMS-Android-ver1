@@ -36,19 +36,6 @@ class NoticeListActivity : BaseActivity() {
 
     private fun init(){
         mConfirm=intent.getIntExtra("confirm",0)
-
-        when(mConfirm){
-            0->{
-                iv_notice_list_icon.setImageResource(icons[0])
-                text_notice_list_title.text="기숙사 규정"
-            }
-            1->{
-                iv_notice_list_icon.setImageResource(icons[1])
-                text_notice_list_title.text="공지사항" }
-            2->{
-                iv_notice_list_icon.setImageResource(icons[2])
-                text_notice_list_title.text="자주하는 질문" }
-        }
         loadData()
     }
 
@@ -64,6 +51,8 @@ class NoticeListActivity : BaseActivity() {
                         when(code){
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
+                iv_notice_list_icon.setImageResource(icons[0])
+                text_notice_list_title.text="기숙사 규정"
             }
             1->{
                 Connector.api.loadRule().enqueue(object : Res<JsonArray>(this){
@@ -71,6 +60,8 @@ class NoticeListActivity : BaseActivity() {
                         when(code){
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
+                iv_notice_list_icon.setImageResource(icons[1])
+                text_notice_list_title.text="공지사항"
             }
             2->{
                 Connector.api.loadFaq().enqueue(object : Res<JsonArray>(this){
@@ -78,6 +69,8 @@ class NoticeListActivity : BaseActivity() {
                         when(code){
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
+                iv_notice_list_icon.setImageResource(icons[2])
+                text_notice_list_title.text="자주하는 질문"
             }
         }
     }

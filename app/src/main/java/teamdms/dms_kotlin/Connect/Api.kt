@@ -64,13 +64,27 @@ interface Api {
     @FormUrlEncoded
     fun checkOverlap(@Field("id")id:String) : Call<Void>
 
+    //자주하는 질문 리스트
     @GET("faq")
     fun loadFaq() : Call<JsonArray>
 
+    //공지사항 리스트
     @GET("notice")
     fun loadNotice() : Call<JsonArray>
 
+    //기숙사 규정 질문 리스트
     @GET("rule")
     fun loadRule() : Call<JsonArray>
 
+    //공지사항 디테일
+    @GET("notice/{id}")
+    fun loadNotice_detail(@Path("id") id: String): Call<JsonObject>
+
+    //자주하는 질문 디테일
+    @GET("faq/{id}")
+    fun loadFag_detail(@Path("id") id: String): Call<JsonObject>
+
+    //기숙사 규정 디테일
+    @GET("rule/{id}")
+    fun loadRule_detail(@Path("id") id: String): Call<JsonObject>
 }

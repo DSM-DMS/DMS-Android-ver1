@@ -4,6 +4,7 @@ import android.content.*
 import android.support.v7.widget.*
 import android.view.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
+import teamdms.dms_kotlin.Activity.NoticeDetail
 import teamdms.dms_kotlin.Fragment.MyPageFragment
 import teamdms.dms_kotlin.Model.Notice
 import teamdms.dms_kotlin.R
@@ -36,7 +37,7 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         for(notice in mNotices){
-            holder!!.bind(notice.title!!,notice.author!!)
+            holder!!.bind(notice.title!!,notice.author!!,{mContext.startActivity(Intent(mContext,NoticeDetail::class.java))})
         }
     }
 
@@ -47,15 +48,11 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
 
         init { rootView = itemView!! }
 
-        fun bind(title: String,author: String){
+        fun bind(title: String,author: String,onClick: (Any) -> Unit){
             with(rootView){
                 text_notice_item_title.text=title
                 text_notice_author.text=author
-            }
-
-
-            rootView.setOnClickListener {
-
+                rootView.setOnClickListener(onClick)
             }
         }
 
