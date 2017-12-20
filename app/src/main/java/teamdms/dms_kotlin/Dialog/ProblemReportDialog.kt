@@ -4,8 +4,8 @@ import android.app.*
 import android.content.*
 import android.os.*
 import android.text.*
-import android.widget.*
 import kotlinx.android.synthetic.main.dialog_report_problem.*
+import team_dms.dms.Base.*
 import team_dms.dms.Base.Util.getToken
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
@@ -55,34 +55,21 @@ class ProblemReportDialog (context :Context) : Dialog(context) {
         val room : String  =  edit_problem_dialog_roomnumber.text.toString().trim()
         val content : String = edit_problem_dialog_content.text.toString().trim()
 
-       button_problem_dialog_report.setOnClickListener {
-
+        button_problem_dialog_report.setOnClickListener {
             if(!title.isEmpty() && !room.isEmpty() && !content.isEmpty()) {
-
-
                 Connector.api.reportProblem(getToken(context), title, Integer.parseInt(room), content)
                         .enqueue(object : Res<Void> (context) {
 
                             override fun callBack(code: Int, body: Void?) {
-
-                                when(code) {
-
-                                    201 -> {
-                                        Toast.makeText(context, "신고가 접수되었습니다.", Toast.LENGTH_SHORT).show()
-                                        dismiss()
-                                    }
-                                    else -> {
-                                        Toast.makeText(context, "신고가 접수에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                        dismiss()
-                                    }
-                                }
+                                Util.showToast(context, when(code){
+                                    201 -> "신고 성공"
+                                    else -> "신고 오류 : $code"
+                                })
+                                dismiss()
                             }
                         })
             }
-            else {
-
-                Toast.makeText(context, "모두 다 입력해주세요", Toast.LENGTH_SHORT).show()
-            }
+            else { Util.showToast(context, "값을 다 입력하세요") }
         }
     }
 }
