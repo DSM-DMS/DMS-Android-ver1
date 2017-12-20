@@ -64,6 +64,11 @@ interface Api {
     @FormUrlEncoded
     fun checkOverlap(@Field("id")id:String) : Call<Void>
 
+    @POST("report")
+    @FormUrlEncoded
+    fun reportProblem(@Header("Authorization")token : String, @Field("title") title : String, @Field("room") room : Int, @Field("content") content: String) : Call<Void>
+
+
     @GET("faq")
     fun loadFaq() : Call<JsonArray>
 
