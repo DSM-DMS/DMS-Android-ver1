@@ -1,29 +1,14 @@
 package teamdms.dms_kotlin.Dialog
 
-import android.annotation.SuppressLint
-import android.app.Dialog
-import android.app.DialogFragment
-import android.app.MediaRouteButton
-import android.content.Context
-import android.os.Build
-import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
-import android.support.annotation.RequiresApi
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.Toast
+import android.app.*
+import android.content.*
+import android.os.*
+import android.text.*
 import kotlinx.android.synthetic.main.dialog_report_problem.*
-import team_dms.dms.Base.Util
+import team_dms.dms.Base.*
 import team_dms.dms.Base.Util.getToken
-import team_dms.dms.Connect.Connector
-import team_dms.dms.Connect.Res
-import teamdms.dms_kotlin.Fragment.NoticeMainFragment
-import teamdms.dms_kotlin.R
-import javax.crypto.spec.RC2ParameterSpec
+import team_dms.dms.Connect.*
+import teamdms.dms_kotlin.*
 
 /**
  * Created by dsm2017 on 2017-12-20.
@@ -70,34 +55,21 @@ class ProblemReportDialog (context :Context) : Dialog(context) {
         val room : String  =  edit_problem_dialog_roomnumber.text.toString().trim()
         val content : String = edit_problem_dialog_content.text.toString().trim()
 
-       button_problem_dialog_report.setOnClickListener {
-
+        button_problem_dialog_report.setOnClickListener {
             if(!title.isEmpty() && !room.isEmpty() && !content.isEmpty()) {
-
-
                 Connector.api.reportProblem(getToken(context), title, Integer.parseInt(room), content)
                         .enqueue(object : Res<Void> (context) {
 
                             override fun callBack(code: Int, body: Void?) {
-
-                                when(code) {
-
-                                    201 -> {
-                                        Toast.makeText(context, "신고가 접수되었습니다.", Toast.LENGTH_SHORT).show()
-                                        dismiss()
-                                    }
-                                    else -> {
-                                        Toast.makeText(context, "신고가 접수에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                        dismiss()
-                                    }
-                                }
+                                Util.showToast(context, when(code){
+                                    201 -> "신고 성공"
+                                    else -> "신고 오류 : $code"
+                                })
+                                dismiss()
                             }
                         })
             }
-            else {
-
-                Toast.makeText(context, "모두 다 입력해주세요", Toast.LENGTH_SHORT).show()
-            }
+            else { Util.showToast(context, "값을 다 입력하세요") }
         }
     }
 }

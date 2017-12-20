@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/auth_back"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/apply_survey_icon"/>
+    <TextView
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="현재 준비된 설문조사가 없습니다."/>
+
+</LinearLayout>

@@ -88,7 +88,7 @@ class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<Recy
 
     private fun sendBugReport(message: String): Boolean{
         if(message.isEmpty()) return false
-        Connector.api.sendBugReport(Util.getToken(context), "", message)
+        Connector.api.sendBugReport(Util.getToken(context), "Android 오류", message)
                 .enqueue(object : Res<Void>(context){
                     override fun callBack(code: Int, body: Void?) {
                         if(code == 201){ Util.showToast(context, "전송 성공") }

@@ -1,10 +1,8 @@
 package teamdms.dms_kotlin.Activity
 
-import android.content.DialogInterface
 import android.os.*
 import android.support.design.widget.*
 import android.support.v4.view.*
-import android.support.v7.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import team_dms.dms.Base.*
 import teamdms.dms_kotlin.*
@@ -31,10 +29,5 @@ class MainActivity: BaseActivity() {
                 (view_pager_main.adapter as MainViewPagerAdapter).reload(position)
             }
         })
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        (view_pager_main.adapter as MainViewPagerAdapter).reload()
     }
 }

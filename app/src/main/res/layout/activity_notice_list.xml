@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <ImageButton
         android:id="@+id/ib_notice_list_back"
         android:layout_width="wrap_content"
@@ -15,7 +14,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/notice_list_left_arrow" />
 

@@ -31,7 +31,6 @@ class ApplyMainFragment : Fragment() {
         this.inflater = inflater
         rootView = inflater.inflate(R.layout.fragment_apply_main, container, false)
         setContentView()
-        load()
         return rootView
     }
 
@@ -45,6 +44,14 @@ class ApplyMainFragment : Fragment() {
     }
 
     fun load(){
+        with(contentViewArr[0]){ text_apply_main_content.text = "안녕" }
+        with(contentViewArr[1]){ text_apply_main_content.text = "안녕" }
+        with(contentViewArr[2]){
+            switch_apply_main_sat.isChecked = false
+            switch_apply_main_sun.isChecked = false
+        }
+        with(contentViewArr[3]){ text_apply_main_content.text = "의견을 제출하세요" }
+
         Connector.api.loadMyInfo(Util.getToken(context))
                 .enqueue(object : Res<MypagelModel>(context){
                     override fun callBack(code: Int, body: MypagelModel?) {
@@ -55,7 +62,6 @@ class ApplyMainFragment : Fragment() {
                                 switch_apply_main_sat.isChecked = body!!.outSatState
                                 switch_apply_main_sun.isChecked = body!!.outSunState
                             }
-                            with(contentViewArr[3]){ text_apply_main_content.text = "의견을 제출하세요" }
                         }
                     }
                 })
