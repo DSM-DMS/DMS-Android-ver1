@@ -38,7 +38,7 @@ class NoticeDetail : AppCompatActivity() {
                 Connector.api.loadRule_detail(noticeID).enqueue(object : Res<JsonObject>(this){
                     override fun callBack(code: Int, body: JsonObject?) {
                         when(code){
-                            200->notice=getNoticeData(body!!.asJsonObject)
+                            200->notice=getData(body!!.asJsonObject)
                             else -> "오류 $code " }}})
 
                 ib_notice_detail_icon.setImageResource(icon[0])
@@ -48,7 +48,7 @@ class NoticeDetail : AppCompatActivity() {
                 Connector.api.loadNotice_detail(noticeID).enqueue(object : Res<JsonObject>(this){
                     override fun callBack(code: Int, body: JsonObject?) {
                         when(code){
-                            200->notice=getNoticeData(body!!.asJsonObject)
+                            200->notice=getData(body!!.asJsonObject)
                             else -> "오류 $code " }}})
                 ib_notice_detail_icon.setImageResource(icon[1])
                 tv_notice_detail_title.text="공지사항"
@@ -57,7 +57,7 @@ class NoticeDetail : AppCompatActivity() {
                 Connector.api.loadFag_detail(noticeID).enqueue(object : Res<JsonObject>(this) {
                     override fun callBack(code: Int, body: JsonObject?) {
                         when (code) {
-                            200 -> notice = getNoticeData(body!!.asJsonObject)
+                            200 -> notice = getData(body!!.asJsonObject)
                             else -> "오류 $code " }}})
                 ib_notice_detail_icon.setImageResource(icon[2])
                 tv_notice_detail_title.text="자주 하는 질문"
@@ -65,7 +65,7 @@ class NoticeDetail : AppCompatActivity() {
         }
     }
 
-    fun getNoticeData(jsonObject: JsonObject): Notice {
+    fun getData(jsonObject: JsonObject): Notice {
         val gson = GsonBuilder().setPrettyPrinting().create()
         var data = gson.fromJson<Notice>(jsonObject, Notice::class.java!!)
         return data
