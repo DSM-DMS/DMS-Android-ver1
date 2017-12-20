@@ -13,16 +13,18 @@ import teamdms.dms_kotlin.R
  * Created by dsm2016 on 2017-12-18.
  */
 
-class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Adapter<NoticesAdapter.ViewHolder>() {
+class NoticesAdapter(context: Context,notices : Array<Notice>,confirm : Int): RecyclerView.Adapter<NoticesAdapter.ViewHolder>() {
 
 
     lateinit var mContext: Context
     lateinit var inflater: LayoutInflater
     lateinit var mNotices: Array<Notice>
+    var mConfirm : Int? = null
 
     init {
         this.mContext=context
         this.mNotices=notices
+        this.mConfirm=confirm
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -36,8 +38,15 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+
+        var intent=Intent(mContext,NoticeDetail::class.java)
+
         for(notice in mNotices){
-            holder!!.bind(notice.title!!,notice.author!!,{mContext.startActivity(Intent(mContext,NoticeDetail::class.java))})
+            holder!!.bind(notice.title!!,notice.author!!,{
+                intent.putExtra("confirm",mConfirm)
+                intent.putExtra("noticeID",notice.id)
+                mContext.startActivity(intent)
+            })
         }
     }
 

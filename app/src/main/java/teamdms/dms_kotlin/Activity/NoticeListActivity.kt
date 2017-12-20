@@ -7,6 +7,7 @@ import android.util.Log
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_notice_detail.*
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import team_dms.dms.Base.*
@@ -30,13 +31,12 @@ class NoticeListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
         init()
-        back()
-
     }
 
     private fun init(){
         mConfirm=intent.getIntExtra("confirm",0)
         loadData()
+        back()
     }
 
     private fun back(){
@@ -77,7 +77,7 @@ class NoticeListActivity : BaseActivity() {
 
     private fun setAdapter(notice: Array<Notice>)  {
         recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
-        recycle_view_notice_list.adapter=NoticesAdapter(this,notice)
+        recycle_view_notice_list.adapter=NoticesAdapter(this,notice,mConfirm!!)
     }
 
     private fun getData(jsonArray: JsonArray) : Array<Notice>{
@@ -85,5 +85,6 @@ class NoticeListActivity : BaseActivity() {
         notices =gson.fromJson(jsonArray, object : TypeToken<Array<Notice>>() {}.type)
         return notices!!
     }
+
 
 }
