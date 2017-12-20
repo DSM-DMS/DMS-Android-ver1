@@ -56,7 +56,7 @@ class NoticeMainFragment: Fragment(){
                 var dialog = ProblemReportDialog(context)
                 var layoutParams = WindowManager.LayoutParams()
                 layoutParams.copyFrom(dialog.window.attributes)
-                layoutParams.width = 900
+                layoutParams.width = 1000
                 layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
                 dialog.show()
                 var window = dialog.window
