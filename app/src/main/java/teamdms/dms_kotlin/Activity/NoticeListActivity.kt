@@ -26,7 +26,6 @@ class NoticeListActivity : BaseActivity() {
     var notices : Array<Notice>? =null
     var icons = arrayOf(R.drawable.notice_list_icon1,R.drawable.notice_list_icon2,R.drawable.notice_list_icon3)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
@@ -85,6 +84,4 @@ class NoticeListActivity : BaseActivity() {
         notices =gson.fromJson(jsonArray, object : TypeToken<Array<Notice>>() {}.type)
         return notices!!
     }
-
-
 }

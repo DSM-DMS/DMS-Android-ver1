@@ -26,8 +26,8 @@ class NoticeDetail : AppCompatActivity() {
     }
 
     private fun init(){
-        mConfirm=intent.getIntExtra("confirm",0)
         var noticeID=intent.getStringExtra("noticeID")
+        mConfirm=intent.getIntExtra("confirm",0)
         loadData(noticeID)
         backNoticeList()
     }
@@ -43,8 +43,7 @@ class NoticeDetail : AppCompatActivity() {
 
                 ib_notice_detail_icon.setImageResource(icon[0])
                 tv_notice_detail_title.text="기숙사 규정"
-                web_view_notice_detail.loadData(notice!!.content,"text/html; charset=utf-8", "UTF-8")
-            }
+                web_view_notice_detail.loadData(notice!!.content,"text/html; charset=utf-8", "UTF-8") }
             1->{
                 Connector.api.loadNotice_detail(noticeID).enqueue(object : Res<JsonObject>(this){
                     override fun callBack(code: Int, body: JsonObject?) {
@@ -53,8 +52,7 @@ class NoticeDetail : AppCompatActivity() {
                             else -> "오류 $code " }}})
                 ib_notice_detail_icon.setImageResource(icon[1])
                 tv_notice_detail_title.text="공지사항"
-                web_view_notice_detail.loadData(notice!!.content,"text/html; charset=utf-8", "UTF-8")
-            }
+                web_view_notice_detail.loadData(notice!!.content,"text/html; charset=utf-8", "UTF-8")}
             2->{
                 Connector.api.loadFag_detail(noticeID).enqueue(object : Res<JsonObject>(this) {
                     override fun callBack(code: Int, body: JsonObject?) {
@@ -63,9 +61,7 @@ class NoticeDetail : AppCompatActivity() {
                             else -> "오류 $code " }}})
                 ib_notice_detail_icon.setImageResource(icon[2])
                 tv_notice_detail_title.text="자주 하는 질문"
-                web_view_notice_detail.loadData(notice!!.content,"text/html; charset=utf-8", "UTF-8")
-            }
-
+                web_view_notice_detail.loadData(notice!!.content,"text/html; charset=utf-8", "UTF-8")}
         }
     }
 
