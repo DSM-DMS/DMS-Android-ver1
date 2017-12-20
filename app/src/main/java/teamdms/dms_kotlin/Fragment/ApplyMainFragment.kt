@@ -16,6 +16,7 @@ import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
 
 
+@Suppress("UNREACHABLE_CODE")
 /**
  * Created by dsm2016 on 2017-12-15.
  */
@@ -45,6 +46,14 @@ class ApplyMainFragment : Fragment() {
     }
 
     fun load(){
+        with(contentViewArr[0]){ text_apply_main_content.text = "안녕" }
+        with(contentViewArr[1]){ text_apply_main_content.text = "안녕" }
+        with(contentViewArr[2]){
+            switch_apply_main_sat.isChecked = false
+            switch_apply_main_sun.isChecked = false
+        }
+        with(contentViewArr[3]){ text_apply_main_content.text = "의견을 제출하세요" }
+
         Connector.api.loadMyInfo(Util.getToken(context))
                 .enqueue(object : Res<MypagelModel>(context){
                     override fun callBack(code: Int, body: MypagelModel?) {
@@ -55,7 +64,6 @@ class ApplyMainFragment : Fragment() {
                                 switch_apply_main_sat.isChecked = body!!.outSatState
                                 switch_apply_main_sun.isChecked = body!!.outSunState
                             }
-                            with(contentViewArr[3]){ text_apply_main_content.text = "의견을 제출하세요" }
                         }
                     }
                 })
