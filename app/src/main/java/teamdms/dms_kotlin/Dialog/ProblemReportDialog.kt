@@ -10,17 +10,17 @@ import team_dms.dms.Base.Util.getToken
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
 
+
 /**
  * Created by dsm2017 on 2017-12-20.
  */
 
-class ProblemReportDialog (context :Context) : Dialog(context) {
+class ProblemReportDialog(context: Context): Dialog(context) {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_report_problem)
-
         button_problem_dialog_cancle.setOnClickListener { dismiss() } // 기본 값 세팅
         checkValidate()
 
@@ -58,8 +58,7 @@ class ProblemReportDialog (context :Context) : Dialog(context) {
         button_problem_dialog_report.setOnClickListener {
             if(!title.isEmpty() && !room.isEmpty() && !content.isEmpty()) {
                 Connector.api.reportProblem(getToken(context), title, Integer.parseInt(room), content)
-                        .enqueue(object : Res<Void> (context) {
-
+                        .enqueue(object : Res<Void>(context) {
                             override fun callBack(code: Int, body: Void?) {
                                 Util.showToast(context, when(code){
                                     201 -> "신고 성공"

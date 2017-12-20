@@ -30,7 +30,8 @@
         <activity android:name=".Activity.ChangePWActivity" />
         <activity android:name=".Activity.SurveyActivity" />
         <activity android:name=".Activity.NoticeListActivity" />
-        <activity android:name=".Activity.NoticeDetail"></activity>
+        <activity android:name=".Activity.NoticeDetail"/>
+
     </application>
 
 </manifest>
