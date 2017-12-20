@@ -24,11 +24,6 @@ class MyPageFragment: Fragment() {
         return rootView
     }
 
-    override fun onStart() {
-        super.onStart()
-        load()
-    }
-
     private fun init(){
         with(rootView){
             recycler_mypage.layoutManager = LinearLayoutManager(activity)

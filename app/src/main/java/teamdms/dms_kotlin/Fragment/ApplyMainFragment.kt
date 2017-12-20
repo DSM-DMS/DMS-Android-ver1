@@ -16,7 +16,6 @@ import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
 
 
-@Suppress("UNREACHABLE_CODE")
 /**
  * Created by dsm2016 on 2017-12-15.
  */
@@ -32,7 +31,6 @@ class ApplyMainFragment : Fragment() {
         this.inflater = inflater
         rootView = inflater.inflate(R.layout.fragment_apply_main, container, false)
         setContentView()
-        load()
         return rootView
     }
 

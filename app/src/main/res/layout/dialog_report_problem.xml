@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp">
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:background="@color/colorNo1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="시설 고장 신고"
+            android:textColor="@color/colorNo1"
+            android:textSize="26dp"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edit_problem_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Title"
+        android:theme="@style/StandardEditText"
+        android:maxLines="1"
+        />
+
+    <EditText
+        android:id="@+id/edit_problem_dialog_roomnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Room Number"
+        android:inputType="number"
+        android:theme="@style/StandardEditText"
+        android:maxLines="1"
+        />
+
+    <EditText
+        android:id="@+id/edit_problem_dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/dialog_edittext"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="top"
+        android:padding="8dp"
+        android:hint="신고 내용을 입력해주세요"
+        android:maxHeight="210dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp"
+        >
+
+        <Button
+            android:id="@+id/button_problem_dialog_report"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:background="@color/colorClear"
+            android:text="신고"
+            android:textSize="18sp"
+            android:textColor="@color/colorNo1" />
+
+        <Button
+            android:id="@+id/button_problem_dialog_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:background="@color/colorClear"
+            android:text="취소"
+            android:textSize="18sp"
+            android:textColor="@color/colorNo1" />
+    </LinearLayout>
+
+</LinearLayout>

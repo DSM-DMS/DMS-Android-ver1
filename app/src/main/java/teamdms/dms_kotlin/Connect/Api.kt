@@ -60,9 +60,15 @@ interface Api {
     @FormUrlEncoded
     fun changePW(@Header("Authorization")token: String, @Field("current_pw")exist_pw : String, @Field("new_pw")new_pw : String) : Call<Void>
 
+    // 비밀번호 확인
     @POST("verify/id")
     @FormUrlEncoded
     fun checkOverlap(@Field("id")id:String) : Call<Void>
+
+    // 고장 신고
+    @POST("report")
+    @FormUrlEncoded
+    fun reportProblem(@Header("Authorization")token : String, @Field("title") title : String, @Field("room") room : Int, @Field("content") content: String) : Call<Void>
 
     //자주하는 질문 리스트
     @GET("faq")
