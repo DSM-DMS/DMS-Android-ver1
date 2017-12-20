@@ -4,6 +4,7 @@ import android.content.*
 import android.support.v7.widget.*
 import android.view.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
+import teamdms.dms_kotlin.Activity.NoticeDetail
 import teamdms.dms_kotlin.Fragment.MyPageFragment
 import teamdms.dms_kotlin.Model.Notice
 import teamdms.dms_kotlin.R
@@ -12,16 +13,18 @@ import teamdms.dms_kotlin.R
  * Created by dsm2016 on 2017-12-18.
  */
 
-class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Adapter<NoticesAdapter.ViewHolder>() {
+class NoticesAdapter(context: Context,notices : Array<Notice>,confirm : Int): RecyclerView.Adapter<NoticesAdapter.ViewHolder>() {
 
 
     lateinit var mContext: Context
     lateinit var inflater: LayoutInflater
     lateinit var mNotices: Array<Notice>
+    var mConfirm : Int? = null
 
     init {
         this.mContext=context
         this.mNotices=notices
+        this.mConfirm=confirm
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -35,8 +38,15 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+
+        var intent=Intent(mContext,NoticeDetail::class.java)
+
         for(notice in mNotices){
-            holder!!.bind(notice.title!!,notice.author!!)
+            holder!!.bind(notice.title!!,notice.author!!,{
+                intent.putExtra("confirm",mConfirm)
+                intent.putExtra("noticeID",notice.id)
+                mContext.startActivity(intent)
+            })
         }
     }
 
@@ -47,15 +57,11 @@ class NoticesAdapter(context: Context,notices : Array<Notice>): RecyclerView.Ada
 
         init { rootView = itemView!! }
 
-        fun bind(title: String,author: String){
+        fun bind(title: String,author: String,onClick: (Any) -> Unit){
             with(rootView){
                 text_notice_item_title.text=title
                 text_notice_author.text=author
-            }
-
-
-            rootView.setOnClickListener {
-
+                rootView.setOnClickListener(onClick)
             }
         }
 

@@ -7,6 +7,7 @@ import android.util.Log
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_notice_detail.*
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import team_dms.dms.Base.*
@@ -25,31 +26,16 @@ class NoticeListActivity : BaseActivity() {
     var notices : Array<Notice>? =null
     var icons = arrayOf(R.drawable.notice_list_icon1,R.drawable.notice_list_icon2,R.drawable.notice_list_icon3)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
         init()
-        back()
-
     }
 
     private fun init(){
         mConfirm=intent.getIntExtra("confirm",0)
-
-        when(mConfirm){
-            0->{
-                iv_notice_list_icon.setImageResource(icons[0])
-                text_notice_list_title.text="기숙사 규정"
-            }
-            1->{
-                iv_notice_list_icon.setImageResource(icons[1])
-                text_notice_list_title.text="공지사항" }
-            2->{
-                iv_notice_list_icon.setImageResource(icons[2])
-                text_notice_list_title.text="자주하는 질문" }
-        }
         loadData()
+        back()
     }
 
     private fun back(){
@@ -64,6 +50,8 @@ class NoticeListActivity : BaseActivity() {
                         when(code){
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
+                iv_notice_list_icon.setImageResource(icons[0])
+                text_notice_list_title.text="기숙사 규정"
             }
             1->{
                 Connector.api.loadRule().enqueue(object : Res<JsonArray>(this){
@@ -71,6 +59,8 @@ class NoticeListActivity : BaseActivity() {
                         when(code){
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
+                iv_notice_list_icon.setImageResource(icons[1])
+                text_notice_list_title.text="공지사항"
             }
             2->{
                 Connector.api.loadFaq().enqueue(object : Res<JsonArray>(this){
@@ -78,13 +68,15 @@ class NoticeListActivity : BaseActivity() {
                         when(code){
                             200->setAdapter(getData(body!!))
                             else -> "오류 $code " }}})
+                iv_notice_list_icon.setImageResource(icons[2])
+                text_notice_list_title.text="자주하는 질문"
             }
         }
     }
 
     private fun setAdapter(notice: Array<Notice>)  {
         recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
-        recycle_view_notice_list.adapter=NoticesAdapter(this,notice)
+        recycle_view_notice_list.adapter=NoticesAdapter(this,notice,mConfirm!!)
     }
 
     private fun getData(jsonArray: JsonArray) : Array<Notice>{
@@ -92,5 +84,4 @@ class NoticeListActivity : BaseActivity() {
         notices =gson.fromJson(jsonArray, object : TypeToken<Array<Notice>>() {}.type)
         return notices!!
     }
-
 }

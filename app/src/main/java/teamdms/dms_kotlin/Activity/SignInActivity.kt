@@ -27,6 +27,7 @@ class SignInActivity: BaseActivity() {
                                 showToast(when(code){
                                     201 -> {
                                         saveToken(body!!.get("access_token").asString)
+                                        showToast(edit_signin_id.text.toString()+"님 환영합니다")
                                         finish()
                                         "로그인 성공"
                                     } 204 -> "로그인 실패"
