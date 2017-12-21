@@ -3,79 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/notice_detail_back"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <ImageButton
-        android:id="@+id/ib_notice_detail_list_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/notice_list_left_arrow" />
-
     <android.support.v7.widget.CardView
-        android:layout_margin="16dp"
-        app:cardCornerRadius="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:background="#Fff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
 
                 <ImageView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
                     android:id="@+id/ib_notice_detail_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="16dp"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="16dp"
                     android:src="@drawable/notice_notification_icon" />
 
                 <TextView
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/tv_notice_detail_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/ib_notice_detail_icon"
-                    android:textColor="#000"
-                    android:layout_marginLeft="2dp"
                     android:textSize="20sp" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:background="#fff"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="@drawable/notice_detail_view_round"
-                    android:layout_height="match_parent"/>
 
 
-                <WebView
-                    android:layout_margin="8dp"
-                    android:id="@+id/web_view_notice_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"></WebView>
             </LinearLayout>
+
+            <WebView
+                android:layout_margin="12dp"
+                android:id="@+id/web_view_notice_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

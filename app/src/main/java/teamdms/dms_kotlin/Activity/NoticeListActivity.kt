@@ -1,87 +1,47 @@
 package teamdms.dms_kotlin.Activity
 
-import android.content.Intent
 import android.os.*
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_notice_detail.*
+import android.support.v7.widget.*
 import kotlinx.android.synthetic.main.activity_notice_list.*
-import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import team_dms.dms.Base.*
-import team_dms.dms.Connect.Connector
-import team_dms.dms.Connect.Res
-import teamdms.dms_kotlin.Model.Notice
-import teamdms.dms_kotlin.R
-import teamdms.dms_kotlin.RecyclerAdapter.NoticesAdapter
+import team_dms.dms.Connect.*
+import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.Model.*
+import teamdms.dms_kotlin.RecyclerAdapter.*
 
 /**
  * Created by root1 on 2017. 12. 5..
  */
 class NoticeListActivity : BaseActivity() {
 
-    var mConfirm : Int? = null
-    var notices : Array<Notice>? =null
-    var icons = arrayOf(R.drawable.notice_list_icon1,R.drawable.notice_list_icon2,R.drawable.notice_list_icon3)
+    var confirm : Int = 0
+    val iconArr = arrayOf(R.drawable.notice_list_icon1, R.drawable.notice_list_icon2, R.drawable.notice_list_icon3)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_list)
-        init()
-    }
-
-    private fun init(){
-        mConfirm=intent.getIntExtra("confirm",0)
+        confirm = intent.getIntExtra("confirm",0)
+        recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
+        recycle_view_notice_list.adapter = NoticesAdapter(confirm)
         loadData()
-        back()
-    }
-
-    private fun back(){
-        ib_notice_list_back.setOnClickListener { finish() }
     }
 
     private fun loadData(){
-        when(mConfirm){
-            0->{
-                Connector.api.loadNotice().enqueue(object : Res<JsonArray>(this){
-                    override fun callBack(code: Int, body: JsonArray?) {
-                        when(code){
-                            200->setAdapter(getData(body!!))
-                            else -> "오류 $code " }}})
-                iv_notice_list_icon.setImageResource(icons[0])
-                text_notice_list_title.text="기숙사 규정"
-            }
-            1->{
-                Connector.api.loadRule().enqueue(object : Res<JsonArray>(this){
-                    override fun callBack(code: Int, body: JsonArray?) {
-                        when(code){
-                            200->setAdapter(getData(body!!))
-                            else -> "오류 $code " }}})
-                iv_notice_list_icon.setImageResource(icons[1])
-                text_notice_list_title.text="공지사항"
-            }
-            2->{
-                Connector.api.loadFaq().enqueue(object : Res<JsonArray>(this){
-                    override fun callBack(code: Int, body: JsonArray?) {
-                        when(code){
-                            200->setAdapter(getData(body!!))
-                            else -> "오류 $code " }}})
-                iv_notice_list_icon.setImageResource(icons[2])
-                text_notice_list_title.text="자주하는 질문"
-            }
-        }
+        iv_notice_list_icon.setImageResource(iconArr[confirm])
+        text_notice_list_title.text = titleArr[confirm]
+        val adapter = recycle_view_notice_list.adapter as NoticesAdapter
+        Connector.api.loadNotice(noticeConfirmIdArr[confirm])
+                .enqueue(object : Res<Array<NoticeModel>>(this){
+                    override fun callBack(code: Int, body: Array<NoticeModel>?) {
+                        if(code == 200){ adapter.setData(body!!) }
+                    }
+                })
+//        adapter.setData(arrayOf(NoticeModel("", "", "", "", ""), NoticeModel("", "", "", "", ""), NoticeModel("", "", "", "", ""), NoticeModel("", "", "", "", "")))
     }
 
-    private fun setAdapter(notice: Array<Notice>)  {
-        recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
-        recycle_view_notice_list.adapter=NoticesAdapter(this,notice,mConfirm!!)
+    companion object {
+        val noticeConfirmIdArr = arrayOf("rule", "notice", "faq")
+        val titleArr = arrayOf("기숙사 규정", "공지사항", "자주하는 질문")
     }
 
-    private fun getData(jsonArray: JsonArray) : Array<Notice>{
-        val gson = GsonBuilder().setPrettyPrinting().create()
-        notices =gson.fromJson(jsonArray, object : TypeToken<Array<Notice>>() {}.type)
-        return notices!!
-    }
 }

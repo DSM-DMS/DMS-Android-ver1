@@ -4,67 +4,60 @@ import android.content.*
 import android.support.v7.widget.*
 import android.view.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
-import teamdms.dms_kotlin.Activity.NoticeDetail
-import teamdms.dms_kotlin.Fragment.MyPageFragment
-import teamdms.dms_kotlin.Model.Notice
-import teamdms.dms_kotlin.R
+import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Model.*
 
 /**
  * Created by dsm2016 on 2017-12-18.
  */
 
-class NoticesAdapter(context: Context,notices : Array<Notice>,confirm : Int): RecyclerView.Adapter<NoticesAdapter.ViewHolder>() {
+class NoticesAdapter(confirm : Int): RecyclerView.Adapter<NoticeViewHolder>() {
 
-
-    lateinit var mContext: Context
     lateinit var inflater: LayoutInflater
-    lateinit var mNotices: Array<Notice>
-    var mConfirm : Int? = null
+    lateinit var context: Context
+    var noticeArr = arrayOf<NoticeModel>()
+    var confirm : Int = 0
 
-    init {
-        this.mContext=context
-        this.mNotices=notices
-        this.mConfirm=confirm
+    init { this.confirm = confirm }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {
+        inflater = LayoutInflater.from(parent.context)
+        context = parent.context
+        val view = inflater.inflate(R.layout.view_notice_item, null)
+        return NoticeViewHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-
-        inflater = LayoutInflater.from(parent?.context)
-        mContext = parent!!.context
-
-        var view : View?=null
-        view= View.inflate(mContext, R.layout.view_notice_item,parent)
-        return ViewHolder(view!!)
+    override fun onBindViewHolder(holder: NoticeViewHolder, position: Int) {
+        val intent = Intent(context, NoticeDetailActivity::class.java)
+        val data = noticeArr[position]
+        holder.bind(data.title, data.write_date, {
+            intent.putExtra("confirm", confirm)
+            intent.putExtra("noticeID",data.id)
+            context.startActivity(intent)
+        })
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun getItemCount(): Int = noticeArr.size
 
-        var intent=Intent(mContext,NoticeDetail::class.java)
+    public fun setData(data: Array<NoticeModel>){
+        noticeArr = data
+        notifyDataSetChanged()
+    }
 
-        for(notice in mNotices){
-            holder!!.bind(notice.title!!,notice.author!!,{
-                intent.putExtra("confirm",mConfirm)
-                intent.putExtra("noticeID",notice.id)
-                mContext.startActivity(intent)
-            })
+}
+
+class NoticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    lateinit var rootView : View
+
+    init { rootView = itemView!! }
+
+    fun bind(title: String, author: String, onClick: (Any) -> Unit){
+        with(rootView){
+            text_notice_item_title.text = title
+            text_notice_item_date.text = author
+            card_notice_item.setOnClickListener(onClick)
         }
-    }
-
-    override fun getItemCount(): Int = mNotices?.size ?: 0
-
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        lateinit var rootView : View
-
-        init { rootView = itemView!! }
-
-        fun bind(title: String,author: String,onClick: (Any) -> Unit){
-            with(rootView){
-                text_notice_item_title.text=title
-                text_notice_author.text=author
-                rootView.setOnClickListener(onClick)
-            }
-        }
-
     }
 
 }

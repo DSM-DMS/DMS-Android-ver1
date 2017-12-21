@@ -4,6 +4,7 @@ import com.google.gson.*
 import retrofit2.*
 import retrofit2.http.*
 import team_dms.dms.Model.*
+import teamdms.dms_kotlin.Model.*
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -20,7 +21,7 @@ interface Api {
 
     //연장 map
     @GET("extension/map/{time}")
-    fun loadStudyMap(@Path("time")time: Int, @Query("class")classNum: Int): Call<Array<Array<Any>>>
+    fun loadStudyMap(@Header("Authorization")token: String, @Path("time")time: Int, @Query("class")classNum: Int): Call<Array<Array<Any>>>
 
     //연장 신청
     @POST("extension/{time}")
@@ -70,27 +71,11 @@ interface Api {
     @FormUrlEncoded
     fun reportProblem(@Header("Authorization")token : String, @Field("title") title : String, @Field("room") room : Int, @Field("content") content: String) : Call<Void>
 
-    //자주하는 질문 리스트
-    @GET("faq")
-    fun loadFaq() : Call<JsonArray>
+    //공지 리스트 불러오기
+    @GET("{confirm}")
+    fun loadNotice(@Path("confirm")confirm: String) : Call<Array<NoticeModel>>
 
-    //공지사항 리스트
-    @GET("notice")
-    fun loadNotice() : Call<JsonArray>
-
-    //기숙사 규정 질문 리스트
-    @GET("rule")
-    fun loadRule() : Call<JsonArray>
-
-    //공지사항 디테일
-    @GET("notice/{id}")
-    fun loadNotice_detail(@Path("id") id: String): Call<JsonObject>
-
-    //자주하는 질문 디테일
-    @GET("faq/{id}")
-    fun loadFag_detail(@Path("id") id: String): Call<JsonObject>
-
-    //기숙사 규정 디테일
-    @GET("rule/{id}")
-    fun loadRule_detail(@Path("id") id: String): Call<JsonObject>
+    //공지 디테일 불러오기
+    @GET("{confirm}/{id}")
+    fun loadNotice_detail(@Path("confirm") confirm: String, @Path("id") id: String): Call<NoticeModel>
 }
