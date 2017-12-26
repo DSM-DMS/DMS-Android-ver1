@@ -30,8 +30,17 @@
         <activity android:name=".Activity.ChangePWActivity" />
         <activity android:name=".Activity.SurveyActivity" />
         <activity android:name=".Activity.NoticeListActivity" />
-        <activity android:name=".Activity.NoticeDetail"/>
+        <activity android:name=".Activity.NoticeDetail" />
 
+        <receiver android:name=".Widget.MealWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_meal" />
+        </receiver>
     </application>
 
 </manifest>
