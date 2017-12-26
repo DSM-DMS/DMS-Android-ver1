@@ -16,7 +16,6 @@ import teamdms.dms_kotlin.R
 
 class NoticeDetail : AppCompatActivity() {
 
-    var icon= arrayOf(R.drawable.notice_rule_icon,R.drawable.notice_notification_icon,R.drawable.notice_facility_icon)
     var mConfirm : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +42,6 @@ class NoticeDetail : AppCompatActivity() {
 
         ib_notice_detail_icon.setImageResource(Util.noticeImages[mConfirm!!])
         tv_notice_detail_title.text=Util.noticeTitles[mConfirm!!]
-
     }
 }
 

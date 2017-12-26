@@ -63,14 +63,9 @@ class NoticesAdapter(context: Context,confirm : Int): RecyclerView.Adapter<Notic
         }
     }
 
-    fun setLoadData(notices : ArrayList<Notice>){
+    fun setData(notices : ArrayList<Notice>){
         mNotices = notices
         notifyDataSetChanged()
-        //reverse()
     }
 
-    fun reverse(){
-        var list = Arrays.asList(mNotices)
-        Collections.reverse(list)
-    }
 }

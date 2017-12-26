@@ -54,7 +54,7 @@ class NoticeListActivity : BaseActivity() {
         var noticeAdapter=NoticesAdapter(this@NoticeListActivity,mConfirm!!)
         recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
         recycle_view_notice_list.adapter=noticeAdapter
-        noticeAdapter.setLoadData(notice)
+        noticeAdapter.setData(notice)
     }
 
     private fun reverse(notices : ArrayList<Notice>) : ArrayList<Notice>{
