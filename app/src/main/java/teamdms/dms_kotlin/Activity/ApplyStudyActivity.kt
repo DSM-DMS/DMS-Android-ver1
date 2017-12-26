@@ -87,7 +87,7 @@ class ApplyStudyActivity: BaseActivity() {
     }
 
     private fun load(){
-        Connector.api.loadStudyMap(timeState, classState)
+        Connector.api.loadStudyMap(getToken(), timeState, classState)
                 .enqueue(object : Res<Array<Array<Any>>>(this){
                     override fun callBack(code: Int, body: Array<Array<Any>>?) {
                         if(code == 200){ drawMap(body!!) }

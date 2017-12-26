@@ -11,7 +11,7 @@ import teamdms.dms_kotlin.R
 object Util {
 
     val classNameArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린교실")
-    val notice = arrayOf("rule","notice","faq")
+    val noticeIDs = arrayOf("rule","notice","faq")
     val noticeTitles = arrayOf("기숙사 규정","공지사항","자주하는 질문")
     val noticeIcons =  arrayOf(R.drawable.notice_list_icon1, R.drawable.notice_list_icon2, R.drawable.notice_list_icon3)
     val noticeImages = arrayOf(R.drawable.notice_rule_icon,R.drawable.notice_notification_icon,R.drawable.notice_facility_icon)
@@ -22,7 +22,7 @@ object Util {
 
 
     private fun getPref(context: Context): SharedPreferences{
-        val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
         return pref
     }
 

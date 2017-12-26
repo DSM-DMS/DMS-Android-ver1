@@ -30,7 +30,7 @@
         <activity android:name=".Activity.ChangePWActivity" />
         <activity android:name=".Activity.SurveyActivity" />
         <activity android:name=".Activity.NoticeListActivity" />
-        <activity android:name=".Activity.NoticeDetail" />
+        <activity android:name=".Activity.NoticeDetailActivity"/>
 
         <receiver android:name=".Widget.MealWidget">
             <intent-filter>

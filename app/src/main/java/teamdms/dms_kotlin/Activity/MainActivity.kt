@@ -30,4 +30,10 @@ class MainActivity: BaseActivity() {
             }
         })
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        (view_pager_main.adapter as MainViewPagerAdapter).reload(view_pager_main.currentItem)
+    }
+
 }

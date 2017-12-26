@@ -113,11 +113,13 @@ class ApplyMainFragment : Fragment() {
                         else -> R.drawable.apply_survey_icon
                     })
                     button_apply_main_apply.setOnClickListener {
-                        context.startActivity(Intent(context, when(position){
-                            1 -> ApplyStudyActivity::class.java
-                            2 -> ApplyStayActivity::class.java
-                            else -> SurveyActivity::class.java
-                        }))
+                        if(Util.getToken(context) != "JWT "){
+                            context.startActivity(Intent(context, when(position){
+                                1 -> ApplyStudyActivity::class.java
+                                2 -> ApplyStayActivity::class.java
+                                else -> SurveyActivity::class.java
+                            }))
+                        }else{ Util.showToast(context, "로그인을 해주세요") }
                     }
                 }
             }
