@@ -31,7 +31,6 @@ object Util {
         dialog.show()
     }
 
-
     private fun getPref(context: Context): SharedPreferences{
         val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
         return pref
