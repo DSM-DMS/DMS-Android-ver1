@@ -45,7 +45,7 @@
             android:background="@drawable/signin_edit_back"
             android:maxLines="1"
             android:textSize="18dp"
-            android:inputType=""
+            android:inputType="text"
             />
 
         <TextView
