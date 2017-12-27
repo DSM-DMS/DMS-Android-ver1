@@ -34,7 +34,7 @@ class MealWidget : AppWidgetProvider() {
 
             val widgetText = context.getString(R.string.appwidget_text)
             // Construct the RemoteViews object
-            val views = RemoteViews(context.packageName, R.layout.new_app_widget)
+            val views = RemoteViews(context.packageName, R.layout.widget_meal)
             views.setTextViewText(R.id.appwidget_text, widgetText)
 
             // Instruct the widget manager to update the widget

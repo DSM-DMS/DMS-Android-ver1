@@ -32,9 +32,13 @@ class ChangePWActivity : CheckValidateActivity()  {
             override fun afterTextChanged(s: Editable?) { checkValidate() }
         })
 
-        edit_changePW_new_pw_confirm.addTextChangedListener(object : textWatcher() {
 
-            override fun afterTextChanged(s: Editable?) {checkValidate() }
+        edit_changePW_new_pw_confirm.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                checkValidate()
+            }
         })
 
         button_changePW_apply.setOnClickListener {

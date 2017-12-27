@@ -31,15 +31,9 @@ class SignInActivity: BaseActivity() {
                                         finish()
                                         "로그인 성공"
                                     } 204 -> "로그인 실패"
-                                    else -> "오류 : $code"
-                                })
-                            }
-                        })
+                                    else -> "오류 : $code"})}})
             }
         }
-
         button_signin_go_to_signup.setOnClickListener { startActivity(Intent(this, SignUpActivity::class.java)) }
-
     }
-
 }

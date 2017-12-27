@@ -2,9 +2,14 @@ package team_dms.dms.Base
 
 import android.app.*
 import android.content.*
-import android.support.v4.content.ContextCompat
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
+import teamdms.dms_kotlin.Dialog.ProblemReportDialog
 import teamdms.dms_kotlin.R
+import android.view.Gravity
+
+
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -20,6 +25,11 @@ object Util {
     fun showToast(context: Context, message: String) = Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
     fun showDialog(context: Context, title: String): AlertDialog.Builder = AlertDialog.Builder(context).setTitle(title)
+
+    fun showCustomDialog(dialog: Dialog,type : Int){
+        dialog.window.attributes.windowAnimations=type
+        dialog.show()
+    }
 
 
     private fun getPref(context: Context): SharedPreferences{
@@ -42,5 +52,6 @@ object Util {
     fun getToken(context: Context): String{
         return "JWT " + getPref(context).getString("token", "")
     }
+
 
 }
