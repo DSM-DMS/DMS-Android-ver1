@@ -2,6 +2,7 @@ package teamdms.dms_kotlin.Activity
 
 import android.content.*
 import android.os.*
+import android.util.Log
 import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_signin.*
 import team_dms.dms.Base.*
