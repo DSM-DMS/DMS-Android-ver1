@@ -23,13 +23,9 @@ class ProblemReportDialog(context: Context) : Dialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.dialog_report_problem)
         button_problem_dialog_cancle.setOnClickListener { dismiss() } // 기본 값 세팅
-
         checkValidate()
-
-
         edit_problem_dialog_title.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
