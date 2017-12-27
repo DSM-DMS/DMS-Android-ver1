@@ -4,6 +4,10 @@ import android.app.*
 import android.content.*
 import android.os.*
 import android.text.*
+import android.transition.Transition
+import android.transition.TransitionInflater
+import android.view.Gravity
+import android.view.animation.Animation
 import kotlinx.android.synthetic.main.dialog_report_problem.*
 import team_dms.dms.Base.*
 import team_dms.dms.Base.Util.getToken
@@ -17,9 +21,9 @@ import teamdms.dms_kotlin.*
 
 class ProblemReportDialog(context: Context): Dialog(context) {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.dialog_report_problem)
         button_problem_dialog_cancle.setOnClickListener { dismiss() } // 기본 값 세팅
         checkValidate()
@@ -71,6 +75,12 @@ class ProblemReportDialog(context: Context): Dialog(context) {
             else { Util.showToast(context, "값을 다 입력하세요") }
         }
     }
+
+
+
+
+
+
 }
 
 

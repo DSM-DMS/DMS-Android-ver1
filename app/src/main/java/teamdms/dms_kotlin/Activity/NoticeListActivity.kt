@@ -19,8 +19,6 @@ import teamdms.dms_kotlin.RecyclerAdapter.*
  */
 class NoticeListActivity : BaseActivity() {
     var confirm: Int = 0
-    val iconArr = arrayOf(R.drawable.notice_list_icon1, R.drawable.notice_list_icon2, R.drawable.notice_list_icon3)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +30,7 @@ class NoticeListActivity : BaseActivity() {
     }
 
     private fun loadData() {
-        iv_notice_list_icon.setImageResource(iconArr[confirm])
+        iv_notice_list_icon.setImageResource(Util.noticeIcons[confirm])
         text_notice_list_title.text = Util.noticeTitles[confirm]
         val adapter = recycle_view_notice_list.adapter as NoticesAdapter
         Connector.api.loadNotice(Util.noticeIDs[confirm])

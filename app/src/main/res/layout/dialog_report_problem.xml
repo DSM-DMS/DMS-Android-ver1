@@ -2,12 +2,13 @@
 <LinearLayout
     android:padding="16dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minHeight="400dp"
+    android:minWidth="300dp"
     android:orientation="vertical">
 
     <LinearLayout
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">

@@ -10,7 +10,6 @@ import teamdms.dms_kotlin.Model.*
 
 class NoticeDetailActivity : AppCompatActivity() {
 
-    var iconArr= arrayOf(R.drawable.notice_rule_icon, R.drawable.notice_notification_icon, R.drawable.notice_facility_icon)
     var confirm = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +25,7 @@ class NoticeDetailActivity : AppCompatActivity() {
     }
 
     private fun loadData(noticeID : String) {
-        ib_notice_detail_icon.setImageResource(iconArr[confirm])
+        ib_notice_detail_icon.setImageResource(Util.noticeImages[confirm])
         tv_notice_detail_title.text = Util.noticeTitles[confirm]
 
         Connector.api.loadNotice_detail(Util.noticeIDs[confirm], noticeID)
@@ -39,6 +38,5 @@ class NoticeDetailActivity : AppCompatActivity() {
                         else Util.showToast(context, "오류 : $code")
                     }
                 })
-
     }
 }

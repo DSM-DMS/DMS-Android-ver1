@@ -19,4 +19,11 @@
         <item name="android:colorControlNormal">@color/colorNo3</item>
         <item name="android:colorControlActivated">@color/colorNo2</item>
     </style>
+
+
+    <style name="SlideDialog">
+        <item name="android:windowEnterTransition">@anim/slide_up</item>
+        <item name="android:windowExitTransition">@anim/slide_bottom</item>
+    </style>
+
 </resources>
