@@ -43,7 +43,6 @@
             android:layout_height="wrap_content"
             android:hint="아이디"
             android:layout_marginTop="4dp"
-            android:inputType="textPassword"
             android:maxLines="1"
             android:theme="@style/StandardEditText"
             />

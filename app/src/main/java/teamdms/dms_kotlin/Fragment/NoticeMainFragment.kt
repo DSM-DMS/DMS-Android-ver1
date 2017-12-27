@@ -24,12 +24,10 @@ class NoticeMainFragment: Fragment(){
     var rule : Int = 0
     var notice : Int = 1
     var faq : Int = 2
-    lateinit var dialog : Dialog
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater?.inflate(R.layout.fragment_notice_main, null)
         next(rootView!!)
-        dialog=ProblemReportDialog(context)
         return rootView
     }
 
