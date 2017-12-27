@@ -1,58 +1,48 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
-import android.support.v4.content.*
 import android.text.*
 import kotlinx.android.synthetic.main.activity_singup.*
-import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.Base.CheckValidateActivity
 
-class SignUpActivity : BaseActivity() {
+class SignUpActivity : CheckValidateActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_singup)
 
-        button_signup_singup.isClickable = false
-        button_signup_singup.isEnabled = false
+        setButtonValidate(false, button_signup_singup)
 
         // 글자가 입력될 때마다 유효성 검사를 한다
-        edit_signup_code.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        edit_signup_code.addTextChangedListener(object : textWatcher() {
 
+            override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
             }
         })
 
-        edit_signup_confirm_pw.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        edit_signup_confirm_pw.addTextChangedListener(object : textWatcher() {
 
+            override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
             }
         })
 
-        edit_signup_id.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        edit_signup_id.addTextChangedListener(object : textWatcher () {
 
+            override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
             }
         })
 
-        edit_signup_pw.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        edit_signup_pw.addTextChangedListener(object : textWatcher () {
 
+            override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
             }
@@ -64,12 +54,13 @@ class SignUpActivity : BaseActivity() {
                     .enqueue(object : Res<Void>(this) {
                         override fun callBack(code: Int, body: Void?) {
 
-                            showToast(when(code) {
+                            showToast(when (code) {
 
                                 201 -> {
                                     finish()
                                     "회원가입을 성공하셨습니다."
-                                } 400 -> "회원가입에 실패하셨습니다"
+                                }
+                                400 -> "회원가입에 실패하셨습니다"
                                 else -> "오류 : $code"
                             })
                         }
@@ -77,62 +68,54 @@ class SignUpActivity : BaseActivity() {
         }
     }
 
-    private fun checkValidate ()  {
+    private fun checkValidate() {
 
-        val done = ContextCompat.getColor(this, R.color.done)
-        val warning = ContextCompat.getColor(this, R.color.warning)
-        val signupId = edit_signup_id.text.toString()
-        val signupPw  = edit_signup_pw.text.toString()
-        val signupCode = edit_signup_code.text.toString()
-        val signupConfirmPw = edit_signup_confirm_pw.text.toString()
+        val signupId = edit_signup_id.text.toString().trim()
+        val signupPw = edit_signup_pw.text.toString().trim()
+        val signupCode = edit_signup_code.text.toString().trim()
+        val signupConfirmPw = edit_signup_confirm_pw.text.toString().trim()
 
-        if(signupCode.isEmpty() || signupId.isEmpty() || signupPw.isEmpty() || signupConfirmPw.isEmpty()) {
+        if (signupCode.isEmpty() || signupId.isEmpty() || signupPw.isEmpty() || signupConfirmPw.isEmpty()) {
             text_signup_check_pw.text = "모두 입력하세요"
-            button_signup_singup.isEnabled = false
-            button_signup_singup.isClickable = false
-            text_signup_check_pw.setTextColor(warning)
-            image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_warning)
-        } else if(signupConfirmPw != signupPw) {
+            setButtonValidate(false, button_signup_singup) // false 버튼 무효화
+            changeColor(false, text_signup_check_pw) // false 빨간 색 텍스트
+            changeImage(false, image_signup_check_pw) // false warning이미지
+        } else if (signupConfirmPw != signupPw) {
             text_signup_check_pw.text = "비밀번호가 일치하지 않습니다."
-            button_signup_singup.isClickable = false
-            button_signup_singup.isEnabled = false
-            text_signup_check_pw.setTextColor(warning)
-            image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_warning)
+            setButtonValidate(false, button_signup_singup)
+            changeColor(false, text_signup_check_pw)
+            changeImage(false, image_signup_check_pw)
         } else {
             text_signup_check_pw.text = "회원가입을 하실 수 있습니다"
-            button_signup_singup.isEnabled = true
-            button_signup_singup.isClickable = true
-            text_signup_check_pw.setTextColor(done)
-            image_signup_check_pw.setImageResource(R.drawable.signup_check_validate_done)
+            setButtonValidate(true, button_signup_singup) // true 버튼 활성화
+            changeColor(true, text_signup_check_pw) // true 초록 색 텍스트
+            changeImage(true, image_signup_check_pw) // true 체크 이미지
         }
     }
 
-    fun checkOverlap () {
+    fun checkOverlap() { // 아이디 중복 검사
 
-        val done = ContextCompat.getColor(this, R.color.done)
-        val warning = ContextCompat.getColor(this, R.color.warning)
         val signupId = edit_signup_id.text.toString()
 
-        if(!signupId.isEmpty()) {
+        if (!signupId.isEmpty()) {
 
-            Connector.api.checkOverlap(signupId).enqueue(object : Res<Void> (this) {
+            Connector.api.checkOverlap(signupId).enqueue(object : Res<Void>(this) {
 
                 override fun callBack(code: Int, body: Void?) {
 
-                    when(code) {
+                    when (code) {
 
                         201 -> {
                             text_signup_check_id.text = "사용 가능한 아이디입니다."
-                            text_signup_check_id.setTextColor(done)
-                            image_signup_check_id.setImageResource(R.drawable.signup_check_validate_done)
+                            changeColor(true, text_signup_check_id)
+                            changeImage(true, image_signup_check_id)
                         }
 
                         204 -> {
                             text_signup_check_id.text = "아이디가 중복되었습니다."
-                            button_signup_singup.isClickable = false
-                            button_signup_singup.isEnabled = false
-                            text_signup_check_id.setTextColor(warning)
-                            image_signup_check_id.setImageResource(R.drawable.signup_check_validate_warning)
+                            setButtonValidate(false, button_signup_singup)
+                            changeColor(false, text_signup_check_id)
+                            changeImage(false, image_signup_check_id)
                         }
                     }
                 }

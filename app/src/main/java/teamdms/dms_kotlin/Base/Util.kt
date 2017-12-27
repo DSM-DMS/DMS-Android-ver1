@@ -2,6 +2,7 @@ package team_dms.dms.Base
 
 import android.app.*
 import android.content.*
+import android.support.v4.content.ContextCompat
 import android.widget.*
 import teamdms.dms_kotlin.R
 

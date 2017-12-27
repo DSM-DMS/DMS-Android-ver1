@@ -13,14 +13,7 @@ open class BaseActivity: AppCompatActivity(){
         Util.showToast(this, message)
     }
 
-    private fun getPref(): SharedPreferences{
-        val pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        return pref
-    }
-
     fun saveToken(token: String) = Util.saveToken(this, token)
-
-    fun removeToken() = Util.removeToken(this)
 
     fun getToken(): String = Util.getToken(this)
 

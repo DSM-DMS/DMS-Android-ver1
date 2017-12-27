@@ -44,7 +44,9 @@
             android:paddingBottom="@dimen/margin_all_small"
             android:background="@drawable/signin_edit_back"
             android:maxLines="1"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:inputType=""
+            />
 
         <TextView
             android:layout_marginTop="@dimen/margin_all_medium"
@@ -67,7 +69,8 @@
             android:background="@drawable/signin_edit_back"
             android:maxLines="1"
             android:inputType="textPassword"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
