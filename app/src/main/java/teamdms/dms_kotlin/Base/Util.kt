@@ -2,12 +2,8 @@ package team_dms.dms.Base
 
 import android.app.*
 import android.content.*
-import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.*
-import teamdms.dms_kotlin.Dialog.ProblemReportDialog
-import teamdms.dms_kotlin.R
-import android.view.Gravity
+import teamdms.dms_kotlin.*
 
 
 
@@ -27,8 +23,7 @@ object Util {
     fun showDialog(context: Context, title: String): AlertDialog.Builder = AlertDialog.Builder(context).setTitle(title)
 
     fun showCustomDialog(dialog: Dialog,type : Int){
-
-        dialog.window.attributes.windowAnimations=type
+        dialog.window.attributes.windowAnimations = type
         dialog.show()
     }
 
