@@ -26,7 +26,7 @@
         <item name="android:windowExitAnimation">@anim/slide_bottom</item>
     </style>
     
-    <style name="AppTheme." parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.trans" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>

@@ -142,7 +142,7 @@ class ApplyStudyActivity: BaseActivity() {
 
     private fun setText(textView: TextView, title: String, imageId: Int){
         textView.gravity = Gravity.CENTER
-        textView.textSize = resources.getDimensionPixelSize(R.dimen.size_apply_study_seat_text).toFloat()
+        textView.textSize = if(title.length > 3) 14f else 16f
         textView.text = title
         textView.setTextColor(Color.WHITE)
         textView.setBackgroundResource(imageId)
