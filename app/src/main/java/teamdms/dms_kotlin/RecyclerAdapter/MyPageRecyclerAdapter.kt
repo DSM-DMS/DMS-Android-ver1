@@ -71,7 +71,7 @@ class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<Recy
                 })
             }
             4 -> contentHolder.bind("버그 신고", { _ ->
-                        Util.showCustomDialog(BugReportDialog(context), R.style.SlideDialog)
+                        Util.showCustomDialog(BugReportDialog(context), R.style.DialogSlideDialog)
                     })
             5 -> contentHolder.bind("개발자 소개", { _ -> Util.showDialog(context, "버그 신고")
                     .setMessage("다음 업데이트 때에\n더 멋진 모습으로 뵙겠습니다.")

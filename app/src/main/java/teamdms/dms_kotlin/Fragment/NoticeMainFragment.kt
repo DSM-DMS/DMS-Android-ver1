@@ -1,13 +1,10 @@
 package teamdms.dms_kotlin.Fragment
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.content.*
 import android.os.*
 import android.support.v4.app.*
 import android.view.*
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.dialog_report_problem.*
 import kotlinx.android.synthetic.main.fragment_notice_main.view.*
 import team_dms.dms.Base.Util
 import teamdms.dms_kotlin.*
@@ -50,7 +47,7 @@ class NoticeMainFragment: Fragment(){
                 startActivity(intent)
             }
             button_notice_main_facility!!.setOnClickListener {
-                Util.showCustomDialog(ProblemReportDialog(context),R.style.SlideDialog)
+                Util.showCustomDialog(ProblemReportDialog(context),R.style.DialogSlideDialog)
             }
         }
 
