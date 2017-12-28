@@ -2,8 +2,8 @@
 <LinearLayout
     android:padding="16dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:minHeight="500dp"
     android:minWidth="350dp"
     android:orientation="vertical"
@@ -33,8 +33,9 @@
     <EditText
         android:id="@+id/edit_problem_dialog_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginTop="16dp"
+        android:paddingLeft="4dp"
         android:hint="제목을 입력하세요"
         android:theme="@style/StandardEditText"
         android:maxLines="1"
@@ -44,8 +45,9 @@
     <EditText
         android:id="@+id/edit_problem_dialog_roomnumber"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginTop="8dp"
+        android:paddingLeft="4dp"
         android:hint="방 번호를 입력하세요"
         android:inputType="number"
         android:theme="@style/StandardEditText"
