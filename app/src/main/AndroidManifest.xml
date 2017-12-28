@@ -30,9 +30,9 @@
         <activity android:name=".Activity.ChangePWActivity" />
         <activity android:name=".Activity.SurveyActivity" />
         <activity android:name=".Activity.NoticeListActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme.trans"/>
         <activity android:name=".Activity.NoticeDetailActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme.trans"/>
         <receiver android:name=".Widget.MealWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

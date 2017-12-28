@@ -1,7 +1,9 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
+import android.support.transition.Explode
 import android.support.v7.app.*
+import android.transition.Fade
 import android.transition.Slide
 import android.transition.TransitionInflater
 import android.view.Gravity
@@ -25,7 +27,7 @@ class NoticeDetailActivity : AppCompatActivity() {
         val noticeID = intent.getStringExtra("noticeID")
         confirm = intent.getIntExtra("confirm",0)
         title_view_notice_detail.text=intent.getStringExtra("noticeTitle")
-        setWindowAnimations()
+        //setWindowAnimations()
         loadData(noticeID)
     }
 
@@ -44,7 +46,8 @@ class NoticeDetailActivity : AppCompatActivity() {
     }
 
     private fun setWindowAnimations(){
-        val slideTransition = Slide(Gravity.RIGHT)
+        //이동 애니메이션 구현
+        val slideTransition = Fade(3)
         slideTransition.duration=500L
         this.window.enterTransition=slideTransition
         this.window.exitTransition=slideTransition
