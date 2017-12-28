@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:minHeight="500dp"
     android:minWidth="350dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="32dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +37,9 @@
         android:layout_marginTop="16dp"
         android:hint="제목을 입력하세요"
         android:theme="@style/StandardEditText"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:background="@drawable/dialog_edittext"
+        />
 
     <EditText
         android:id="@+id/edit_problem_dialog_roomnumber"
@@ -45,7 +49,9 @@
         android:hint="방 번호를 입력하세요"
         android:inputType="number"
         android:theme="@style/StandardEditText"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:background="@drawable/dialog_edittext"
+        />
 
     <EditText
         android:minHeight="240dp"

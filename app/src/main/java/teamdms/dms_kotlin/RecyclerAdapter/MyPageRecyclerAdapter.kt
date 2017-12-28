@@ -3,12 +3,13 @@ package teamdms.dms_kotlin.RecyclerAdapter
 import android.content.*
 import android.support.v7.widget.*
 import android.view.*
-import kotlinx.android.synthetic.main.view_mypage_bug_report.view.*
+import android.widget.Toast
 import kotlinx.android.synthetic.main.view_mypage_list_content.view.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Dialog.BugReportDialog
 import teamdms.dms_kotlin.Fragment.*
 
 /**
@@ -61,22 +62,16 @@ class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<Recy
             }
             2 -> {
                 contentHolder.bind("비밀번호 변경", { _ ->
-                    if(haveToken) context.startActivity(Intent(context, ChangePWActivity::class.java))
-                    else Util.showToast(context, "로그인이 필요합니다.")
+
+                    if(haveToken) {
+                        context.startActivity(Intent(context, ChangePWActivity::class.java))
+                    }  else {
+                        Toast.makeText(context, "로그인 해주세요", Toast.LENGTH_SHORT).show()
+                    }
                 })
             }
             4 -> contentHolder.bind("버그 신고", { _ ->
-                    val editBugView = inflater.inflate(R.layout.view_mypage_bug_report, null)
-                    Util.showDialog(context, "버그 신고")
-                            .setPositiveButton("신고", { dialog, _ ->
-                                with(editBugView){
-                                    if(sendBugReport(edit_mypage_bug_report.text.toString()))
-                                        dialog.dismiss()
-                                    else Util.showToast(context, "버그를 입력하세요")
-                                }
-                            })
-                            .setView(editBugView)
-                            .create().show()
+                        Util.showCustomDialog(BugReportDialog(context), R.style.SlideDialog)
                     })
             5 -> contentHolder.bind("개발자 소개", { _ -> Util.showDialog(context, "버그 신고")
                     .setMessage("다음 업데이트 때에\n더 멋진 모습으로 뵙겠습니다.")

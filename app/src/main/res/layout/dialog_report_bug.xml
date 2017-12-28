@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:minHeight="400dp"
+    android:minWidth="300dp"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_margin="32dp"
+    android:elevation="32dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="32dp"
+            android:background="@color/colorNo5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="버그 신고"
+            android:textColor="@color/colorBlack"
+            android:textSize="26dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:minHeight="240dp"
+        android:id="@+id/edit_bug_dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/dialog_edittext"
+        android:gravity="top"
+        android:padding="8dp"
+        android:hint="신고 내용"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp" >
+
+        <Button
+            android:id="@+id/button_bug_dialog_cancle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="취소"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlue"
+            />
+
+        <Button
+            android:id="@+id/button_bug_dialog_report"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="전송"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlue" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

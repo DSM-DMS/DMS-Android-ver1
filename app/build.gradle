@@ -47,5 +47,4 @@ dependencies {
     compile 'com.github.clans:fab:1.6.4'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:cardview-v7:26.1.0'
-
 }

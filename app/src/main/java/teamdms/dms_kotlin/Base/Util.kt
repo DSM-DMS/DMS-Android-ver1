@@ -27,6 +27,7 @@ object Util {
     fun showDialog(context: Context, title: String): AlertDialog.Builder = AlertDialog.Builder(context).setTitle(title)
 
     fun showCustomDialog(dialog: Dialog,type : Int){
+
         dialog.window.attributes.windowAnimations=type
         dialog.show()
     }
