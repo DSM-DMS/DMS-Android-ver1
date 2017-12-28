@@ -7,7 +7,6 @@
     android:minWidth="300dp"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_margin="32dp"
     android:elevation="32dp"
     >
 
