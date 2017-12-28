@@ -20,7 +20,7 @@ import java.util.*
 class MealContentFragment(date: Date): Fragment() {
 
     var rootView: View? = null
-    val dateFormater = SimpleDateFormat("YYYY-MM-dd")
+    val dateFormater = SimpleDateFormat("yyyy-MM-dd",Locale.KOREAN)
     lateinit var date: Date
 
     init { this.date = date }
@@ -43,7 +43,7 @@ class MealContentFragment(date: Date): Fragment() {
         })
 
         with(rootView!!){
-            dateFormater.applyPattern("YYYY")
+            dateFormater.applyPattern("yyyy")
             text_meal_content_year.text = dateFormater.format(this@MealContentFragment.date)
             dateFormater.applyPattern("MM월 dd일")
             text_meal_content_date.text = dateFormater.format(this@MealContentFragment.date)
