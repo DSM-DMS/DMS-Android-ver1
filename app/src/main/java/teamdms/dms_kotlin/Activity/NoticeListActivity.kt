@@ -25,7 +25,7 @@ class NoticeListActivity : BaseActivity() {
         setContentView(R.layout.activity_notice_list)
         confirm = intent.getIntExtra("confirm", 0)
         recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
-        recycle_view_notice_list.adapter = NoticesAdapter(confirm)
+        recycle_view_notice_list.adapter = NoticesAdapter(confirm,this)
         loadData()
     }
 

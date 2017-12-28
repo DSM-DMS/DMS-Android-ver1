@@ -2,6 +2,9 @@ package teamdms.dms_kotlin.Activity
 
 import android.os.*
 import android.support.v7.app.*
+import android.transition.Slide
+import android.transition.TransitionInflater
+import android.view.Gravity
 import kotlinx.android.synthetic.main.activity_notice_detail.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
@@ -21,22 +24,30 @@ class NoticeDetailActivity : AppCompatActivity() {
     private fun init(){
         val noticeID = intent.getStringExtra("noticeID")
         confirm = intent.getIntExtra("confirm",0)
+        title_view_notice_detail.text=intent.getStringExtra("noticeTitle")
+        setWindowAnimations()
         loadData(noticeID)
     }
 
     private fun loadData(noticeID : String) {
         ib_notice_detail_icon.setImageResource(Util.noticeImages[confirm])
-        tv_notice_detail_title.text = Util.noticeTitles[confirm]
 
         Connector.api.loadNotice_detail(Util.noticeIDs[confirm], noticeID)
                 .enqueue(object : Res<NoticeModel>(this){
                     override fun callBack(code: Int, body: NoticeModel?) {
                         if (code == 200){
                             web_view_notice_detail.loadData(body!!.content, "text/html; charset=utf-8", "UTF-8")
-                            tv_notice_detail_title.text = body!!.title
                         }
                         else Util.showToast(context, "오류 : $code")
                     }
                 })
     }
+
+    private fun setWindowAnimations(){
+        val slideTransition = Slide(Gravity.RIGHT)
+        slideTransition.duration=500L
+        this.window.enterTransition=slideTransition
+        this.window.exitTransition=slideTransition
+    }
+
 }

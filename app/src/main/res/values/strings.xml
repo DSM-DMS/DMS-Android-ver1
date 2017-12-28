@@ -6,5 +6,5 @@
     <string name="all_apply_time_fail">신청 시간이 아닙니다</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
-
+    <string name="notice_item_title">notice_item_title</string>
 </resources>

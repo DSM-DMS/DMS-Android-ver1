@@ -39,14 +39,15 @@
                     android:src="@drawable/notice_notification_icon" />
 
                 <TextView
+                    android:id="@+id/title_view_notice_detail"
                     android:layout_gravity="center_vertical"
-                    android:id="@+id/tv_notice_detail_title"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_marginRight="16dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:ellipsize="end"
+                    android:transitionName="@string/notice_item_title"
                     android:layout_toRightOf="@+id/ib_notice_detail_icon"
                     android:textSize="20sp" />
 
