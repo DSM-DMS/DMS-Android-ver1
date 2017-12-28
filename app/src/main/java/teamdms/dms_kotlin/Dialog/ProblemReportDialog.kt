@@ -7,6 +7,7 @@ import android.text.*
 import android.transition.Transition
 import android.transition.TransitionInflater
 import android.view.Gravity
+import android.view.Window
 import android.view.animation.Animation
 import kotlinx.android.synthetic.main.dialog_report_problem.*
 import team_dms.dms.Base.*
@@ -22,6 +23,7 @@ import teamdms.dms_kotlin.*
 class ProblemReportDialog(context: Context) : Dialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_report_problem)
         button_problem_dialog_cancle.setOnClickListener { dismiss() } // 기본 값 세팅
