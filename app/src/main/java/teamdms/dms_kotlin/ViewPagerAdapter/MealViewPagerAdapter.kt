@@ -15,7 +15,7 @@ class MealViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         calendar.time = today
         calendar.add(Calendar.DATE, position)
-        return MealContentFragment(calendar.time)
+        return MealContentFragment.newInstance(calendar.time)
     }
 
     override fun getCount(): Int {

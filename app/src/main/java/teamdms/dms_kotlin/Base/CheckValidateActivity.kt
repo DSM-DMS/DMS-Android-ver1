@@ -23,7 +23,6 @@ open class CheckValidateActivity : BaseActivity() {
     protected fun changeImage (state : Boolean, imageView : ImageView) = imageView.setImageResource(if(state) R.drawable.signup_check_validate_done else R.drawable.signup_check_validate_warning)
 
     protected fun setButtonValidate (state : Boolean, button : Button) {
-
         button.isEnabled = state
         button.isClickable = state
     }
@@ -39,5 +38,7 @@ open class CheckValidateActivity : BaseActivity() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
         }
+
+
     }
 }

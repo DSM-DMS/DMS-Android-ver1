@@ -15,12 +15,12 @@ class MainViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm){
         return when(position){
             0 -> MealFragment()
             1 -> {
-                applyMainFragment = ApplyMainFragment()
+                applyMainFragment = ApplyMainFragment.newInstance()
                 applyMainFragment
             }
             2 -> NoticeMainFragment()
             else -> {
-                myPageFragment = MyPageFragment()
+                myPageFragment = MyPageFragment.newInstance()
                 myPageFragment
             }
         }

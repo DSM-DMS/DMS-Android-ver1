@@ -47,7 +47,7 @@ class NoticeDetailActivity : AppCompatActivity() {
 
     private fun setWindowAnimations(){
         //이동 애니메이션 구현
-        val slideTransition = Fade(3)
+        val slideTransition = Fade(4)
         slideTransition.duration=500L
         this.window.enterTransition=slideTransition
         this.window.exitTransition=slideTransition

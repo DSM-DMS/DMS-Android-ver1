@@ -2,6 +2,7 @@ package teamdms.dms_kotlin.Activity
 
 import android.os.*
 import android.text.*
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_singup.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
@@ -17,7 +18,6 @@ class SignUpActivity : CheckValidateActivity(){
 
         // 글자가 입력될 때마다 유효성 검사를 한다
         edit_signup_code.addTextChangedListener(object : textWatcher() {
-
             override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
@@ -25,7 +25,6 @@ class SignUpActivity : CheckValidateActivity(){
         })
 
         edit_signup_confirm_pw.addTextChangedListener(object : textWatcher() {
-
             override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
@@ -33,7 +32,6 @@ class SignUpActivity : CheckValidateActivity(){
         })
 
         edit_signup_id.addTextChangedListener(object : textWatcher () {
-
             override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
@@ -41,7 +39,6 @@ class SignUpActivity : CheckValidateActivity(){
         })
 
         edit_signup_pw.addTextChangedListener(object : textWatcher () {
-
             override fun afterTextChanged(s: Editable?) {
                 checkValidate()
                 checkOverlap()
@@ -53,9 +50,7 @@ class SignUpActivity : CheckValidateActivity(){
             Connector.api.signUp(edit_signup_code.text.trim().toString(), edit_signup_id.text.trim().toString(), edit_signup_pw.text.trim().toString())
                     .enqueue(object : Res<Void>(this) {
                         override fun callBack(code: Int, body: Void?) {
-
                             showToast(when (code) {
-
                                 201 -> {
                                     finish()
                                     "회원가입을 성공하셨습니다."
@@ -69,7 +64,6 @@ class SignUpActivity : CheckValidateActivity(){
     }
 
     private fun checkValidate() {
-
         val signupId = edit_signup_id.text.toString().trim()
         val signupPw = edit_signup_pw.text.toString().trim()
         val signupCode = edit_signup_code.text.toString().trim()
@@ -94,23 +88,16 @@ class SignUpActivity : CheckValidateActivity(){
     }
 
     fun checkOverlap() { // 아이디 중복 검사
-
-        val signupId = edit_signup_id.text.toString()
-
-        if (!signupId.isEmpty()) {
-
-            Connector.api.checkOverlap(signupId).enqueue(object : Res<Void>(this) {
-
+        val signUpId = edit_signup_id.text.toString()
+        if (!signUpId.isEmpty()) {
+            Connector.api.checkOverlap(signUpId).enqueue(object : Res<Void>(this) {
                 override fun callBack(code: Int, body: Void?) {
-
                     when (code) {
-
                         201 -> {
                             text_signup_check_id.text = "사용 가능한 아이디입니다."
                             changeColor(true, text_signup_check_id)
                             changeImage(true, image_signup_check_id)
                         }
-
                         204 -> {
                             text_signup_check_id.text = "아이디가 중복되었습니다."
                             setButtonValidate(false, button_signup_singup)
@@ -120,6 +107,10 @@ class SignUpActivity : CheckValidateActivity(){
                     }
                 }
             })
+        }else{
+            showToast("아이디를 입력하세요")
         }
     }
+
+
 }

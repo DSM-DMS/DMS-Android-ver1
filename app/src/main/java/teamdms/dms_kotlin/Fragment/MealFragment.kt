@@ -29,4 +29,10 @@ class MealFragment: Fragment() {
         }
     }
 
+    companion object {
+        fun newInstance(): MealFragment {
+            val fragment = MealFragment()
+            return fragment
+        }
+    }
 }

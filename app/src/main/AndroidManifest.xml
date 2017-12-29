@@ -29,8 +29,9 @@
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.ChangePWActivity" />
         <activity android:name=".Activity.SurveyActivity" />
-        <activity android:name=".Activity.NoticeListActivity"/>
-        <activity android:name=".Activity.NoticeDetailActivity"/>
+        <activity android:name=".Activity.NoticeListActivity" />
+        <activity android:name=".Activity.NoticeDetailActivity" />
+
         <receiver android:name=".Widget.MealWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -40,6 +41,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_meal" />
         </receiver>
+
+        <activity android:name=".Activity.IntroDeveloperActivity"></activity>
     </application>
 
 </manifest>

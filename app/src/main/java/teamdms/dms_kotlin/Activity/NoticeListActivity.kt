@@ -15,8 +15,8 @@ import teamdms.dms_kotlin.Model.*
 import teamdms.dms_kotlin.RecyclerAdapter.*
 
 /**
- * Created by root1 on 2017. 12. 5..
- */
+* Created by root1 on 2017. 12. 5..
+*/
 class NoticeListActivity : BaseActivity() {
     var confirm: Int = 0
 
@@ -25,7 +25,7 @@ class NoticeListActivity : BaseActivity() {
         setContentView(R.layout.activity_notice_list)
         confirm = intent.getIntExtra("confirm", 0)
         recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
-        recycle_view_notice_list.adapter = NoticesAdapter(confirm,this)
+        recycle_view_notice_list.adapter = NoticesAdapter(confirm, this)
         loadData()
     }
 
@@ -35,9 +35,11 @@ class NoticeListActivity : BaseActivity() {
         val adapter = recycle_view_notice_list.adapter as NoticesAdapter
         Connector.api.loadNotice(Util.noticeIDs[confirm])
                 .enqueue(object : Res<Array<NoticeModel>>(this) {
-                            override fun callBack(code: Int, body: Array<NoticeModel>?) {
-                                if (code == 200) {
-                                    adapter.setData(body!!)
-                                }}})
+                    override fun callBack(code: Int, body: Array<NoticeModel>?) {
+                        if (code == 200) {
+                            adapter.setData(body!!)
+                        }
+                    }
+                })
     }
 }
