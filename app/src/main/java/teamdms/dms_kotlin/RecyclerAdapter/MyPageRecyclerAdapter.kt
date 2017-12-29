@@ -71,7 +71,7 @@ class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<Recy
                 })
             }
             4 -> contentHolder.bind("버그 신고", { _ ->
-                        Util.showCustomDialog(BugReportDialog(context), R.style.SlideDialog)
+                        Util.showCustomDialog(BugReportDialog(context), R.style.DialogSlideDialog)
                     })
             5 -> contentHolder.bind("개발자 소개", {context.startActivity(Intent(context,IntroDeveloperActivity::class.java))})
         }

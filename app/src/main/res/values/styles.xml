@@ -21,9 +21,8 @@
     </style>
 
 
-    <style name="SlideDialog">
+    <style name="DialogSlideDialog">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_bottom</item>
     </style>
-
 </resources>

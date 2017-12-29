@@ -3,6 +3,7 @@ package teamdms.dms_kotlin.Dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.view.Window
 import kotlinx.android.synthetic.main.dialog_report_bug.*
 import kotlinx.android.synthetic.main.dialog_report_problem.*
 import team_dms.dms.Base.Util
@@ -21,6 +22,7 @@ import javax.security.auth.callback.Callback
 class BugReportDialog (context : Context): Dialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_report_bug)
 

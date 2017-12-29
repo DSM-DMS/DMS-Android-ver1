@@ -2,12 +2,15 @@ package teamdms.dms_kotlin.RecyclerAdapter
 
 import android.app.Activity
 import android.content.*
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.*
 import android.view.*
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import kotlinx.android.synthetic.main.view_notice_item.view.*
 import teamdms.dms_kotlin.Activity.NoticeDetailActivity
@@ -22,6 +25,7 @@ import teamdms.dms_kotlin.Model.NoticeModel
 
 class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<NoticeViewHolder>() {
 
+    private var lastPosition = -1
     lateinit var inflater: LayoutInflater
     lateinit var context: Context
     lateinit var activity : Activity
@@ -57,6 +61,8 @@ class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<No
                 context.startActivity(intent)
             }
         })
+
+        setAnimation(holder.rootView, position)
     }
 
     override fun getItemCount(): Int = noticeArr.size
@@ -64,6 +70,12 @@ class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<No
     fun setData(data: Array<NoticeModel>){
         noticeArr = data.reversedArray()
         notifyDataSetChanged()
+    }
+
+    private fun setAnimation (view : View, position : Int) {
+
+        val animation : Animation = if(position % 2 == 0) AnimationUtils.loadAnimation(context, R.anim.slide_left) else AnimationUtils.loadAnimation(context, R.anim.slide_right)
+        view.startAnimation(animation)
     }
 
     private fun startActivity(viewHolder: NoticeViewHolder, intent: Intent){
