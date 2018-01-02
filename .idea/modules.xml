@@ -5,7 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" filepath="$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" />
       <module fileurl="file://D:\Project\Team_Project\Project-DMS-Android-Refactor\Project-DMS-Android-Refactor.iml" filepath="D:\Project\Team_Project\Project-DMS-Android-Refactor\Project-DMS-Android-Refactor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
       <module fileurl="file://D:\Project\Team_Project\Project-DMS-Android-Refactor\app\app.iml" filepath="D:\Project\Team_Project\Project-DMS-Android-Refactor\app\app.iml" />
+=======
+      <module fileurl="file://C:\GitHub\DMS\Project-DMS-Android-Refactor\app\app.iml" filepath="C:\GitHub\DMS\Project-DMS-Android-Refactor\app\app.iml" />
+>>>>>>> f54f8959d2d91e6c76801b2328c1c7e0053f7c5d
     </modules>
   </component>
 </project>
