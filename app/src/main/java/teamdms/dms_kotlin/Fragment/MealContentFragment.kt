@@ -17,13 +17,16 @@ import java.util.*
  */
 
 @SuppressLint("ValidFragment")
-class MealContentFragment(date: Date): Fragment() {
+class MealContentFragment(): Fragment() {
 
     var rootView: View? = null
     val dateFormater = SimpleDateFormat("yyyy-MM-dd",Locale.KOREAN)
     lateinit var date: Date
 
-    init { this.date = date }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        date=Date(arguments.getLong(ARGS_KEY_DATE))
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_meal_content, container, false)
@@ -62,4 +65,15 @@ class MealContentFragment(date: Date): Fragment() {
     }
 
 
+    companion object {
+        private val ARGS_KEY_DATE= "date"
+
+        fun newInstance(date : Date): MealContentFragment {
+            val fragment = MealContentFragment()
+            val args = Bundle()
+            args.putLong(ARGS_KEY_DATE, date.time)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 }

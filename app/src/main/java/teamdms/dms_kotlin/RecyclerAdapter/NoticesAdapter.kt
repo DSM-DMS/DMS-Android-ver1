@@ -53,7 +53,7 @@ class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<No
                 intent.putExtra("confirm", confirm)
                 intent.putExtra("noticeID",data.id)
                 intent.putExtra("noticeTitle",data.title)
-                //startActivity(holder,intent) 액티비티 애니메이션 적용할때
+                //startActivity(holder,intent) //액티비티 애니메이션 적용할때
                 activity.startActivity(intent)
             }else{
                 intent.putExtra("confirm", confirm)

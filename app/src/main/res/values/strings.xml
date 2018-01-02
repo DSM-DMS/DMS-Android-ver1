@@ -7,4 +7,21 @@
     <string name="appwidget_text">치즈바게트구이\n실파계란국\n오징어볶음채소비빔밥\n밥\n석박지\n사과\n복숭아아이스티</string>
     <string name="add_widget">Add widget</string>
     <string name="notice_item_title">notice_item_title</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="mobile_intro_title">Mobile Developer</string>
+    <string name="web_intro_title">Web Developer</string>
+    <string name="server_intro_title">Server Developer</string>
+    <string name="window_intro">Window Program Developer</string>
+    <string name="designer_intro">Designer</string>
+
+    <string name="mobile_intro_content">이병찬, 윤정현, 이성현</string>
+    <string name="web_intro_content">김건, 서윤호, 윤호상, 오인서, 김형규</string>
+    <string name="server_intro_content">조민규, 인상민</string>
+    <string name="window_content">이동현, 이종현, 류근찬</string>
+    <string name="designer_content">김동규</string>
+
+    <string name="survey_intro_title">질문 미리보기</string>
+    <string name="survey_intro_content">대덕 소프트웨어 마이스터고 고등학교 학생 여러분 안녕하십니까? 11월이 지나가고 한해를 마무리하는 12월이 다가오고 있습니다. 지난 11월 급식의 피드백을 위해 급식 선호도를 조사하고 있습니다. 학생 여러분들께서는 급식 질의 향상을 위해 적극적인 참여 부탁드립니다.</string>
+
 </resources>
