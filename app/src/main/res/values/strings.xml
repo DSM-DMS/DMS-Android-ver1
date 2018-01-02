@@ -4,7 +4,7 @@
     <string name="apply_study_bottom_sheet_explain">방을 선택하세요</string>
     <string name="all_apply_success">신청 성공</string>
     <string name="all_apply_time_fail">신청 시간이 아닙니다</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="appwidget_text">치즈바게트구이\n실파계란국\n오징어볶음채소비빔밥\n밥\n석박지\n사과\n복숭아아이스티</string>
     <string name="add_widget">Add widget</string>
     <string name="notice_item_title">notice_item_title</string>
 </resources>
