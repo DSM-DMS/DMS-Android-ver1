@@ -22,10 +22,6 @@ object ViewHolderFactory{
     }
 
     fun getViewHolder(confirm : Int,view : View)  : RecyclerView.ViewHolder {
-        return if(confirm==4){
-            SurveyPreViewHolder(view)
-        }else{
-            NoticeViewHolder(view)
-        }
+        return NoticeViewHolder(view)
     }
 }
