@@ -38,7 +38,9 @@ class SurveyListActivity : BaseActivity() {
 
                 when(code) {
 
-                    200 -> adapter.setSurveyData(body!!)
+                    200 -> {
+                        adapter.setSurveyData(body!!)
+                    }
                     403 -> Util.showToast(context,"설문조사 불러오기에 실패했습니다.")
                 }
             }
