@@ -60,7 +60,7 @@
 
                 <TextView
                     android:text="@string/survey_intro_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="12dp"
                     android:id="@+id/text_view_survey_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

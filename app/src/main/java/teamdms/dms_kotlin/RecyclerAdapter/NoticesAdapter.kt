@@ -2,7 +2,6 @@ package teamdms.dms_kotlin.RecyclerAdapter
 
 import android.app.Activity
 import android.content.*
-import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
@@ -23,7 +22,7 @@ import teamdms.dms_kotlin.Model.NoticeModel
  */
 
 
-class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<NoticeViewHolder>() {
+class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var lastPosition = -1
     lateinit var inflater: LayoutInflater
@@ -31,41 +30,46 @@ class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<No
     lateinit var activity : Activity
     var noticeArr = arrayOf<NoticeModel>()
     var confirm : Int = 0
+    var rootView : View? = null
 
     init {
         this.confirm = confirm
-        this.activity=activity
+        this.activity = activity
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         inflater = LayoutInflater.from(parent.context)
         context = parent.context
-        val view = inflater.inflate(R.layout.view_notice_item, null)
-        return NoticeViewHolder(view)
+
+        val view = inflater.inflate(R.layout.view_survey_preview_item, null)
+        return ViewHolderFactory.getViewHolder(confirm, view)
+
     }
 
-    override fun onBindViewHolder(holder: NoticeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val intent = Intent(context, NoticeDetailActivity::class.java)
         val data = noticeArr[position]
 
-        holder.bind(data.title, data.write_date, {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+ /*       holder.bind(data.title, data.write_date, {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 intent.putExtra("confirm", confirm)
-                intent.putExtra("noticeID",data.id)
-                intent.putExtra("noticeTitle",data.title)
+                intent.putExtra("noticeID", data.id)
+                intent.putExtra("noticeTitle", data.title)
                 //startActivity(holder,intent) //액티비티 애니메이션 적용할때
                 activity.startActivity(intent)
-            }else{
+            } else {
                 intent.putExtra("confirm", confirm)
-                intent.putExtra("noticeID",data.id)
+                intent.putExtra("noticeID", data.id)
                 context.startActivity(intent)
             }
         })
-
-        setAnimation(holder.rootView, position)
+*/
+        //setAnimation(holder.rootView, position)
     }
 
     override fun getItemCount(): Int = noticeArr.size
+
+    override fun getItemViewType(position: Int): Int = position
 
     fun setData(data: Array<NoticeModel>){
         noticeArr = data.reversedArray()
@@ -73,7 +77,6 @@ class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<No
     }
 
     private fun setAnimation (view : View, position : Int) {
-
         val animation : Animation = if(position % 2 == 0) AnimationUtils.loadAnimation(context, R.anim.slide_left) else AnimationUtils.loadAnimation(context, R.anim.slide_right)
         view.startAnimation(animation)
     }
@@ -82,23 +85,31 @@ class NoticesAdapter(confirm : Int,activity : Activity): RecyclerView.Adapter<No
         //activity animations
         var pairs= arrayOf(Pair<View,String>(viewHolder.titleTextView,ViewCompat.getTransitionName(viewHolder.titleTextView))) //다음액티비티 이동시킬 객체 정의
         var options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, *pairs)
-        activity.startActivity(intent,options.toBundle())
+        activity.startActivity(intent, options.toBundle())
     }
 }
 
 class NoticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    lateinit var rootView : View
 
-    init { rootView = itemView!! }
+    lateinit var rootView: View
 
-    var titleTextView : TextView = rootView.findViewById(R.id.text_notice_item_title)
+    init {
+        rootView = itemView
+    }
 
-    fun bind(title: String, author: String, onClick: (Any) -> Unit){
-        with(rootView){
-            titleTextView.text=title
+    var titleTextView: TextView = rootView.findViewById(R.id.text_notice_item_title)
+
+    fun bind(title: String, author: String, onClick: (Any) -> Unit) {
+        with(rootView) {
+            titleTextView.text = title
             text_notice_item_date.text = author
             card_notice_item.setOnClickListener(onClick)
         }
     }
+}
+class SurveyPreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
+    fun bind(){
+
+    }
 }
