@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.SurveyListActivity"/>
         <activity android:name=".Activity.SignInActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity

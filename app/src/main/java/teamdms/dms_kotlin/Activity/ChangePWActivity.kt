@@ -86,7 +86,6 @@ class ChangePWActivity : CheckValidateActivity()  {
             text_changePW_check_validate.text = "비밀번호를 교체할 수 있습니다."
 
             if (existPw == changePw || existPw == changeConfirmPw) {
-
                 setButtonValidate(false, button_changePW_apply)
                 changeColor(false, text_changePW_check_validate)
                 changeImage(false, image_changePW_check_validate)
