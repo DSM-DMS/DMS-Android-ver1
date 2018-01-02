@@ -40,7 +40,7 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
         inflater = LayoutInflater.from(parent.context)
         context = parent.context
 
-        val view = inflater.inflate(R.layout.view_survey_preview_item, null)
+        val view = inflater.inflate(R.layout.view_notice_item, null)
         return NoticeViewHolder(view)
 
     }
