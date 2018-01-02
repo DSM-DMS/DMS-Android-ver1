@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" filepath="$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\GitHub\DMS\Project-DMS-Android-Refactor\app\app.iml" filepath="C:\GitHub\DMS\Project-DMS-Android-Refactor\app\app.iml" />
     </modules>
   </component>
 </project>
