@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_notice_list.view.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
 import team_dms.dms.Base.Util
@@ -38,6 +40,12 @@ class SurveyRecyclerAdapter (context : Context) : RecyclerView.Adapter<SurveyRec
         val date = data[position].startDate + " ~ " + data[position].endDate
         val onClick = View.OnClickListener{Util.showToast(context,"operation the onClickListener")}
         holder!!.bindData(title, date, onClick)
+        setAnimation(holder.view, position)
+    }
+
+    private fun setAnimation (view: View, position: Int) {
+        val animation : Animation = if(position%2==0) AnimationUtils.loadAnimation(context, R.anim.slide_right) else AnimationUtils.loadAnimation(context, R.anim.slide_left)
+        view.startAnimation(animation)
     }
 
     fun setSurveyData (data : Array<SurveyModel>) {
