@@ -12,6 +12,10 @@ import teamdms.dms_kotlin.Model.*
  */
 interface Api {
 
+    //방과후 신청
+    @GET("survey")
+    fun loadSurvey(@Header("Authorization") token : String) : Call<Array<SurveyModel>>
+
     //급식 데이터 파싱
     @GET("meal/{date}")
     fun loadMeal(@Path("date") data: String): Call<MealModel>
@@ -58,6 +62,7 @@ interface Api {
     @FormUrlEncoded
     fun sendBugReport(@Header("Authorization") token: String, @Field("title") title: String, @Field("content") content: String): Call<Void>
 
+    // 비밀번호 변경
     @POST("change/pw")
     @FormUrlEncoded
     fun changePW(@Header("Authorization") token: String, @Field("current_pw") exist_pw: String, @Field("new_pw") new_pw: String): Call<Void>

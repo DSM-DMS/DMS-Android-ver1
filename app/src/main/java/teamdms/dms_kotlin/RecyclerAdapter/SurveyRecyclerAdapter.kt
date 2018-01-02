@@ -1,0 +1,47 @@
+package teamdms.dms_kotlin.RecyclerAdapter
+
+import android.content.Context
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_notice_list.view.*
+import kotlinx.android.synthetic.main.view_notice_item.view.*
+import teamdms.dms_kotlin.Model.SurveyModel
+import teamdms.dms_kotlin.R
+
+/**
+ * Created by dsm2017 on 2018-01-02.
+ */
+class SurveyRecyclerAdapter (context : Context) : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
+
+    lateinit var data : Array<SurveyModel>
+    private val layoutInflater = LayoutInflater.from(context)
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SurveyRecyclerViewHolder {
+        val view = layoutInflater.inflate(R.layout.view_notice_item, parent)
+        val viewHolder = SurveyRecyclerViewHolder(view)
+        return viewHolder
+    }
+
+    override fun getItemCount() = data.size
+
+    override fun onBindViewHolder(holder: SurveyRecyclerViewHolder?, position: Int) {
+        holder!!.bindData(data[position].title, data[position].startDate + " ~ " + data[position].endDate)
+    }
+
+    fun setSurveyData (data : Array<SurveyModel>) {
+        this.data = data
+    }
+}
+
+class SurveyRecyclerViewHolder (var view : View): RecyclerView.ViewHolder(view) {
+
+     fun bindData(title: String, date : String) {
+
+         with(view) {
+             text_notice_item_title.text = title
+             text_notice_item_date.text = date
+         }
+     }
+}

@@ -1,6 +1,7 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
+import kotlinx.android.synthetic.main.activity_notice_list.*
 import team_dms.dms.Base.*
 import teamdms.dms_kotlin.*
 
