@@ -8,5 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class SurveyModel(@SerializedName("end_date") var endDate : String = "",
                        @SerializedName("start_date") var startDate : String = "",
                        @SerializedName("id") var id : String = "",
-                       @SerializedName("title") var title : String = "")
+                       @SerializedName("title") var title : String = "",
+                       @SerializedName("choice_pager") var choices : ArrayList<String>)
+
 
