@@ -68,6 +68,7 @@ class SurveyActivity : BaseActivity() {
             list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
         }*/
 
+        //test 코드
         list.add(ObjectiveFragment.newInstance())
         list.add(NotObjectiveFragment.newInstance())
         list.add(ObjectiveFragment.newInstance())
