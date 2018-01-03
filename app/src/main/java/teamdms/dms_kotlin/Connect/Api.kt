@@ -86,4 +86,8 @@ interface Api {
     @GET("{confirm}/{id}")
     fun loadNotice_detail(@Path("confirm") confirm: String, @Path("id") id: String): Call<NoticeModel>
 
+    //설문조사 리스트
+    @GET("survey")
+    fun loadSurvey() : Call<Array<SurveyModel>>
+
 }

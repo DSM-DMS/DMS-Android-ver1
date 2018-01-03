@@ -13,40 +13,61 @@ import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.ViewPagerAdapter.SurveyViewPagerAdapter
 import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
+import team_dms.dms.Base.BaseActivity
+import team_dms.dms.Base.Util
+import team_dms.dms.Connect.Connector
+import team_dms.dms.Connect.Res
+import teamdms.dms_kotlin.Model.NoticeModel
+import teamdms.dms_kotlin.Model.SurveyModel
 
-
-
-
-
-class SurveyActivity : AppCompatActivity() {
+class SurveyActivity : BaseActivity() {
 
     var surveyAdapter : SurveyViewPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
-        var view = findViewById<LinearLayout>(R.id.view_survey_count)
 
-        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments())
+        var view = findViewById<LinearLayout>(R.id.view_survey_count)
+        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments(loadSurvey("test")))
         view_pager_survey.adapter=surveyAdapter
         view_pager_survey.setPageingScroll(false)
         setView(view,surveyAdapter!!.count,0)
 
-
         view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
             override fun onPageSelected(position: Int) {
                 setView(view,surveyAdapter!!.count,position)
             }
-            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrollStateChanged(state: Int) {
+            }
         })
     }
 
-    private fun getFragments() : ArrayList<Fragment>{
+    private fun loadSurvey(id : String) : Array<SurveyModel>{
+        var items = arrayOf<SurveyModel>()
+        Connector.api.loadSurvey().enqueue(object : Res<Array<SurveyModel>>(this){
+            override fun callBack(code: Int, body: Array<SurveyModel>?) {
+                when(code){
+                    200->items=body!!
+                    403->showToast("권한이 없습니다")
+                }
+            }
+
+        })
+        return items
+    }
+
+    private fun getFragments(items : Array<SurveyModel>) : ArrayList<Fragment>{
         var list : ArrayList<Fragment> = arrayListOf()
-        list.add(ObjectiveFragment.newInstance())
-        list.add(NotObjectiveFragment.newInstance())
+
+      /*  for(item in items){
+            var b = Bundle()
+            b.putSerializable("data",item)
+            list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
+        }*/
+
         list.add(ObjectiveFragment.newInstance())
         list.add(NotObjectiveFragment.newInstance())
         list.add(ObjectiveFragment.newInstance())
@@ -55,7 +76,11 @@ class SurveyActivity : AppCompatActivity() {
         list.add(NotObjectiveFragment.newInstance())
 
         return list
+    }
 
+    private fun isObjective(surveyModel: SurveyModel): Fragment {
+        return if (surveyModel.isObjective == true) ObjectiveFragment.newInstance()
+        else NotObjectiveFragment.newInstance()
     }
 
     fun nextPage(button : Button){
