@@ -24,7 +24,7 @@ class SurveyListActivity : BaseActivity() {
         setContentView(R.layout.activity_notice_list)
 
         text_notice_list_title.text = Util.noticeTitles[3]
-        iv_notice_list_icon.setImageResource(Util.noticeImages[1])
+        iv_notice_list_icon.setImageResource(R.drawable.apply_survey_icon)
         loadData(this)
     }
 
