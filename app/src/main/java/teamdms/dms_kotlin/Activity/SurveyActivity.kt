@@ -1,17 +1,15 @@
 package teamdms.dms_kotlin.Activity
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_survey.*
+import teamdms.dms_kotlin.Fragment.NotObjectiveFragment
 import teamdms.dms_kotlin.Fragment.ObjectiveFragment
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.ViewPagerAdapter.SurveyViewPagerAdapter
-import android.support.v4.view.ViewPager
-import android.util.Log
-import teamdms.dms_kotlin.Fragment.NotObjectiveFragment
-
 
 class SurveyActivity : AppCompatActivity() {
 
@@ -47,6 +45,7 @@ class SurveyActivity : AppCompatActivity() {
         if(view_pager_survey.currentItem+1==maxCount) {
             button.text="DONE"
             button.setOnClickListener {
+                startActivity(Intent(this,SurveyListActivity::class.java))
                 finish()
             }
         }else{

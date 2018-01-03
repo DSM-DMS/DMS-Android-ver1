@@ -1,6 +1,7 @@
 package team_dms.dms.Model
 
 import com.google.gson.annotations.*
+import team_dms.dms.Base.Util
 
 /**
  * Created by root1 on 2017. 11. 23..
@@ -36,12 +37,11 @@ class MypagelModel {
     var stayState: Int = 4
 
     fun getStudyState(): String{
-        val studyRoomStrArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린 교실")
         return "11 : " + when(class11Num){
-            is Int -> "${studyRoomStrArr[class11Num!! - 1]}"
+            is Int -> "${Util.classNameArr[class11Num!! - 1]}"
             else -> "신청없음"
         } + "\n12 : " + when(class12Num){
-            is Int -> "${studyRoomStrArr[class12Num!! - 1]}"
+            is Int -> "${Util.classNameArr[class12Num!! - 1]}"
             else -> "신청없음"
         }
     }

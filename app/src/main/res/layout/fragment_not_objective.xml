@@ -14,7 +14,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:text="급식에 대해 학교에 바라는 점이 있다면?"
+        android:text="현재 급식의 질이 어느정도라고 생각하시나요?"
         android:layout_marginTop="12dp"
         android:maxWidth="140dp"
         android:textSize="18sp"
