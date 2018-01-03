@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/survey_back"
+    tools:context="teamdms.dms_kotlin.Fragment.ObjectiveFragment">
+
+    <ImageView
+        android:id="@+id/iv_survey_icon"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:src="@drawable/survey_icon"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="급식에 대해 학교에 바라는 점이 있다면?"
+        android:layout_marginTop="12dp"
+        android:maxWidth="140dp"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/iv_survey_icon"
+        android:textColor="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:layout_marginTop="@dimen/margin_all_small"
+        android:id="@+id/edit_survey_id"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/margin_all_medium"
+        android:paddingRight="@dimen/margin_all_medium"
+        android:paddingTop="@dimen/margin_all_small"
+        android:paddingBottom="@dimen/margin_all_small"
+        android:background="@drawable/signin_edit_back"
+        android:maxLines="1"
+        android:textSize="18dp"
+        android:layout_marginBottom="102dp"
+        android:layout_above="@+id/button_start_survey"
+        android:inputType="text">
+    </EditText>
+
+    <Button
+        android:id="@+id/button_start_survey"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="32dp"
+        android:text="DONE"
+        android:textColor="@color/colorWhite"
+        android:elevation="4dp"
+        android:background="@drawable/survey_start_button_shape"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

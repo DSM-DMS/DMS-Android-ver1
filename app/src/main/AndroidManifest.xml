@@ -28,14 +28,14 @@
         <activity android:name=".Activity.ApplyStayActivity" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.ChangePWActivity" />
-        <activity android:name=".Activity.SurveyActivity" />
+        <activity android:name=".Activity.SurveyPreviewActivity" />
         <activity android:name=".Activity.NoticeListActivity" />
         <activity android:name=".Activity.NoticeDetailActivity" />
 
         <receiver android:name=".Widget.MealWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.appwidget.action.APPWIDGET_DISABLED"/>
+                <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
             </intent-filter>
 
             <meta-data
@@ -43,7 +43,8 @@
                 android:resource="@xml/widget_meal" />
         </receiver>
 
-        <activity android:name=".Activity.IntroDeveloperActivity"></activity>
+        <activity android:name=".Activity.IntroDeveloperActivity" />
+        <activity android:name=".Activity.SurveyActivity"></activity>
     </application>
 
 </manifest>

@@ -1,124 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/survey_back"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="teamdms.dms_kotlin.Activity.SurveyActivity">
 
 
-    <Button
-        android:layout_margin="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:paddingLeft="44dp"
-        android:paddingRight="44dp"
-        android:layout_height="38dp"
-        android:background="@drawable/survey_button_shape"
-        android:elevation="4dp"
-        android:text="11월 급식 선호도 조사"
-        android:textColor="@color/colorWhite" />
-
-    <LinearLayout
+    <teamdms.dms_kotlin.View.UnScrollViewPager
+        android:id="@+id/view_pager_survey"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-
-            <RelativeLayout
-                android:elevation="4dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="@color/colorWhite"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/text_survey_date"
-                    android:text="작성 날짜"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginLeft="16dp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-
-                <TextView
-                    android:text="2017 - 11 -26 ~ 2017 - 12 -26"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginLeft="12dp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_toRightOf="@+id/text_survey_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="@string/survey_intro_content"
-                    android:layout_marginTop="12dp"
-                    android:id="@+id/text_view_survey_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="24dp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_below="@+id/text_survey_date"
-                    android:layout_alignLeft="@+id/text_survey_date"/>
-
-
-
-            </RelativeLayout>
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-
-            <android.support.v7.widget.RecyclerView
-                android:alpha="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="32dp"
-                android:layout_above="@+id/button_start_survey"
-                android:layout_marginLeft="64dp"
-                android:layout_marginRight="64dp">
-
-            </android.support.v7.widget.RecyclerView>
-
-            <Button
-                android:id="@+id/button_start_survey"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:layout_marginBottom="32dp"
-                android:text="START"
-                android:textColor="@color/colorWhite"
-                android:elevation="4dp"
-                android:background="@drawable/survey_start_button_shape"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"/>
-
-        </RelativeLayout>
-
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:paddingLeft="72dp"
-        android:paddingRight="72dp"
-        android:layout_height="38dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/survey_button_shape"
-        android:elevation="4dp"
-        android:text="@string/survey_intro_title"
-        android:textColor="@color/colorWhite" />
-
+        android:layout_height="match_parent">
+    </teamdms.dms_kotlin.View.UnScrollViewPager>
 </RelativeLayout>
