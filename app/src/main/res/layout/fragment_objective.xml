@@ -16,7 +16,7 @@
     <TextView
         android:text="급식에 대해 학교에 바라는 점이 있다면?"
         android:layout_marginTop="12dp"
-        android:maxWidth="140dp"
+        android:maxWidth="240dp"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/iv_survey_icon"

@@ -17,10 +17,10 @@ import java.util.*
  */
 
 @SuppressLint("ValidFragment")
-class MealContentFragment(): Fragment() {
+class MealContentFragment: Fragment() {
 
     var rootView: View? = null
-    val dateFormater = SimpleDateFormat("yyyy-MM-dd",Locale.KOREAN)
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd",Locale.KOREAN)
     lateinit var date: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class MealContentFragment(): Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater?.inflate(R.layout.fragment_meal_content, container, false)
-        loadData(dateFormater.format(date))
+        loadData(dateFormat.format(date))
         return rootView
     }
 
@@ -46,12 +46,12 @@ class MealContentFragment(): Fragment() {
         })
 
         with(rootView!!){
-            dateFormater.applyPattern("yyyy")
-            text_meal_content_year.text = dateFormater.format(this@MealContentFragment.date)
-            dateFormater.applyPattern("MM월 dd일")
-            text_meal_content_date.text = dateFormater.format(this@MealContentFragment.date)
-            dateFormater.applyPattern("EEEE")
-            text_meal_content_week.text = dateFormater.format(this@MealContentFragment.date)
+            dateFormat.applyPattern("yyyy")
+            text_meal_content_year.text = dateFormat.format(this@MealContentFragment.date)
+            dateFormat.applyPattern("MM월 dd일")
+            text_meal_content_date.text = dateFormat.format(this@MealContentFragment.date)
+            dateFormat.applyPattern("EEEE")
+            text_meal_content_week.text = dateFormat.format(this@MealContentFragment.date)
         }
 
     }

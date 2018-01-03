@@ -16,7 +16,7 @@
     <TextView
         android:text="현재 급식의 질이 어느정도라고 생각하시나요?"
         android:layout_marginTop="12dp"
-        android:maxWidth="140dp"
+        android:maxWidth="240dp"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/iv_survey_icon"
