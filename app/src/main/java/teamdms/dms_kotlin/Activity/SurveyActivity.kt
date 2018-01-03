@@ -30,19 +30,16 @@ class SurveyActivity : AppCompatActivity() {
         surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments())
         view_pager_survey.adapter=surveyAdapter
         view_pager_survey.setPageingScroll(false)
-        setViewCount(view,surveyAdapter!!.count,0)
+        setView(view,surveyAdapter!!.count,0)
 
 
         view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            }
-
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
-                setViewCount(view,surveyAdapter!!.count,position)
+                setView(view,surveyAdapter!!.count,position)
             }
-            override fun onPageScrollStateChanged(state: Int) {
-            }
+            override fun onPageScrollStateChanged(state: Int) {}
         })
     }
 
@@ -77,7 +74,7 @@ class SurveyActivity : AppCompatActivity() {
         }
     }
 
-    private fun setViewCount(view: LinearLayout, count: Int, selectNum: Int) {
+    private fun setView(view: LinearLayout, count: Int, selectNum: Int) {
         view.removeAllViews()
         for (i in 0 until count) {
             val countView = View(applicationContext)
