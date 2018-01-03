@@ -7,11 +7,11 @@
 
     <ImageView
         android:id="@+id/iv_survey_icon"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:src="@drawable/survey_icon"
-        android:layout_height="wrap_content" />
+        android:layout_height="125dp" />
 
     <TextView
         android:text="급식에 대해 학교에 바라는 점이 있다면?"

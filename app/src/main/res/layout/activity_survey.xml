@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="teamdms.dms_kotlin.Activity.SurveyActivity">
 
-
-    <teamdms.dms_kotlin.View.UnScrollViewPager
-        android:id="@+id/view_pager_survey"
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </teamdms.dms_kotlin.View.UnScrollViewPager>
-</RelativeLayout>
+        <teamdms.dms_kotlin.View.UnScrollViewPager
+            android:id="@+id/view_pager_survey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </teamdms.dms_kotlin.View.UnScrollViewPager>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:id="@+id/view_survey_count"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</FrameLayout>
