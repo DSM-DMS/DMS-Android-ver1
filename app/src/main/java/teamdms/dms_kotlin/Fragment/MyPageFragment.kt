@@ -58,8 +58,7 @@ class MyPageFragment: Fragment() {
 
     companion object {
         fun newInstance(): MyPageFragment {
-            val fragment = MyPageFragment()
-            return fragment
+            return MyPageFragment()
         }
     }
 }

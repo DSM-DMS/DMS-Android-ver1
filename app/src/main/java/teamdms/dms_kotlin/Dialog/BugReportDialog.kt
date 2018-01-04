@@ -39,7 +39,6 @@ class BugReportDialog (context : Context): Dialog(context) {
                         enqueue(object : Res<Void> (context) {
                             override fun callBack(code: Int, body: Void?) {
                                 when(code) {
-
                                     201 -> {
                                         showToast(context, "신고 완료했습니다,")
                                     }
