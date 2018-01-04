@@ -67,8 +67,6 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
 
     override fun getItemCount(): Int = noticeArr.size
 
-    override fun getItemViewType(position: Int): Int = position
-
     fun setData(data: Array<NoticeModel>) {
         noticeArr = data.reversedArray()
         notifyDataSetChanged()

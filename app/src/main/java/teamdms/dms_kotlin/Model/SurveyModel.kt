@@ -13,6 +13,7 @@ class SurveyModel : Serializable{
     @SerializedName("id") var id : String = ""
     @SerializedName("title") var title : String = ""
     @SerializedName("choice_pager") var choices : ArrayList<String>? =null
+    @SerializedName("description") var desc : String? =null
 
 }
 
