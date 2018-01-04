@@ -32,15 +32,15 @@ class MyPageFragment: Fragment() {
     }
 
     fun load(){
-        Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypagelModel>(activity){
-            override fun callBack(code: Int, body: MypagelModel?) {
+        Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypageModel>(activity){
+            override fun callBack(code: Int, body: MypageModel?) {
                 setStateData(body)
                 with(rootView){ recycler_mypage.adapter.notifyDataSetChanged() }
             }
         })
     }
 
-    fun setStateData(data: MypagelModel?){
+    fun setStateData(data: MypageModel?){
         with(rootView){
             if(data != null){
                 text_mypage_study_state.text = data!!.getStudyState()

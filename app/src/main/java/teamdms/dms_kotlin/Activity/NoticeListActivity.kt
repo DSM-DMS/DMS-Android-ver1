@@ -35,7 +35,7 @@ class NoticeListActivity : BaseActivity() {
         iv_notice_list_icon.setImageResource(Util.noticeIcons[confirm])
         text_notice_list_title.text = Util.noticeTitles[confirm]
         val adapter = recycle_view_notice_list.adapter as NoticesAdapter
-        Connector.api.loadNotice(Util.noticeIDs[confirm])
+        Connector.api.loadNotice(Util.getToken(this),Util.noticeIDs[confirm])
                 .enqueue(object : Res<Array<NoticeModel>>(this) {
                     override fun callBack(code: Int, body: Array<NoticeModel>?) {
                         if (code == 200) {

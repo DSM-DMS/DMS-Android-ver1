@@ -26,12 +26,12 @@ interface Api {
 
     //연장 map
     @GET("extension/map/{time}")
-    fun loadStudyMap(@Header("Authorization")token: String, @Path("time")time: Int, @Query("class")classNum: Int): Call<Array<Array<Any>>>
+    fun loadStudyMap(@Header("Authorization")token: String, @Path("time")time: Int, @Query("class_num")classNum: Int): Call<Array<Array<Any>>>
 
     //연장 신청
     @POST("extension/{time}")
     @FormUrlEncoded
-    fun applyStudy(@Header("Authorization") token: String, @Path("time") time: Int, @Field("class") classNum: Int, @Field("seat") seatNum: Int): Call<Void>
+    fun applyStudy(@Header("Authorization") token: String, @Path("time") time: Int, @Field("class_num") classNum: Int, @Field("seat_num") seatNum: Int): Call<Void>
 
     //잔류 조회
     @GET("stay")
@@ -84,7 +84,7 @@ interface Api {
 
     //공지 리스트 불러오기
     @GET("{confirm}")
-    fun loadNotice(@Path("confirm")confirm: String) : Call<Array<NoticeModel>>
+    fun loadNotice(@Header("Authorization") token: String,@Path("confirm")confirm: String) : Call<Array<NoticeModel>>
 
     //공지 디테일 불러오기
     @GET("{confirm}/{id}")
