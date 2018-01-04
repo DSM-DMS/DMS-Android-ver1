@@ -26,7 +26,7 @@ class SignInActivity: BaseActivity() {
                         .enqueue(object : Res<JsonObject>(this){
                             override fun callBack(code: Int, body: JsonObject?) {
                                 showToast(when(code){
-                                    201 -> {
+                                    200 -> {
                                         saveToken(body!!.get("access_token").asString)
                                         finish()
                                         "로그인 성공"
