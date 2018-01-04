@@ -58,7 +58,7 @@ class SurveyActivity : BaseActivity() {
     private fun getFragments() : ArrayList<Fragment>{
         var list : ArrayList<Fragment> = arrayListOf()
 
-  /*      for(item in items){
+   /*  for(item in items){
             var b = Bundle()
             b.putSerializable("data",item)
             list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))

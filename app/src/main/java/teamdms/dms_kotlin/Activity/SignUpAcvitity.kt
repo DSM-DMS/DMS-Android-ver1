@@ -52,9 +52,7 @@ class SignUpActivity : CheckValidateActivity(){
             Connector.api.checkUUID(edit_signup_code.text.toString().trim()).enqueue(object : Res<Void>(this) {
 
                 override fun callBack(code: Int, body: Void?) {
-
                     when(code) {
-
                         200 -> signUp()
                         else -> Util.showToast(applicationContext, "code가 유효하지 않습니다.")
                     }
@@ -93,7 +91,7 @@ class SignUpActivity : CheckValidateActivity(){
             Connector.api.checkOverlap(signUpId).enqueue(object : Res<Void>(this) {
                 override fun callBack(code: Int, body: Void?) {
                     when (code) {
-                        201 -> {
+                        200 -> {
                             text_signup_check_id.text = "사용 가능한 아이디입니다."
                             changeColor(true, text_signup_check_id)
                             changeImage(true, image_signup_check_id)

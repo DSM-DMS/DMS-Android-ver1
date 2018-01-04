@@ -105,6 +105,7 @@ class ApplyMainFragment : Fragment() {
                                     override fun callBack(code: Int, body: Void?) {
                                         Util.showToast(context, when(code){
                                             201 -> context.getString(R.string.all_apply_success)
+                                            204 -> "신청 가능 시간이 아닙니다."
                                             else -> "신청 실패"
                                         })
                                     }

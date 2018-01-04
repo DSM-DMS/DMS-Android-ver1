@@ -11,6 +11,7 @@
         android:layout_weight="4">
 
         <ImageView
+            android:id="@+id/iv_intro_developer_icon"
             android:padding="128dp"
             android:src="@drawable/notice_list_icon3"
             android:layout_width="match_parent"
