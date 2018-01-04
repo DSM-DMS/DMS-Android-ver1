@@ -98,4 +98,7 @@ interface Api {
     @GET("survey/question")
     fun loadSurvey_detail(@Header("Authorization") token: String,id : String) : Call<Array<SurveyModel>>
 
+    @DELETE("extension/{time}")
+    @FormUrlEncoded
+    fun cancleExtension (@Path("time") time : String, @Header("Authorization") token: String) : Call<Void>
 }

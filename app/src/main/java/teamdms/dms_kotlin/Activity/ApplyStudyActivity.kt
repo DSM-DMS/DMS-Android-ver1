@@ -27,6 +27,26 @@ class ApplyStudyActivity: BaseActivity() {
         setBottomSheet()
 
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
+        button_apply_study_cancle.setOnClickListener{
+            if(seatState>0) {
+                Connector.api.cancleExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
+
+                    override fun callBack(code: Int, body: Void?) {
+
+                        when(code) {
+
+                            200 -> {
+                                Util.showToast(applicationContext, seatState.toString()+"시 연장이 취소되었습니다")
+                                load()
+                            }
+                            else ->  {
+                                Util.showToast(applicationContext, "연장신청을 하지 않으셨습니다.")
+                            }
+                        }
+                    }
+                })
+            }
+        }
         button_apply_study.setOnClickListener {
             if (seatState > 0){
                 Connector.api.applyStudy(getToken(), timeState, classState, seatState)
