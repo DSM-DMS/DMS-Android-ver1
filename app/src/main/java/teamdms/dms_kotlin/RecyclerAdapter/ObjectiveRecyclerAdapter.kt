@@ -18,7 +18,7 @@ class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<Vie
 
 
     override fun getItemCount(): Int {
-
+        return 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {

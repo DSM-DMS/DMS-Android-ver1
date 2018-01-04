@@ -124,7 +124,7 @@ class ApplyMainFragment : Fragment() {
                             context.startActivity(Intent(context, when(position){
                                 1 -> ApplyStudyActivity::class.java
                                 2 -> ApplyStayActivity::class.java
-                                else -> SurveyPreviewActivity::class.java
+                                else -> SurveyListActivity::class.java
                             }))
                         }else{ Util.showToast(context, "로그인을 해주세요") }
                     }

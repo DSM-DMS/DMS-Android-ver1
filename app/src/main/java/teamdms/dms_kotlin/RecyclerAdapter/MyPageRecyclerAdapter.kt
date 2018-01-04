@@ -15,13 +15,10 @@ import teamdms.dms_kotlin.Fragment.*
 /**
  * Created by root1 on 2017. 11. 30..
  */
-class MyPageRecyclerAdapter(fragment: MyPageFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MyPageRecyclerAdapter(val fragment: MyPageFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var context: Context
     lateinit var inflater: LayoutInflater
-    lateinit var fragment: MyPageFragment
-
-    init { this.fragment = fragment }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         inflater = LayoutInflater.from(parent?.context)

@@ -59,26 +59,17 @@ class SurveyActivity : BaseActivity() {
     private fun getFragments() : ArrayList<Fragment>{
         var list : ArrayList<Fragment> = arrayListOf()
 
-//      /*  for(item in items){
+//       for(item in items){
 //            var b = Bundle()
 //            b.putSerializable("data",item)
 //            list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
-//        }*/
-
-        //test 코드
-        list.add(NotObjectiveFragment.newInstance())
-        list.add(ObjectiveFragment.newInstance())
-        list.add(NotObjectiveFragment.newInstance())
-        list.add(ObjectiveFragment.newInstance())
-        list.add(NotObjectiveFragment.newInstance())
-        list.add(ObjectiveFragment.newInstance())
-
+//        }
         return list
     }
 
     private fun isObjective(surveyModel: SurveyModel): Fragment {
-        return if (surveyModel.isObjective == true) NotObjectiveFragment.newInstance()
-        else ObjectiveFragment.newInstance()
+        return if (surveyModel.isObjective == true) ObjectiveFragment.newInstance()
+        else NotObjectiveFragment.newInstance()
     }
 
     fun nextPage(button : Button){
