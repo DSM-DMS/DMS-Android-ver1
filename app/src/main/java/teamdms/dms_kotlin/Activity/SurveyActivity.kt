@@ -3,21 +3,18 @@ package teamdms.dms_kotlin.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_survey.*
-import teamdms.dms_kotlin.Fragment.NotObjectiveFragment
 import teamdms.dms_kotlin.Fragment.ObjectiveFragment
+import teamdms.dms_kotlin.Fragment.NotObjectiveFragment
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.ViewPagerAdapter.SurveyViewPagerAdapter
 import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
 import team_dms.dms.Base.BaseActivity
-import team_dms.dms.Base.Util
 import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
-import teamdms.dms_kotlin.Model.NoticeModel
 import teamdms.dms_kotlin.Model.SurveyModel
 
 class SurveyActivity : BaseActivity() {
@@ -69,19 +66,19 @@ class SurveyActivity : BaseActivity() {
         }*/
 
         //test 코드
-        list.add(ObjectiveFragment.newInstance())
         list.add(NotObjectiveFragment.newInstance())
         list.add(ObjectiveFragment.newInstance())
         list.add(NotObjectiveFragment.newInstance())
         list.add(ObjectiveFragment.newInstance())
         list.add(NotObjectiveFragment.newInstance())
+        list.add(ObjectiveFragment.newInstance())
 
         return list
     }
 
     private fun isObjective(surveyModel: SurveyModel): Fragment {
-        return if (surveyModel.isObjective == true) ObjectiveFragment.newInstance()
-        else NotObjectiveFragment.newInstance()
+        return if (surveyModel.isObjective == true) NotObjectiveFragment.newInstance()
+        else ObjectiveFragment.newInstance()
     }
 
     fun nextPage(button : Button){

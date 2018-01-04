@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/survey_back"
-    tools:context="teamdms.dms_kotlin.Fragment.ObjectiveFragment">
+    tools:context="teamdms.dms_kotlin.Fragment.NotObjectiveFragment">
 
     <ImageView
         android:id="@+id/iv_survey_icon"
