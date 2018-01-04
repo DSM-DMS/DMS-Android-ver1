@@ -1,7 +1,5 @@
 package teamdms.dms_kotlin.Fragment
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,24 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import teamdms.dms_kotlin.Activity.SurveyActivity
-
+import teamdms.dms_kotlin.Model.SurveyModel
 import teamdms.dms_kotlin.R
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [NotObjectiveFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [NotObjectiveFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NotObjectiveFragment : Fragment() {
+
+    private var survey : SurveyModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (arguments != null) {
-
-        }
+        var bundle = activity.intent.extras
+        survey = bundle.getSerializable("data") as SurveyModel
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

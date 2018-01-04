@@ -55,8 +55,7 @@ class NoticeMainFragment: Fragment(){
 
     companion object {
         fun newInstance(): NoticeMainFragment {
-            val fragment = NoticeMainFragment()
-            return fragment
+            return NoticeMainFragment()
         }
     }
 }

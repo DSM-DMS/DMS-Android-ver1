@@ -138,8 +138,7 @@ class ApplyMainFragment : Fragment() {
 
     companion object {
         fun newInstance(): ApplyMainFragment {
-            val fragment = ApplyMainFragment()
-            return fragment
+            return ApplyMainFragment()
         }
     }
 
