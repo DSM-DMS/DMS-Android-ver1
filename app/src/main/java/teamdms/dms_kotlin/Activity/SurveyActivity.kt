@@ -77,8 +77,8 @@ class SurveyActivity : BaseActivity() {
     }
 
     private fun isObjective(surveyModel: SurveyModel): Fragment {
-        return if (surveyModel.isObjective == true) NotObjectiveFragment.newInstance()
-        else ObjectiveFragment.newInstance()
+        return if (surveyModel.isObjective == true) ObjectiveFragment.newInstance()
+        else NotObjectiveFragment.newInstance()
     }
 
     fun nextPage(button : Button){

@@ -51,7 +51,7 @@ class SurveyRecyclerAdapter : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
     }
 
     fun setSurveyData (data : Array<SurveyModel>) {
-        surveies = data
+        surveies = data.reversedArray()
         notifyDataSetChanged()
     }
 }
