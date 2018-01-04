@@ -49,8 +49,7 @@ class ChangePWActivity : CheckValidateActivity()  {
                         override fun callBack(code: Int, body: Void?) {
 
                             showToast(when (code) {
-
-                                201 -> {
+                                200 -> {
                                     finish()
                                     "비밀번호가 성공적으로 변경되었습니다."
                                 }

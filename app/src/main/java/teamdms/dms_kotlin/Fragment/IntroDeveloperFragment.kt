@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_intro_developer.*
 import team_dms.dms.Base.Util
@@ -40,9 +41,9 @@ class IntroDeveloperFragment : Fragment() {
         title.text=resources.getString(Util.introDeveloperTitle[distinction])
         var content= rootView.findViewById<TextView>(R.id.text_intro_developer_content)
         content.text=resources.getString(Util.introDeveloperContent[distinction])
-
+        var icon=rootView.findViewById<ImageView>(R.id.iv_intro_developer_icon)
+        icon.setImageResource(Util.introDeveloperIcon[distinction])
     }
-
 
     companion object {
         private val ARGS_KEY_DISTINCT= "distinction"
