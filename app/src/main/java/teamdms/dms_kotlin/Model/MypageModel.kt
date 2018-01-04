@@ -6,25 +6,7 @@ import team_dms.dms.Base.Util
 /**
  * Created by root1 on 2017. 11. 23..
  */
-class MypagelModel {
-
-    @SerializedName("extension_11_class")
-    var class11Num: Int? = null
-
-    @SerializedName("extension_12_class")
-    var class12Num: Int? = null
-
-    @SerializedName("extension_11_seat")
-    var seat11Num: Int? = null
-
-    @SerializedName("extension_12_seat")
-    var seat12Num: Int? = null
-
-    @SerializedName("goingout_sat")
-    var outSatState= false
-
-    @SerializedName("goingout_sun")
-    var outSunState= false
+class MypageModel {
 
     @SerializedName("name")
     var name = ""

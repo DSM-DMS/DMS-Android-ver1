@@ -22,7 +22,7 @@ interface Api {
 
     //마이페이지 데이터, 신청화면 메인 로드
     @GET("mypage")
-    fun loadMyInfo(@Header("Authorization") token: String): Call<MypagelModel>
+    fun loadMyInfo(@Header("Authorization") token: String): Call<MypageModel>
 
     //연장 map
     @GET("extension/map/{time}")
@@ -76,7 +76,7 @@ interface Api {
     @POST("report/facility")
     @FormUrlEncoded
     fun reportProblem(@Header("Authorization") token: String, @Field("title") title: String, @Field("room") room: Int, @Field("content") content: String): Call<Void>
-    
+
     //UUID 가입 가능 여부 검사
     @POST("verify/uuid")
     @FormUrlEncoded
