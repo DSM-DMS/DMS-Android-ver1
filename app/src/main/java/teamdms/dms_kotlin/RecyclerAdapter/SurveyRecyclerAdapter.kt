@@ -37,9 +37,14 @@ class SurveyRecyclerAdapter : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
     override fun onBindViewHolder(holder: SurveyRecyclerViewHolder?, position: Int) {
         val intent = Intent(context, SurveyPreviewActivity::class.java)
 
+
         val title = surveies[position].title
         val date = surveies[position].startDate + " ~ " + surveies[position].endDate
         holder!!.bindData(title, date, {
+            intent.putExtra("id",surveies[position].id)
+            intent.putExtra("title",surveies[position].title)
+            intent.putExtra("date",date)
+            intent.putExtra("desc",surveies[position].desc)
             context.startActivity(intent)
         })
         setAnimation(holder.view, position)

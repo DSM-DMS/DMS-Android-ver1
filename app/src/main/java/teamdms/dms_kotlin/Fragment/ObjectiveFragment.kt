@@ -33,10 +33,7 @@ class ObjectiveFragment : Fragment() {
 
     companion object {
         fun newInstance(): ObjectiveFragment {
-            val fragment = ObjectiveFragment()
-            val args = Bundle()
-            fragment.arguments = args
-            return fragment
+            return ObjectiveFragment()
         }
     }
 }

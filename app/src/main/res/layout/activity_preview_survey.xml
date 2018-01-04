@@ -50,6 +50,7 @@
 
 
                 <TextView
+                    android:id="@+id/text_survey_preview_date"
                     android:text="2017 - 11 -26 ~ 2017 - 12 -26"
                     android:layout_marginTop="32dp"
                     android:layout_marginLeft="12dp"

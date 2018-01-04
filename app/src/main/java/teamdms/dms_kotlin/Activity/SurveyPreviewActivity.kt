@@ -15,8 +15,17 @@ class SurveyPreviewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview_survey)
 
+        var desc = intent.getStringExtra("desc")
+        var date = intent.getStringExtra("date")
+        var id = intent.getStringExtra("id")
+
+        text_survey_preview_date.text=date
+        text_view_survey_content.text=desc
+
         button_start_survey_preview.setOnClickListener {
-            startActivity(Intent(this,SurveyActivity::class.java))
+            var intent =Intent(this,SurveyActivity::class.java)
+            intent.putExtra("id",id)
+            startActivity(intent)
         }
 
     }
