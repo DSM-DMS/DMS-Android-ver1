@@ -26,6 +26,7 @@
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_objective_survey"
         android:layout_width="240dp"
         android:layout_height="160dp"
         android:layout_centerHorizontal="true"

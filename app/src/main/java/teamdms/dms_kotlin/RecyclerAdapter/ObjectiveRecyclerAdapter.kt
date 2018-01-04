@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import teamdms.dms_kotlin.Model.SurveyModel
 import teamdms.dms_kotlin.R
 import java.util.zip.Inflater
 
@@ -15,7 +16,11 @@ import java.util.zip.Inflater
 class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<ViewHolder>() {
 
     val inflater : LayoutInflater = LayoutInflater.from(context)
+    private lateinit var data : SurveyModel
 
+    fun setData (data : SurveyModel) {
+
+    }
 
     override fun getItemCount(): Int {
         return 1
