@@ -18,7 +18,7 @@ import teamdms.dms_kotlin.Model.SurveyModel
 import teamdms.dms_kotlin.R
 
 /**
- * Created by dsm2017 on 2018-01-02. 문제점 : onClickListenr가 제대로 구현 안됨, retrofit에서 넘어오는 데이터가 없음
+ * Created by dsm2017 on 2018-01-02.
  */
 class SurveyRecyclerAdapter : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
 

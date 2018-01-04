@@ -5,6 +5,8 @@
     android:layout_height="96dp"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--Noitce뿐만이 아니라 Survey에서도 사용함 Refactor가 제대로 안되서 안바뀜,,,,,-->
+
     <android.support.v7.widget.CardView
         android:id="@+id/card_notice_item"
         android:layout_margin="8dp"
@@ -12,6 +14,7 @@
         app:cardElevation="2dp"
         app:cardCornerRadius="16dp"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:padding="14dp"
             android:layout_width="match_parent"

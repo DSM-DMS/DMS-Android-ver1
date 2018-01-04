@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    >
+
+    <RadioButton
+        android:id="@+id/radio_objective_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="매우 양호함"
+        android:button="@drawable/survey_radio_selector"
+        android:textColor="@color/colorNo1"
+        />
+</RelativeLayout>
