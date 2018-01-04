@@ -29,7 +29,7 @@ class SurveyActivity : BaseActivity() {
         setContentView(R.layout.activity_survey)
 
         var view = findViewById<LinearLayout>(R.id.view_survey_count)
-        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments(loadSurvey("test")))
+        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments())
         view_pager_survey.adapter=surveyAdapter
         view_pager_survey.setPageingScroll(false)
         setView(view,surveyAdapter!!.count,0)
@@ -59,7 +59,7 @@ class SurveyActivity : BaseActivity() {
         return items
     }
 
-    private fun getFragments(items : Array<SurveyModel>) : ArrayList<Fragment>{
+    private fun getFragments() : ArrayList<Fragment>{
         var list : ArrayList<Fragment> = arrayListOf()
 
       /*  for(item in items){

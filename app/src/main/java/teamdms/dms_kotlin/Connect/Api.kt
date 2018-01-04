@@ -48,7 +48,7 @@ interface Api {
     fun applyOut(@Header("Authorization") token: String, @Field("sat") satState: Boolean, @Field("sun") sunState: Boolean): Call<Void>
 
     //로그인
-    @POST("auth/student")
+    @POST("auth")
     @FormUrlEncoded
     fun signIn(@Field("id") id: String, @Field("pw") pw: String): Call<JsonObject>
 
@@ -58,7 +58,7 @@ interface Api {
     fun signUp(@Field("uuid") code: String, @Field("id") id: String, @Field("pw") pw: String): Call<Void>
 
     //버그 전송
-    @POST("bug-report")
+    @POST("report/bug")
     @FormUrlEncoded
     fun sendBugReport(@Header("Authorization") token: String, @Field("title") title: String, @Field("content") content: String): Call<Void>
 
@@ -73,10 +73,9 @@ interface Api {
     fun checkOverlap(@Field("id") id: String): Call<Void>
 
     // 고장 신고
-    @POST("report")
+    @POST("report/facility")
     @FormUrlEncoded
     fun reportProblem(@Header("Authorization") token: String, @Field("title") title: String, @Field("room") room: Int, @Field("content") content: String): Call<Void>
-
 
     //공지 리스트 불러오기
     @GET("{confirm}")
@@ -89,5 +88,9 @@ interface Api {
     //설문조사 리스트
     @GET("survey")
     fun loadSurvey() : Call<Array<SurveyModel>>
+
+    //설문지의 리스트
+    @GET("survey/question")
+    fun loadSurvey_detail(@Header("Authorization") token: String,id : String) : Call<Array<SurveyModel>>
 
 }

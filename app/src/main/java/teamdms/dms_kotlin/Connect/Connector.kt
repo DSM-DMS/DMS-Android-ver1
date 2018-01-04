@@ -12,7 +12,7 @@ object Connector {
 
     lateinit var api: Api
 
-    val url = "http://dsm2015.cafe24.com:3000/"
+    val url = "http://dsm2015.cafe24.com:3001/"
 
     init {
         val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

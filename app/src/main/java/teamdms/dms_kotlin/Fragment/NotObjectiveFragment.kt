@@ -17,7 +17,7 @@ class NotObjectiveFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var bundle = activity.intent.extras
-        survey = bundle.getSerializable("data") as SurveyModel
+        //survey = bundle.getSerializable("data") as SurveyModel
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
