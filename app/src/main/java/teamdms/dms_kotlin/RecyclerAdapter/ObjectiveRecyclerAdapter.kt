@@ -21,9 +21,11 @@ class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<Vie
     private lateinit var data : SurveyQuestionModel
     private var radioChecked : Boolean = false // 라디오 버튼 체크가 하나만 될 수 있게 하기 위해
     private var lastCheckPosition : Int = 0 // 마지막으로 체크되어 있었던 라디오 버튼의 포지션
+    private var answer : String = ""
 
     fun setData (data : SurveyQuestionModel) {
         this.data = data
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +40,7 @@ class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<Vie
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
 
-        with(holder!!.view) {
+        with(holder!!.rootView) {
 
             if(radio_objective_question.isChecked) {
 

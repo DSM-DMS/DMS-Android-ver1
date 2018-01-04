@@ -37,7 +37,10 @@ class ObjectiveFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        recycler_objective_survey.adapter = ObjectiveRecyclerAdapter(context)
+        val adapter = ObjectiveRecyclerAdapter(context)
+        adapter.setData(survey)
+
+        recycler_objective_survey.adapter = adapter
         recycler_objective_survey.layoutManager = layoutManager
 
         return view
