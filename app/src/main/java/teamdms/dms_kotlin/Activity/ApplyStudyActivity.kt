@@ -40,12 +40,13 @@ class ApplyStudyActivity: BaseActivity() {
                                 load()
                             }
                             else ->  {
-                                Util.showToast(applicationContext, "연장신청을 하지 않으셨습니다.")
+                                Util.showToast(applicationContext, "취소 가능한 시간이 아닙니다")
                             }
                         }
                     }
                 })
-            }
+            } else  Util.showToast(applicationContext, "연장신청을 하지 않으셨습니다.")
+
         }
         button_apply_study.setOnClickListener {
             if (seatState > 0){

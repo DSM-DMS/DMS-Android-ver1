@@ -96,8 +96,9 @@ interface Api {
 
     //설문지의 리스트
     @GET("survey/question")
-    fun loadSurvey_detail(@Header("Authorization") token: String,id : String) : Call<Array<SurveyModel>>
+    fun loadSurvey_detail(@Header("Authorization") token: String, @Query("survey_id")id : String) : Call<Array<SurveyModel>>
 
+    //연장 취소
     @DELETE("extension/{time}")
     @FormUrlEncoded
     fun cancleExtension (@Path("time") time : String, @Header("Authorization") token: String) : Call<Void>
