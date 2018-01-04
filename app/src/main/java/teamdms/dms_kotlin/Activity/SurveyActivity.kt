@@ -16,6 +16,7 @@ import team_dms.dms.Base.BaseActivity
 import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
 import teamdms.dms_kotlin.Model.SurveyModel
+import teamdms.dms_kotlin.Model.SurveyQuestionModel
 
 class SurveyActivity : BaseActivity() {
 
@@ -25,8 +26,10 @@ class SurveyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
 
-        var view = findViewById<LinearLayout>(R.id.view_survey_count)
-        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments())
+        var id : String = intent.getStringExtra("id") // 설문지 아이디
+        var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
+
+        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments(loadSurvey(id)))
         view_pager_survey.adapter=surveyAdapter
         view_pager_survey.setPageingScroll(false)
         setView(view,surveyAdapter!!.count,0)
@@ -42,10 +45,10 @@ class SurveyActivity : BaseActivity() {
         })
     }
 
-    private fun loadSurvey(id : String) : Array<SurveyModel>{
-        var items = arrayOf<SurveyModel>()
-        Connector.api.loadSurvey().enqueue(object : Res<Array<SurveyModel>>(this){
-            override fun callBack(code: Int, body: Array<SurveyModel>?) {
+    private fun loadSurvey(id : String) : Array<SurveyQuestionModel>{
+        var items = arrayOf<SurveyQuestionModel>()
+        Connector.api.loadSurvey_detail(getToken(), id).enqueue(object : Res<Array<SurveyQuestionModel>>(this){
+            override fun callBack(code: Int, body: Array<SurveyQuestionModel>?) {
                 when(code){
                     200->items=body!!
                 }
@@ -55,33 +58,24 @@ class SurveyActivity : BaseActivity() {
         return items
     }
 
-    private fun getFragments() : ArrayList<Fragment>{
+    private fun getFragments(items : Array<SurveyQuestionModel>) : ArrayList<Fragment>{ // Fragment에 데이터를 넣은채로 보내줌
         var list : ArrayList<Fragment> = arrayListOf()
 
-
-  /*      for(item in items){
+         for(item in items){
             var b = Bundle()
             b.putSerializable("data",item)
             list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
-        }*/
-
-        //test 코드
-        list.add(NotObjectiveFragment.newInstance())
-        list.add(ObjectiveFragment.newInstance())
-        list.add(NotObjectiveFragment.newInstance())
-        list.add(ObjectiveFragment.newInstance())
-        list.add(NotObjectiveFragment.newInstance())
-        list.add(ObjectiveFragment.newInstance())
+         }
 
         return list
     }
 
-    private fun isObjective(surveyModel: SurveyModel): Fragment {
-        return if (surveyModel.isObjective == true) ObjectiveFragment.newInstance()
+    private fun isObjective(surveyModel: SurveyQuestionModel): Fragment { // 객관식인지 주관식인지 판단함
+        return if (surveyModel.isObjective) ObjectiveFragment.newInstance()
         else NotObjectiveFragment.newInstance()
     }
 
-    fun nextPage(button : Button){
+    fun nextPage(button : Button){ // 페이지 넘기기
         var maxCount=surveyAdapter!!.count-1
         if(view_pager_survey.currentItem+1==maxCount) {
             button.text="DONE"
@@ -97,7 +91,7 @@ class SurveyActivity : BaseActivity() {
         }
     }
 
-    private fun setView(view: LinearLayout, count: Int, selectNum: Int) {
+    private fun setView(view: LinearLayout, count: Int, selectNum: Int) { // count를 하는 함수
         view.removeAllViews()
         for (i in 0 until count) {
             val countView = View(applicationContext)

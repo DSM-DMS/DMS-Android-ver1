@@ -7,7 +7,7 @@
     >
 
     <RadioButton
-        android:id="@+id/radio"
+        android:id="@+id/radio_objective_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="매우 양호함"

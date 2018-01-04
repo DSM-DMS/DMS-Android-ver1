@@ -12,17 +12,18 @@ import android.widget.Button
 import kotlinx.android.synthetic.main.fragment_objective.*
 import teamdms.dms_kotlin.Activity.SurveyActivity
 import teamdms.dms_kotlin.Model.SurveyModel
+import teamdms.dms_kotlin.Model.SurveyQuestionModel
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.RecyclerAdapter.ObjectiveRecyclerAdapter
 
 class ObjectiveFragment : Fragment() {
 
-    lateinit var survey : SurveyModel
+    lateinit var survey : SurveyQuestionModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var bundle = activity.intent.extras
-        survey = bundle.getSerializable("data") as SurveyModel
+        survey = bundle.getSerializable("data") as SurveyQuestionModel
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
