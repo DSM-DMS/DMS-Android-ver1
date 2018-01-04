@@ -1,9 +1,11 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
+import android.telecom.Call
 import android.text.*
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_singup.*
+import team_dms.dms.Base.Util
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Base.CheckValidateActivity
@@ -47,19 +49,17 @@ class SignUpActivity : CheckValidateActivity(){
 
         button_signup_singup.setOnClickListener {
 
-            Connector.api.signUp(edit_signup_code.text.trim().toString(), edit_signup_id.text.trim().toString(), edit_signup_pw.text.trim().toString())
-                    .enqueue(object : Res<Void>(this) {
-                        override fun callBack(code: Int, body: Void?) {
-                            showToast(when (code) {
-                                201 -> {
-                                    finish()
-                                    "회원가입을 성공하셨습니다."
-                                }
-                                400 -> "회원가입에 실패하셨습니다"
-                                else -> "오류 : $code"
-                            })
-                        }
-                    })
+            Connector.api.checkUUID(edit_signup_code.text.toString().trim()).enqueue(object : Res<Void>(this) {
+
+                override fun callBack(code: Int, body: Void?) {
+
+                    when(code) {
+
+                        200 -> signUp()
+                        else -> Util.showToast(applicationContext, "code가 유효하지 않습니다.")
+                    }
+                }
+            })
         }
     }
 
@@ -112,5 +112,20 @@ class SignUpActivity : CheckValidateActivity(){
         }
     }
 
+    fun signUp () { // 회원가입
 
+        Connector.api.signUp(edit_signup_code.text.trim().toString(), edit_signup_id.text.trim().toString(), edit_signup_pw.text.trim().toString())
+                .enqueue(object : Res<Void>(this) {
+                    override fun callBack(code: Int, body: Void?) {
+                        showToast(when (code) {
+                            201 -> {
+                                finish()
+                                "회원가입을 성공하셨습니다."
+                            }
+                            400 -> "회원가입에 실패하셨습니다"
+                            else -> "오류 : $code"
+                        })
+                    }
+                })
+    }
 }

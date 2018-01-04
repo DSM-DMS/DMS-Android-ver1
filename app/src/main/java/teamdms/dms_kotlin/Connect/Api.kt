@@ -77,6 +77,10 @@ interface Api {
     @FormUrlEncoded
     fun reportProblem(@Header("Authorization") token: String, @Field("title") title: String, @Field("room") room: Int, @Field("content") content: String): Call<Void>
 
+    //UUID 가입 가능 여부 검사
+    @POST("verify/uuid")
+    @FormUrlEncoded
+    fun checkUUID(@Field("uuid") uuid : String) : Call<Void>
 
     //공지 리스트 불러오기
     @GET("{confirm}")
