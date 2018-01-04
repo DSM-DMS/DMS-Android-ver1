@@ -1,5 +1,6 @@
 package teamdms.dms_kotlin.RecyclerAdapter
 
+import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import teamdms.dms_kotlin.R
