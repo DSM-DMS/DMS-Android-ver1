@@ -8,8 +8,9 @@ import java.io.Serializable
  */
 class SurveyQuestionModel : Serializable {
 
-    @SerializedName("choice_paper") var choices : ArrayList<String>? = null
+    @SerializedName("choice_paper") lateinit var choices : Array<String>
     @SerializedName("id") var id : String = ""
     @SerializedName("is_objective") var isObjective : Boolean = false
     @SerializedName("title") var title : String = ""
+    var checked : Boolean = false
 }

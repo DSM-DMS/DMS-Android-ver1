@@ -3,6 +3,7 @@ package teamdms.dms_kotlin.Activity
 import android.graphics.*
 import android.os.*
 import android.support.design.widget.*
+import android.util.Log
 import android.view.*
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_apply_study.*
@@ -28,6 +29,9 @@ class ApplyStudyActivity: BaseActivity() {
 
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
         button_apply_study_cancle.setOnClickListener{
+
+            Log.d("study", seatState.toString())
+
             if(seatState>0) {
                 Connector.api.cancleExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
 

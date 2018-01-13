@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.*
+import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -68,7 +69,7 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
     override fun getItemCount(): Int = noticeArr.size
 
     fun setData(data: Array<NoticeModel>) {
-        noticeArr = data.reversedArray()
+        noticeArr = data!!.reversedArray()
         notifyDataSetChanged()
     }
 

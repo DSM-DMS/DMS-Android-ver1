@@ -70,8 +70,8 @@ class SurveyActivity : BaseActivity() {
         return list
     }
 
-    private fun isObjective(surveyModel: SurveyQuestionModel): Fragment { // 객관식인지 주관식인지 판단함
-        return if (surveyModel.isObjective) ObjectiveFragment.newInstance()
+    private fun isObjective(surveyQuestionModel: SurveyQuestionModel): Fragment { // 객관식인지 주관식인지 판단함
+        return if (surveyQuestionModel.isObjective) ObjectiveFragment.newInstance()
         else NotObjectiveFragment.newInstance()
     }
 

@@ -2,34 +2,37 @@ package teamdms.dms_kotlin.RecyclerAdapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.telecom.Call
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
 import kotlinx.android.synthetic.main.view_objective_item.view.*
-import teamdms.dms_kotlin.Model.SurveyModel
-import teamdms.dms_kotlin.Model.SurveyQuestionModel
+import team_dms.dms.Base.Util
+import team_dms.dms.Connect.Connector
+import team_dms.dms.Connect.Res
 import teamdms.dms_kotlin.R
-import java.util.zip.Inflater
 
 /**
  * Created by dsm2017 on 2018-01-04.
  */
 
-class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<ViewHolder>() {
+class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<ObjectiveRecyclerAdapter.ViewHolder>() {
 
     private val inflater : LayoutInflater = LayoutInflater.from(context)
-    private lateinit var data : SurveyQuestionModel
-    private var radioChecked : Boolean = false // 라디오 버튼 체크가 하나만 될 수 있게 하기 위해
+    private lateinit var data : Array<String>
     private var lastCheckPosition : Int = 0 // 마지막으로 체크되어 있었던 라디오 버튼의 포지션
+    private var checkedPosition = -1
     private var answer : String = ""
 
-    fun setData (data : SurveyQuestionModel) {
+    fun setData (data : Array<String>) {
         this.data = data
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return data.choices!!.size
+        return data!!.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -39,30 +42,40 @@ class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<Vie
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
 
-        with(holder!!.rootView) {
+        val radioClicked = View.OnClickListener {
+            checkedPosition = position
+            answer = data[position]
+        }
 
-            if(radio_objective_question.isChecked) {
+        holder!!.bind(data[position], (position == checkedPosition), radioClicked)
+    }
 
-                if(radioChecked) {
+    fun sendAnswer (id : String) {
 
+        Connector.api.sendSurvey(Util.getToken(context), id, answer).enqueue(object : Res<Void>(context){
 
-                } else {
+            override fun callBack(code: Int, body: Void?) {
 
+                when(code) {
 
+                    200 -> Util.showToast(context, "응답이 완료되었습니다.")
+                    else -> Util.showToast(context, "응답에 실패하셨습니다. : error "+code.toString())
                 }
             }
-        }
+        })
     }
-}
 
-class ViewHolder (var view : View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder (var view : View) : RecyclerView.ViewHolder(view) {
 
-    var rootView : View = view
+        var rootView : View = view
 
-    fun setData(question : String) {
+        fun bind(question : String, checked : Boolean, radioClicked : View.OnClickListener) { // 응답내용, 라디오버튼 리스너, 라디오 버튼 체크
 
-        with(view) {
-            radio_objective_question.text = question
+            with(view) {
+                radio_objective_question.text = question
+                radio_objective_question.isChecked = true
+                view.setOnClickListener(radioClicked)
+            }
         }
     }
 }

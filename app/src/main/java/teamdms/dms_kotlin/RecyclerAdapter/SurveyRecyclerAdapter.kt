@@ -40,7 +40,7 @@ class SurveyRecyclerAdapter : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
 
         val title = surveies[position].title
         val date = surveies[position].startDate + " ~ " + surveies[position].endDate
-        holder!!.bindData(title, date, {
+        holder!!.bindData(title, date, View.OnClickListener{
             intent.putExtra("id",surveies[position].id)
             intent.putExtra("title",surveies[position].title)
             intent.putExtra("date",date)
@@ -63,7 +63,7 @@ class SurveyRecyclerAdapter : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
 
 class SurveyRecyclerViewHolder (var view : View): RecyclerView.ViewHolder(view) {
 
-     fun bindData(title: String, date : String, onClick: (Any) -> Unit) {
+     fun bindData(title: String, date : String, onClick: View.OnClickListener) {
          with(view) {
              text_notice_item_title.text = title
              text_notice_item_date.text = date

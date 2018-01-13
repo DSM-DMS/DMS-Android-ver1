@@ -82,6 +82,10 @@ interface Api {
     @FormUrlEncoded
     fun checkUUID(@Field("uuid") uuid : String) : Call<Void>
 
+    @POST
+    @FormUrlEncoded
+    fun sendSurvey(@Header ("Authorization") token : String, @Field("question_id") id : String, @Field("answer") answer : String) : Call<Void>
+
     //공지 리스트 불러오기
     @GET("{confirm}")
     fun loadNotice(@Header("Authorization") token: String,@Path("confirm")confirm: String) : Call<Array<NoticeModel>>
@@ -100,6 +104,5 @@ interface Api {
 
     //연장 취소
     @DELETE("extension/{time}")
-    @FormUrlEncoded
     fun cancleExtension (@Path("time") time : String, @Header("Authorization") token: String) : Call<Void>
 }
