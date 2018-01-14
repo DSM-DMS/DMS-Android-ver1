@@ -36,7 +36,7 @@ class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<Obj
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = inflater.inflate(R.layout.view_objective_item, parent)
+        val view = inflater.inflate(R.layout.view_objective_item, parent, false)
         return ViewHolder(view)
     }
 

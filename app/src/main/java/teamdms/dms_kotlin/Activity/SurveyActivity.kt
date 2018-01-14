@@ -28,8 +28,10 @@ class SurveyActivity : BaseActivity() {
 
         var id : String = intent.getStringExtra("id") // 설문지 아이디
         var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
+        var data = intent.getSerializableExtra("data") as Array<SurveyQuestionModel>
 
-        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments(loadSurvey(id)))
+
+        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments((data!!)))
         view_pager_survey.adapter=surveyAdapter
         view_pager_survey.setPageingScroll(false)
         setView(view,surveyAdapter!!.count,0)
@@ -43,19 +45,6 @@ class SurveyActivity : BaseActivity() {
             override fun onPageScrollStateChanged(state: Int) {
             }
         })
-    }
-
-    private fun loadSurvey(id : String) : Array<SurveyQuestionModel>{
-        var items = arrayOf<SurveyQuestionModel>()
-        Connector.api.loadSurvey_detail(getToken(), id).enqueue(object : Res<Array<SurveyQuestionModel>>(this){
-            override fun callBack(code: Int, body: Array<SurveyQuestionModel>?) {
-                when(code){
-                    200->items=body!!
-                }
-            }
-
-        })
-        return items
     }
 
     private fun getFragments(items : Array<SurveyQuestionModel>) : ArrayList<Fragment>{ // Fragment에 데이터를 넣은채로 보내줌

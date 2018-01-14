@@ -37,7 +37,7 @@ class SurveyPreviewRecyclerAdapter(val context : Context, val question : Array<S
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PreviewViewHolder {
 
         Log.d("study", "onCreateViewHolder")
-        val view = inflate.inflate(R.layout.view_survey_preview_item, parent)
+        val view = inflate.inflate(R.layout.view_survey_preview_item, parent, false)
         return PreviewViewHolder(view)
     }
 }

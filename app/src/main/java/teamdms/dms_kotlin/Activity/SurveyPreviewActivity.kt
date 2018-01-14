@@ -20,6 +20,8 @@ import teamdms.dms_kotlin.RecyclerAdapter.SurveyPreviewRecyclerAdapter
  */
 class SurveyPreviewActivity : BaseActivity() {
 
+    private lateinit var data : Array<SurveyQuestionModel>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview_survey)
@@ -35,7 +37,8 @@ class SurveyPreviewActivity : BaseActivity() {
 
         button_start_survey_preview.setOnClickListener {
             var intent =Intent(this,SurveyActivity::class.java)
-            intent.putExtra("id",id)
+            intent.putExtra("id", id)
+            intent.putExtra("data", data)
             startActivity(intent)
         }
     }
@@ -48,6 +51,7 @@ class SurveyPreviewActivity : BaseActivity() {
                     200-> {
                         recycler_preview_survey.adapter = SurveyPreviewRecyclerAdapter(context, body!!)
                         recycler_preview_survey.layoutManager = LinearLayoutManager(context)
+                        data = body!!
                     }
                 }
             }
