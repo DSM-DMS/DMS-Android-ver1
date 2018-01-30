@@ -12,6 +12,7 @@ import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.ViewPagerAdapter.SurveyViewPagerAdapter
 import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
+import android.util.Log
 import team_dms.dms.Base.BaseActivity
 import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
@@ -28,8 +29,7 @@ class SurveyActivity : BaseActivity() {
 
         var id : String = intent.getStringExtra("id") // 설문지 아이디
         var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
-        var data = intent.getSerializableExtra("data") as Array<SurveyQuestionModel>
-
+        var data = intent.getSerializableExtra("question") as Array<SurveyQuestionModel>
 
         surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments((data!!)))
         view_pager_survey.adapter=surveyAdapter
@@ -50,10 +50,12 @@ class SurveyActivity : BaseActivity() {
     private fun getFragments(items : Array<SurveyQuestionModel>) : ArrayList<Fragment>{ // Fragment에 데이터를 넣은채로 보내줌
         var list : ArrayList<Fragment> = arrayListOf()
 
-         for(item in items){
-            var b = Bundle()
-            b.putSerializable("data",item)
-            list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
+        for(item in items){
+
+             Log.d("surveyTest", item.title)
+             var b = Bundle()
+             b.putSerializable("data", item)
+             list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
          }
 
         return list

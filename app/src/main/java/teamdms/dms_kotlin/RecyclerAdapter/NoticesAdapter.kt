@@ -13,6 +13,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import kotlinx.android.synthetic.main.view_notice_item.view.*
+import team_dms.dms.Base.Util
 import teamdms.dms_kotlin.Activity.NoticeDetailActivity
 
 import teamdms.dms_kotlin.*
@@ -47,30 +48,38 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
     }
 
     override fun onBindViewHolder(holder : NoticeViewHolder, position: Int) {
+
         val intent = Intent(context, NoticeDetailActivity::class.java)
         val data = noticeArr[position]
-        holder.bind(data.title, data.write_date, {
-                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                       intent.putExtra("confirm", confirm)
-                       intent.putExtra("noticeID", data.id)
-                       intent.putExtra("noticeTitle", data.title)
-                       //startActivity(holder,intent) //액티비티 애니메이션 적용할때
-                       activity.startActivity(intent)
-                   } else {
-                       intent.putExtra("confirm", confirm)
-                       intent.putExtra("noticeID", data.id)
-                       context.startActivity(intent)
-                   }
-               })
 
-        setAnimation(holder.rootView, position)
+        if(noticeArr[0] != null) {
+            holder.bind(data.title, data.write_date, {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    intent.putExtra("confirm", confirm)
+                    intent.putExtra("noticeID", data.id)
+                    intent.putExtra("noticeTitle", data.title)
+                    //startActivity(holder,intent) //액티비티 애니메이션 적용할때
+                    activity.startActivity(intent)
+                } else {
+                    intent.putExtra("confirm", confirm)
+                    intent.putExtra("noticeID", data.id)
+                    context.startActivity(intent)
+                }
+            })
+
+            setAnimation(holder.rootView, position)
+        }
     }
 
     override fun getItemCount(): Int = noticeArr.size
 
     fun setData(data: Array<NoticeModel>) {
-        noticeArr = data!!.reversedArray()
-        notifyDataSetChanged()
+
+        if(data == null) Util.showToast(context, "항목이 없습니다.")
+        else {
+            noticeArr = data!!.reversedArray()
+            notifyDataSetChanged()
+        }
     }
 
     private fun setAnimation(view: View, position: Int) {

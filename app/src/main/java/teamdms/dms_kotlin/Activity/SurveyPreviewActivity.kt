@@ -36,9 +36,10 @@ class SurveyPreviewActivity : BaseActivity() {
         loadSurvey(id, this)
 
         button_start_survey_preview.setOnClickListener {
+
             var intent =Intent(this,SurveyActivity::class.java)
             intent.putExtra("id", id)
-            intent.putExtra("data", data)
+            intent.putExtra("question", data)
             startActivity(intent)
         }
     }

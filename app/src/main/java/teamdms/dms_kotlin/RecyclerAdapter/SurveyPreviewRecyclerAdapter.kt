@@ -21,22 +21,14 @@ class SurveyPreviewRecyclerAdapter(val context : Context, val question : Array<S
 
     override fun onBindViewHolder(holder: PreviewViewHolder?, position: Int) {
 
-        Log.d("study", "onBindViewHolder")
-
         var title = question[position].title
         holder!!.bind(title)
     }
 
-    override fun getItemCount(): Int {
-
-        Log.d("study", question.size.toString())
-        return question.size
-    }
-
+    override fun getItemCount(): Int =  question.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PreviewViewHolder {
 
-        Log.d("study", "onCreateViewHolder")
         val view = inflate.inflate(R.layout.view_survey_preview_item, parent, false)
         return PreviewViewHolder(view)
     }
