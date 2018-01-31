@@ -38,8 +38,8 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
         this.activity = activity
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {
-        inflater = LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): NoticeViewHolder {
+        inflater = LayoutInflater.from(parent!!.context)
         context = parent.context
 
         val view = inflater.inflate(R.layout.view_notice_item, null)
@@ -47,13 +47,13 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
 
     }
 
-    override fun onBindViewHolder(holder : NoticeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder : NoticeViewHolder?, position: Int) {
 
         val intent = Intent(context, NoticeDetailActivity::class.java)
-        val data = noticeArr[position]
+        val data = noticeArr[position!!]
 
-        if(noticeArr[0] != null) {
-            holder.bind(data.title, data.write_date, {
+        if(noticeArr != null) {
+            holder!!.bind(data.title, data.write_date, {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     intent.putExtra("confirm", confirm)
                     intent.putExtra("noticeID", data.id)
@@ -74,12 +74,8 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
     override fun getItemCount(): Int = noticeArr.size
 
     fun setData(data: Array<NoticeModel>) {
-
-        if(data == null) Util.showToast(context, "항목이 없습니다.")
-        else {
-            noticeArr = data!!.reversedArray()
-            notifyDataSetChanged()
-        }
+        noticeArr = data!!.reversedArray()
+        notifyDataSetChanged()
     }
 
     private fun setAnimation(view: View, position: Int) {
@@ -105,7 +101,7 @@ class NoticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var titleTextView: TextView = rootView.findViewById(R.id.text_notice_item_title)
 
-    fun bind(title: String, author: String, onClick: (Any) -> Unit) {
+    fun bind(title: String, author: String?, onClick: (Any) -> Unit) {
         with(rootView) {
             titleTextView.text = title
             text_notice_item_date.text = author

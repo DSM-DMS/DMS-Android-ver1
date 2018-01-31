@@ -73,7 +73,7 @@ class ObjectiveRecyclerAdapter(var context : Context) : RecyclerView.Adapter<Obj
 
             with(view) {
                 radio_objective_question.text = question
-                radio_objective_question.isChecked = true
+                radio_objective_question.isChecked = checked
                 view.setOnClickListener(radioClicked)
             }
         }

@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
 import android.util.Log
 import team_dms.dms.Base.BaseActivity
+import team_dms.dms.Base.Util
 import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
 import teamdms.dms_kotlin.Model.SurveyModel
@@ -52,10 +53,11 @@ class SurveyActivity : BaseActivity() {
 
         for(item in items){
 
-             Log.d("surveyTest", item.title)
              var b = Bundle()
-             b.putSerializable("data", item)
-             list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
+             if(b != null) {
+                 list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
+                 Log.v("surveyTest", "non null 1")
+             }
          }
 
         return list

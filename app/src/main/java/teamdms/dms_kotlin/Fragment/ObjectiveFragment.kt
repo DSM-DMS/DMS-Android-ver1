@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import kotlinx.android.synthetic.main.fragment_objective.*
+import team_dms.dms.Base.Util
 import teamdms.dms_kotlin.Activity.SurveyActivity
 import teamdms.dms_kotlin.Model.SurveyQuestionModel
 import teamdms.dms_kotlin.R
@@ -21,8 +22,11 @@ class ObjectiveFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var bundle = activity.intent.extras
-        Log.d("testSurvey", activity.toString())
-        survey = bundle.getSerializable("data") as SurveyQuestionModel
+
+        if(bundle != null) {
+            survey = bundle.getSerializable("data") as SurveyQuestionModel
+            Log.d("surveyTest", "non null 2")
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
