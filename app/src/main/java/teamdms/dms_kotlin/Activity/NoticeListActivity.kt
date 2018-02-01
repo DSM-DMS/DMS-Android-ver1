@@ -38,9 +38,7 @@ class NoticeListActivity : BaseActivity() {
         Connector.api.loadNotice(Util.getToken(this),Util.noticeIDs[confirm])
                 .enqueue(object : Res<Array<NoticeModel>>(this) {
                     override fun callBack(code: Int, body: Array<NoticeModel>?) {
-                        if (code == 200) {
-                            adapter.setData(body!!)
-                        }
+                        if (code == 200) adapter.setData(body!!)
                     }
                 })
     }

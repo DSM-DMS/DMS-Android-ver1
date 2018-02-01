@@ -7,11 +7,13 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.*
+import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import kotlinx.android.synthetic.main.view_notice_item.view.*
+import team_dms.dms.Base.Util
 import teamdms.dms_kotlin.Activity.NoticeDetailActivity
 
 import teamdms.dms_kotlin.*
@@ -36,8 +38,8 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
         this.activity = activity
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {
-        inflater = LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): NoticeViewHolder {
+        inflater = LayoutInflater.from(parent!!.context)
         context = parent.context
 
         val view = inflater.inflate(R.layout.view_notice_item, null)
@@ -45,30 +47,34 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
 
     }
 
-    override fun onBindViewHolder(holder : NoticeViewHolder, position: Int) {
-        val intent = Intent(context, NoticeDetailActivity::class.java)
-        val data = noticeArr[position]
-        holder.bind(data.title, data.write_date, {
-                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                       intent.putExtra("confirm", confirm)
-                       intent.putExtra("noticeID", data.id)
-                       intent.putExtra("noticeTitle", data.title)
-                       //startActivity(holder,intent) //액티비티 애니메이션 적용할때
-                       activity.startActivity(intent)
-                   } else {
-                       intent.putExtra("confirm", confirm)
-                       intent.putExtra("noticeID", data.id)
-                       context.startActivity(intent)
-                   }
-               })
+    override fun onBindViewHolder(holder : NoticeViewHolder?, position: Int) {
 
-        setAnimation(holder.rootView, position)
+        val intent = Intent(context, NoticeDetailActivity::class.java)
+        val data = noticeArr[position!!]
+
+        if(noticeArr != null) {
+            holder!!.bind(data.title, data.write_date, {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    intent.putExtra("confirm", confirm)
+                    intent.putExtra("noticeID", data.id)
+                    intent.putExtra("noticeTitle", data.title)
+                    //startActivity(holder,intent) //액티비티 애니메이션 적용할때
+                    activity.startActivity(intent)
+                } else {
+                    intent.putExtra("confirm", confirm)
+                    intent.putExtra("noticeID", data.id)
+                    context.startActivity(intent)
+                }
+            })
+
+            setAnimation(holder.rootView, position)
+        }
     }
 
     override fun getItemCount(): Int = noticeArr.size
 
     fun setData(data: Array<NoticeModel>) {
-        noticeArr = data.reversedArray()
+        noticeArr = data!!.reversedArray()
         notifyDataSetChanged()
     }
 
@@ -95,7 +101,7 @@ class NoticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var titleTextView: TextView = rootView.findViewById(R.id.text_notice_item_title)
 
-    fun bind(title: String, author: String, onClick: (Any) -> Unit) {
+    fun bind(title: String, author: String?, onClick: (Any) -> Unit) {
         with(rootView) {
             titleTextView.text = title
             text_notice_item_date.text = author

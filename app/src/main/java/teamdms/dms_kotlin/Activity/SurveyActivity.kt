@@ -12,7 +12,9 @@ import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.ViewPagerAdapter.SurveyViewPagerAdapter
 import android.widget.LinearLayout
 import android.support.v4.view.ViewPager
+import android.util.Log
 import team_dms.dms.Base.BaseActivity
+import team_dms.dms.Base.Util
 import team_dms.dms.Connect.Connector
 import team_dms.dms.Connect.Res
 import teamdms.dms_kotlin.Model.SurveyModel
@@ -28,8 +30,9 @@ class SurveyActivity : BaseActivity() {
 
         var id : String = intent.getStringExtra("id") // 설문지 아이디
         var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
+        var data = intent.getSerializableExtra("question") as Array<SurveyQuestionModel>
 
-        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments(loadSurvey(id)))
+        surveyAdapter=SurveyViewPagerAdapter(supportFragmentManager,getFragments((data!!)))
         view_pager_survey.adapter=surveyAdapter
         view_pager_survey.setPageingScroll(false)
         setView(view,surveyAdapter!!.count,0)
@@ -45,33 +48,22 @@ class SurveyActivity : BaseActivity() {
         })
     }
 
-    private fun loadSurvey(id : String) : Array<SurveyQuestionModel>{
-        var items = arrayOf<SurveyQuestionModel>()
-        Connector.api.loadSurvey_detail(getToken(), id).enqueue(object : Res<Array<SurveyQuestionModel>>(this){
-            override fun callBack(code: Int, body: Array<SurveyQuestionModel>?) {
-                when(code){
-                    200->items=body!!
-                }
-            }
-
-        })
-        return items
-    }
-
     private fun getFragments(items : Array<SurveyQuestionModel>) : ArrayList<Fragment>{ // Fragment에 데이터를 넣은채로 보내줌
         var list : ArrayList<Fragment> = arrayListOf()
 
-         for(item in items){
+        for(item in items){
+
             var b = Bundle()
-            b.putSerializable("data",item)
+            b.putSerializable("data", item)
             list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
+            Log.v("surveyTest", "non null 1")
          }
 
         return list
     }
 
-    private fun isObjective(surveyModel: SurveyQuestionModel): Fragment { // 객관식인지 주관식인지 판단함
-        return if (surveyModel.isObjective) ObjectiveFragment.newInstance()
+    private fun isObjective(surveyQuestionModel: SurveyQuestionModel): Fragment { // 객관식인지 주관식인지 판단함
+        return if (surveyQuestionModel.isObjective) ObjectiveFragment.newInstance()
         else NotObjectiveFragment.newInstance()
     }
 
