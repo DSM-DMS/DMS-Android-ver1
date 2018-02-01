@@ -3,6 +3,7 @@ package teamdms.dms_kotlin.Fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,13 +38,14 @@ class ObjectiveFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        val adapter = ObjectiveRecyclerAdapter(context)
+        val adapter = ObjectiveRecyclerAdapter(context,survey.id)
         adapter.setData(survey.choices)
 
-        recycler_objective_survey.adapter = adapter
-        recycler_objective_survey.layoutManager = layoutManager
+        var recyclerView=view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
+        recyclerView!!.adapter = adapter
+        recyclerView!!.layoutManager = layoutManager
 //
-//        button_start_survey_objective.setOnClickListener { adapter.sendAnswer(survey.id)}
+        nextButton.setOnClickListener { adapter.sendAnswer(survey.id)}
 
         return view
     }

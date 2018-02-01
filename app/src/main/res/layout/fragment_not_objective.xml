@@ -46,7 +46,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button_start_survey"
+        android:id="@+id/button_start_survey_not_objective"
         android:layout_width="62dp"
         android:layout_height="62dp"
         android:layout_marginBottom="32dp"

@@ -69,7 +69,7 @@ class SurveyActivity : BaseActivity() {
 
     fun nextPage(button : Button){ // 페이지 넘기기
         var maxCount=surveyAdapter!!.count-1
-        if(view_pager_survey.currentItem+1==maxCount) {
+        if(view_pager_survey.currentItem==maxCount) {
             button.text="DONE"
             button.setOnClickListener {
                 startActivity(Intent(this,SurveyListActivity::class.java))

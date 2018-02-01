@@ -34,8 +34,16 @@ class MyPageFragment: Fragment() {
     fun load(){
         Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypageModel>(activity){
             override fun callBack(code: Int, body: MypageModel?) {
-                setStateData(body)
-                with(rootView){ recycler_mypage.adapter.notifyDataSetChanged() }
+                when(code) {
+                    200 -> {
+                        setStateData(body)
+                        with(rootView) {
+                            recycler_mypage.adapter.notifyDataSetChanged()
+                        }
+
+                    }
+                    403-> Util.showToast(context,"재로그인 하세요")
+                }
             }
         })
     }

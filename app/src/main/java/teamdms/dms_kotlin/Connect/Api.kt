@@ -82,7 +82,7 @@ interface Api {
     @FormUrlEncoded
     fun checkUUID(@Field("uuid") uuid : String) : Call<Void>
 
-    @POST
+    @POST("survey/question")
     @FormUrlEncoded
     fun sendSurvey(@Header ("Authorization") token : String, @Field("question_id") id : String, @Field("answer") answer : String) : Call<Void>
 

@@ -55,20 +55,22 @@ class ApplyMainFragment : Fragment() {
         Connector.api.loadMyInfo(Util.getToken(context))
                 .enqueue(object : Res<MypageModel>(context){
                     override fun callBack(code: Int, body: MypageModel?) {
-                        body.let {
-                            with(contentViewArr[0]) {
-                                if(body != null) text_apply_main_content.text = body!!.getStudyState() else {text_apply_main_content.text="안녕"}
+                        when(code){
+                            200->  body.let {
+                                with(contentViewArr[0]) {
+                                    if(body != null) text_apply_main_content.text = body!!.getStudyState() else {text_apply_main_content.text="안녕"}
+                                }
+                                with(contentViewArr[1]) {
+                                    if (body != null) text_apply_main_content.text = "신청 : ${body!!.getStayState()}" else{text_apply_main_content.text="안녕"}
+                                }
+                                with(contentViewArr[2]) {
+                                    if (body != null){
+                                        switch_apply_main_sat.isChecked = body!!.goingout!!.sat!!
+                                        switch_apply_main_sun.isChecked = body!!.goingout!!.sun!!
+                                    }else{}
+                                }
                             }
-                            with(contentViewArr[1]) {
-                                if (body != null) text_apply_main_content.text = "신청 : ${body!!.getStayState()}" else{text_apply_main_content.text="안녕"}
-                            }
-                            with(contentViewArr[2]) {
-                                if (body != null){
-                                    switch_apply_main_sat.isChecked = body!!.goingout!!.sat!!
-                                    switch_apply_main_sun.isChecked = body!!.goingout!!.sun!!
-                                }else{}
-
-                            }
+                            403-> Util.showToast(context,"재로그인 하세요")
                         }
                     }
                 })
