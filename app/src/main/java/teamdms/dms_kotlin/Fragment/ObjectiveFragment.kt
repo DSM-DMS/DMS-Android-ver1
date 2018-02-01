@@ -23,10 +23,7 @@ class ObjectiveFragment : Fragment() {
         super.onCreate(savedInstanceState)
         var bundle = activity.intent.extras
 
-        if(bundle != null) {
-            survey = bundle.getSerializable("data") as SurveyQuestionModel
-            Log.d("surveyTest", "non null 2")
-        }
+        survey = arguments.getSerializable("data") as SurveyQuestionModel
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

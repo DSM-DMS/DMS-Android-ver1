@@ -45,7 +45,6 @@ class SurveyPreviewActivity : BaseActivity() {
     }
 
     private fun loadSurvey(id : String, context: Context) {
-        var items = arrayOf<SurveyQuestionModel>()
         Connector.api.loadSurvey_detail(getToken(), id).enqueue(object : Res<Array<SurveyQuestionModel>>(this){
             override fun callBack(code: Int, body: Array<SurveyQuestionModel>?) {
                 when(code){

@@ -53,11 +53,10 @@ class SurveyActivity : BaseActivity() {
 
         for(item in items){
 
-             var b = Bundle()
-             if(b != null) {
-                 list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
-                 Log.v("surveyTest", "non null 1")
-             }
+            var b = Bundle()
+            b.putSerializable("data", item)
+            list.add(Fragment.instantiate(this,isObjective(item).javaClass.name,b))
+            Log.v("surveyTest", "non null 1")
          }
 
         return list
