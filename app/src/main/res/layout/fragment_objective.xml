@@ -1,38 +1,54 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/survey_back"
     tools:context="teamdms.dms_kotlin.Fragment.NotObjectiveFragment">
 
-    <ImageView
-        android:id="@+id/iv_survey_icon"
-        android:layout_marginTop="64dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="125dp"
-        android:src="@drawable/survey_icon"
-        android:layout_height="125dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/text_survey_title_objective"
-        android:text="현재 급식의 질이 어느정도라고 생각하시나요?"
-        android:layout_marginTop="12dp"
-        android:maxWidth="240dp"
-        android:textSize="18sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/iv_survey_icon"
-        android:textColor="@color/colorWhite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_survey_icon"
+            android:layout_marginTop="32dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="125dp"
+            android:src="@drawable/survey_icon"
+            android:layout_height="125dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_objective_survey"
-        android:layout_width="240dp"
-        android:layout_height="160dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="108dp"
-        />
+        <TextView
+            android:id="@+id/text_survey_title_objective"
+            android:text="제목"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_survey_icon"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_objective_survey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="64dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingRight="64dp"
+            android:layout_centerHorizontal="true"
+           />
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

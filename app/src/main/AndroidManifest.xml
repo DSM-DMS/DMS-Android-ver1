@@ -45,7 +45,9 @@
         </receiver>
 
         <activity android:name=".Activity.IntroDeveloperActivity" />
-        <activity android:name=".Activity.SurveyActivity"></activity>
+        <activity android:name=".Activity.SurveyActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
     </application>
 
 </manifest>
