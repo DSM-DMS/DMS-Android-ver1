@@ -3,40 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/intro_back_linear"
     tools:context="teamdms.dms_kotlin.Fragment.IntroDeveloperFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4">
+        android:layout_weight="1">
 
-        <ImageView
-            android:id="@+id/iv_intro_developer_icon"
-            android:padding="128dp"
-            android:src="@drawable/notice_list_icon3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/iv_intro_developer_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_width="125dp"
+                android:layout_centerInParent="true"
+                android:layout_height="125dp" />
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:id="@+id/text_intro_developer_title"
+                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_intro_developer_icon"
+                android:layout_centerHorizontal="true"
+                android:textSize="24sp" />
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/text_intro_developer_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/text_intro_developer_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/text_intro_developer_title"
-            android:layout_below="@+id/text_intro_developer_title"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="16dp"
             android:textSize="16sp" />
     </RelativeLayout>

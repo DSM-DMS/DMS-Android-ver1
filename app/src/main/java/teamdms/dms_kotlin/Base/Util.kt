@@ -21,8 +21,9 @@ object Util {
 
     val introDeveloperTitle = arrayOf(R.string.mobile_intro_title,R.string.web_intro_title,R.string.server_intro_title,R.string.window_intro,R.string.designer_intro)
     val introDeveloperContent = arrayOf(R.string.mobile_intro_content,R.string.web_intro_content,R.string.server_intro_content,R.string.window_content,R.string.designer_content)
-    val introDeveloperIcon= arrayOf(R.drawable.intro_mobile_icon,R.drawable.intro_web_icon,R.drawable.intro_server_icon,R.drawable.intro_window_icon,R.drawable.intro_designer_icon)
+    val introDeveloperIcon= arrayOf(R.drawable.ic_mobile,R.drawable.ic_front,R.drawable.ic_server,R.drawable.ic_desktop,R.drawable.ic_design)
 
+    val introBacks = arrayOf(R.drawable.intro_background_one,R.drawable.intro_background_two)
 
     fun showToast(context: Context, message: String) = Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
