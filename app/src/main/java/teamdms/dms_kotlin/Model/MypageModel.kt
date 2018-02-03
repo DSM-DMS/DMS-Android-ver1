@@ -27,6 +27,12 @@ class MypageModel {
     @SerializedName("goingout")
     var goingout: GoingOut? = null
 
+    @SerializedName("bad_point")
+    var demerit: Int = 0
+
+    @SerializedName("good_point")
+    var merit: Int = 0
+
     fun getStudyState(): String {
         return "11 : " + when (extension_11?.classNum) {
             is Int -> "${Util.classNameArr[extension_11!!.classNum!! - 1]}"

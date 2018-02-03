@@ -53,8 +53,8 @@ class MyPageFragment: Fragment() {
             if(data != null){
                 text_mypage_study_state.text = data!!.getStudyState()
                 text_mypage_stay_state.text = data!!.getStayState()
-                text_mypage_merit.text = "0"
-                text_mypage_demerit.text = "0"
+                text_mypage_merit.text = data.merit.toString()
+                text_mypage_demerit.text = data.demerit.toString()
             }else{
                 text_mypage_study_state.text = "오류"
                 text_mypage_stay_state.text = "오류"
