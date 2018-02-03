@@ -6,15 +6,17 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-    <Button
-        android:layout_margin="30dp"
+    <TextView
+        android:layout_margin="32dp"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_width="wrap_content"
-        android:paddingLeft="44dp"
-        android:paddingRight="44dp"
+        android:paddingLeft="48dp"
+        android:paddingRight="48dp"
         android:layout_height="38dp"
         android:background="@drawable/survey_button_shape"
         android:elevation="4dp"
+        android:textStyle="bold"
         android:text="11월 급식 선호도 조사"
         android:textColor="@color/colorWhite" />
 
@@ -28,7 +30,6 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-
             <RelativeLayout
                 android:elevation="4dp"
                 android:layout_marginTop="48dp"
@@ -39,38 +40,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <TextView
-                    android:id="@+id/text_survey_date"
-                    android:text="작성 날짜"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginLeft="16dp"
+                    android:id="@+id/text_survey_preview_date"
+                    android:text="설문 종료일 : 2017 - 12 -26"
+                    android:textSize="16sp"
+                    android:layout_marginTop="36dp"
+                    android:layout_centerHorizontal="true"
                     android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-
-                <TextView
-                    android:id="@+id/text_survey_preview_date"
-                    android:text="2017 - 11 -26 ~ 2017 - 12 -26"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginLeft="12dp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_toRightOf="@+id/text_survey_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
                 <TextView
                     android:text="@string/survey_intro_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_margin="16dp"
+                    android:textSize="16sp"
                     android:id="@+id/text_view_survey_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="24dp"
                     android:textColor="@color/colorBlack"
-                    android:layout_below="@+id/text_survey_date"
-                    android:layout_alignLeft="@+id/text_survey_date"/>
-
-
+                    android:layout_below="@+id/text_survey_preview_date"/>
 
             </RelativeLayout>
 
@@ -100,7 +89,7 @@
                 android:layout_width="62dp"
                 android:layout_height="62dp"
                 android:layout_marginBottom="32dp"
-                android:text="START"
+                android:text="시작"
                 android:textColor="@color/colorWhite"
                 android:elevation="4dp"
                 android:background="@drawable/survey_start_button_shape"
@@ -114,14 +103,16 @@
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
-        android:paddingLeft="72dp"
-        android:paddingRight="72dp"
+        android:paddingLeft="64dp"
+        android:paddingRight="64dp"
         android:layout_height="38dp"
+        android:gravity="center"
         android:layout_centerInParent="true"
         android:background="@drawable/survey_button_shape"
         android:elevation="4dp"
+        android:textStyle="bold"
         android:text="@string/survey_intro_title"
         android:textColor="@color/colorWhite" />
 

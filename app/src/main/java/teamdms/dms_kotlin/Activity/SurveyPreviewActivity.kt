@@ -1,19 +1,14 @@
 package teamdms.dms_kotlin.Activity
 
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.os.*
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.widget.LinearLayout
+import android.support.v7.widget.*
 import kotlinx.android.synthetic.main.activity_preview_survey.*
 import team_dms.dms.Base.*
-import team_dms.dms.Connect.Connector
-import team_dms.dms.Connect.Res
+import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.Model.SurveyQuestionModel
-import teamdms.dms_kotlin.RecyclerAdapter.SurveyPreviewRecyclerAdapter
+import teamdms.dms_kotlin.Model.*
+import teamdms.dms_kotlin.RecyclerAdapter.*
 
 /**
  * Created by root1 on 2017. 12. 19..
@@ -30,8 +25,8 @@ class SurveyPreviewActivity : BaseActivity() {
         var date = intent.getStringExtra("date")
         var id = intent.getStringExtra("id")
 
-        text_survey_preview_date.text=date
-        text_view_survey_content.text=desc
+        text_survey_preview_date.text = "종료일 : " + date
+        text_view_survey_content.text = desc
 
         loadSurvey(id, this)
 

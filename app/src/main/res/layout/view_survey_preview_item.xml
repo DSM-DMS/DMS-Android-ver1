@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:padding="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:orientation="horizontal">
+
+    <View
+        android:layout_marginRight="16dp"
+        android:background="@drawable/survey_view_shape"
+        android:layout_width="12dp"
+        android:layout_height="12dp"/>
 
     <TextView
         android:id="@+id/text_survey_preview_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="급식 맛 평가"
-        android:textSize="18sp"
-        android:layout_margin="4dp"
-        />
-
-    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorBlack"
-        />
+        android:layout_height="wrap_content"
+        android:text="급식 맛 평가"
+        android:textSize="18sp"/>
+
 </LinearLayout>

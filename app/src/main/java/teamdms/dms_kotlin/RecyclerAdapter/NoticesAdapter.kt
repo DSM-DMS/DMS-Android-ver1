@@ -1,23 +1,19 @@
 package teamdms.dms_kotlin.RecyclerAdapter
 
-import android.app.Activity
+import android.app.*
 import android.content.*
-import android.os.Build
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.util.Pair
-import android.support.v4.view.ViewCompat
+import android.os.*
+import android.support.v4.app.*
+import android.support.v4.util.*
+import android.support.v4.view.*
 import android.support.v7.widget.*
-import android.util.Log
 import android.view.*
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.TextView
+import android.view.animation.*
+import android.widget.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
-import team_dms.dms.Base.Util
-import teamdms.dms_kotlin.Activity.NoticeDetailActivity
-
 import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.Model.NoticeModel
+import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Model.*
 
 /**
  * Created by dsm2016 on 2017-12-18.
@@ -101,10 +97,10 @@ class NoticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var titleTextView: TextView = rootView.findViewById(R.id.text_notice_item_title)
 
-    fun bind(title: String, author: String?, onClick: (Any) -> Unit) {
+    fun bind(title: String, date: String?, onClick: (Any) -> Unit) {
         with(rootView) {
             titleTextView.text = title
-            text_notice_item_date.text = author
+            text_notice_item_date.text = date
             card_notice_item.setOnClickListener(onClick)
         }
     }

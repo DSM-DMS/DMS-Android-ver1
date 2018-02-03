@@ -4,7 +4,6 @@ import com.google.gson.*
 import retrofit2.*
 import retrofit2.http.*
 import team_dms.dms.Model.*
-import teamdms.dms_kotlin.Model.NoticeModel
 import teamdms.dms_kotlin.Model.*
 
 /**
@@ -88,11 +87,11 @@ interface Api {
 
     //공지 리스트 불러오기
     @GET("{confirm}")
-    fun loadNotice(@Header("Authorization") token: String,@Path("confirm")confirm: String) : Call<Array<NoticeModel>>
+    fun loadNotice(@Header("Authorization") token: String, @Path("confirm")confirm: String) : Call<Array<NoticeModel>>
 
     //공지 디테일 불러오기
     @GET("{confirm}/{id}")
-    fun loadNotice_detail(@Path("confirm") confirm: String, @Path("id") id: String): Call<NoticeModel>
+    fun loadNotice_detail(@Header("Authorization") token: String, @Path("confirm") confirm: String, @Path("id") id: String): Call<NoticeModel>
 
     //설문조사 리스트
     @GET("survey")

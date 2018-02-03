@@ -10,4 +10,4 @@ data class NoticeModel(@SerializedName("id") var id: String,
                        @SerializedName("title") var title: String,
                        @SerializedName("author") var author: String?,
                        @SerializedName("content") var content: String?,
-                       @SerializedName("write_date") var write_date: String)
+                       @SerializedName("write_time") var write_date: String)

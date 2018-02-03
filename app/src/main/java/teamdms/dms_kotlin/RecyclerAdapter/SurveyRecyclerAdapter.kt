@@ -1,21 +1,13 @@
 package teamdms.dms_kotlin.RecyclerAdapter
 
-import android.content.Context
-import android.content.Intent
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_notice_list.view.*
+import android.content.*
+import android.support.v7.widget.*
+import android.view.*
+import android.view.animation.*
 import kotlinx.android.synthetic.main.view_notice_item.view.*
-import team_dms.dms.Base.Util
-import teamdms.dms_kotlin.Activity.NoticeDetailActivity
-import teamdms.dms_kotlin.Activity.SurveyActivity
-import teamdms.dms_kotlin.Activity.SurveyPreviewActivity
-import teamdms.dms_kotlin.Model.SurveyModel
-import teamdms.dms_kotlin.R
+import teamdms.dms_kotlin.*
+import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Model.*
 
 /**
  * Created by dsm2017 on 2018-01-02.
@@ -43,7 +35,7 @@ class SurveyRecyclerAdapter : RecyclerView.Adapter<SurveyRecyclerViewHolder>() {
         holder!!.bindData(title, date, View.OnClickListener{
             intent.putExtra("id",surveies[position].id)
             intent.putExtra("title",surveies[position].title)
-            intent.putExtra("date",date)
+            intent.putExtra("date",surveies[position].endDate)
             intent.putExtra("desc",surveies[position].desc)
             context.startActivity(intent)
         })

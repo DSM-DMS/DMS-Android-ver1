@@ -1,19 +1,15 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
-import android.support.transition.Explode
-import android.support.v7.app.*
-import android.transition.Fade
-import android.transition.Slide
-import android.transition.TransitionInflater
-import android.view.Gravity
+import android.transition.*
 import kotlinx.android.synthetic.main.activity_notice_detail.*
 import team_dms.dms.Base.*
+import team_dms.dms.Base.Util.getToken
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Model.*
 
-class NoticeDetailActivity : AppCompatActivity() {
+class NoticeDetailActivity : BaseActivity() {
 
     var confirm = 0
 
@@ -34,7 +30,7 @@ class NoticeDetailActivity : AppCompatActivity() {
     private fun loadData(noticeID : String) {
         ib_notice_detail_icon.setImageResource(Util.noticeImages[confirm])
 
-        Connector.api.loadNotice_detail(Util.noticeIDs[confirm], noticeID)
+        Connector.api.loadNotice_detail(getToken(this), Util.noticeIDs[confirm], noticeID)
                 .enqueue(object : Res<NoticeModel>(this){
                     override fun callBack(code: Int, body: NoticeModel?) {
                         if (code == 200){
