@@ -14,7 +14,7 @@
         android:layout_height="125dp" />
 
     <TextView
-        android:id="@+id/text_survey_title"
+        android:id="@+id/text_survey_title_objective"
         android:text="현재 급식의 질이 어느정도라고 생각하시나요?"
         android:layout_marginTop="12dp"
         android:maxWidth="240dp"
@@ -34,15 +34,5 @@
         android:layout_marginBottom="108dp"
         />
 
-    <Button
-        android:id="@+id/button_start_survey_objective"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="32dp"
-        android:text="DONE"
-        android:textColor="@color/colorWhite"
-        android:elevation="4dp"
-        android:background="@drawable/survey_start_button_shape"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

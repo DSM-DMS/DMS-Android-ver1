@@ -14,6 +14,7 @@
         android:layout_height="125dp" />
 
     <TextView
+        android:id="@+id/text_survey_title_not_objective"
         android:text="급식에 대해 학교에 바라는 점이 있다면?"
         android:layout_marginTop="12dp"
         android:maxWidth="240dp"
@@ -27,7 +28,7 @@
 
     <EditText
         android:layout_marginTop="@dimen/margin_all_small"
-        android:id="@+id/edit_survey_id"
+        android:id="@+id/edit_survey_answer"
         android:layout_width="match_parent"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
@@ -41,11 +42,11 @@
         android:maxLines="1"
         android:textSize="18dp"
         android:layout_marginBottom="102dp"
-        android:layout_above="@+id/button_start_survey"
+        android:layout_above="@+id/button_start_survey_not_objective"
         android:inputType="text">
     </EditText>
 
-    <Button
+    <View
         android:id="@+id/button_start_survey_not_objective"
         android:layout_width="62dp"
         android:layout_height="62dp"
@@ -53,7 +54,6 @@
         android:text="DONE"
         android:textColor="@color/colorWhite"
         android:elevation="4dp"
-        android:background="@drawable/survey_start_button_shape"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

@@ -24,14 +24,24 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
 
     private val inflater : LayoutInflater = LayoutInflater.from(context)
     private lateinit var data : Array<String>
-    private var lastCheckPosition : Int = 0 // 마지막으로 체크되어 있었던 라디오 버튼의 포지션
-    private var checkedPosition = -1
-    private var answer : String = ""
+    var answer : String = ""
 
+    companion object {
+        var checkedPosition = -1
+        var sClickListener: RadioClickListener? = null
+    }
 
     fun setData (data : Array<String>) {
         this.data = data
         notifyDataSetChanged()
+    }
+
+    fun selectedRadio() {
+        notifyDataSetChanged()
+    }
+
+    fun setOnItemClickListener(clickListener: RadioClickListener) {
+        sClickListener = clickListener
     }
 
     override fun getItemCount(): Int {
@@ -46,32 +56,24 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
 
         val radioClicked = View.OnClickListener {
-            if(position == checkedPosition){
-                holder!!.radioButton.isChecked=true
+            Util.showToast(context, data[position])
+            answer = data[position]
+            checkedPosition = holder!!.adapterPosition
+            sClickListener!!.onRadioClickListener( holder!!.adapterPosition, holder.rootView)
 
-                checkedPosition = position
-                answer = data[position]
-            }else{
-                holder!!.radioButton.isChecked=false
-            }
         }
-
-        holder!!.bind(data[position], radioClicked,{
-            sendAnswer(id)
-        })
-
+        holder!!.radioButton.isChecked = position==checkedPosition
+        holder!!.bind(data[position],radioClicked)
     }
 
-    fun sendAnswer (id : String) {
-
-        Connector.api.sendSurvey(Util.getToken(context), id, answer).enqueue(object : Res<Void>(context){
-
+    fun sendAnswer() {
+        Connector.api.sendSurvey(Util.getToken(context), id,answer).enqueue(object : Res<Void>(context) {
             override fun callBack(code: Int, body: Void?) {
-                when(code) {
-                    201 -> Util.showToast(context, "응답이 완료되었습니다.")
-                    204 -> Util.showToast(context, "존재하지 않는 질문입니다. : error "+code.toString())
-                    403 -> Util.showToast(context, "권한이 없습니다." +code.toString())
-                    else -> Util.showToast(context, "서버오류." +code.toString())
+                when (code) {
+                    201 -> Util.showToast(context, "응답이 완료되었습니다."+ answer)
+                    204 -> Util.showToast(context, "존재하지 않는 질문입니다. : error " + code.toString())
+                    403 -> Util.showToast(context, "권한이 없습니다." + code.toString())
+                    else -> Util.showToast(context, "서버오류." + code.toString())
                 }
             }
         })
@@ -81,12 +83,17 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
 
         var rootView : View = view
         var radioButton = rootView.findViewById<RadioButton>(R.id.radio_objective_question)
-        fun bind(question : String, radioClicked : View.OnClickListener,onClick: (Any) -> Unit) { // 응답내용, 라디오버튼 리스너, 라디오 버튼 체크
+        fun bind(question : String,onClick: View.OnClickListener) { // 응답내용, 라디오버튼 리스너, 라디오 버튼 체크
 
             with(view) {
                 radioButton.text = question
-                view.setOnClickListener(radioClicked)
+                radioButton.setOnClickListener(onClick)
             }
         }
+
+    }
+
+    interface RadioClickListener{
+        fun onRadioClickListener(position: Int, view: View)
     }
 }

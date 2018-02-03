@@ -9,17 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_objective.*
 import team_dms.dms.Base.Util
 import teamdms.dms_kotlin.Activity.SurveyActivity
+import teamdms.dms_kotlin.Base.BaseFragment
 import teamdms.dms_kotlin.Model.SurveyQuestionModel
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.RecyclerAdapter.ObjectiveRecyclerAdapter
 
-class ObjectiveFragment : Fragment() {
+class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickListener {
+
 
     lateinit var survey : SurveyQuestionModel
-
+    lateinit var adapter : ObjectiveRecyclerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var bundle = activity.intent.extras
@@ -32,22 +35,28 @@ class ObjectiveFragment : Fragment() {
         // Inflate the layout for this fragment
         var view =inflater!!.inflate(R.layout.fragment_objective, container, false)
 
-        var nextButton=view.findViewById<Button>(R.id.button_start_survey_objective)
-        (activity as SurveyActivity).nextPage(nextButton)
-
+       // var nextButton=view.findViewById<Button>(R.id.button_start_survey_objective)
+        var titleTextView=view.findViewById<TextView>(R.id.text_survey_title_objective)
+        titleTextView.text=survey.title
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        val adapter = ObjectiveRecyclerAdapter(context,survey.id)
+        adapter = ObjectiveRecyclerAdapter(context,survey.id)
+        adapter.setOnItemClickListener(this)
         adapter.setData(survey.choices)
 
-        var recyclerView=view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
+        var recyclerView = view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
         recyclerView!!.adapter = adapter
         recyclerView!!.layoutManager = layoutManager
-//
-        nextButton.setOnClickListener { adapter.sendAnswer(survey.id)}
-
         return view
+    }
+    override fun onRadioClickListener(position: Int, view: View) {
+        adapter.selectedRadio()
+    }
+
+    override fun sendAnswer(answer : String?) : Boolean {
+        adapter.sendAnswer()
+        return true
     }
 
     companion object {
