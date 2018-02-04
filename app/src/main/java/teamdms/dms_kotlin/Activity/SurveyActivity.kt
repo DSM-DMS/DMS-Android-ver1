@@ -80,11 +80,11 @@ class SurveyActivity : BaseActivity() {
         //instanceof 하고 똑같음
         if (fragment is NotObjectiveFragment) {
             // answer = fragment.answer
+            // 나중에 코드수정할때
         }
 
         if (surveyAdapter!!.count == currentIndex + 1) {
             button.setOnClickListener {
-
                 when (fragment.sendAnswer(answer)) {
                     true -> {
                         var handler = Handler()
@@ -114,8 +114,6 @@ class SurveyActivity : BaseActivity() {
         } else {
             button.text = "NEXT"
         }
-
-
     }
 
     private val delayRun = Runnable {

@@ -63,7 +63,7 @@ class NotObjectiveFragment : BaseFragment() {
         Connector.api.sendSurvey(Util.getToken(context), survey.id,answer).enqueue(object : Res<Void>(context) {
             override fun callBack(code: Int, body: Void?) {
                 when (code) {
-                    201 -> Util.showToast(context, "응답이 완료되었습니다."+ answer)
+                    201 -> Util.showToast(context, "응답이 완료되었습니다.")
                     204 -> Util.showToast(context, "존재하지 않는 질문입니다. : error " + code.toString())
                     403 -> Util.showToast(context, "권한이 없습니다." + code.toString())
                     else -> Util.showToast(context, "서버오류." + code.toString())

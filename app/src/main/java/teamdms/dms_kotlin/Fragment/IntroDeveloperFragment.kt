@@ -56,8 +56,6 @@ class IntroDeveloperFragment : Fragment() {
             linear.setBackgroundResource(Util.introBacks[1])
             title.setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
         }
-
-
     }
 
     companion object {

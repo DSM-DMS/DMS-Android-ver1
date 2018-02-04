@@ -36,6 +36,7 @@ class SurveyPreviewActivity : BaseActivity() {
             intent.putExtra("id", id)
             intent.putExtra("question", data)
             startActivity(intent)
+            finish()
         }
     }
 
