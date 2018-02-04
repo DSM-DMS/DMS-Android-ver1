@@ -85,8 +85,9 @@ class SurveyActivity : BaseActivity() {
                     false -> { }
                 }
             }
+
         } else {
-            button.setOnClickListener {
+                button.setOnClickListener {
                 when (fragment.sendAnswer()) {
                     true -> {
                         var handler = Handler()
