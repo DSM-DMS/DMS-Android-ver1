@@ -46,6 +46,7 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
         adapter.setData(survey.choices)
         adapter.setHasStableIds(true)
 
+
         var recyclerView = view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
         recyclerView!!.adapter = adapter
         recyclerView!!.layoutManager = layoutManager

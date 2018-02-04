@@ -57,7 +57,6 @@ class SurveyActivity : BaseActivity() {
 
     private fun getFragments(items : Array<SurveyQuestionModel>) : ArrayList<BaseFragment>{ // Fragment에 데이터를 넣은채로 보내줌
         var list : ArrayList<BaseFragment> = arrayListOf()
-        var index=0
         for(item in items){
             var b = Bundle()
             b.putSerializable("data", item)
@@ -75,13 +74,6 @@ class SurveyActivity : BaseActivity() {
 
     fun send(button: Button) {
         var fragment = surveyAdapter!!.getItem(mSelectedPosition) as BaseFragment
-        var answer = "abc"
-
-        //instanceof 하고 똑같음
-        if (fragment is NotObjectiveFragment) {
-            // answer = fragment.answer
-            // 나중에 코드수정할때
-        }
 
         if (surveyAdapter!!.count == currentIndex + 1) {
             button.setOnClickListener {
@@ -93,8 +85,10 @@ class SurveyActivity : BaseActivity() {
                     false -> { }
                 }
             }
+
         } else {
             button.setOnClickListener {
+
                 when (fragment.sendAnswer()) {
                     true -> {
                         var handler = Handler()

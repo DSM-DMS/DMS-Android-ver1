@@ -61,12 +61,11 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             sClickListener!!.onRadioClickListener( holder!!.adapterPosition, holder.rootView)
         }
 
-        if(position == checkedPosition) {
+         if(position == checkedPosition) {
 
             holder!!.radioButton.isChecked = true
             answer = data[position]
         }
-
         holder!!.bind(data[position],radioClicked)
     }
 

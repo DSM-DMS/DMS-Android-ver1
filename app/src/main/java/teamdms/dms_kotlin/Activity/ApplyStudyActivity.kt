@@ -29,16 +29,13 @@ class ApplyStudyActivity: BaseActivity() {
 
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
         button_apply_study_cancle.setOnClickListener{
-
             Log.d("study", seatState.toString())
-
             if(seatState>0) {
                 Connector.api.cancleExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
 
                     override fun callBack(code: Int, body: Void?) {
 
                         when(code) {
-
                             200 -> {
                                 Util.showToast(applicationContext, seatState.toString()+"시 연장이 취소되었습니다")
                                 load()
