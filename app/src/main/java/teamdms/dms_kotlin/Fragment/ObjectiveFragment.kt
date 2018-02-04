@@ -48,6 +48,7 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
         adapter.setData(survey.choices)
 
 
+
         var recyclerView = view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
         recyclerView!!.adapter = adapter
         recyclerView!!.layoutManager = layoutManager
@@ -57,7 +58,7 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
         adapter.selectedRadio()
     }
 
-    override fun sendAnswer(answer : String?) : Boolean {
+    override fun sendAnswer() : Boolean {
         adapter.sendAnswer()
         return true
     }

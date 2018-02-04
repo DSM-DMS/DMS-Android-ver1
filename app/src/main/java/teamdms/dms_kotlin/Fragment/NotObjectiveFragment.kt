@@ -47,7 +47,7 @@ class NotObjectiveFragment : BaseFragment() {
     }
 
 
-    override fun sendAnswer(mAnswer : String?) : Boolean {
+    override fun sendAnswer() : Boolean {
         var editText = rootView!!.findViewById<EditText>(R.id.edit_survey_answer)
         return if (editText.text.isEmpty()){
             Util.showToast(activity,"값을 다 입력하세요.")
