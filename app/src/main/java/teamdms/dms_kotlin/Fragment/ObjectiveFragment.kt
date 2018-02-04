@@ -23,13 +23,11 @@ import android.view.WindowManager
 
 class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickListener {
 
-
     lateinit var survey : SurveyQuestionModel
     lateinit var adapter : ObjectiveRecyclerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var bundle = activity.intent.extras
-
         survey = arguments.getSerializable("data") as SurveyQuestionModel
     }
 
@@ -57,7 +55,7 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
         adapter.selectedRadio()
     }
 
-    override fun sendAnswer(answer : String?) : Boolean {
+    override fun sendAnswer() : Boolean {
         adapter.sendAnswer()
         return true
     }

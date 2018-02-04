@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DMS-Android-New.iml" filepath="$PROJECT_DIR$/DMS-Android-New.iml" />
+      <module fileurl="file://D:\Project\Team_Project\Project-DMS-Android-Refactor\DMS-Android-New.iml" filepath="D:\Project\Team_Project\Project-DMS-Android-Refactor\DMS-Android-New.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" filepath="$PROJECT_DIR$/Project-DMS-Android-Refactor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

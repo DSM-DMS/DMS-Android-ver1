@@ -85,7 +85,7 @@ class SurveyActivity : BaseActivity() {
 
         if (surveyAdapter!!.count == currentIndex + 1) {
             button.setOnClickListener {
-                when (fragment.sendAnswer(answer)) {
+                when (fragment.sendAnswer()) {
                     true -> {
                         var handler = Handler()
                         handler.postDelayed(finishDelayRun, 2000) //2초
@@ -95,7 +95,7 @@ class SurveyActivity : BaseActivity() {
             }
         } else {
             button.setOnClickListener {
-                when (fragment.sendAnswer(answer)) {
+                when (fragment.sendAnswer()) {
                     true -> {
                         var handler = Handler()
                         handler.postDelayed(delayRun, 2000) //2초

@@ -61,7 +61,12 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             sClickListener!!.onRadioClickListener( holder!!.adapterPosition, holder.rootView)
         }
 
-        holder!!.radioButton.isChecked = position==checkedPosition
+        if(position == checkedPosition) {
+
+            holder!!.radioButton.isChecked = true
+            answer = data[position]
+        }
+
         holder!!.bind(data[position],radioClicked)
     }
 
@@ -71,7 +76,6 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
                 when (code) {
                     201 -> Util.showToast(context, "응답이 완료되었습니다.")
                     204 -> Util.showToast(context, "존재하지 않는 질문입니다. : error " + code.toString())
-                    403 -> Util.showToast(context, "권한이 없습니다." + code.toString())
                     else -> Util.showToast(context, "서버오류." + code.toString())
                 }
             }
