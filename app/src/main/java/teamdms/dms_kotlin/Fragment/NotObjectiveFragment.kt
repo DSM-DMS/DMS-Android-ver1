@@ -46,7 +46,6 @@ class NotObjectiveFragment : BaseFragment() {
         return rootView
     }
 
-
     override fun sendAnswer() : Boolean {
         var editText = rootView!!.findViewById<EditText>(R.id.edit_survey_answer)
         return if (editText.text.isEmpty()){
@@ -59,7 +58,6 @@ class NotObjectiveFragment : BaseFragment() {
     }
 
     private fun send(answer : String) {
-
         Connector.api.sendSurvey(Util.getToken(context), survey.id,answer).enqueue(object : Res<Void>(context) {
             override fun callBack(code: Int, body: Void?) {
                 when (code) {
@@ -71,9 +69,8 @@ class NotObjectiveFragment : BaseFragment() {
             }
         })
     }
+
     companion object {
-
-
         fun newInstance(): NotObjectiveFragment {
             return NotObjectiveFragment()
         }

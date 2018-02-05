@@ -59,7 +59,6 @@ class MyPageRecyclerAdapter(val fragment: MyPageFragment): RecyclerView.Adapter<
             }
             2 -> {
                 contentHolder.bind("비밀번호 변경", { _ ->
-
                     if(haveToken) {
                         context.startActivity(Intent(context, ChangePWActivity::class.java))
                     }  else {

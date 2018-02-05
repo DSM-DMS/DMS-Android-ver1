@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        
+        <ImageView
+            android:padding="16dp"
+            android:src="@drawable/survey_icon"
+            android:id="@+id/developer_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+
+        <TextView
+            android:id="@+id/developer_tell"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/developer_profile"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/developer_name"
+            android:layout_marginLeft="4dp"
+            android:layout_below="@+id/developer_tell"
+            android:layout_toRightOf="@+id/developer_tell"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content" />
+
+</RelativeLayout>
