@@ -14,7 +14,8 @@
 
         <TextView
             android:id="@+id/developer_tell"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
             android:layout_toRightOf="@id/developer_profile"
             android:layout_width="wrap_content"
             android:textSize="16sp"
@@ -24,6 +25,7 @@
         <TextView
             android:id="@+id/developer_name"
             android:layout_marginLeft="4dp"
+            android:textStyle="bold"
             android:layout_below="@+id/developer_tell"
             android:layout_toRightOf="@+id/developer_tell"
             android:layout_width="wrap_content"
