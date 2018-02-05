@@ -23,11 +23,11 @@ object Util {
     val introDeveloperNames = arrayOf(R.string.mobile_intro_content,R.string.web_intro_content,R.string.server_intro_content,R.string.window_content,R.string.designer_content)
     val introDeveloperIcon= arrayOf(R.drawable.ic_mobile,R.drawable.ic_front,R.drawable.ic_server,R.drawable.ic_desktop,R.drawable.ic_design)
 
-    private val introDeveloperApp= arrayOf("이병찬","윤정현","이성현")
-    private val introDeveloperWeb= arrayOf("김건", "서윤호","윤호상","오인서","김형규")
-    private val introDeveloperServer= arrayOf("조민규","인상민")
-    private val introDeveloperWindow= arrayOf("김동현","이종현","류근찬")
-    private val introDeveloperDesign= arrayOf("김동규")
+    private val introDeveloperApp= arrayOf("-이병찬","-윤정현","-이성현")
+    private val introDeveloperWeb= arrayOf("-김건", "-서윤호","-윤호상","-오인서","-김형규")
+    private val introDeveloperServer= arrayOf("-조민규","-인상민")
+    private val introDeveloperWindow= arrayOf("-김동현","-이종현","-류근찬")
+    private val introDeveloperDesign= arrayOf("-김동규")
 
     private val introDeveloperAppContent= arrayOf("나는 이병찬","나는 윤정현","나는 이성현")
     private val introDeveloperWebContent= arrayOf("나는 김건","나는 서윤호","나는 윤호상","나는 오인서","나는 김형규")
