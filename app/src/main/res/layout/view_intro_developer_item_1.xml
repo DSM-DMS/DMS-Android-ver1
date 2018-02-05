@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/developer_tell"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:textStyle="bold"
             android:layout_toRightOf="@id/developer_profile"
             android:layout_width="wrap_content"
