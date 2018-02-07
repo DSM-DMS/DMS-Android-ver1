@@ -33,22 +33,27 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="vertical"
         android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_objective_survey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="64dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:paddingRight="64dp"
-            android:layout_centerHorizontal="true"
-           />
-    </RelativeLayout>
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginRight="64dp"
+            android:layout_weight="1"
+            android:layout_centerHorizontal="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>

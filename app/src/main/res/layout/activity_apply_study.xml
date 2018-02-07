@@ -102,7 +102,7 @@
                 android:textSize="18dp" />
 
             <Button
-                android:id="@+id/button_apply_study_cancle"
+                android:id="@+id/button_apply_study_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_weight="2"
