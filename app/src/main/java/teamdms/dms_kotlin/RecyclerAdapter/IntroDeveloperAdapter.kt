@@ -71,7 +71,6 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
 
     override fun getItemViewType(position: Int): Int = position % 2
 
-
     class IntroDeveloperFirstViewHolder(view: View) : IntroViewHolder(view) {
 
         lateinit var rootView: View
@@ -106,6 +105,7 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
         var nameTextView: TextView = rootView.findViewById(R.id.developer_name)
         var contentTextView = rootView.findViewById<TextView>(R.id.developer_tell)
         var profileImage = rootView.findViewById<ImageView>(R.id.developer_profile)
+
         @Override
         override fun bind(name: String, content: String, image : Int) {
             with(rootView) {

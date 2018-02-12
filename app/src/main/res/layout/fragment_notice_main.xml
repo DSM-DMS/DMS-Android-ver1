@@ -44,6 +44,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/notice_rule_icon"
                         android:layout_centerInParent="true"
                         android:src="@drawable/notice_rule_icon"
                         android:layout_width="54dp"
@@ -98,6 +99,7 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
+                        android:id="@+id/notice_notification_icon"
                         android:src="@drawable/notice_notification_icon"
                         android:layout_width="54dp"
                         android:layout_height="54dp" />

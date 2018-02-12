@@ -8,11 +8,11 @@
     <string name="add_widget">Add widget</string>
     <string name="notice_item_title">notice_item_title</string>
 
-    <string name="mobile_intro_title">모바일</string>
-    <string name="web_intro_title">웹 프론트</string>
-    <string name="server_intro_title">서버</string>
-    <string name="window_intro">데스크탑</string>
-    <string name="designer_intro">디자인</string>
+    <string name="mobile_intro_title">Mobile</string>
+    <string name="web_intro_title">Web</string>
+    <string name="server_intro_title">Server</string>
+    <string name="window_intro_title">Windows</string>
+    <string name="designer_intro_title">Design</string>
 
     <string name="mobile_intro_content">이병찬, 윤정현, 이성현</string>
     <string name="web_intro_content">김건, 서윤호, 윤호상, 오인서, 김형규</string>
