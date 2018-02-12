@@ -7,13 +7,7 @@ import team_dms.dms.Base.*
 /**
  * Created by root1 on 2017. 11. 23..
  */
-abstract class Res<T>(context: Context): Callback<T> {
-
-    lateinit var context: Context
-
-    init {
-        this.context = context
-    }
+abstract class Res<T>(val context: Context): Callback<T> {
 
     abstract fun callBack(code: Int, body: T?)
 
@@ -27,12 +21,11 @@ abstract class Res<T>(context: Context): Callback<T> {
 
         when(code){
             500 -> Util.showToast(context, "서버 오류")
-            422 -> Util.showToast(context, "로그인이 필요합니다")
+            422 -> { Util.showToast(context, "로그인이 필요합니다")
+                Util.removeToken(context) }
             403 -> Util.showToast(context, "권한이 없습니다")
-            401 -> {
-                Util.showToast(context, "다시 로그인 하세요")
-                Util.removeToken(context)
-            }
+            401 -> { Util.showToast(context, "다시 로그인 하세요")
+                Util.removeToken(context) }
             else -> callBack(code, body)
         }
 

@@ -30,7 +30,7 @@ class ApplyStudyActivity: BaseActivity() {
 
         button_apply_study_cancel.setOnClickListener{
             if(seatState > 0) {
-                Connector.api.cancleExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
+                Connector.api.cancelExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
                     override fun callBack(code: Int, body: Void?) {
                         when(code) {
                             200 -> {
