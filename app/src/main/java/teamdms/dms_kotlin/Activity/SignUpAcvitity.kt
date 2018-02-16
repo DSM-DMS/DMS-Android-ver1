@@ -107,7 +107,10 @@ class SignUpActivity : CheckValidateActivity(){
                 }
             })
         }else if(!signUpCode.isEmpty()){
-            showToast("아이디를 입력하세요")
+            text_signup_check_id.text = "아이디를 입력해주세요"
+            setButtonValidate(false, button_signup_singup)
+            changeColor(false, text_signup_check_id)
+            changeImage(false, image_signup_check_id)
         }
     }
 
