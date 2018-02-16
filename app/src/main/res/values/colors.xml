@@ -14,7 +14,8 @@
 
     <color name="colorMint">#B8E8D7</color>
     <color name="colorWhite">#FFFFFF</color>
-    
+
+    <color name="colorIntro">#B388FF</color>
     <color name="colorSplash">#7DB1DB</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#D5D5D5</color>

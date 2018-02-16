@@ -3,7 +3,6 @@ package teamdms.dms_kotlin.Activity
 import android.graphics.*
 import android.os.*
 import android.support.design.widget.*
-import android.util.Log
 import android.view.*
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_apply_study.*
@@ -28,27 +27,21 @@ class ApplyStudyActivity: BaseActivity() {
         setBottomSheet()
 
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
-        button_apply_study_cancle.setOnClickListener{
-            Log.d("study", seatState.toString())
-            if(seatState>0) {
-                Connector.api.cancleExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
 
+        button_apply_study_cancel.setOnClickListener{
+            if(seatState > 0) {
+                Connector.api.cancelExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
                     override fun callBack(code: Int, body: Void?) {
-
                         when(code) {
                             200 -> {
-                                Util.showToast(applicationContext, seatState.toString()+"시 연장이 취소되었습니다")
+                                showToast("연장이 취소되었습니다")
                                 load()
-                            }
-                            else ->  {
-                                Util.showToast(applicationContext, "취소 가능한 시간이 아닙니다")
-                            }
+                            }else -> showToast("오류 : $code")
                         }
                     }
                 })
-            } else  Util.showToast(applicationContext, "연장신청을 하지 않으셨습니다.")
+            } else  showToast("연장신청을 하지 않으셨습니다.") }
 
-        }
         button_apply_study.setOnClickListener {
             if (seatState > 0){
                 Connector.api.applyStudy(getToken(), timeState, classState, seatState)
@@ -121,6 +114,8 @@ class ApplyStudyActivity: BaseActivity() {
     var beforeButton: Button? = null
 
     private fun drawMap(mapData: Array<Array<Any>>){
+
+        seatState = 0
 
         linear_apply_study_map.removeAllViews()
 

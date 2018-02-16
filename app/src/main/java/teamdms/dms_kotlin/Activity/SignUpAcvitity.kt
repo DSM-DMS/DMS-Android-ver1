@@ -87,6 +87,7 @@ class SignUpActivity : CheckValidateActivity(){
 
     fun checkOverlap() { // 아이디 중복 검사
         val signUpId = edit_signup_id.text.toString()
+        val signUpCode = edit_signup_code.text.toString()
         if (!signUpId.isEmpty()) {
             Connector.api.checkOverlap(signUpId).enqueue(object : Res<Void>(this) {
                 override fun callBack(code: Int, body: Void?) {
@@ -105,7 +106,7 @@ class SignUpActivity : CheckValidateActivity(){
                     }
                 }
             })
-        }else{
+        }else if(!signUpCode.isEmpty()){
             showToast("아이디를 입력하세요")
         }
     }

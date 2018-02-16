@@ -11,12 +11,12 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/iv_intro_developer_icon"
-                android:layout_centerHorizontal="true"
-                android:layout_width="125dp"
-                android:layout_centerInParent="true"
-                android:layout_height="125dp" />
+        <ImageView
+            android:id="@+id/iv_intro_developer_icon"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
 
             <TextView
                 android:layout_marginTop="4dp"
