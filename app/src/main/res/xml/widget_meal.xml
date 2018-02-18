@@ -4,8 +4,8 @@
     android:initialLayout="@layout/widget_meal"
     android:minHeight="110dp"
     android:minWidth="250dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/all_app_logo"
     android:resizeMode="horizontal"
-    android:updatePeriodMillis="86400000"
+    android:updatePeriodMillis="14400000"
     android:widgetCategory="home_screen"
     />
