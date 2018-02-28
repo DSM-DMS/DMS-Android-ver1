@@ -4,6 +4,7 @@ import android.os.*
 import android.support.v4.app.*
 import android.support.v7.widget.*
 import android.view.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
@@ -34,33 +35,21 @@ class MyPageFragment: Fragment() {
     fun load(){
         Connector.api.loadMyInfo(Util.getToken(activity)).enqueue(object : Res<MypageModel>(activity){
             override fun callBack(code: Int, body: MypageModel?) {
-                when(code) {
-                    200 -> {
-                        setStateData(body)
-                        with(rootView) {
-                            recycler_mypage.adapter.notifyDataSetChanged()
-                        }
-
-                    }
-                    403-> Util.showToast(context,"재로그인 하세요")
+                if(code == 200){
+                    setStateData(body)
+                    with(rootView) { recycler_mypage.adapter.notifyDataSetChanged() }
                 }
             }
         })
+        recycler_mypage.adapter.notifyDataSetChanged()
     }
 
     fun setStateData(data: MypageModel?){
         with(rootView){
-            if(data != null){
-                text_mypage_study_state.text = data!!.getStudyState()
-                text_mypage_stay_state.text = data!!.getStayState()
-                text_mypage_merit.text = data.merit.toString()
-                text_mypage_demerit.text = data.demerit.toString()
-            }else{
-                text_mypage_study_state.text = "오류"
-                text_mypage_stay_state.text = "오류"
-                text_mypage_merit.text = "0"
-                text_mypage_demerit.text = "0"
-            }
+            text_mypage_study_state.text = data?.getStudyState() ?: "연장신청"
+            text_mypage_stay_state.text = data?.getStayState() ?: "잔류신청"
+            text_mypage_merit.text = "${data?.merit ?: 0}"
+            text_mypage_demerit.text = "${data?.demerit ?: 0}"
         }
     }
 

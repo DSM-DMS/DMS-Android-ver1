@@ -10,6 +10,10 @@
         <item name="colorAccent">@color/colorMint</item>
     </style>
 
+    <style name="AlertTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorMint</item>
+    </style>
+
     <style name="SplashTheme" parent="AppTheme">
         <item name="colorPrimaryDark">@color/colorSplash</item>
         <item name="android:background">@drawable/splash_back</item>

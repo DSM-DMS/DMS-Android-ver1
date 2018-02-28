@@ -104,4 +104,8 @@ interface Api {
     //연장 취소
     @DELETE("extension/{time}")
     fun cancelExtension (@Path("time") time : String, @Header("Authorization") token: String) : Call<Void>
+
+    @GET("version")
+    fun versionCheck(@Query("platform")platform: String): Call<VersionModel>
+
 }
