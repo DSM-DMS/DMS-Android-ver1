@@ -24,7 +24,7 @@ object Util {
     val introDeveloperIcon= arrayOf(R.drawable.ic_design,R.drawable.ic_mobile,R.drawable.ic_front,R.drawable.ic_server,R.drawable.ic_desktop)
 
     private val introDeveloperApp= arrayOf("-이병찬","윤정현-","-이성현")
-    private val introDeveloperWeb= arrayOf("-김건", "서윤호-","-윤호상","오인서-","-김형규")
+    private val introDeveloperWeb= arrayOf("-김건", "서윤호-","-윤효상","오인서-","-김형규")
     private val introDeveloperServer= arrayOf("-조민규","인상민-")
     private val introDeveloperWindow= arrayOf("-김동현","이종현-","-류근찬")
     private val introDeveloperDesign= arrayOf("-김동규")
