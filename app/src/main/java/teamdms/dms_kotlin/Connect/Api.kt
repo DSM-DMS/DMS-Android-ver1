@@ -49,7 +49,7 @@ interface Api {
     //로그인
     @POST("auth")
     @FormUrlEncoded
-    fun signIn(@Field("id") id: String, @Field("pw") pw: String): Call<JsonObject>
+    fun signIn(@Field("id") id: String, @Field("pw") pw: String): Call<AuthModel>
 
     //회원가입
     @POST("signup")
@@ -107,5 +107,8 @@ interface Api {
 
     @GET("version")
     fun versionCheck(@Query("platform")platform: String): Call<VersionModel>
+
+    @POST("refresh")
+    fun refreshToken(@Header("Authorization") token: String): Call<AuthModel>
 
 }

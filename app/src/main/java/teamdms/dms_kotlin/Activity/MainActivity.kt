@@ -32,6 +32,21 @@ class MainActivity: BaseActivity() {
                 (view_pager_main.adapter as MainViewPagerAdapter).reload(position)
             }
         })
+
+        tokenRefresh()
+    }
+
+    private fun tokenRefresh(){
+        Connector.api.refreshToken(getToken(false))
+                .enqueue(object : Res<AuthModel>(this) {
+                    override fun callBack(code: Int, body: AuthModel?) {
+                        when(code){
+                            200 -> { saveToken(body!!.token); null }
+                            205 -> { "다시 로그인 하세요" }
+                            else -> { "오류 : $code" }
+                        }.let { if(it != null){ showToast(it!!) } }
+                    }
+                })
     }
 
     private val version = "1.0.1"
