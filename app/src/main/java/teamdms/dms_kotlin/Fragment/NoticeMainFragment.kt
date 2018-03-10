@@ -24,7 +24,7 @@ class NoticeMainFragment: Fragment(){
 
     private fun next(rootView : View) {
         with(rootView) {
-            arrayOf(button_notice_main_rule, button_notice_main_question, button_notice_main_notification).let {
+            arrayOf(button_notice_main_rule, button_notice_main_notification, button_notice_main_question).let {
                 for (i in it.indices)
                     it[i].setOnClickListener {
                         Intent(context, NoticeListActivity::class.java).run {
