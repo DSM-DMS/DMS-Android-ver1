@@ -1,3 +1,6 @@
+/**
+ * Created by dsm2017 on 2018-03-10.
+ */
 package teamdms.dms_kotlin.Fragment
 
 import android.os.Bundle
@@ -18,7 +21,6 @@ import teamdms.dms_kotlin.Model.SurveyQuestionModel
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.RecyclerAdapter.ObjectiveRecyclerAdapter
 import android.view.WindowManager
-
 
 
 class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickListener {
@@ -66,4 +68,5 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
             return ObjectiveFragment()
         }
     }
+
 }
