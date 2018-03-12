@@ -5,8 +5,10 @@ import android.os.*
 import android.support.v4.app.*
 import android.view.*
 import kotlinx.android.synthetic.main.fragment_notice_main.view.*
+import team_dms.dms.Base.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Dialog.*
 
 
 /**
@@ -24,7 +26,7 @@ class NoticeMainFragment: Fragment(){
 
     private fun next(rootView : View) {
         with(rootView) {
-            arrayOf(button_notice_main_rule, button_notice_main_question, button_notice_main_notification).let {
+            arrayOf(button_notice_main_rule, button_notice_main_notification, button_notice_main_question).let {
                 for (i in it.indices)
                     it[i].setOnClickListener {
                         Intent(context, NoticeListActivity::class.java).run {
@@ -32,6 +34,8 @@ class NoticeMainFragment: Fragment(){
                         }.let { startActivity(it) }
                     }
             }
+
+            button_notice_main_facility.setOnClickListener { Util.showCustomDialog(ProblemReportDialog(context), 0) }
         }
     }
 
@@ -40,4 +44,5 @@ class NoticeMainFragment: Fragment(){
             return NoticeMainFragment()
         }
     }
+
 }
