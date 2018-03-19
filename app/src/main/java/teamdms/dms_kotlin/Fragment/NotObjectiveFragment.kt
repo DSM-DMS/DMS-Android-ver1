@@ -29,6 +29,7 @@ class NotObjectiveFragment : BaseFragment() {
 
     lateinit var survey: SurveyQuestionModel
     lateinit var rootView : View
+    var answer : String="";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +53,8 @@ class NotObjectiveFragment : BaseFragment() {
             Util.showToast(activity,"값을 다 입력하세요.")
             false
         }else{
-            send(editText.text.toString())
+            answer=editText.text.toString()
+            send(answer)
             true
         }
     }
@@ -69,6 +71,12 @@ class NotObjectiveFragment : BaseFragment() {
             }
         })
     }
+
+    //새로운 프래그먼트 생성시 전에있던 답을 클리어
+    override fun clearAnswer() {
+        answer=""
+    }
+
 
     companion object {
         fun newInstance(): NotObjectiveFragment {

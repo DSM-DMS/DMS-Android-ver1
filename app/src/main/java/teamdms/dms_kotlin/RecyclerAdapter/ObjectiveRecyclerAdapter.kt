@@ -3,6 +3,7 @@ package teamdms.dms_kotlin.RecyclerAdapter
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.telecom.Call
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,10 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
         notifyDataSetChanged()
     }
 
+    fun clearRadio(){
+        checkedPosition=-1
+    }
+
     fun setOnItemClickListener(clickListener: RadioClickListener) {
         sClickListener = clickListener
     }
@@ -61,11 +66,8 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             sClickListener!!.onRadioClickListener(holder!!.adapterPosition, holder.rootView)
         }
 
-        if (position == checkedPosition) {
-            holder!!.radioButton.isChecked = true
-            answer = data[position]
-        }
-
+        Log.d("radiobutton count","count"+position)
+        holder!!.radioButton.isChecked = position==checkedPosition
         holder!!.bind(data[position], radioClicked)
     }
 
@@ -79,23 +81,25 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
                 }
             }
         })
+
+        clearRadio()
     }
 
     class ViewHolder (var view : View) : RecyclerView.ViewHolder(view) {
 
         var rootView : View = view
         var radioButton = rootView.findViewById<RadioButton>(R.id.radio_objective_question)
-        fun bind(question : String,onClick: View.OnClickListener) { // 응답내용, 라디오버튼 리스너, 라디오 버튼 체크
 
+        fun bind(question : String,onClick: View.OnClickListener) { // 응답내용, 라디오버튼 리스너, 라디오 버튼 체크
             with(view) {
                 radioButton.text = question
                 radioButton.setOnClickListener(onClick)
             }
         }
-
     }
 
     interface RadioClickListener{
         fun onRadioClickListener(position: Int, view: View)
     }
+
 }

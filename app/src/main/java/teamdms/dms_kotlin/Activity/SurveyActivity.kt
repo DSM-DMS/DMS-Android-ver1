@@ -75,6 +75,9 @@ class SurveyActivity : BaseActivity() {
     fun send(button: Button) {
         var fragment = surveyAdapter!!.getItem(mSelectedPosition) as BaseFragment
 
+        //전에 있는 클릭한 결과 클리어
+  /*      fragment.clearAnswer()*/
+
         if (surveyAdapter!!.count == currentIndex + 1) {
             button.setOnClickListener {
                 when (fragment.sendAnswer()) {
@@ -85,10 +88,9 @@ class SurveyActivity : BaseActivity() {
                     false -> { }
                 }
             }
-
         } else {
+            // 설문조사 마지막 페이지
             button.setOnClickListener {
-
                 when (fragment.sendAnswer()) {
                     true -> {
                         var handler = Handler()
