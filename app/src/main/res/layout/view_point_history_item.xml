@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Noitce뿐만이 아니라 Survey에서도 사용함 Refactor가 제대로 안되서 안바뀜,,,,,-->
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_notice_item"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_marginRight="32dp"
+                android:text="제목"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:id="@+id/text_point_history_title"
+                android:textSize="20sp"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:transitionName="@string/notice_item_title"
+                tools:ignore="UnusedAttribute"
+                android:textColor="@color/colorNo3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:text="date"
+                android:layout_below="@id/text_point_history_title"
+                android:id="@+id/text_point_history_date"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_point_history_result"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

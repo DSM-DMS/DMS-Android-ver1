@@ -5,8 +5,10 @@ import android.os.*
 import android.support.v4.app.*
 import android.view.*
 import kotlinx.android.synthetic.main.fragment_notice_main.view.*
+import team_dms.dms.Base.*
 import teamdms.dms_kotlin.*
 import teamdms.dms_kotlin.Activity.*
+import teamdms.dms_kotlin.Dialog.*
 
 
 /**
@@ -32,6 +34,8 @@ class NoticeMainFragment: Fragment(){
                         }.let { startActivity(it) }
                     }
             }
+
+            button_notice_main_facility.setOnClickListener { Util.showCustomDialog(ProblemReportDialog(context), 0) }
         }
     }
 
@@ -40,4 +44,5 @@ class NoticeMainFragment: Fragment(){
             return NoticeMainFragment()
         }
     }
+
 }

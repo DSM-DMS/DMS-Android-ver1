@@ -61,21 +61,22 @@ object Util {
         return pref
     }
 
-    fun saveToken(context: Context, token: String){
+    fun saveToken(context: Context, token: String, isAccess: Boolean = true){
         val editor = getPref(context).edit()
-        editor.putString("token", token)
+        editor.putString(getKey(isAccess), token)
         editor.commit()
     }
 
-    fun removeToken(context: Context){
+    fun removeToken(context: Context, isAccess: Boolean = true){
         val editor = getPref(context).edit()
-        editor.remove("token")
+        editor.remove(getKey(isAccess))
         editor.commit()
     }
 
-    fun getToken(context: Context): String{
-        return "JWT " + getPref(context).getString("token", "")
+    fun getToken(context: Context, isAccess: Boolean = true): String{
+        return "JWT " + getPref(context).getString(getKey(isAccess), "")
     }
 
+    private fun getKey(isAccess: Boolean): String = if(isAccess) "Access" else "Refresh"
 
 }

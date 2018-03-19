@@ -1,6 +1,5 @@
 package team_dms.dms.Base
 
-import android.content.*
 import android.support.v7.app.*
 
 /**
@@ -13,8 +12,8 @@ open class BaseActivity: AppCompatActivity(){
         Util.showToast(this, message)
     }
 
-    fun saveToken(token: String) = Util.saveToken(this, token)
+    fun saveToken(token: String, isAccess: Boolean = true) = Util.saveToken(this, token, isAccess)
 
-    fun getToken(): String = Util.getToken(this)
+    fun getToken(isAccess: Boolean = true): String = Util.getToken(this, isAccess)
 
 }
