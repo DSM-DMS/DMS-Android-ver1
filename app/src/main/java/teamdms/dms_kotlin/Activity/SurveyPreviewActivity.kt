@@ -3,6 +3,7 @@ package teamdms.dms_kotlin.Activity
 import android.content.*
 import android.os.*
 import android.support.v7.widget.*
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_preview_survey.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
@@ -31,7 +32,7 @@ class SurveyPreviewActivity : BaseActivity() {
         loadSurvey(id, this)
 
         button_start_survey_preview.setOnClickListener {
-            if(data==null){
+            if(data.isEmpty()){
                 var intent =Intent(this,SurveyListActivity::class.java)
                 startActivity(intent)
                 finish()
