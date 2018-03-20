@@ -34,25 +34,24 @@ class PointHistoryActivity : BaseActivity() {
         recycle_view_point_history.layoutManager= LinearLayoutManager(this)
         mAdapter=PointHistoryAdapter()
         recycle_view_point_history.adapter=mAdapter
-
-
         loadData()
     }
 
     private fun loadData(){
-        var noResultTextView : TextView = findViewById(R.id.text_point_history_no_result)
-
-        if(mAdapter.itemCount==0){
-            noResultTextView.visibility=View.VISIBLE
-        }else{
-            noResultTextView.visibility=View.GONE
-        }       
-
         Connector.api.loadPointHistory(Util.getToken(this))
                 .enqueue(object : Res<Array<PointModel>>(this) {
                     override fun callBack(code: Int, body: Array<PointModel>?) {
-                        if (code == 200) mAdapter.setData(body!!)
+                        if (code == 200) {
+                            mAdapter.setData(body!!)
+                            if(mAdapter.PointArr.isEmpty()){
+                                text_point_history_no_result.visibility=View.VISIBLE
+                            }else{
+                                text_point_history_no_result.visibility=View.GONE
+                            }
+                        }
                     }
                 })
+
+
     }
 }
