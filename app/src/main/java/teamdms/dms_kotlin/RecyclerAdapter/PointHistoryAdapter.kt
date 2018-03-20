@@ -2,6 +2,7 @@ package teamdms.dms_kotlin.RecyclerAdapter
 
 import android.annotation.SuppressLint
 import android.content.*
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.*
 import android.view.*
 import android.view.animation.*
@@ -25,12 +26,20 @@ class PointHistoryAdapter : RecyclerView.Adapter<PointHistoryViewHolder>() {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder : PointHistoryViewHolder?, position: Int) {
         val data = PointArr[position!!]
 
-        if(PointArr != null) {
+        if(!PointArr.isEmpty()) {
             holder!!.bind(data.reason!!, data.time,data.point!!,data.pointType!!)
-            holder.noResultTextView.visibility=View.GONE
+
+            if(data!!.pointType!!){
+                holder.titleTextView.setTextColor(ContextCompat.getColor(context,R.color.colorNo3))
+                holder.resultTextView.setTextColor(ContextCompat.getColor(context,R.color.colorNo3))
+            }else{
+                holder.titleTextView.setTextColor(ContextCompat.getColor(context,R.color.warning))
+                holder.resultTextView.setTextColor(ContextCompat.getColor(context,R.color.warning))
+            }
             setAnimation(holder.rootView, position)
         }
     }
@@ -59,22 +68,13 @@ class PointHistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     var titleTextView: TextView = rootView.findViewById(R.id.text_point_history_title)
     var dateTextView: TextView = rootView.findViewById(R.id.text_point_history_date)
     var resultTextView : TextView = rootView.findViewById(R.id.text_point_history_result)
-    var noResultTextView : TextView = rootView.findViewById(R.id.text_point_history_no_result)
-
 
     @SuppressLint("ResourceAsColor")
     fun bind(title: String, date: String?, point : Int, boolean: Boolean) {
         with(rootView) {
-
             titleTextView.text = title
             dateTextView.text = date
             resultTextView.text = point.toString()
-
-            if(boolean){
-                titleTextView.setTextColor(R.color.warning)
-            }else{
-                titleTextView.setTextColor(R.color.colorNo3)
-            }
         }
     }
 }

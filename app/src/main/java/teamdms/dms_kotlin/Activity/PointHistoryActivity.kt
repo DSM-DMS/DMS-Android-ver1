@@ -2,8 +2,10 @@ package teamdms.dms_kotlin.Activity
 
 import android.os.*
 import android.support.v7.widget.*
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_notice_list.*
 import kotlinx.android.synthetic.main.activity_point_history.*
 import team_dms.dms.Base.*
@@ -28,6 +30,10 @@ class PointHistoryActivity : BaseActivity() {
 
         recycle_view_point_history.layoutManager= LinearLayoutManager(this)
         recycle_view_point_history.adapter=PointHistoryAdapter()
+        var noResultTextView : TextView = findViewById(R.id.text_point_history_no_result)
+        if(recycle_view_point_history.adapter.itemCount==0){
+            noResultTextView.visibility= View.GONE
+        }
         loadData()
     }
 
