@@ -1,26 +1,13 @@
 package teamdms.dms_kotlin.RecyclerAdapter
 
 import android.annotation.SuppressLint
-import android.app.*
 import android.content.*
-import android.graphics.Color
-import android.os.*
-import android.support.v4.app.*
-import android.support.v4.util.*
-import android.support.v4.view.*
 import android.support.v7.widget.*
 import android.view.*
 import android.view.animation.*
 import android.widget.*
-import kotlinx.android.synthetic.main.view_notice_item.view.*
 import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.Activity.*
 import teamdms.dms_kotlin.Model.*
-
-/**
- * Created by dsm2016 on 2017-12-18.
- */
-
 
 class PointHistoryAdapter : RecyclerView.Adapter<PointHistoryViewHolder>() {
 
@@ -59,8 +46,6 @@ class PointHistoryAdapter : RecyclerView.Adapter<PointHistoryViewHolder>() {
         val animation: Animation = if (position % 2 == 0) AnimationUtils.loadAnimation(context, R.anim.slide_left) else AnimationUtils.loadAnimation(context, R.anim.slide_right)
         view.startAnimation(animation)
     }
-
-
 }
 
 class PointHistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

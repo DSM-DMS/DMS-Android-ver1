@@ -31,12 +31,18 @@ class SurveyPreviewActivity : BaseActivity() {
         loadSurvey(id, this)
 
         button_start_survey_preview.setOnClickListener {
+            if(data==null){
+                var intent =Intent(this,SurveyListActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else{
+                var intent =Intent(this,SurveyActivity::class.java)
+                intent.putExtra("id", id)
+                intent.putExtra("question", data)
+                startActivity(intent)
+                finish()
+            }
 
-            var intent =Intent(this,SurveyActivity::class.java)
-            intent.putExtra("id", id)
-            intent.putExtra("question", data)
-            startActivity(intent)
-            finish()
         }
     }
 

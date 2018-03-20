@@ -33,8 +33,8 @@ class ApplyStudyActivity: BaseActivity() {
                 override fun callBack(code: Int, body: Void?) {
                     when(code) {
                         200 -> {
-                            showToast("연장이 취소되었습니다")
                             load()
+                            showToast("연장이 취소되었습니다")
                         }else -> showToast("오류 : $code")
                     }
                 }
