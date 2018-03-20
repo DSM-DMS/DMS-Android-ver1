@@ -25,7 +25,7 @@ class MyPageRecyclerAdapter(val fragment: MyPageFragment): RecyclerView.Adapter<
         context = parent!!.context
 
         return when(viewType){
-            0,3,6 -> {
+            0,4,7 -> {
                 val view = inflater.inflate(R.layout.view_mypage_list_no_content, parent, false)
                 MyPageListNoContentViewHolder(view)
             }
@@ -37,7 +37,7 @@ class MyPageRecyclerAdapter(val fragment: MyPageFragment): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        if(position % 3 == 0) return
+        if(position == 0 || position==7 || position==4) return
 
         val contentHolder = holder as MyPageListContentViewHolder
         val haveToken = !(Util.getToken(context) == "JWT ")
@@ -66,14 +66,23 @@ class MyPageRecyclerAdapter(val fragment: MyPageFragment): RecyclerView.Adapter<
                     }
                 })
             }
-            4 -> contentHolder.bind("버그 신고", { _ ->
+            3-> {
+                contentHolder.bind("상벌점 내역 조회", { _ ->
+                    if(haveToken) {
+                        context.startActivity(Intent(context, PointHistoryActivity::class.java))
+                    }  else {
+                        Toast.makeText(context, "로그인 해주세요", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
+            5 -> contentHolder.bind("버그 신고", { _ ->
                         Util.showCustomDialog(BugReportDialog(context), R.style.DialogSlideDialog)
                     })
-            5 -> contentHolder.bind("개발자 소개", {context.startActivity(Intent(context,IntroDeveloperActivity::class.java))})
+            6 -> contentHolder.bind("개발자 소개", {context.startActivity(Intent(context,IntroDeveloperActivity::class.java))})
         }
     }
 
-    override fun getItemCount(): Int = 7
+    override fun getItemCount(): Int = 8
 
     override fun getItemViewType(position: Int): Int = position
 

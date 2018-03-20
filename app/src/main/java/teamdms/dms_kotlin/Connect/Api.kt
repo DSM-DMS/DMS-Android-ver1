@@ -105,10 +105,13 @@ interface Api {
     @DELETE("extension/{time}")
     fun cancelExtension (@Path("time") time : String, @Header("Authorization") token: String) : Call<Void>
 
+    //버전 확인
     @GET("version")
     fun versionCheck(@Query("platform")platform: String): Call<VersionModel>
 
+    @GET("point/history")
+    fun loadPointHistory(@Header("Authorization") token : String) : Call<Array<PointModel>>
+
     @POST("refresh")
     fun refreshToken(@Header("Authorization") token: String): Call<AuthModel>
-
 }

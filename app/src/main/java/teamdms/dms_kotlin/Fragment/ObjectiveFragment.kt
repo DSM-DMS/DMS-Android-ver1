@@ -25,6 +25,7 @@ import android.view.WindowManager
 
 class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickListener {
 
+
     lateinit var survey : SurveyQuestionModel
     lateinit var adapter : ObjectiveRecyclerAdapter
 
@@ -61,6 +62,10 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
     override fun sendAnswer() : Boolean {
         adapter.sendAnswer()
         return true
+    }
+
+    override fun clearAnswer() {
+        adapter.clearRadio()
     }
 
     companion object {

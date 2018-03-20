@@ -37,7 +37,6 @@ class SurveyListActivity : BaseActivity() {
         recycle_view_notice_list.layoutManager = LinearLayoutManager(this)
 
         Connector.api.loadSurvey(getToken()).enqueue(object : Res<Array<SurveyModel>> (this) {
-
             override fun callBack(code: Int, body: Array<SurveyModel>?) {
                 when(code) {
                     200 -> adapter.setSurveyData(body!!)

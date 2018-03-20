@@ -35,7 +35,7 @@ class NoticeMainFragment: Fragment(){
                     }
             }
 
-            button_notice_main_facility.setOnClickListener { Util.showCustomDialog(ProblemReportDialog(context), 0) }
+            button_notice_main_facility.setOnClickListener { Util.showCustomDialog(ProblemReportDialog(context), R.style.DialogSlideDialog) }
         }
     }
 
