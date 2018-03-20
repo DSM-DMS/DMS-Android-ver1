@@ -32,9 +32,9 @@ class PointHistoryActivity : BaseActivity() {
         recycle_view_point_history.adapter=PointHistoryAdapter()
         var noResultTextView : TextView = findViewById(R.id.text_point_history_no_result)
         if(recycle_view_point_history.adapter.itemCount==0){
-            noResultTextView.visibility= View.GONE
-        }else{
             noResultTextView.visibility=View.VISIBLE
+        }else{
+            noResultTextView.visibility=View.GONE
         }
         loadData()
     }
