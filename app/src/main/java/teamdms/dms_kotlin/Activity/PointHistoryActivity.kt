@@ -24,29 +24,35 @@ import teamdms.dms_kotlin.RecyclerAdapter.*
 */
 class PointHistoryActivity : BaseActivity() {
 
+
+    lateinit var mAdapter : PointHistoryAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_point_history)
 
         recycle_view_point_history.layoutManager= LinearLayoutManager(this)
-        recycle_view_point_history.adapter=PointHistoryAdapter()
-        var noResultTextView : TextView = findViewById(R.id.text_point_history_no_result)
-        if(recycle_view_point_history.adapter.itemCount==0){
-            noResultTextView.visibility=View.VISIBLE
-        }else{
-            noResultTextView.visibility=View.GONE
-        }
+        mAdapter=PointHistoryAdapter()
+        recycle_view_point_history.adapter=mAdapter
+
+
         loadData()
     }
 
     private fun loadData(){
-        val adapter = recycle_view_point_history.adapter as PointHistoryAdapter
+        var noResultTextView : TextView = findViewById(R.id.text_point_history_no_result)
+
+        if(mAdapter.itemCount==0){
+            noResultTextView.visibility=View.VISIBLE
+        }else{
+            noResultTextView.visibility=View.GONE
+        }       
+
         Connector.api.loadPointHistory(Util.getToken(this))
                 .enqueue(object : Res<Array<PointModel>>(this) {
                     override fun callBack(code: Int, body: Array<PointModel>?) {
-                        if (code == 200) adapter.setData(body!!)
+                        if (code == 200) mAdapter.setData(body!!)
                     }
                 })
-
     }
 }
