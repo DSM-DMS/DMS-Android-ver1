@@ -49,7 +49,7 @@ class MainActivity: BaseActivity() {
                 })
     }
 
-    private val version = "1.0.1"
+    private val version = "1.0.2"
 
     override fun onStart() {
         super.onStart()
