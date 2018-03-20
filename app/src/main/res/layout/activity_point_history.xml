@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:textSize="24sp"
-            android:text="공지사항 내역이 없습니다."/>
+            android:text="상벌점 내역이 없습니다."/>
 
     </RelativeLayout>
 </FrameLayout>
