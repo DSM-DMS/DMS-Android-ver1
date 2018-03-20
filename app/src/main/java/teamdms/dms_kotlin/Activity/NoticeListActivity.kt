@@ -2,9 +2,11 @@ package teamdms.dms_kotlin.Activity
 
 import android.os.*
 import android.support.v7.widget.*
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
 import kotlinx.android.synthetic.main.activity_notice_list.*
+import kotlinx.android.synthetic.main.activity_point_history.*
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.Connector
 import teamdms.dms_kotlin.R
@@ -38,7 +40,15 @@ class NoticeListActivity : BaseActivity() {
         Connector.api.loadNotice(Util.getToken(this),Util.noticeIDs[confirm])
                 .enqueue(object : Res<Array<NoticeModel>>(this) {
                     override fun callBack(code: Int, body: Array<NoticeModel>?) {
-                        if (code == 200) adapter.setData(body!!)
+                        if (code == 200) {
+                            adapter.setData(body!!)
+                            if(adapter.noticeArr.isEmpty()){
+                                text_notice_list_no_result.text=Util.noticeTitles[confirm]+"이 없습니다."
+                                text_notice_list_no_result.visibility= View.VISIBLE
+                            }else{
+                                text_notice_list_no_result.visibility= View.GONE
+                            }
+                        }
                     }
                 })
     }
