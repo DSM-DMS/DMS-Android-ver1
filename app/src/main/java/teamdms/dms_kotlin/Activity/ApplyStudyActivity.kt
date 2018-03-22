@@ -35,7 +35,11 @@ class ApplyStudyActivity: BaseActivity() {
                         200 -> {
                             load()
                             showToast("연장이 취소되었습니다")
-                        }else -> showToast("오류 : $code")
+                        }
+                        204 ->{
+                            showToast("10시 이후에는 취소가 불가능합니다.")
+                        }
+                        else -> showToast("오류 : $code")
                     }
                 }
             })
