@@ -61,7 +61,6 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
     fun sendAnswer() {
         Connector.api.sendSurvey(Util.getToken(context), id,answer).enqueue(object : Res<Void>(context) {
             override fun callBack(code: Int, body: Void?) {
-                Util.showToast(context,answer)
                 when (code) {
                     201 -> Util.showToast(context, "응답이 완료되었습니다.")
                     204 -> Util.showToast(context, "존재하지 않는 질문입니다. : error " + code.toString())
