@@ -29,24 +29,11 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
 
     companion object {
         var checkedPosition = -1
-        var sClickListener: RadioClickListener? = null
     }
 
     fun setData (data : Array<String>) {
         this.data = data
         notifyDataSetChanged()
-    }
-
-    fun selectedRadio() {
-        notifyDataSetChanged()
-    }
-
-    fun clearRadio(){
-        checkedPosition=-1
-    }
-
-    fun setOnItemClickListener(clickListener: RadioClickListener) {
-        sClickListener = clickListener
     }
 
     override fun getItemCount(): Int {
@@ -63,12 +50,12 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
         val radioClicked = View.OnClickListener {
             answer = data[position]
             checkedPosition = holder!!.adapterPosition
-            sClickListener!!.onRadioClickListener(holder!!.adapterPosition, holder.rootView)
-        }
+            notifyDataSetChanged()
 
-        Log.d("radiobutton count","count"+position)
-        holder!!.radioButton.isChecked = position==checkedPosition
+
+        }
         holder!!.bind(data[position], radioClicked)
+        holder.radioButton.isChecked=position==checkedPosition
     }
 
     fun sendAnswer() {
@@ -97,9 +84,4 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             }
         }
     }
-
-    interface RadioClickListener{
-        fun onRadioClickListener(position: Int, view: View)
-    }
-
 }

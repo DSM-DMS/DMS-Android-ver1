@@ -33,8 +33,6 @@ class NotObjectiveFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        var bundle = activity.intent.extras
         survey = arguments.getSerializable("data") as SurveyQuestionModel
     }
 
@@ -71,12 +69,6 @@ class NotObjectiveFragment : BaseFragment() {
             }
         })
     }
-
-    //새로운 프래그먼트 생성시 전에있던 답을 클리어
-    override fun clearAnswer() {
-        answer=""
-    }
-
 
     companion object {
         fun newInstance(): NotObjectiveFragment {

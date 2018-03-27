@@ -14,5 +14,4 @@ import teamdms.dms_kotlin.RecyclerAdapter.ObjectiveRecyclerAdapter
 
 abstract class BaseFragment : Fragment() {
     abstract fun sendAnswer() : Boolean
-    abstract fun clearAnswer()
 }

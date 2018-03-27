@@ -6,9 +6,9 @@ import android.support.v7.app.*
  * Created by root1 on 2017. 11. 23..
  */
 
-open class BaseActivity: AppCompatActivity(){
+open class BaseActivity : AppCompatActivity() {
 
-    fun showToast(message: String){
+    fun showToast(message: String) {
         Util.showToast(this, message)
     }
 

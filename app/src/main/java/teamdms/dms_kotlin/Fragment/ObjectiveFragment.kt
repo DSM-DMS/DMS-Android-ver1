@@ -23,7 +23,7 @@ import teamdms.dms_kotlin.RecyclerAdapter.ObjectiveRecyclerAdapter
 import android.view.WindowManager
 
 
-class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickListener {
+class ObjectiveFragment : BaseFragment() {
 
 
     lateinit var survey : SurveyQuestionModel
@@ -45,7 +45,6 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
         layoutManager.orientation = LinearLayoutManager.VERTICAL
 
         adapter = ObjectiveRecyclerAdapter(context,survey.id)
-        adapter.setOnItemClickListener(this)
         adapter.setData(survey.choices)
         adapter.setHasStableIds(true)
 
@@ -55,17 +54,10 @@ class ObjectiveFragment : BaseFragment() ,ObjectiveRecyclerAdapter.RadioClickLis
         recyclerView!!.layoutManager = layoutManager
         return view
     }
-    override fun onRadioClickListener(position: Int, view: View) {
-        adapter.selectedRadio()
-    }
 
     override fun sendAnswer() : Boolean {
         adapter.sendAnswer()
         return true
-    }
-
-    override fun clearAnswer() {
-        adapter.clearRadio()
     }
 
     companion object {

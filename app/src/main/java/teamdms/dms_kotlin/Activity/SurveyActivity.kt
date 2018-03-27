@@ -24,6 +24,8 @@ class SurveyActivity : BaseActivity() {
     var surveyAdapter : SurveyViewPagerAdapter? = null
     var mSelectedPosition = 0
     lateinit var data : Array<SurveyQuestionModel>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
@@ -41,16 +43,16 @@ class SurveyActivity : BaseActivity() {
 
         view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                mSelectedPosition = position
                 send(button)
-                Log.d("position",position.toString())
             }
 
+            //다음탭 포지션알려줌
             override fun onPageSelected(position: Int) {
                 setView(view, surveyAdapter!!.count,position)
                 setButtonText(button,position,surveyAdapter!!.count)
             }
             override fun onPageScrollStateChanged(state: Int) {
+
             }
         })
     }
@@ -72,13 +74,32 @@ class SurveyActivity : BaseActivity() {
         else NotObjectiveFragment.newInstance()
     }
 
-    fun send(button: Button) {
+    private fun send(button: Button) {
         var fragment = surveyAdapter!!.getItem(mSelectedPosition) as BaseFragment
+        var lastPage = surveyAdapter!!.count
 
-        //전에 있는 클릭한 결과 클리어
-  /*      fragment.clearAnswer()*/
 
-        if (surveyAdapter!!.count == currentIndex + 1) {
+        when (mSelectedPosition) {
+            lastPage - 1 -> {
+                button.setOnClickListener {
+                    if(fragment.sendAnswer()){
+                        var handler = Handler()
+                        handler.postDelayed(finishDelayRun, 2000) //2초
+                    }
+                }
+            }
+            else -> {
+                button.setOnClickListener {
+                    if(fragment.sendAnswer()){
+                        var handler = Handler()
+                        handler.postDelayed(delayRun, 2000) //2초
+                    }
+                }
+            }
+        }
+
+
+       /* if (lastPage == mSelectedPosition+1) {
             button.setOnClickListener {
                 when (fragment.sendAnswer()) {
                     true -> {
@@ -99,12 +120,12 @@ class SurveyActivity : BaseActivity() {
                     false -> { }
                 }
             }
-        }
+        }*/
     }
 
-    var currentIndex = 0
     fun setButtonText(button: Button, currentCount: Int, maxCount: Int) { // 다음 버튼을눌렸을때
-        currentIndex=currentCount
+        mSelectedPosition = currentCount
+
         if (currentCount + 1 == maxCount) {
             button.text = "DONE"
         } else {
