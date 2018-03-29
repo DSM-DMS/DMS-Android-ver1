@@ -46,7 +46,6 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-
         val radioClicked = View.OnClickListener {
             answer = data[position]
             checkedPosition = holder!!.adapterPosition
