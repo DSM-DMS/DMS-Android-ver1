@@ -4,18 +4,27 @@
 package teamdms.dms_kotlin.Fragment
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_objective.*
+import team_dms.dms.Base.Util
+import teamdms.dms_kotlin.Activity.SurveyActivity
 import teamdms.dms_kotlin.Base.BaseFragment
 import teamdms.dms_kotlin.Model.SurveyQuestionModel
 import teamdms.dms_kotlin.R
 import teamdms.dms_kotlin.RecyclerAdapter.ObjectiveRecyclerAdapter
+import android.view.WindowManager
+
 
 class ObjectiveFragment : BaseFragment() {
+
 
     lateinit var survey : SurveyQuestionModel
     lateinit var adapter : ObjectiveRecyclerAdapter
@@ -24,26 +33,24 @@ class ObjectiveFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         survey = arguments.getSerializable("data") as SurveyQuestionModel
     }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        var view = inflater!!.inflate(R.layout.fragment_objective, container, false)
-        var titleTextView = view.findViewById<TextView>(R.id.text_survey_title_objective)
+        var view =inflater!!.inflate(R.layout.fragment_objective, container, false)
+
+        var titleTextView=view.findViewById<TextView>(R.id.text_survey_title_objective)
+        titleTextView.text=survey.title
+        val layoutManager = LinearLayoutManager(context)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+
+        adapter = ObjectiveRecyclerAdapter(context,survey.id)
+        adapter.setData(survey.choices)
+        adapter.setHasStableIds(true)
+
+
         var recyclerView = view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
-        titleTextView.text = survey.title
-
-        LinearLayoutManager(context).let { layoutManager ->
-            layoutManager.orientation.apply {
-                LinearLayoutManager.VERTICAL
-                recyclerView.layoutManager = layoutManager
-            }
-        }
-
-        adapter.apply {
-            ObjectiveRecyclerAdapter(context, survey.id)
-            setData(survey.choices)
-            setHasStableIds(true)
-            recyclerView.adapter=adapter
-        }
+        recyclerView!!.adapter = adapter
+        recyclerView!!.layoutManager = layoutManager
         return view
     }
 

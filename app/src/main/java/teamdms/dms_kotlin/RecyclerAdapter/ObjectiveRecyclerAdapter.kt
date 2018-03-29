@@ -51,8 +51,6 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             answer = data[position]
             checkedPosition = holder!!.adapterPosition
             notifyDataSetChanged()
-
-
         }
         holder!!.bind(data[position], radioClicked)
         holder.radioButton.isChecked=position==checkedPosition
@@ -68,11 +66,9 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
                 }
             }
         })
-
     }
 
     class ViewHolder (var view : View) : RecyclerView.ViewHolder(view) {
-
         var rootView : View = view
         var radioButton = rootView.findViewById<RadioButton>(R.id.radio_objective_question)
 

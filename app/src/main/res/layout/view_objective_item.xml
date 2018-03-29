@@ -3,16 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:gravity="left">
+    android:paddingLeft="32dp"
+    android:paddingRight="64dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:gravity="center">
 
     <RadioButton
-        android:textSize="18sp"
-        android:paddingLeft="8dp"
         android:id="@+id/radio_objective_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="8dp"
         android:text="매우 양호함"
-        android:textColor="@color/colorNo1" />
+        android:textColor="@color/colorNo1"
+        android:textSize="18sp" />
 
 </RelativeLayout>

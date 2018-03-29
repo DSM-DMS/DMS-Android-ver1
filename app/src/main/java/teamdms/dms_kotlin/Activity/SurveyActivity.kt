@@ -28,10 +28,7 @@ class SurveyActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
-        init()
-    }
 
-    private fun init() {
         data = intent.getSerializableExtra("question") as Array<SurveyQuestionModel>
         surveyAdapter = SurveyViewPagerAdapter(supportFragmentManager, getFragments((data!!)))
 
@@ -39,18 +36,25 @@ class SurveyActivity : BaseActivity() {
         var button = findViewById<Button>(R.id.button_start_survey)
         var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
 
-        setView(view, surveyAdapter!!.count, 0) //view 갯수
+        view_pager_survey.setPageingScroll(false)
+        view_pager_survey.adapter=surveyAdapter
+        setView(view, surveyAdapter!!.count, 0)
 
-        view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 send(button)
             }
-            override fun onPageScrollStateChanged(state: Int) {}
+
             override fun onPageSelected(position: Int) {
                 setView(view, surveyAdapter!!.count, position)
                 setButtonText(button, position, surveyAdapter!!.count)
             }
         })
+
+
     }
 
     private fun getFragments(items: Array<SurveyQuestionModel>): ArrayList<BaseFragment> { // Fragment에 데이터를 넣은채로 보내줌
@@ -70,20 +74,19 @@ class SurveyActivity : BaseActivity() {
 
     private fun send(button: Button) {
         var fragment = surveyAdapter!!.getItem(mSelectedPosition) as BaseFragment
-        var lastPage = surveyAdapter!!.count
 
+        surveyAdapter!!.getItem(mSelectedPosition)
         when (mSelectedPosition) {
-            lastPage - 1 -> {
+            surveyAdapter!!.count - 1 -> {
                 button.setOnClickListener {
                     if (fragment.sendAnswer()) {
-                       Util.delayHandler(finishDelayRun,2000)
-                    }
+                        Util.delayHandler(finishDelayRun, 2000) }
                 }
-            }else -> {
+            }
+            else -> {
                 button.setOnClickListener {
-                    if(fragment.sendAnswer()){
-                        Util.delayHandler(delayRun,2000)
-                    }
+                    if (fragment.sendAnswer()) {
+                        Util.delayHandler(delayRun, 2000) }
                 }
             }
         }
@@ -101,15 +104,16 @@ class SurveyActivity : BaseActivity() {
     private fun setView(view: LinearLayout, count: Int, selectNum: Int) { // count를 하는 함수
         view.removeAllViews()
         for (i in 0 until count) {
-            val countView = View(applicationContext)
-            if (i == selectNum) {
-                countView.background = resources.getDrawable(R.drawable.survey_view_shape_selected)
-            } else {
-                countView.background = (resources.getDrawable(R.drawable.survey_view_shape))
-            }
-            LinearLayout.LayoutParams(20, 20).let { layoutParams ->
-                layoutParams.setMargins(12, 0, 12, 0)
-                view.addView(countView, layoutParams)
+            View(applicationContext).let { countView ->
+                if (i == selectNum) {
+                    countView.background = resources.getDrawable(R.drawable.survey_view_shape_selected)
+                } else {
+                    countView.background = (resources.getDrawable(R.drawable.survey_view_shape))
+                }
+                LinearLayout.LayoutParams(20, 20).let { layoutParams ->
+                    layoutParams.setMargins(12, 0, 12, 0)
+                    view.addView(countView, layoutParams)
+                }
             }
         }
     }
@@ -123,5 +127,4 @@ class SurveyActivity : BaseActivity() {
         startActivity(Intent(this, SurveyListActivity::class.java))
         finish()
     }
-
 }
