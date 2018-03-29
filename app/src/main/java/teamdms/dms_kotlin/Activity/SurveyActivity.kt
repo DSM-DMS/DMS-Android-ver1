@@ -55,9 +55,10 @@ class SurveyActivity : BaseActivity() {
     private fun getFragments(items: Array<SurveyQuestionModel>): ArrayList<BaseFragment> { // Fragment에 데이터를 넣은채로 보내줌
         var list: ArrayList<BaseFragment> = arrayListOf()
         for (item in items) {
-            var b = Bundle()
-            b.putSerializable("data", item)
-            list.add(Fragment.instantiate(this, isObjective(item).javaClass.name, b) as BaseFragment)
+            Bundle().let { b ->
+                b.putSerializable("data", item)
+                list.add(Fragment.instantiate(this, isObjective(item).javaClass.name, b) as BaseFragment)
+            }
         }
         return list
     }
@@ -69,20 +70,17 @@ class SurveyActivity : BaseActivity() {
 
     private fun send(button: Button) {
         var fragment = surveyAdapter!!.getItem(mSelectedPosition) as BaseFragment
-
         surveyAdapter!!.getItem(mSelectedPosition)
         when (mSelectedPosition) {
             surveyAdapter!!.count - 1 -> {
                 button.setOnClickListener {
                     if (fragment.sendAnswer()) {
-                        Util.delayHandler(finishDelayRun, 2000) }
-                }
+                        Util.delayHandler(finishDelayRun, 2000) } }
             }
             else -> {
                 button.setOnClickListener {
                     if (fragment.sendAnswer()) {
-                        Util.delayHandler(delayRun, 2000) }
-                }
+                        Util.delayHandler(delayRun, 2000) } }
             }
         }
     }

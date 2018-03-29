@@ -48,7 +48,7 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
         val intent = Intent(context, NoticeDetailActivity::class.java)
         val data = noticeArr[position!!]
 
-        if(noticeArr != null) {
+        noticeArr?.let {
             holder!!.bind(data.title, data.write_date, {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     intent.putExtra("confirm", confirm)
@@ -62,7 +62,6 @@ class NoticesAdapter(confirm: Int, activity: Activity) : RecyclerView.Adapter<No
                     context.startActivity(intent)
                 }
             })
-
             setAnimation(holder.rootView, position)
         }
     }
