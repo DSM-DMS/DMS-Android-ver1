@@ -47,7 +47,7 @@
                 android:id="@+id/button_start_survey"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 android:text="NEXT"
                 android:textColor="@color/colorWhite"
                 android:elevation="4dp"

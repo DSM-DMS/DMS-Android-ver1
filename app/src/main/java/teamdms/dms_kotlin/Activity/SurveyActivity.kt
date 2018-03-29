@@ -21,51 +21,46 @@ import teamdms.dms_kotlin.Model.SurveyQuestionModel
 
 class SurveyActivity : BaseActivity() {
 
-    var surveyAdapter : SurveyViewPagerAdapter? = null
+    var surveyAdapter: SurveyViewPagerAdapter? = null
     var mSelectedPosition = 0
-    lateinit var data : Array<SurveyQuestionModel>
-
+    lateinit var data: Array<SurveyQuestionModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
+        init()
+    }
 
-        var id : String = intent.getStringExtra("id") // 설문지 아이디
-        var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
+    private fun init() {
         data = intent.getSerializableExtra("question") as Array<SurveyQuestionModel>
-
         surveyAdapter = SurveyViewPagerAdapter(supportFragmentManager, getFragments((data!!)))
-        var button = findViewById<Button>(R.id.button_start_survey)
 
-        view_pager_survey.adapter = surveyAdapter
-        view_pager_survey.setPageingScroll(false)
-        setView(view, surveyAdapter!!.count, 0)
+
+        var id: String = intent.getStringExtra("id") // 설문지 아이디
+        var button = findViewById<Button>(R.id.button_start_survey)
+        var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
+
+        setView(view, surveyAdapter!!.count, 0) //view 갯수
 
         view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 send(button)
             }
-
-            //다음탭 포지션알려줌
+            override fun onPageScrollStateChanged(state: Int) {}
             override fun onPageSelected(position: Int) {
-                setView(view, surveyAdapter!!.count,position)
-                setButtonText(button,position,surveyAdapter!!.count)
-            }
-            override fun onPageScrollStateChanged(state: Int) {
-
+                setView(view, surveyAdapter!!.count, position)
+                setButtonText(button, position, surveyAdapter!!.count)
             }
         })
     }
 
-    private fun getFragments(items : Array<SurveyQuestionModel>) : ArrayList<BaseFragment>{ // Fragment에 데이터를 넣은채로 보내줌
-        var list : ArrayList<BaseFragment> = arrayListOf()
-        for(item in items){
+    private fun getFragments(items: Array<SurveyQuestionModel>): ArrayList<BaseFragment> { // Fragment에 데이터를 넣은채로 보내줌
+        var list: ArrayList<BaseFragment> = arrayListOf()
+        for (item in items) {
             var b = Bundle()
             b.putSerializable("data", item)
             list.add(Fragment.instantiate(this, isObjective(item).javaClass.name, b) as BaseFragment)
-            Log.v("surveyTest", "non null 1")
         }
-
         return list
     }
 
@@ -78,11 +73,10 @@ class SurveyActivity : BaseActivity() {
         var fragment = surveyAdapter!!.getItem(mSelectedPosition) as BaseFragment
         var lastPage = surveyAdapter!!.count
 
-
         when (mSelectedPosition) {
             lastPage - 1 -> {
                 button.setOnClickListener {
-                    if(fragment.sendAnswer()){
+                    if (fragment.sendAnswer()) {
                         var handler = Handler()
                         handler.postDelayed(finishDelayRun, 2000) //2초
                     }
@@ -97,35 +91,10 @@ class SurveyActivity : BaseActivity() {
                 }
             }
         }
-
-
-       /* if (lastPage == mSelectedPosition+1) {
-            button.setOnClickListener {
-                when (fragment.sendAnswer()) {
-                    true -> {
-                        var handler = Handler()
-                        handler.postDelayed(finishDelayRun, 2000) //2초
-                    }
-                    false -> { }
-                }
-            }
-        } else {
-            // 설문조사 마지막 페이지
-            button.setOnClickListener {
-                when (fragment.sendAnswer()) {
-                    true -> {
-                        var handler = Handler()
-                        handler.postDelayed(delayRun, 2000) //2초
-                    }
-                    false -> { }
-                }
-            }
-        }*/
     }
 
     fun setButtonText(button: Button, currentCount: Int, maxCount: Int) { // 다음 버튼을눌렸을때
         mSelectedPosition = currentCount
-
         if (currentCount + 1 == maxCount) {
             button.text = "DONE"
         } else {
@@ -150,11 +119,12 @@ class SurveyActivity : BaseActivity() {
             if (i == selectNum) {
                 countView.background = resources.getDrawable(R.drawable.survey_view_shape_selected)
             } else {
-                countView.background=(resources.getDrawable(R.drawable.survey_view_shape))
+                countView.background = (resources.getDrawable(R.drawable.survey_view_shape))
             }
-            val layoutParams = LinearLayout.LayoutParams(20, 20)
-            layoutParams.setMargins(12, 0, 12, 0)
-            view.addView(countView, layoutParams)
+            LinearLayout.LayoutParams(20, 20).let { layoutParams ->
+                layoutParams.setMargins(12, 0, 12, 0)
+                view.addView(countView, layoutParams)
+            }
         }
     }
 }

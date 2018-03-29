@@ -29,7 +29,7 @@ class NotObjectiveFragment : BaseFragment() {
 
     lateinit var survey: SurveyQuestionModel
     lateinit var rootView : View
-    var answer : String="";
+    var answer : String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -43,17 +43,9 @@
             android:id="@+id/recycler_objective_survey"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginRight="64dp"
             android:layout_weight="1"
-            android:layout_centerHorizontal="true"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"/>
-
+            android:layout_marginBottom="24dp"
+            android:layout_centerHorizontal="true">
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
-
-
 </LinearLayout>
