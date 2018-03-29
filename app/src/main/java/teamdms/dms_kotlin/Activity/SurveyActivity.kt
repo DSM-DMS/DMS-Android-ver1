@@ -43,18 +43,13 @@ class SurveyActivity : BaseActivity() {
         view_pager_survey.setOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {
             }
-
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 send(button)
             }
-
             override fun onPageSelected(position: Int) {
                 setView(view, surveyAdapter!!.count, position)
-                setButtonText(button, position, surveyAdapter!!.count)
-            }
+                setButtonText(button, position, surveyAdapter!!.count) }
         })
-
-
     }
 
     private fun getFragments(items: Array<SurveyQuestionModel>): ArrayList<BaseFragment> { // Fragment에 데이터를 넣은채로 보내줌

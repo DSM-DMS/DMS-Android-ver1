@@ -32,14 +32,13 @@ class ObjectiveFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         var view = inflater!!.inflate(R.layout.fragment_objective, container, false)
         var titleTextView=view.findViewById<TextView>(R.id.text_survey_title_objective)
-        titleTextView.text = survey.title
+        var recycler=view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
 
+        titleTextView.text = survey.title
         mAdapter.apply {
             setData(survey.choices)
             setHasStableIds(true)
         }
-
-        var recycler=view.findViewById<RecyclerView>(R.id.recycler_objective_survey)
         recycler.apply {
             adapter = mAdapter
             LinearLayoutManager(context).apply {
