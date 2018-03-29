@@ -4,7 +4,7 @@ import android.app.*
 import android.content.*
 import android.widget.*
 import teamdms.dms_kotlin.*
-
+import java.util.logging.Handler
 
 
 /**
@@ -76,6 +76,10 @@ object Util {
         return "JWT " + getPref(context).getString(getKey(isAccess), "")
     }
 
-    private fun getKey(isAccess: Boolean): String = if(isAccess) "Access" else "Refresh"
+    private fun getKey(isAccess: Boolean): String = if (isAccess) "Access" else "Refresh"
 
+    fun delayHandler(runnable: Runnable, delayTime: Long) {
+        var handler = android.os.Handler()
+        handler.postDelayed(runnable, delayTime)
+    }
 }

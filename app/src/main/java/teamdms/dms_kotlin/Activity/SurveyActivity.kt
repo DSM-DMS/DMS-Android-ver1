@@ -35,7 +35,6 @@ class SurveyActivity : BaseActivity() {
         data = intent.getSerializableExtra("question") as Array<SurveyQuestionModel>
         surveyAdapter = SurveyViewPagerAdapter(supportFragmentManager, getFragments((data!!)))
 
-
         var id: String = intent.getStringExtra("id") // 설문지 아이디
         var button = findViewById<Button>(R.id.button_start_survey)
         var view = findViewById<LinearLayout>(R.id.view_survey_count) // 설문지 카운터
@@ -77,16 +76,13 @@ class SurveyActivity : BaseActivity() {
             lastPage - 1 -> {
                 button.setOnClickListener {
                     if (fragment.sendAnswer()) {
-                        var handler = Handler()
-                        handler.postDelayed(finishDelayRun, 2000) //2초
+                       Util.delayHandler(finishDelayRun,2000)
                     }
                 }
-            }
-            else -> {
+            }else -> {
                 button.setOnClickListener {
                     if(fragment.sendAnswer()){
-                        var handler = Handler()
-                        handler.postDelayed(delayRun, 2000) //2초
+                        Util.delayHandler(delayRun,2000)
                     }
                 }
             }
@@ -100,16 +96,6 @@ class SurveyActivity : BaseActivity() {
         } else {
             button.text = "NEXT"
         }
-    }
-
-    private val delayRun = Runnable {
-        view_pager_survey.currentItem = view_pager_survey.currentItem + 1
-    }
-
-    private val finishDelayRun = Runnable {
-        Util.showToast(this,"설문조사가 끝났습니다")
-        startActivity(Intent(this, SurveyListActivity::class.java))
-        finish()
     }
 
     private fun setView(view: LinearLayout, count: Int, selectNum: Int) { // count를 하는 함수
@@ -127,4 +113,15 @@ class SurveyActivity : BaseActivity() {
             }
         }
     }
+
+    private val delayRun = Runnable {
+        view_pager_survey.currentItem = view_pager_survey.currentItem + 1
+    }
+
+    private val finishDelayRun = Runnable {
+        Util.showToast(this,"설문조사가 끝났습니다")
+        startActivity(Intent(this, SurveyListActivity::class.java))
+        finish()
+    }
+
 }
