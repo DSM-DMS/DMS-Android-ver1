@@ -1,49 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="16dp"
-        android:id="@+id/recycle_view_notice_list"
+    <TextView
+        android:id="@+id/text_notice_list_no_result"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textSize="24sp"
+        android:text="상벌점 내역이 없습니다."/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/colorNo5">
-
-        <ImageView
-            android:layout_marginLeft="8dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/iv_notice_list_icon"
-            android:layout_width="72dp"
-            android:layout_height="56dp"
-            android:src="@drawable/notice_list_icon1" />
-
-        <TextView
-            android:id="@+id/text_notice_list_title"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view_notice_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
-            android:layout_toRightOf="@+id/iv_notice_list_icon"
-            android:background="@drawable/apply_dormitory_round_text"
-            android:text="공지사항"
-            android:textColor="@color/colorBlack"
-            android:gravity="center"
-            android:textSize="22sp"
-            />
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorNo5">
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/iv_notice_list_icon"
+                android:layout_width="72dp"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/notice_list_icon1" />
+
+            <TextView
+                android:id="@+id/text_notice_list_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/iv_notice_list_icon"
+                android:background="@drawable/apply_dormitory_round_text"
+                android:gravity="center"
+                android:text="공지사항"
+                android:textColor="@color/colorBlack"
+                android:textSize="22sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

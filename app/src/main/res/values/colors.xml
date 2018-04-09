@@ -27,4 +27,15 @@
     <color name="done">#64DD17</color>
     <color name="warning">#D50000</color>
 
+    <!--Widget background-->
+    <color name = "widgetBreakfastBackground" >#fafafa</color>
+    <color name = "widgetLunchBackground" >#89939f</color>
+    <color name = "widgetDinnerBackground" >#575d81</color>
+
+    <!--Widget Font & Date-->
+    <color name="widgetBreakfastFont">#000000</color>
+    <color name="widgetBreakfastDate">#555555</color>
+    <color name="widgetLunchDinnerFont">#ffffff</color>
+    <color name="widgetLunchDinnerDate">#eeeeee</color>
+
 </resources>

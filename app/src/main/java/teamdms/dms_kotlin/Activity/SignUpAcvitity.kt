@@ -1,14 +1,12 @@
 package teamdms.dms_kotlin.Activity
 
 import android.os.*
-import android.telecom.Call
 import android.text.*
-import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_singup.*
-import team_dms.dms.Base.Util
+import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import teamdms.dms_kotlin.*
-import teamdms.dms_kotlin.Base.CheckValidateActivity
+import teamdms.dms_kotlin.Base.*
 
 class SignUpActivity : CheckValidateActivity(){
 
