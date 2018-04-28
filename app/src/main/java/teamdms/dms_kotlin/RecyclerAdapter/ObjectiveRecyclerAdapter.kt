@@ -1,6 +1,7 @@
 package teamdms.dms_kotlin.RecyclerAdapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.telecom.Call
 import android.util.Log
@@ -51,8 +52,17 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             checkedPosition = holder!!.adapterPosition
             notifyDataSetChanged()
         }
+
         holder!!.bind(data[position], radioClicked)
-        holder.radioButton.isChecked=position==checkedPosition
+        holder.radioButton.apply {
+            if(position==checkedPosition){
+                isChecked=true
+                setTextColor(ContextCompat.getColor(context, R.color.yellow))
+            }else{
+                isChecked=false
+                setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
+            }
+        }
     }
 
     fun sendAnswer() {

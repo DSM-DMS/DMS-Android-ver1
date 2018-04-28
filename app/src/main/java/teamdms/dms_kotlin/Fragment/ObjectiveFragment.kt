@@ -39,6 +39,7 @@ class ObjectiveFragment : BaseFragment() {
             setData(survey.choices)
             setHasStableIds(true)
         }
+
         recycler.apply {
             adapter = mAdapter
             LinearLayoutManager(context).apply {

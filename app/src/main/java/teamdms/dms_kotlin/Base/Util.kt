@@ -12,7 +12,7 @@ import java.util.logging.Handler
  */
 object Util {
 
-    val classNameArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린교실")
+    val classNameArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린교실","2층 여자학습실")
     val noticeIDs = arrayOf("rule","notice","faq")
     val noticeTitles = arrayOf("기숙사 규정","공지사항","자주하는 질문", "설문조사")
     val noticeIcons =  arrayOf(R.drawable.notice_list_icon1, R.drawable.notice_list_icon2, R.drawable.notice_list_icon3)

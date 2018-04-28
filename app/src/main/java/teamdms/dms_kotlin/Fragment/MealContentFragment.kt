@@ -66,14 +66,15 @@ class MealContentFragment: Fragment() {
 
 
     companion object {
-        private val ARGS_KEY_DATE= "date"
+        private val ARGS_KEY_DATE = "date"
 
-        fun newInstance(date : Date): MealContentFragment {
-            val fragment = MealContentFragment()
+        fun newInstance(date: Date): MealContentFragment {
             val args = Bundle()
-            args.putLong(ARGS_KEY_DATE, date.time)
-            fragment.arguments = args
-            return fragment
+            MealContentFragment().let { mealContentFragment ->
+                args.putLong(ARGS_KEY_DATE, date.time)
+                mealContentFragment.arguments = args
+                return mealContentFragment
+            }
         }
     }
 }

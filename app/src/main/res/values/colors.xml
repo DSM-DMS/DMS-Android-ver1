@@ -25,6 +25,7 @@
     <color name="colorClear">@android:color/transparent</color>
 
     <color name="done">#64DD17</color>
+    <color name="yellow">#FFD732</color>
     <color name="warning">#D50000</color>
 
 </resources>
