@@ -6,14 +6,13 @@ import android.widget.*
 import teamdms.dms_kotlin.*
 
 
-
 /**
  * Created by root1 on 2017. 11. 23..
  */
 object Util {
 
-    val classNameArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린교실")
-    val noticeIDs = arrayOf("rule","notice","faq")
+    val classNameArr = arrayOf("가온실", "나온실", "다온실", "라온실", "3층 독서실", "4층 독서실", "열린교실", "여자 자습실")
+    val noticeIDs = arrayOf("ule","notice","faq")
     val noticeTitles = arrayOf("기숙사 규정","공지사항","자주하는 질문", "설문조사")
     val noticeIcons =  arrayOf(R.drawable.notice_list_icon1, R.drawable.notice_list_icon2, R.drawable.notice_list_icon3)
     val noticeImages = arrayOf(R.drawable.notice_rule_icon,R.drawable.notice_notification_icon,R.drawable.notice_facility_icon)
@@ -76,6 +75,10 @@ object Util {
         return "JWT " + getPref(context).getString(getKey(isAccess), "")
     }
 
-    private fun getKey(isAccess: Boolean): String = if(isAccess) "Access" else "Refresh"
+    private fun getKey(isAccess: Boolean): String = if (isAccess) "Access" else "Refresh"
 
+    fun delayHandler(runnable: Runnable, delayTime: Long) {
+        var handler = android.os.Handler()
+        handler.postDelayed(runnable, delayTime)
+    }
 }

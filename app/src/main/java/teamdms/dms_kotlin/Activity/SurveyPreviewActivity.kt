@@ -58,7 +58,6 @@ class SurveyPreviewActivity : BaseActivity() {
                     }
                 }
             }
-
         })
     }
 }

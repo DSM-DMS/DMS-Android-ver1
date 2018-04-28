@@ -29,24 +29,11 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
 
     companion object {
         var checkedPosition = -1
-        var sClickListener: RadioClickListener? = null
     }
 
     fun setData (data : Array<String>) {
         this.data = data
         notifyDataSetChanged()
-    }
-
-    fun selectedRadio() {
-        notifyDataSetChanged()
-    }
-
-    fun clearRadio(){
-        checkedPosition=-1
-    }
-
-    fun setOnItemClickListener(clickListener: RadioClickListener) {
-        sClickListener = clickListener
     }
 
     override fun getItemCount(): Int {
@@ -59,22 +46,19 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-
         val radioClicked = View.OnClickListener {
             answer = data[position]
             checkedPosition = holder!!.adapterPosition
-            sClickListener!!.onRadioClickListener(holder!!.adapterPosition, holder.rootView)
+            notifyDataSetChanged()
         }
-
-        Log.d("radiobutton count","count"+position)
-        holder!!.radioButton.isChecked = position==checkedPosition
         holder!!.bind(data[position], radioClicked)
+        holder.radioButton.isChecked=position==checkedPosition
     }
 
     fun sendAnswer() {
         Connector.api.sendSurvey(Util.getToken(context), id,answer).enqueue(object : Res<Void>(context) {
             override fun callBack(code: Int, body: Void?) {
-                Util.showToast(context,answer)
+                //Util.showToast(context,answer)
                 when (code) {
                     201 -> Util.showToast(context, "응답이 완료되었습니다.")
                     204 -> Util.showToast(context, "존재하지 않는 질문입니다. : error " + code.toString())
@@ -82,11 +66,9 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
                 }
             }
         })
-
     }
 
     class ViewHolder (var view : View) : RecyclerView.ViewHolder(view) {
-
         var rootView : View = view
         var radioButton = rootView.findViewById<RadioButton>(R.id.radio_objective_question)
 
@@ -97,9 +79,4 @@ class ObjectiveRecyclerAdapter(var context : Context, var id : String) : Recycle
             }
         }
     }
-
-    interface RadioClickListener{
-        fun onRadioClickListener(position: Int, view: View)
-    }
-
 }

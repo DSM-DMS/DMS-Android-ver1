@@ -290,10 +290,39 @@
 
             </RelativeLayout>
 
-            <Space
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_apply_study_bottom_sheet_seat_8"
+                    android:gravity="center"
+                    android:background="@drawable/apply_study_bottom_sheet_button_back"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/size_apply_study_bottom_sheet_button"
+                    android:orientation="vertical"
+                    android:layout_height="@dimen/size_apply_study_bottom_sheet_button">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:text="여자"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="자습실"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

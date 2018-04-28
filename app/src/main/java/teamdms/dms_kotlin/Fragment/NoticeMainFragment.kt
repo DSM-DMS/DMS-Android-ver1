@@ -34,7 +34,6 @@ class NoticeMainFragment: Fragment(){
                         }.let { startActivity(it) }
                     }
             }
-
             button_notice_main_facility.setOnClickListener { Util.showCustomDialog(ProblemReportDialog(context), R.style.DialogSlideDialog) }
         }
     }

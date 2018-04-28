@@ -35,7 +35,11 @@ class ApplyStudyActivity: BaseActivity() {
                         200 -> {
                             load()
                             showToast("연장이 취소되었습니다")
-                        }else -> showToast("오류 : $code")
+                        }
+                        204 ->{
+                            showToast("10시 이후에는 취소가 불가능합니다.")
+                        }
+                        else -> showToast("오류 : $code")
                     }
                 }
             })
@@ -83,7 +87,8 @@ class ApplyStudyActivity: BaseActivity() {
     private fun setBottomSheetView(view: View){
         with(view){
             val tempLinearArr = arrayOf(linear_apply_study_bottom_sheet_seat_1, linear_apply_study_bottom_sheet_seat_2, linear_apply_study_bottom_sheet_seat_3,
-                    linear_apply_study_bottom_sheet_seat_4, linear_apply_study_bottom_sheet_seat_5, linear_apply_study_bottom_sheet_seat_6, linear_apply_study_bottom_sheet_seat_7)
+                    linear_apply_study_bottom_sheet_seat_4, linear_apply_study_bottom_sheet_seat_5, linear_apply_study_bottom_sheet_seat_6, linear_apply_study_bottom_sheet_seat_7,
+                    linear_apply_study_bottom_sheet_seat_8)
             button_apply_study_bottom_sheet.setOnClickListener { bottomSheet.dismiss() }
             for(tempLinearNum in tempLinearArr.indices){
                 tempLinearArr[tempLinearNum].setOnClickListener {
