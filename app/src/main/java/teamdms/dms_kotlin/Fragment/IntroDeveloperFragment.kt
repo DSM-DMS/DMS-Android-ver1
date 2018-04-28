@@ -67,14 +67,16 @@ class IntroDeveloperFragment : Fragment() {
     }
 
     companion object {
-        private val ARGS_KEY_DISTINCT= "distinction"
+        private val ARGS_KEY_DISTINCT = "distinction"
 
-        fun newInstance(distinction : Int): IntroDeveloperFragment {
-            val fragment = IntroDeveloperFragment()
-            val args = Bundle()
-            args.putInt(ARGS_KEY_DISTINCT, distinction)
-            fragment.arguments = args
-            return fragment
+        fun newInstance(distinction: Int): IntroDeveloperFragment {
+            val args = Bundle().apply {
+                putInt(ARGS_KEY_DISTINCT, distinction)
+            }
+            IntroDeveloperFragment().let { introDeveloperFragment ->
+                introDeveloperFragment.arguments = args
+                return introDeveloperFragment
+            }
         }
     }
 }
