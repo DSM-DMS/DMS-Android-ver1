@@ -1,128 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/auth_back">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <ImageView
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:src="@drawable/signup_icon"
-        />
+        <import type="android.view.View" />
 
-    <LinearLayout
+        <variable
+            name="signUpVm"
+            type="teamdms.dms_kotlin.ViewModel.SignUpViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linear_signup_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:paddingTop="64dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent"
+        android:background="@drawable/auth_back">
 
-        <EditText
-            android:id="@+id/edit_signup_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="코드"
-            android:inputType="text"
-            android:maxLines="1"
+
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="64dp"
-            android:theme="@style/StandardEditText"
-            />
+            android:src="@drawable/signup_icon" />
 
-        <EditText
-            android:id="@+id/edit_signup_id"
+        <LinearLayout
+            android:id="@+id/linear_signup_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="아이디"
-            android:layout_marginTop="4dp"
-            android:maxLines="1"
-            android:theme="@style/StandardEditText"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            android:paddingTop="64dp">
 
-        <EditText
-            android:id="@+id/edit_signup_pw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:hint="비밀번호"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:theme="@style/StandardEditText"
-            />
-
-        <EditText
-            android:id="@+id/edit_signup_confirm_pw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:hint="비밀번호 확인"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:theme="@style/StandardEditText"
-            />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:paddingLeft="4dp"
-            >
-
-            <TextView
-                android:id="@+id/text_signup_check_pw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageView
-                android:id="@+id/image_signup_check_pw"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_signup_code"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
+                android:layout_marginTop="64dp"
+                android:afterTextChanged="@{() -> signUpVm.check(context)}"
+                android:hint="코드"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={signUpVm.code}"
+                android:theme="@style/StandardEditText" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:paddingLeft="4dp"
-            >
-
-            <TextView
-                android:id="@+id/text_signup_check_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageView
-                android:id="@+id/image_signup_check_id"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_signup_id"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_marginTop="4dp"
+                android:afterTextChanged="@{() -> signUpVm.check(context)}"
+                android:hint="아이디"
+                android:maxLines="1"
+                android:text="@={signUpVm.id}"
+                android:theme="@style/StandardEditText" />
 
-    <Button
-        android:id="@+id/button_signup_singup"
-        android:layout_marginBottom="32dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:paddingLeft="48dp"
-        android:paddingRight="48dp"
-        android:textColor="@color/colorWhite"
-        android:text="회원가입"
-        android:textSize="16dp"
-        android:layout_width="wrap_content"
-        android:background="@drawable/all_button_shape"
-        android:layout_height="wrap_content"
-        />
+            <EditText
+                android:id="@+id/edit_signup_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:afterTextChanged="@{() -> signUpVm.check(context)}"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:text="@={signUpVm.password}"
+                android:theme="@style/StandardEditText" />
 
-</RelativeLayout>
+            <EditText
+                android:id="@+id/edit_signup_confirm_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:afterTextChanged="@{() -> signUpVm.check(context)}"
+                android:hint="비밀번호 확인"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:text="@={signUpVm.confirm}"
+                android:theme="@style/StandardEditText" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:paddingLeft="4dp">
+
+                <TextView
+                    android:id="@+id/text_signup_check_pw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{signUpVm.checkPw}"
+                    android:textColor="@{signUpVm.checkPwBoolean == 0 ? @color/warning : @color/done}" />
+
+                <ImageView
+                    android:id="@+id/image_signup_check_pw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@{signUpVm.checkPwBoolean == 1 ? @drawable/signup_check_validate_done : @drawable/signup_check_validate_warning}"
+                    android:visibility="@{signUpVm.checkPwBoolean ==  -1 ? View.INVISIBLE: View.VISIBLE}" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:paddingLeft="4dp">
+
+                <TextView
+                    android:id="@+id/text_signup_check_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{signUpVm.checkId}"
+                    android:textColor="@{signUpVm.checkIdBoolean== 0 ? @color/warning : @color/done}" />
+
+                <ImageView
+                    android:id="@+id/image_signup_check_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@{signUpVm.checkIdBoolean == 1 ? @drawable/signup_check_validate_done : @drawable/signup_check_validate_warning}"
+                    android:visibility="@{signUpVm.checkIdBoolean == -1 ? View.INVISIBLE: View.VISIBLE}" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_signup_singup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/all_button_shape"
+            android:enabled="@{signUpVm.checkIdBoolean == 1 &amp;&amp; signUpVm.checkPwBoolean == 1 ? true : false}"
+            android:onClick="@{(view) -> signUpVm.checkCode(view)}"
+            android:paddingLeft="48dp"
+            android:paddingRight="48dp"
+            android:text="회원가입"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+</layout>
