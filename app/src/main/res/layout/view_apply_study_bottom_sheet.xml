@@ -321,12 +321,8 @@
                         android:textSize="16sp"/>
 
                 </LinearLayout>
-
             </RelativeLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
 
     <TextView

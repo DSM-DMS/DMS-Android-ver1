@@ -43,7 +43,6 @@ class SurveyPreviewActivity : BaseActivity() {
                 startActivity(intent)
                 finish()
             }
-
         }
     }
 
