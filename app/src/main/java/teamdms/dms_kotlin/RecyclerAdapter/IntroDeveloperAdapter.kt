@@ -43,7 +43,7 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
                 val view = inflater.inflate(R.layout.view_intro_developer_item_2, parent, false)
                 IntroDeveloperSecondViewHolder(view)
             }
-            else->{
+            else -> {
                 val view = inflater.inflate(R.layout.view_intro_developer_item_1, parent, false)
                 IntroDeveloperFirstViewHolder(view)
             }
@@ -53,14 +53,14 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
 
-        when(holder!!.itemViewType){
-            0->    {
+        when (holder!!.itemViewType) {
+            0 -> {
                 var contentHolder = holder as IntroDeveloperFirstViewHolder
-                contentHolder.bind(Util.introConfirmName[confirm][position], Util.introConfirmContent[confirm][position],Util.introConfirmImage[confirm][position])
+                contentHolder.bind(Util.introConfirmName[confirm][position], Util.introConfirmContent[confirm][position], Util.introConfirmImage[confirm][position])
             }
-            1->{
+            1 -> {
                 var contentHolder = holder as IntroDeveloperSecondViewHolder
-                contentHolder.bind(Util.introConfirmName[confirm][position], Util.introConfirmContent[confirm][position],Util.introConfirmImage[confirm][position])
+                contentHolder.bind(Util.introConfirmName[confirm][position], Util.introConfirmContent[confirm][position], Util.introConfirmImage[confirm][position])
             }
 
         }
@@ -83,8 +83,7 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
         var contentTextView = rootView.findViewById<TextView>(R.id.developer_tell)
         var profileImage = rootView.findViewById<ImageView>(R.id.developer_profile)
 
-        @Override
-        override fun bind(name: String, content: String,image: Int) {
+        override fun bind(name: String, content: String, image: Int) {
             with(rootView) {
                 nameTextView.text = name
                 contentTextView.text = content
@@ -106,8 +105,7 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
         var contentTextView = rootView.findViewById<TextView>(R.id.developer_tell)
         var profileImage = rootView.findViewById<ImageView>(R.id.developer_profile)
 
-        @Override
-        override fun bind(name: String, content: String, image : Int) {
+        override fun bind(name: String, content: String, image: Int) {
             with(rootView) {
                 nameTextView.text = name
                 contentTextView.text = content
@@ -118,6 +116,6 @@ class IntroDeveloperAdapter(val mConfirm: Int) : RecyclerView.Adapter<RecyclerVi
 }
 
 abstract class IntroViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    abstract fun bind(name: String, content: String,image : Int)
+    abstract fun bind(name: String, content: String, image: Int)
 }
 
