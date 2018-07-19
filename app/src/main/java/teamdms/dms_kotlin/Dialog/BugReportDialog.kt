@@ -30,7 +30,7 @@ class BugReportDialog (context : Context): Dialog(context) {
             if(content.isEmpty()) {
                 showToast(context, "값을 다 입력해주세요")
             } else {
-                Connector.api.sendBugReport(getToken(context), "Android 오류",content).
+                Connector.api.sendBugReport(getToken(context), hashMapOf("platform" to 2, "content" to content)).
                         enqueue(object : Res<Void> (context) {
                             override fun callBack(code: Int, body: Void?) {
                                 when(code) {

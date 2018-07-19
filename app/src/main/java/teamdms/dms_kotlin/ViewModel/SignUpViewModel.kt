@@ -26,7 +26,7 @@ class SignUpViewModel(val navigator: Navigator) {
 
     fun checkCode(view: View) {
         navigator.finishActivity()
-        if (confirm.get().trim() == password.get().trim()) {
+        if (confirm.get()!!.trim() == password.get()!!.trim()) {
             Connector.api.checkUUID(code.get().toString().trim()).enqueue(object : Res<Void>(view.context) {
                 override fun callBack(code: Int, body: Void?) {
                     when (code) {
@@ -48,7 +48,7 @@ class SignUpViewModel(val navigator: Navigator) {
         val signupPw = password.get()
         val signupCode = code.get()
         val signupConfirmPw = confirm.get()
-        if (signupCode.isEmpty() || signupId.isEmpty() || signupPw.isEmpty() || signupConfirmPw.isEmpty()) {
+        if (signupCode!!.isEmpty() || signupId!!.isEmpty() || signupPw!!.isEmpty() || signupConfirmPw!!.isEmpty()) {
             checkPw.set("모두 입력하세요")
             checkPwBoolean.set(0)
         } else if (signupConfirmPw != signupPw) {
@@ -64,7 +64,7 @@ class SignUpViewModel(val navigator: Navigator) {
         val signUpId = id.get().toString()
         val signUpCode = code.get().toString()
         if (!signUpId.isEmpty()) {
-            Connector.api.checkOverlap(signUpId).enqueue(object : Res<Void>(context) {
+            Connector.api.checkOverlap(hashMapOf("id" to signUpId)).enqueue(object : Res<Void>(context) {
                 override fun callBack(code: Int, body: Void?) {
                     when (code) {
                         200 -> {
@@ -85,7 +85,10 @@ class SignUpViewModel(val navigator: Navigator) {
     }
 
     fun signUp(view: View) { // 회원가입
-        Connector.api.signUp(code.get().trim(), id.get().trim(), password.get().trim())
+        Connector.api.signUp(hashMapOf(
+                "uuid" to code.get()!!.trim(),
+                "id" to id.get()!!.trim(),
+                "password" to password.get()!!.trim()))
                 .enqueue(object : Res<Void>(view.context) {
                     override fun callBack(code: Int, body: Void?) {
                         showToast((view.context), when (code) {

@@ -14,7 +14,7 @@ import teamdms.dms_kotlin.Base.CheckValidateActivity
  * Created by dsm2017 on 2017-12-17.
  */
 
-class ChangePWActivity : CheckValidateActivity()  {
+class ChangePWActivity : CheckValidateActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +24,16 @@ class ChangePWActivity : CheckValidateActivity()  {
 
         edit_changePW_existing_pw.addTextChangedListener(object : textWatcher() { // 글 될 때마다 유효성 검사
 
-            override fun afterTextChanged(s: Editable?) { checkValidate() }
+            override fun afterTextChanged(s: Editable?) {
+                checkValidate()
+            }
         })
 
         edit_changePW_new_pw.addTextChangedListener(object : textWatcher() {
 
-            override fun afterTextChanged(s: Editable?) { checkValidate() }
+            override fun afterTextChanged(s: Editable?) {
+                checkValidate()
+            }
         })
 
 
@@ -43,20 +47,22 @@ class ChangePWActivity : CheckValidateActivity()  {
 
         button_changePW_apply.setOnClickListener {
 
-            Connector.api.changePW(getToken(), edit_changePW_existing_pw.text.trim().toString(), edit_changePW_new_pw.text.trim().toString())
-                    .enqueue(object : Res<Void>(this) {
+            Connector.api.changePW(getToken(), hashMapOf(
+                    "currentPassword" to edit_changePW_existing_pw.text.trim().toString(),
+                    "newPassword" to edit_changePW_new_pw.text.trim().toString()
+            )).enqueue(object : Res<Void>(this) {
 
-                        override fun callBack(code: Int, body: Void?) {
+                override fun callBack(code: Int, body: Void?) {
 
-                            showToast(when (code) {
-                                200 -> {
-                                    finish()
-                                    "비밀번호가 성공적으로 변경되었습니다."
-                                }
-                                else -> "오류 $code "
-                            })
+                    showToast(when (code) {
+                        200 -> {
+                            finish()
+                            "비밀번호가 성공적으로 변경되었습니다."
                         }
+                        else -> "오류 $code "
                     })
+                }
+            })
         }
 
     }

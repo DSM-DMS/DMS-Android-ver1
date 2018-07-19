@@ -15,22 +15,22 @@ class MypageModel {
     var number = 10
     //지은이 학번 ? ㅗ 공과 사는 구분하자 병찬아
 
-    @SerializedName("stay_value")
+    @SerializedName("stay")
     var stayState: Int = 4
 
-    @SerializedName("extension_11")
+    @SerializedName("extension11")
     var extension_11: Extension? = null
 
-    @SerializedName("extension_12")
+    @SerializedName("extension12")
     var extension_12: Extension? = null
 
     @SerializedName("goingout")
     var goingout: GoingOut? = null
 
-    @SerializedName("bad_point")
+    @SerializedName("badPoint")
     var demerit: Int = 0
 
-    @SerializedName("good_point")
+    @SerializedName("goodPoint")
     var merit: Int = 0
 
     fun getStudyState(): String {
@@ -51,9 +51,9 @@ class MypageModel {
 
 
     class Extension {
-        @SerializedName("class_num")
+        @SerializedName("classNum")
         var classNum: Int? = null
-        @SerializedName("seat_num")
+        @SerializedName("seatNum")
         var seatNum: Int? = null
     }
 

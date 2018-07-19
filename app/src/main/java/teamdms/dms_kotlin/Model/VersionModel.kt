@@ -6,4 +6,4 @@ import com.google.gson.annotations.*
  * Created by root1 on 2018. 2. 26..
  */
 
-data class VersionModel(@SerializedName("newest_version")val newest_version: String)
+data class VersionModel(@SerializedName("newestVersion") val newest_version: String)

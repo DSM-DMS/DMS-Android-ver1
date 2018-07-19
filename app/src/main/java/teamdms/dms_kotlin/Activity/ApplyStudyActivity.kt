@@ -14,7 +14,7 @@ import teamdms.dms_kotlin.*
 /**
  * Created by root1 on 2017. 12. 1..
  */
-class ApplyStudyActivity: BaseActivity() {
+class ApplyStudyActivity : BaseActivity() {
 
     var classState = 1
     var timeState = 11
@@ -29,16 +29,16 @@ class ApplyStudyActivity: BaseActivity() {
         button_apply_study_change_room.setOnClickListener { bottomSheet.show() }
 
 
-        button_apply_study_cancel.setOnClickListener{
-            Connector.api.cancelExtension(timeState.toString(), getToken()).enqueue(object : Res<Void> (this) {
+        button_apply_study_cancel.setOnClickListener {
+            Connector.api.cancelExtension(timeState.toString(), getToken()).enqueue(object : Res<Void>(this) {
                 override fun callBack(code: Int, body: Void?) {
-                    when(code) {
+                    when (code) {
                         200 -> {
                             load()
                             showToast("연장이 취소되었습니다")
                         }
-                        204 ->{
-                            showToast(timeState!!.toString()+"연장 취소가 불가능합니다.")
+                        204 -> {
+                            showToast(timeState!!.toString() + "연장 취소가 불가능합니다.")
                         }
                         else -> showToast("오류 : $code")
                     }
@@ -47,25 +47,28 @@ class ApplyStudyActivity: BaseActivity() {
         }
 
         button_apply_study.setOnClickListener {
-            if (seatState > 0){
-                Connector.api.applyStudy(getToken(), timeState, classState, seatState)
-                        .enqueue(object : Res<Void>(this){
+            if (seatState > 0) {
+                Connector.api.applyStudy(getToken(), timeState, hashMapOf("classNum" to classState, "seatNum" to seatState))
+                        .enqueue(object : Res<Void>(this) {
                             override fun callBack(code: Int, body: Void?) {
-                                showToast(when(code){
+                                showToast(when (code) {
                                     201 -> {
                                         load()
                                         getString(R.string.all_apply_success)
-                                    }204 -> getString(R.string.all_apply_time_fail)
+                                    }
+                                    204 -> getString(R.string.all_apply_time_fail)
                                     else -> "오류 : $code"
                                 })
                             }
                         })
-            }else{ showToast("자리를 선택하세요") }
+            } else {
+                showToast("자리를 선택하세요")
+            }
         }
 
         toggle_group_apply_study_change_time.check(R.id.toggle_apply_study_time_11)
         toggle_group_apply_study_change_time.setOnCheckedChangeListener { _, id ->
-            timeState = when (id){
+            timeState = when (id) {
                 R.id.toggle_apply_study_time_11 -> 11
                 else -> 12
             }
@@ -76,7 +79,7 @@ class ApplyStudyActivity: BaseActivity() {
 
     lateinit var bottomSheet: BottomSheetDialog
 
-    private fun setBottomSheet(){
+    private fun setBottomSheet() {
         bottomSheet = BottomSheetDialog(this)
         val bottomSheetView = LayoutInflater.from(this).inflate(R.layout.view_apply_study_bottom_sheet, null)
         setBottomSheetView(bottomSheetView)
@@ -85,14 +88,14 @@ class ApplyStudyActivity: BaseActivity() {
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.size_apply_study_bottom_sheet)
     }
 
-    private fun setBottomSheetView(view: View){
-        with(view){
+    private fun setBottomSheetView(view: View) {
+        with(view) {
             val tempLinearArr = arrayOf(linear_apply_study_bottom_sheet_seat_1, linear_apply_study_bottom_sheet_seat_2, linear_apply_study_bottom_sheet_seat_3,
-            linear_apply_study_bottom_sheet_seat_4, linear_apply_study_bottom_sheet_seat_5, linear_apply_study_bottom_sheet_seat_6, linear_apply_study_bottom_sheet_seat_7,
+                    linear_apply_study_bottom_sheet_seat_4, linear_apply_study_bottom_sheet_seat_5, linear_apply_study_bottom_sheet_seat_6, linear_apply_study_bottom_sheet_seat_7,
                     linear_apply_study_bottom_sheet_seat_8)
 
             button_apply_study_bottom_sheet.setOnClickListener { bottomSheet.dismiss() }
-            for(tempLinearNum in tempLinearArr.indices){
+            for (tempLinearNum in tempLinearArr.indices) {
                 tempLinearArr[tempLinearNum].setOnClickListener {
                     classState = tempLinearNum + 1
                     load()
@@ -103,23 +106,26 @@ class ApplyStudyActivity: BaseActivity() {
         }
     }
 
-    private fun setRoomText(name: String){
+    private fun setRoomText(name: String) {
         button_apply_study_change_room.text = name
     }
 
-    private fun load(){
+    private fun load() {
         Connector.api.loadStudyMap(getToken(), timeState, classState)
-                .enqueue(object : Res<Array<Array<Any>>>(this){
+                .enqueue(object : Res<Array<Array<Any>>>(this) {
                     override fun callBack(code: Int, body: Array<Array<Any>>?) {
-                        if(code == 200){ drawMap(body!!) }
-                        else{ showToast("로드 실패 : $code") }
+                        if (code == 200) {
+                            drawMap(body!!)
+                        } else {
+                            showToast("로드 실패 : $code")
+                        }
                     }
                 })
     }
 
     var beforeButton: Button? = null
 
-    private fun drawMap(mapData: Array<Array<Any>>){
+    private fun drawMap(mapData: Array<Array<Any>>) {
 
         seatState = 0
 
@@ -128,17 +134,17 @@ class ApplyStudyActivity: BaseActivity() {
         val seatMargin = resources.getDimension(R.dimen.margin_apply_study_seat).toInt()
         val seatSize = resources.getDimension(R.dimen.size_apply_study_seat).toInt()
 
-        for (horizonMapData in mapData){
+        for (horizonMapData in mapData) {
 
             val horizonLayout = LinearLayout(this)
             horizonLayout.orientation = LinearLayout.HORIZONTAL
             val layoutParam = LinearLayout.LayoutParams(seatSize, seatSize)
             layoutParam.setMargins(seatMargin, seatMargin, seatMargin, seatMargin)
 
-            for (seat in horizonMapData){
-                horizonLayout.addView( when (seat) {
+            for (seat in horizonMapData) {
+                horizonLayout.addView(when (seat) {
                     is Double -> {
-                        if (seat > 0){
+                        if (seat > 0) {
                             val seatButton = Button(this)
                             setText(seatButton, "${seat.toInt()}", R.drawable.apply_study_seat_no_icon)
                             seatButton.setOnClickListener { button ->
@@ -148,12 +154,16 @@ class ApplyStudyActivity: BaseActivity() {
                                 beforeButton = button as Button
                             }
                             seatButton
-                        }else{ Space(this) }
-                    } is String -> {
+                        } else {
+                            Space(this)
+                        }
+                    }
+                    is String -> {
                         val noSeatTextView = TextView(this)
                         setText(noSeatTextView, seat, R.drawable.apply_study_seat_yes_icon)
                         noSeatTextView
-                    } else -> View(this)
+                    }
+                    else -> View(this)
                 }, layoutParam)
             }
 
@@ -163,9 +173,9 @@ class ApplyStudyActivity: BaseActivity() {
 
     }
 
-    private fun setText(textView: TextView, title: String, imageId: Int){
+    private fun setText(textView: TextView, title: String, imageId: Int) {
         textView.gravity = Gravity.CENTER
-        textView.textSize = if(title.length > 3) 14f else 16f
+        textView.textSize = if (title.length > 3) 14f else 16f
         textView.text = title
         textView.setTextColor(Color.WHITE)
         textView.setBackgroundResource(imageId)

@@ -37,7 +37,9 @@ class ProblemReportDialog(context: Context) : Dialog(context) {
             if (title.isEmpty() || room.isEmpty() || content.isEmpty()) {
                 Util.showToast(context, "값을 다 입력하세요")
             } else {
-                Connector.api.reportProblem(getToken(context), title, Integer.parseInt(room), content)
+                Connector.api.reportProblem(getToken(context), hashMapOf(
+                        "content" to "$title , $content",
+                        "room" to room.toInt()))
                         .enqueue(object : Res<Void>(context) {
                             override fun callBack(code: Int, body: Void?) {
                                 Util.showToast(context, when (code) {

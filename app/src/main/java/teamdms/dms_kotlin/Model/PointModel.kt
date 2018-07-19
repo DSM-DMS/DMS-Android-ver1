@@ -8,7 +8,7 @@ import java.io.Serializable
  */
 class PointModel : Serializable{
     @SerializedName("point") var point : Int? = 0
-    @SerializedName("point_type") var pointType : Boolean? = null
+    @SerializedName("pointType") var pointType : Boolean? = null
     @SerializedName("reason") var reason : String? = null
     @SerializedName("time") var time : String = ""
 }
