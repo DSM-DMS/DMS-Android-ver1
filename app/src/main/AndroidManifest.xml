@@ -16,10 +16,11 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.SurveyListActivity"/>
+        <activity android:name=".Activity.SurveyListActivity" />
         <activity android:name=".Activity.SignInActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity
@@ -32,9 +33,20 @@
         <activity android:name=".Activity.NoticeListActivity" />
         <activity android:name=".Activity.NoticeDetailActivity" />
         <activity android:name=".Activity.IntroDeveloperActivity" />
-        <activity android:name=".Activity.SurveyActivity"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
-        <activity android:name=".Activity.PointHistoryActivity"/>
+        <activity
+            android:name=".Activity.SurveyActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".Activity.PointHistoryActivity" />
+
+        <receiver android:name=".Widget.MealWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/meal_widget_info" />
+        </receiver>
     </application>
+
 </manifest>

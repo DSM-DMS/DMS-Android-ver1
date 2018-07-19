@@ -115,6 +115,7 @@ interface Api {
     @GET("student/info/point-history")
     fun loadPointHistory(@Header("Authorization") token: String): Call<Array<PointModel>>
 
-    @POST("jwt/refresh")
+
+    @GET("jwt/refresh")
     fun refreshToken(@Header("Authorization") token: String): Call<AuthModel>
 }
