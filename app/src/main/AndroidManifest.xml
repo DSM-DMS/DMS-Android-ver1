@@ -41,6 +41,7 @@
         <receiver android:name=".Widget.MealWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="RefreshBtnClick" />
             </intent-filter>
 
             <meta-data

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="@dimen/widget_margin">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/relative_widget_space"
         android:layout_width="match_parent"
         android:layout_height="24dp"
@@ -21,12 +21,22 @@
             android:id="@+id/text_widget_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:text="2017.12.29"
             android:textColor="@color/colorNo1"
             android:textSize="16sp"
             android:textStyle="bold" />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/button_widget_refresh"
+            android:src="@drawable/ic_autorenew24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="right"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
