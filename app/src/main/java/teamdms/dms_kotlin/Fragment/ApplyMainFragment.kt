@@ -4,11 +4,15 @@ import android.content.*
 import android.os.*
 import android.support.v4.app.*
 import android.support.v4.content.*
+import android.support.v7.app.AlertDialog
+import android.text.Layout
 import android.view.*
 import kotlinx.android.synthetic.main.fragment_apply_main.view.*
 import kotlinx.android.synthetic.main.view_apply_main_bottom.view.*
 import kotlinx.android.synthetic.main.view_apply_main_bottom_going_out.view.*
 import kotlinx.android.synthetic.main.view_apply_main_top.view.*
+import org.jetbrains.anko.*
+import org.jetbrains.anko.support.v4.alert
 import team_dms.dms.Base.*
 import team_dms.dms.Connect.*
 import team_dms.dms.Model.*
@@ -50,7 +54,7 @@ class ApplyMainFragment : Fragment() {
             switch_apply_main_sat.isChecked = false
             switch_apply_main_sun.isChecked = false
         }
-        with(contentViewArr[3]) { text_apply_main_content.text = "의견을 제출하세요" }
+        with(contentViewArr[3]) { text_apply_main_content.text = "새로운 기능을 알려주세요" }
 
         Connector.api.loadApplyInfo(Util.getToken(context))
                 .enqueue(object : Res<MypageModel>(context) {
@@ -83,18 +87,19 @@ class ApplyMainFragment : Fragment() {
 
     private fun createTopView(position: Int): View {
         val view = inflater.inflate(R.layout.view_apply_main_top, null)
-        view.setBackgroundColor(ContextCompat.getColor(context, when (position) {
-            1 -> R.color.colorNo4
-            2 -> R.color.colorNo3
-            3 -> R.color.colorNo2
-            else -> R.color.colorNo1
-        }))
         with(view) {
+            setBackgroundColor(ContextCompat.getColor(context, when (position) {
+                1 -> R.color.colorNo4
+                2 -> R.color.colorNo3
+                3 -> R.color.colorNo2
+                else -> R.color.colorNo1
+            }))
+
             text_apply_main_top_title.text = when (position) {
                 1 -> "연장신청"
                 2 -> "잔류신청"
                 3 -> "외출신청"
-                else -> "설문조사"
+                else -> "새로운 기능"
             }
         }
         return view
@@ -134,11 +139,36 @@ class ApplyMainFragment : Fragment() {
                     })
                     button_apply_main_apply.setOnClickListener {
                         if (Util.getToken(context) != "JWT ") {
-                            context.startActivity(Intent(context, when (position) {
-                                1 -> ApplyStudyActivity::class.java
-                                2 -> ApplyStayActivity::class.java
-                                else -> SurveyListActivity::class.java
-                            }))
+                            when (position) {
+                                1 -> context.startActivity(Intent(context, ApplyStudyActivity::class.java))
+                                2 -> context.startActivity(Intent(context, ApplyStayActivity::class.java))
+                                else -> {
+                                    alert{
+                                        title = "DMS의 새로운 기능"
+                                        message = "DMS 페이스북 메신저를 통해 알려주세요.\nDMS가 의견을 참고하여 개발하겠습니다\n감사합니다."
+//                                        customView {
+//                                            verticalLayout {
+//                                                textView("DMS 페이스북 메신저를 통해 알려주세요. ").textSize = 10F
+//                                                textView("DMS가 의견을 참고하여 개발하겠습니다.").textSize = 10F
+//                                                textView("감사합니다"){
+//                                                    textSize = 10F
+//                                                }
+//                                            }
+//                                        }
+                                        yesButton {  }
+                                    }.show()
+                                    /*AlertDialog.Builder(context)
+                                            .setTitle("당신이 원하는 DMS의 새로운 기능")
+                                            .setMessage("DMS 페이스북 메신저를 통해 알려주세요. \nDMS가 의견을 참고하여 개발하겠습니다 \n감사합니다.")
+                                            .setPositiveButton("확인") { p0, p1 -> }
+                                            .show()*/
+                                }
+                            }
+//                            context.startActivity(Intent(context, when (position) {
+//                                1 -> ApplyStudyActivity::class.java
+//                                2 -> ApplyStayActivity::class.java
+//                                else -> SurveyListActivity::class.java
+//                            }))
                         } else {
                             Util.showToast(context, "로그인을 해주세요")
                         }
