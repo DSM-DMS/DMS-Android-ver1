@@ -12,13 +12,14 @@ android {
         applicationId "teamdms.dms_kotlin"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 11
-        versionName "1.6.4"
+        versionCode 12
+        versionName '1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,10 +29,12 @@ android {
     dataBinding {
         enabled = true
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -39,19 +42,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
-    compile('com.squareup.retrofit2:retrofit:2.3.0') {
+    implementation('com.squareup.retrofit2:retrofit:2.3.0') {
         exclude module: 'okhttp'
     }
-
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.github.clans:fab:1.6.4'
-    compile 'com.android.support:design:26.+'
-    compile 'com.android.support:cardview-v7:26.1.0'
-
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'com.android.support:design:26.+'
+    implementation 'com.android.support:cardview-v7:26.1.0'
     kapt "com.android.databinding:compiler:3.1.2"
-
-    implementation "org.jetbrains.anko:anko:0.10.5"
+    implementation 'org.jetbrains.anko:anko:0.10.5'
 }
